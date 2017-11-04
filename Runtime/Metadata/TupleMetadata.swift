@@ -27,6 +27,7 @@ struct TupleMetadata: MetadataType {
     }
     
     func labels() -> [String] {
+        guard metadata.pointee.labelsString.hashValue != 0 else { return [] }
         var labels = String(cString: metadata.pointee.labelsString).components(separatedBy: " ")
         labels.removeLast()
         return labels

@@ -15,12 +15,18 @@ class MetadataTests: XCTestCase {
     func testTuple() {
         let type = (a: Int, b: Bool, c: String).self
         let md = TupleMetadata(type: type)
-        print(md.labels())
-        print(md.elements())
+        XCTAssert(md.labels() == ["a", "b", "c"])
+        XCTAssert(md.numberOfElements() == 3)
+    }
+    
+    func testTupleNoLabels() {
+        let type = (Int, Bool, String).self
+        let md = TupleMetadata(type: type)
+        XCTAssert(md.labels() == [])
+        XCTAssert(md.numberOfElements() == 3)
     }
     
 }
-
 
 @objc fileprivate protocol MyProtocol {
     func doSomething(value: Int) -> Bool
