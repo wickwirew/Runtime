@@ -48,6 +48,8 @@ func buildClass(type: Any.Type) throws -> Any {
     if let type = type as? AnyClass, var value = class_createInstance(type, 0) {
         try withClassValuePointer(of: &value) { pointer in
             try setProperties(typeInfo: info, pointer: pointer)
+            let header = pointer.assumingMemoryBound(to: ClassHeader.self)
+            header.pointee.strongRetainCounts = 2
         }
         return value
     }

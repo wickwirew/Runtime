@@ -11,9 +11,9 @@ import Foundation
 
 
 struct ClassHeader {
-    let isaPointer: Int
-    let strongRetainCounts: Int32
-    let weakRetainCounts: Int32
+    var isaPointer: Int
+    var strongRetainCounts: Int32
+    var weakRetainCounts: Int32
 }
 
 
