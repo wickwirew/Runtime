@@ -12,7 +12,12 @@ import XCTest
 
 class MetadataTests: XCTestCase {
 
-    
+    func testTuple() {
+        let type = (a: Int, b: Bool, c: String).self
+        let md = TupleMetadata(type: type)
+        print(md.labels())
+        print(md.elements())
+    }
     
 }
 

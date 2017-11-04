@@ -45,6 +45,8 @@
 		DEB3E3D31FAE159400855ED7 /* ProtocolMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D21FAE159400855ED7 /* ProtocolMetadata.swift */; };
 		DEB3E3D51FAE15C800855ED7 /* ProtocolMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D41FAE15C800855ED7 /* ProtocolMetadataLayout.swift */; };
 		DEB3E3D81FAE16CC00855ED7 /* MetadataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D71FAE16CC00855ED7 /* MetadataTests.swift */; };
+		DEE061E11FAE345900F2E8C1 /* TupleMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE061E01FAE345900F2E8C1 /* TupleMetadataLayout.swift */; };
+		DEE061E31FAE350200F2E8C1 /* TupleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE061E21FAE350200F2E8C1 /* TupleMetadata.swift */; };
 		DEF38F161FAD5A8000407647 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF38F151FAD5A8000407647 /* Factory.swift */; };
 		DEF38F181FAD5A8A00407647 /* DefaultValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF38F171FAD5A8A00407647 /* DefaultValue.swift */; };
 		DEF38F1A1FAD5BC000407647 /* FactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF38F191FAD5BC000407647 /* FactoryTests.swift */; };
@@ -102,6 +104,8 @@
 		DEB3E3D21FAE159400855ED7 /* ProtocolMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolMetadata.swift; sourceTree = "<group>"; };
 		DEB3E3D41FAE15C800855ED7 /* ProtocolMetadataLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolMetadataLayout.swift; sourceTree = "<group>"; };
 		DEB3E3D71FAE16CC00855ED7 /* MetadataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataTests.swift; sourceTree = "<group>"; };
+		DEE061E01FAE345900F2E8C1 /* TupleMetadataLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TupleMetadataLayout.swift; sourceTree = "<group>"; };
+		DEE061E21FAE350200F2E8C1 /* TupleMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TupleMetadata.swift; sourceTree = "<group>"; };
 		DEF38F151FAD5A8000407647 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		DEF38F171FAD5A8A00407647 /* DefaultValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultValue.swift; sourceTree = "<group>"; };
 		DEF38F191FAD5BC000407647 /* FactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryTests.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 				DE37C24E1FAA89F2008C4CB4 /* StructMetadataLayout.swift */,
 				DE37C2501FAA8A26008C4CB4 /* ClassMetadataLayout.swift */,
 				DEB3E3D41FAE15C800855ED7 /* ProtocolMetadataLayout.swift */,
+				DEE061E01FAE345900F2E8C1 /* TupleMetadataLayout.swift */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				DE37C25C1FAA957E008C4CB4 /* StructMetadata.swift */,
 				DE37C25E1FAAA6CA008C4CB4 /* ClassMetadata.swift */,
 				DEB3E3D21FAE159400855ED7 /* ProtocolMetadata.swift */,
+				DEE061E21FAE350200F2E8C1 /* TupleMetadata.swift */,
 			);
 			path = Metadata;
 			sourceTree = "<group>";
@@ -348,9 +354,11 @@
 				DE37C25F1FAAA6CA008C4CB4 /* ClassMetadata.swift in Sources */,
 				DE37C24F1FAA89F2008C4CB4 /* StructMetadataLayout.swift in Sources */,
 				DEB3E3D31FAE159400855ED7 /* ProtocolMetadata.swift in Sources */,
+				DEE061E11FAE345900F2E8C1 /* TupleMetadataLayout.swift in Sources */,
 				DE37C2471FAA83AB008C4CB4 /* Pointer+Extensions.swift in Sources */,
 				DEB3E3D51FAE15C800855ED7 /* ProtocolMetadataLayout.swift in Sources */,
 				DEF38F161FAD5A8000407647 /* Factory.swift in Sources */,
+				DEE061E31FAE350200F2E8C1 /* TupleMetadata.swift in Sources */,
 				DE79AF231FAA835100B0390B /* NominalTypeDescriptor.swift in Sources */,
 				DEF38F181FAD5A8A00407647 /* DefaultValue.swift in Sources */,
 				DE37C24B1FAA83E4008C4CB4 /* MetadataHelpers.swift in Sources */,
