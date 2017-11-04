@@ -41,6 +41,10 @@
 		DE79AF231FAA835100B0390B /* NominalTypeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79AF221FAA835100B0390B /* NominalTypeDescriptor.swift */; };
 		DE9AC70B1FAD206400A26B70 /* ValuePointerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AC70A1FAD206400A26B70 /* ValuePointerTests.swift */; };
 		DE9AC70D1FAD26BA00A26B70 /* ClassHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AC70C1FAD26BA00A26B70 /* ClassHeader.swift */; };
+		DEB3E3D11FAE145B00855ED7 /* ProtocolDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D01FAE145B00855ED7 /* ProtocolDescriptor.swift */; };
+		DEB3E3D31FAE159400855ED7 /* ProtocolMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D21FAE159400855ED7 /* ProtocolMetadata.swift */; };
+		DEB3E3D51FAE15C800855ED7 /* ProtocolMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D41FAE15C800855ED7 /* ProtocolMetadataLayout.swift */; };
+		DEB3E3D81FAE16CC00855ED7 /* MetadataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D71FAE16CC00855ED7 /* MetadataTests.swift */; };
 		DEF38F161FAD5A8000407647 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF38F151FAD5A8000407647 /* Factory.swift */; };
 		DEF38F181FAD5A8A00407647 /* DefaultValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF38F171FAD5A8A00407647 /* DefaultValue.swift */; };
 		DEF38F1A1FAD5BC000407647 /* FactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF38F191FAD5BC000407647 /* FactoryTests.swift */; };
@@ -94,6 +98,10 @@
 		DE79AF221FAA835100B0390B /* NominalTypeDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominalTypeDescriptor.swift; sourceTree = "<group>"; };
 		DE9AC70A1FAD206400A26B70 /* ValuePointerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuePointerTests.swift; sourceTree = "<group>"; };
 		DE9AC70C1FAD26BA00A26B70 /* ClassHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassHeader.swift; sourceTree = "<group>"; };
+		DEB3E3D01FAE145B00855ED7 /* ProtocolDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolDescriptor.swift; sourceTree = "<group>"; };
+		DEB3E3D21FAE159400855ED7 /* ProtocolMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolMetadata.swift; sourceTree = "<group>"; };
+		DEB3E3D41FAE15C800855ED7 /* ProtocolMetadataLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolMetadataLayout.swift; sourceTree = "<group>"; };
+		DEB3E3D71FAE16CC00855ED7 /* MetadataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataTests.swift; sourceTree = "<group>"; };
 		DEF38F151FAD5A8000407647 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		DEF38F171FAD5A8A00407647 /* DefaultValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultValue.swift; sourceTree = "<group>"; };
 		DEF38F191FAD5BC000407647 /* FactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryTests.swift; sourceTree = "<group>"; };
@@ -130,6 +138,7 @@
 				DE9AC70C1FAD26BA00A26B70 /* ClassHeader.swift */,
 				DE3DF9C01FAD4085000A8B8C /* ValueWitnessTable.swift */,
 				DE79AF221FAA835100B0390B /* NominalTypeDescriptor.swift */,
+				DEB3E3D01FAE145B00855ED7 /* ProtocolDescriptor.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -141,6 +150,7 @@
 				DE37C2591FAA94EC008C4CB4 /* NominalMetadataLayoutType.swift */,
 				DE37C24E1FAA89F2008C4CB4 /* StructMetadataLayout.swift */,
 				DE37C2501FAA8A26008C4CB4 /* ClassMetadataLayout.swift */,
+				DEB3E3D41FAE15C800855ED7 /* ProtocolMetadataLayout.swift */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -152,6 +162,7 @@
 				DE37C2561FAA929F008C4CB4 /* NominalMetadataType.swift */,
 				DE37C25C1FAA957E008C4CB4 /* StructMetadata.swift */,
 				DE37C25E1FAAA6CA008C4CB4 /* ClassMetadata.swift */,
+				DEB3E3D21FAE159400855ED7 /* ProtocolMetadata.swift */,
 			);
 			path = Metadata;
 			sourceTree = "<group>";
@@ -216,6 +227,7 @@
 				DE3DF9BE1FAD3CFA000A8B8C /* GetSetClassTests.swift */,
 				DE3DF9C21FAD40FA000A8B8C /* ValueWitnessTableTests.swift */,
 				DEF38F191FAD5BC000407647 /* FactoryTests.swift */,
+				DEB3E3D71FAE16CC00855ED7 /* MetadataTests.swift */,
 			);
 			path = RuntimeTests;
 			sourceTree = "<group>";
@@ -335,7 +347,9 @@
 				DE2797061FABD5AA00C2430E /* TypeInfo.swift in Sources */,
 				DE37C25F1FAAA6CA008C4CB4 /* ClassMetadata.swift in Sources */,
 				DE37C24F1FAA89F2008C4CB4 /* StructMetadataLayout.swift in Sources */,
+				DEB3E3D31FAE159400855ED7 /* ProtocolMetadata.swift in Sources */,
 				DE37C2471FAA83AB008C4CB4 /* Pointer+Extensions.swift in Sources */,
+				DEB3E3D51FAE15C800855ED7 /* ProtocolMetadataLayout.swift in Sources */,
 				DEF38F161FAD5A8000407647 /* Factory.swift in Sources */,
 				DE79AF231FAA835100B0390B /* NominalTypeDescriptor.swift in Sources */,
 				DEF38F181FAD5A8A00407647 /* DefaultValue.swift in Sources */,
@@ -350,6 +364,7 @@
 				DE37C2511FAA8A26008C4CB4 /* ClassMetadataLayout.swift in Sources */,
 				DE2797081FABD5B600C2430E /* PropertyInfo.swift in Sources */,
 				DE9AC70D1FAD26BA00A26B70 /* ClassHeader.swift in Sources */,
+				DEB3E3D11FAE145B00855ED7 /* ProtocolDescriptor.swift in Sources */,
 				DE27970E1FAC17FE00C2430E /* Pointers.swift in Sources */,
 				DE37C24D1FAA89AF008C4CB4 /* MetadataLayoutType.swift in Sources */,
 				DE37C25A1FAA94EC008C4CB4 /* NominalMetadataLayoutType.swift in Sources */,
@@ -370,6 +385,7 @@
 			files = (
 				DE3DF9C31FAD40FA000A8B8C /* ValueWitnessTableTests.swift in Sources */,
 				DEF38F1A1FAD5BC000407647 /* FactoryTests.swift in Sources */,
+				DEB3E3D81FAE16CC00855ED7 /* MetadataTests.swift in Sources */,
 				DE3DF9BD1FAD2D39000A8B8C /* GetSetStructTests.swift in Sources */,
 				DE9AC70B1FAD206400A26B70 /* ValuePointerTests.swift in Sources */,
 				DE3DF9BF1FAD3CFA000A8B8C /* GetSetClassTests.swift in Sources */,
