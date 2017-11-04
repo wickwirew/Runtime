@@ -23,7 +23,7 @@ import Foundation
 
 
 
-struct TupleMetadata: MetadataType {
+struct TupleMetadata: MetadataType, TypeInfoConvertible {
     
     var type: Any.Type
     var metadata: UnsafeMutablePointer<TupleMetadataLayout>
@@ -40,7 +40,7 @@ struct TupleMetadata: MetadataType {
     }
     
     func labels() -> [String] {
-        guard metadata.pointee.labelsString.hashValue != 0 else { return [] }
+        guard metadata.pointee.labelsString.hashValue != 0 else { return (0..<numberOfElements()).map{ a in "" } }
         var labels = String(cString: metadata.pointee.labelsString).components(separatedBy: " ")
         labels.removeLast()
         return labels
@@ -50,5 +50,28 @@ struct TupleMetadata: MetadataType {
         let n = numberOfElements()
         guard n > 0 else { return [] }
         return metadata.pointee.elementVector.vector(n: n)
+    }
+    
+    mutating func toTypeInfo() -> TypeInfo {
+        let names = labels()
+        let el = elements()
+        let num = numberOfElements()
+        var properties = [PropertyInfo]()
+        for i in 0..<num {
+            properties.append(PropertyInfo(name: names[i], type: el[i].type, offset: el[i].offset, ownerType: type))
+        }
+        return TypeInfo(
+            kind: kind,
+            name: "\(type)",
+            type: type,
+            mangledName: "",
+            properties: properties,
+            genericTypes: [],
+            numberOfProperties: num,
+            numberOfGenericTypes: 0,
+            size: size,
+            alignment: alignment,
+            stride: stride
+        )
     }
 }

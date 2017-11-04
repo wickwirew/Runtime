@@ -57,6 +57,8 @@ public func typeInfo(of type: Any.Type) throws -> TypeInfo {
         typeInfoConvertible = ClassMetadata(type: type)
     case .protocol:
         typeInfoConvertible = ProtocolMetadata(type: type)
+    case .tuple:
+        typeInfoConvertible = TupleMetadata(type: type)
     default:
         throw RuntimeError.couldNotGetTypeInfo
     }
