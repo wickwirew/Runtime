@@ -34,14 +34,18 @@ public struct TypeInfo {
 public func typeInfo(of type: Any.Type) throws -> TypeInfo {
     let kind = Kind(type: type)
     
+    var typeInfoConvertible: TypeInfoConvertible
+    
     switch kind {
     case .struct:
-        var md =  StructMetadata(type: type)
-        return md.toTypeInfo()
+        typeInfoConvertible = StructMetadata(type: type)
     case .class:
-        var md = ClassMetadata(type: type)
-        return md.toTypeInfo()
+        typeInfoConvertible = ClassMetadata(type: type)
+    case .protocol:
+        typeInfoConvertible = ProtocolMetadata(type: type)
     default:
         throw RuntimeError.couldNotGetTypeInfo
     }
+    
+    return typeInfoConvertible.toTypeInfo()
 }

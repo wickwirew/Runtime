@@ -12,12 +12,7 @@ import XCTest
 
 class MetadataTests: XCTestCase {
 
-    func testProtocolMetadata() {
-        var md = ProtocolMetadata(type: MyProtocol.self)
-        print(md.metadata.pointee)
-        print(md.protocolDescriptor.pointee)
-        print(md.mangledName())
-    }
+    
     
 }
 

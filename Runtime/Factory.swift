@@ -59,7 +59,7 @@ func buildClass(type: Any.Type) throws -> Any {
 
 func setProperties(typeInfo: TypeInfo, pointer: UnsafeMutableRawPointer) throws {
     for property in typeInfo.properties {
-        let value = try getDefaultValue(for: property.type)
+        let value = try defaultValue(of: property.type)
         let valuePointer = pointer.advanced(by: property.offset)
         let sets = setters(type: property.type)
         sets.set(value: value, pointer: valuePointer)
@@ -67,7 +67,7 @@ func setProperties(typeInfo: TypeInfo, pointer: UnsafeMutableRawPointer) throws 
 }
 
 
-func getDefaultValue(for type: Any.Type) throws -> Any {
+func defaultValue(of type: Any.Type) throws -> Any {
     
     if let constructable = type as? DefaultConstructor.Type {
         return constructable.init()

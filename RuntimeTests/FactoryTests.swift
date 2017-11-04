@@ -20,6 +20,9 @@ class FactoryTests: XCTestCase {
         XCTAssert(person.pet.name == "")
         XCTAssert(person.pet.age == 0)
         XCTAssert(person.favoriteNumbers == [])
+        
+        let ns = try defaultValue(of: NSString.self) as! NSString
+        print(ns)
     }
     
     func testClass() throws {

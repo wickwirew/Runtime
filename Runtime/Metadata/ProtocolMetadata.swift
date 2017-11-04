@@ -10,7 +10,7 @@ import Foundation
 
 
 
-struct ProtocolMetadata: MetadataType {
+struct ProtocolMetadata: MetadataType, TypeInfoConvertible {
     
     var type: Any.Type
     var metadata: UnsafeMutablePointer<ProtocolMetadataLayout>
@@ -26,5 +26,20 @@ struct ProtocolMetadata: MetadataType {
     
     mutating func mangledName() -> String {
         return String(cString: protocolDescriptor.pointee.mangledName)
+    }
+    
+    mutating func toTypeInfo() -> TypeInfo {
+        return TypeInfo(
+            kind: .protocol,
+            name: "\(type)",
+            type: type,
+            mangledName: mangledName(),
+            properties: [],
+            genericTypes: [],
+            numberOfProperties: 0,
+            numberOfGenericTypes: 0,
+            size: size,
+            alignment: alignment,
+            stride: stride)
     }
 }
