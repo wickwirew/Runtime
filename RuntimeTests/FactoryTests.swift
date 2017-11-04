@@ -23,7 +23,7 @@ class FactoryTests: XCTestCase {
     }
     
     func testClass() throws {
-        var person: PersonClass = try build()
+        let person: PersonClass = try build()
         XCTAssert(person.firstname == "")
         XCTAssert(person.lastname == "")
         XCTAssert(person.age == 0)
