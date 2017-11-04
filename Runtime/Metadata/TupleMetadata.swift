@@ -34,6 +34,8 @@ struct TupleMetadata: MetadataType {
     }
     
     func elements() -> [TupleElementLayout] {
-        return metadata.pointee.elementVector.vector(n: numberOfElements())
+        let n = numberOfElements()
+        guard n > 0 else { return [] }
+        return metadata.pointee.elementVector.vector(n: n)
     }
 }

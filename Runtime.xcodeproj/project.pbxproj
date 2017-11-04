@@ -48,6 +48,9 @@
 		DEE061E11FAE345900F2E8C1 /* TupleMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE061E01FAE345900F2E8C1 /* TupleMetadataLayout.swift */; };
 		DEE061E31FAE350200F2E8C1 /* TupleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE061E21FAE350200F2E8C1 /* TupleMetadata.swift */; };
 		DEE061E51FAE3AAD00F2E8C1 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE061E41FAE3AAD00F2E8C1 /* Vector.swift */; };
+		DEE061E71FAE40F400F2E8C1 /* FuntionMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE061E61FAE40F400F2E8C1 /* FuntionMetadata.swift */; };
+		DEE061E91FAE411B00F2E8C1 /* FunctionMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE061E81FAE411B00F2E8C1 /* FunctionMetadataLayout.swift */; };
+		DEE061EB1FAE4DB300F2E8C1 /* FunctionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE061EA1FAE4DB300F2E8C1 /* FunctionInfo.swift */; };
 		DEF38F161FAD5A8000407647 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF38F151FAD5A8000407647 /* Factory.swift */; };
 		DEF38F181FAD5A8A00407647 /* DefaultValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF38F171FAD5A8A00407647 /* DefaultValue.swift */; };
 		DEF38F1A1FAD5BC000407647 /* FactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF38F191FAD5BC000407647 /* FactoryTests.swift */; };
@@ -108,6 +111,9 @@
 		DEE061E01FAE345900F2E8C1 /* TupleMetadataLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TupleMetadataLayout.swift; sourceTree = "<group>"; };
 		DEE061E21FAE350200F2E8C1 /* TupleMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TupleMetadata.swift; sourceTree = "<group>"; };
 		DEE061E41FAE3AAD00F2E8C1 /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		DEE061E61FAE40F400F2E8C1 /* FuntionMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuntionMetadata.swift; sourceTree = "<group>"; };
+		DEE061E81FAE411B00F2E8C1 /* FunctionMetadataLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionMetadataLayout.swift; sourceTree = "<group>"; };
+		DEE061EA1FAE4DB300F2E8C1 /* FunctionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfo.swift; sourceTree = "<group>"; };
 		DEF38F151FAD5A8000407647 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		DEF38F171FAD5A8A00407647 /* DefaultValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultValue.swift; sourceTree = "<group>"; };
 		DEF38F191FAD5BC000407647 /* FactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryTests.swift; sourceTree = "<group>"; };
@@ -145,6 +151,7 @@
 				DE3DF9C01FAD4085000A8B8C /* ValueWitnessTable.swift */,
 				DE79AF221FAA835100B0390B /* NominalTypeDescriptor.swift */,
 				DEB3E3D01FAE145B00855ED7 /* ProtocolDescriptor.swift */,
+				DEE061EA1FAE4DB300F2E8C1 /* FunctionInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -158,6 +165,7 @@
 				DE37C2501FAA8A26008C4CB4 /* ClassMetadataLayout.swift */,
 				DEB3E3D41FAE15C800855ED7 /* ProtocolMetadataLayout.swift */,
 				DEE061E01FAE345900F2E8C1 /* TupleMetadataLayout.swift */,
+				DEE061E81FAE411B00F2E8C1 /* FunctionMetadataLayout.swift */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -171,6 +179,7 @@
 				DE37C25E1FAAA6CA008C4CB4 /* ClassMetadata.swift */,
 				DEB3E3D21FAE159400855ED7 /* ProtocolMetadata.swift */,
 				DEE061E21FAE350200F2E8C1 /* TupleMetadata.swift */,
+				DEE061E61FAE40F400F2E8C1 /* FuntionMetadata.swift */,
 			);
 			path = Metadata;
 			sourceTree = "<group>";
@@ -367,11 +376,13 @@
 				DE37C24B1FAA83E4008C4CB4 /* MetadataHelpers.swift in Sources */,
 				DE37C2641FAAA86D008C4CB4 /* MetadataRelativePointer.swift in Sources */,
 				DE27970C1FABD73600C2430E /* Kind.swift in Sources */,
+				DEE061EB1FAE4DB300F2E8C1 /* FunctionInfo.swift in Sources */,
 				DE37C2551FAA9286008C4CB4 /* MetadataType.swift in Sources */,
 				DE37C2491FAA83CC008C4CB4 /* IntegerConvertible.swift in Sources */,
 				DE37C2621FAAA82F008C4CB4 /* RelativeVectorPointer.swift in Sources */,
 				DE37C2661FAAA87B008C4CB4 /* MetadataRelativeVectorPointer.swift in Sources */,
 				DE3DF9BB1FAD2BD1000A8B8C /* GettersSetters.swift in Sources */,
+				DEE061E71FAE40F400F2E8C1 /* FuntionMetadata.swift in Sources */,
 				DE37C2511FAA8A26008C4CB4 /* ClassMetadataLayout.swift in Sources */,
 				DE2797081FABD5B600C2430E /* PropertyInfo.swift in Sources */,
 				DE9AC70D1FAD26BA00A26B70 /* ClassHeader.swift in Sources */,
@@ -387,6 +398,7 @@
 				DE37C2451FAA8381008C4CB4 /* RelativePointer.swift in Sources */,
 				DE27970A1FABD6A400C2430E /* TypeInfoConvertible.swift in Sources */,
 				DEE061E51FAE3AAD00F2E8C1 /* Vector.swift in Sources */,
+				DEE061E91FAE411B00F2E8C1 /* FunctionMetadataLayout.swift in Sources */,
 				DE2797141FAC1B0000C2430E /* ExistentialContainter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
