@@ -14,4 +14,5 @@ enum RuntimeError: Error {
     case couldNotGetPointer
     case couldNotCastValue
     case noPropertyNamed
+    case unableToBuildType
 }
