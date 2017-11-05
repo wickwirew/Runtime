@@ -42,7 +42,7 @@ class MetadataTests: XCTestCase {
     func testTupleNoLabels() {
         let type = (Int, Bool, String).self
         let md = TupleMetadata(type: type)
-        XCTAssert(md.labels() == [])
+        XCTAssert(md.labels() == ["", "", ""])
         XCTAssert(md.numberOfElements() == 3)
     }
     

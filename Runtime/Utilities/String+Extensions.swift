@@ -23,25 +23,17 @@
 import Foundation
 
 
-func metadataPointer(type: Any.Type) -> UnsafeMutablePointer<Int> {
-    return unsafeBitCast(type, to: UnsafeMutablePointer<Int>.self)
-}
-
-func swiftObject() -> Any.Type {
-    class Temp {}
-    let md = ClassMetadata(type: Temp.self)
-    return md.metadata.pointee.superClass
-}
-
-
-func strings(from pointer: UnsafePointer<CChar>, n: Int) -> [String] {
-    var pointer = pointer
-    var result = [String]()
+extension Array where Element == String {
     
-    for _ in 0..<n {
-        result.append(String(cString: pointer))
-        pointer = pointer.advance(to: 0).advanced(by: 1)
+    static func from(pointer: UnsafePointer<CChar>, n: Int) -> [String] {
+        var pointer = pointer
+        var result = [String]()
+        
+        for _ in 0..<n {
+            result.append(String(cString: pointer))
+            pointer = pointer.advance(to: 0).advanced(by: 1)
+        }
+        
+        return result
     }
-    
-    return result
 }

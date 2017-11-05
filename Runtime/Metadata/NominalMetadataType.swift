@@ -43,7 +43,7 @@ extension NominalMetadataType {
     }
     
     mutating func fieldNames() -> [String] {
-        return strings(from: nominalTypeDescriptor.pointee.fieldNames.advanced(), n: numberOfFields())
+        return [String].from(pointer: nominalTypeDescriptor.pointee.fieldNames.advanced(), n: numberOfFields())
     }
     
     mutating func fieldTypeAccessor() -> FieldTypeAccessor {

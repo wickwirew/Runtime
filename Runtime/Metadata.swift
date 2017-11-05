@@ -23,8 +23,14 @@
 import Foundation
 
 
-struct Metadata<Meta: MetadataLayoutType> {
-    
-    
+
+func metadataPointer(type: Any.Type) -> UnsafeMutablePointer<Int> {
+    return unsafeBitCast(type, to: UnsafeMutablePointer<Int>.self)
+}
+
+func swiftObject() -> Any.Type {
+    class Temp {}
+    let md = ClassMetadata(type: Temp.self)
+    return md.metadata.pointee.superClass
 }
 
