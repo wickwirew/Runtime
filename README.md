@@ -45,3 +45,15 @@ To build a `Person` object:
 let person = try build(type: Person.self)
 ```
 
+## Installation
+Runtime is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+```ruby
+pod 'Runtime'
+```
+
+## Contributions
+Contributions are welcome and encouraged!
+
+## License
+Runtime is available under the MIT license. See the LICENSE file for more info.
