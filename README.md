@@ -18,7 +18,7 @@ To get the `TypeInfo` of `Person`, all that you have to do is:
 let info = try typeInfo(of: Person.self)
 ```
 
-## PropertyInfo
+## Property Info
 Within the `TypeInfo` object, it contains a list of `PropertyInfo` which represents all properties for the type. `PropertyInfo` exposes the name and type of the property. It also allows the getting and setting of a value on an object.
 ### Example
 Using the same `Person` object as before first we get the `TypeInfo` and the property we want.
@@ -39,12 +39,13 @@ Getting and setting the values works completely typeless. So your objects and va
 
 ## Factory
 Runtime also supports building an object from it's `Type`. Both structs and classes are supported and classes are still managed by ARC.
+
 To build a `Person` object:
 ```swift
 let person = try build(type: Person.self)
 ```
 
-## FunctionInfo
+## Function Info
 `FunctionInfo` exposes metadata about functions. Including number of arguments, argument types, return types, and whether it can throw an error.
 ### Example
 ```swift
@@ -67,7 +68,7 @@ Contributions are welcome and encouraged!
 
 ## Learn
 Want to know how it works? 
-Swift stores metadata about every type, however it is not exposed via the stdlib. Runtime opens this up. How the metadata is laid out and aquired is explained in [TypeMetadata](https://github.com/apple/swift/blob/master/docs/ABI/TypeMetadata.rst) from the [Swift](https://github.com/apple/swift) repo. 
+Swift stores metadata about every type, however it is not exposed via the stdlib. Runtime opens this up. How the metadata is laid out and aquired is explained in [Type Metadata](https://github.com/apple/swift/blob/master/docs/ABI/TypeMetadata.rst) from the [Swift](https://github.com/apple/swift) repo. 
 
 Want to learn about Swift memory layout and pointers?
 [Mike Ash](https://github.com/mikeash) gave and awesome [talk](https://academy.realm.io/posts/goto-mike-ash-exploring-swift-memory-layout/) on just that.
