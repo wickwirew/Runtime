@@ -28,7 +28,7 @@ public struct TypeInfo {
     public let name: String
     public let type: Any.Type
     public let mangledName: String
-    public let properties: [PropertyInfo]
+    public var properties: [PropertyInfo]
     public let genericTypes: [Any.Type]
     public let numberOfProperties: Int
     public let numberOfGenericTypes: Int
@@ -54,7 +54,8 @@ public func typeInfo(of type: Any.Type) throws -> TypeInfo {
     case .struct:
         typeInfoConvertible = StructMetadata(type: type)
     case .class:
-        typeInfoConvertible = ClassMetadata(type: type)
+        var md = ClassMetadata(type: type)
+        return md.fullTypeInfo()
     case .protocol:
         typeInfoConvertible = ProtocolMetadata(type: type)
     case .tuple:

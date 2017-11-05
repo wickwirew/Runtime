@@ -26,7 +26,7 @@ import Foundation
 struct ClassMetadataLayout: NominalMetadataLayoutType {
     var valueWitnessTable: UnsafePointer<ValueWitnessTable>
     var isaPointer: Int
-    var superPointer: Int
+    var superClass: Any.Type
     var objCRuntimeReserve1: Int
     var objCRuntimeReserve2: Int
     var rodataPointer: Int

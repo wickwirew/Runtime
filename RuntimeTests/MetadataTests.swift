@@ -26,6 +26,12 @@ import XCTest
 
 class MetadataTests: XCTestCase {
 
+    func testSuperClass() {
+        var md = ClassMetadata(type: MyClass.self)
+        let info = md.fullTypeInfo()
+        XCTAssert(info.properties.first{$0.name == "baseProperty"} != nil)
+    }
+    
     func testTuple() {
         let type = (a: Int, b: Bool, c: String).self
         let md = TupleMetadata(type: type)
@@ -77,4 +83,12 @@ func voidFunction() {
 
 @objc fileprivate protocol MyProtocol {
     func doSomething(value: Int) -> Bool
+}
+
+fileprivate class BaseClass {
+    var baseProperty: Int = 0
+}
+
+fileprivate class MyClass: BaseClass {
+    var property: String = ""
 }

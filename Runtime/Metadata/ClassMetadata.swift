@@ -37,4 +37,19 @@ struct ClassMetadata: NominalMetadataType {
         metadata = base.advanced(by: -1).raw.assumingMemoryBound(to: ClassMetadataLayout.self)
         nominalTypeDescriptor = metadata.pointee.nominalTypeDescriptor.advanced()
     }
+    
+    func superClassMetadata() -> ClassMetadata? {
+        return metadata.pointee.superClass != swiftObject() ? ClassMetadata(type: metadata.pointee.superClass) : nil
+    }
+    
+    mutating func fullTypeInfo() -> TypeInfo {
+        var info = toTypeInfo()
+        var superClass = superClassMetadata()
+        while var sc = superClass {
+            let superInfo = sc.toTypeInfo()
+            info.properties.append(contentsOf: superInfo.properties)
+            superClass = sc.superClassMetadata()
+        }
+        return info
+    }
 }
