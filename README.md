@@ -44,6 +44,17 @@ To build a `Person` object:
 let person = try build(type: Person.self)
 ```
 
+## FunctionInfo
+`FunctionInfo` exposes metadata about functions. Including number of arguments, argument types, return types, and whether it can throw an error.
+### Example
+```swift
+func doSomething(a: Int, b: Bool) throws -> String { 
+  return "" 
+}
+
+let info = functionInfo(of: doSomething)
+```
+
 ## Installation
 Runtime is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
