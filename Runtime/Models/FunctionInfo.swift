@@ -23,9 +23,17 @@
 import Foundation
 
 
-struct FunctionInfo {
+public struct FunctionInfo {
     var numberOfArguments: Int
     var argumentTypes: [Any.Type]
     var returnType: Any.Type
     var `throws`: Bool
+}
+
+
+public func functionInfo(of function: Any) throws -> FunctionInfo {
+    let funcType = type(of: function)
+    let kind = Kind(type: funcType)
+    guard kind == .function else { throw RuntimeError.couldNotGetTypeInfo }
+    return FunctionMetadata(type: funcType).info()
 }
