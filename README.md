@@ -21,19 +21,18 @@ let info = try typeInfo(of: Person.self)
 ## PropertyInfo
 Within the `TypeInfo` object, it contains a list of `PropertyInfo` which represents all properties for the type. `PropertyInfo` exposes the name and type of the property. It also allows the getting and setting of a value on an object.
 ### Example
-Using the same `Person` object as before first we get the `TypeInfo`
+Using the same `Person` object as before first we get the `TypeInfo` and the property we want.
 ```swift
 let info = try typeInfo(of: Person.self)
 var steve = Person(firstName: "Steve", lastName: "Jobs", age: 56)
+let property = try info.property(named: "firstName")
 ```
 To get a value:
 ```swift
-let property = try info.property(named: "firstName")
 let firstName = try property.get(from: steve)
 ```
 To set a value:
 ```swift
-let property = try info.property(named: "firstName")
 try property.set(value: "New_Name", on: &steve)
 ```
 Getting and setting the values works completely typeless. So your objects and values can be casted as an `Any` or any other protcol of your choosing and it will still work. 
@@ -59,7 +58,7 @@ Contributions are welcome and encouraged!
 Want to know how it works? 
 Swift stores metadata about every type, however it is not exposed via the stdlib. Runtime opens this up. How the metadata is laid out and aquired is explained in [TypeMetadata](https://github.com/apple/swift/blob/master/docs/ABI/TypeMetadata.rst) from the [Swift](https://github.com/apple/swift) repo. 
 
-Want to learn about Swift memory layout and how to use pointer?
+Want to learn about Swift memory layout and pointers?
 [Mike Ash](https://github.com/mikeash) gave and awesome [talk](https://academy.realm.io/posts/goto-mike-ash-exploring-swift-memory-layout/) on just that.
 
 ## License
