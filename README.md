@@ -55,5 +55,12 @@ pod 'Runtime'
 ## Contributions
 Contributions are welcome and encouraged!
 
+## Learn
+Want to know how it works? 
+Swift stores metadata about every type, however it is not exposed via the stdlib. Runtime opens this up. How the metadata is laid out and aquired is explained in [TypeMetadata](https://github.com/apple/swift/blob/master/docs/ABI/TypeMetadata.rst) from the [Swift](https://github.com/apple/swift) repo. 
+
+Want to learn about Swift memory layout and how to use pointer?
+[Mike Ash](https://github.com/mikeash) gave and awesome [talk](https://academy.realm.io/posts/goto-mike-ash-exploring-swift-memory-layout/) on just that.
+
 ## License
 Runtime is available under the MIT license. See the LICENSE file for more info.
