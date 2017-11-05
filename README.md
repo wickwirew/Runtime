@@ -2,9 +2,9 @@
 
 Runtime is a Swift library to give you more runtime abilities, including getting type metadata, setting properties via reflection, and type construction for native swift objects.
 
-# TypeInfo
+## TypeInfo
 `TypeInfo` exposes metadata about native Swift structs, protocols, classes, tuples and enums. It captures the properties, generic types, inheritance levels, and more.
-# Example
+### Example
 Lets say you have a Person struct:
 ```swift
 struct Person {
@@ -18,9 +18,9 @@ To get the `TypeInfo` of `Person`, all that you have to do is:
 let info = try typeInfo(of: Person.self)
 ```
 
-# PropertyInfo
+## PropertyInfo
 Within the `TypeInfo` object, it contains a list of `PropertyInfo` which represents all properties for the type. `PropertyInfo` exposes the name and type of the property. It also allows the getting and setting of a value on an object.
-# Example
+### Example
 Using the same `Person` object as before first we get the `TypeInfo`
 ```swift
 let info = try typeInfo(of: Person.self)
@@ -38,7 +38,7 @@ try property.set(value: "New_Name", on: &steve)
 ```
 Getting and setting the values works completely typeless. So your objects and values can be casted as an `Any` or any other protcol of your choosing and it will still work. 
 
-# Factory
+## Factory
 Runtime also supports building an object from it's `Type`. Both structs and classes are supported and classes are still managed by ARC.
 To build a `Person` object:
 ```swift
