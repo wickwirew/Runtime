@@ -46,6 +46,7 @@ struct ClassMetadata: NominalMetadataType {
         var info = toTypeInfo()
         var superClass = superClassMetadata()
         while var sc = superClass {
+            info.inheritance.append(sc.type)
             let superInfo = sc.toTypeInfo()
             info.properties.append(contentsOf: superInfo.properties)
             superClass = sc.superClassMetadata()

@@ -84,6 +84,7 @@ extension NominalMetadataType {
             type: type,
             mangledName: mangledName(),
             properties: properties,
+            inheritance: [],
             genericTypes: genericParameters(),
             numberOfProperties: num,
             numberOfGenericTypes: genericParameterCount(),

@@ -24,11 +24,13 @@ import Foundation
 
 
 public struct TypeInfo {
+    
     public let kind: Kind
     public let name: String
     public let type: Any.Type
     public let mangledName: String
     public var properties: [PropertyInfo]
+    public var inheritance: [Any.Type]
     public let genericTypes: [Any.Type]
     public let numberOfProperties: Int
     public let numberOfGenericTypes: Int
@@ -36,7 +38,11 @@ public struct TypeInfo {
     public let alignment: Int
     public let stride: Int
     
-    func property(named: String) throws -> PropertyInfo {
+    public var superClass: Any.Type? {
+        return inheritance.first
+    }
+    
+    public func property(named: String) throws -> PropertyInfo {
         if let prop = properties.first(where: { $0.name == named }) {
             return prop
         }

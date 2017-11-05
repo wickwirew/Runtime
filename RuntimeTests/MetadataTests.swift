@@ -30,6 +30,7 @@ class MetadataTests: XCTestCase {
         var md = ClassMetadata(type: MyClass.self)
         let info = md.fullTypeInfo()
         XCTAssert(info.properties.first{$0.name == "baseProperty"} != nil)
+        XCTAssert(info.inheritance[0] == BaseClass.self)
     }
     
     func testTuple() {

@@ -66,6 +66,7 @@ struct TupleMetadata: MetadataType, TypeInfoConvertible {
             type: type,
             mangledName: "",
             properties: properties,
+            inheritance: [],
             genericTypes: [],
             numberOfProperties: num,
             numberOfGenericTypes: 0,

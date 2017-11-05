@@ -49,6 +49,7 @@ struct ProtocolMetadata: MetadataType, TypeInfoConvertible {
             type: type,
             mangledName: mangledName(),
             properties: [],
+            inheritance: [],
             genericTypes: [],
             numberOfProperties: 0,
             numberOfGenericTypes: 0,
