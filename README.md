@@ -1,4 +1,4 @@
-![Runtime](https://github.com/wickwirew/Runtime/blob/master/Resources/80sRuntime.png)
+![Runtime](https://github.com/wickwirew/Runtime/blob/master/Resources/Runtime.png)
 
 Runtime is a Swift library to give you more runtime abilities, including getting type metadata, setting properties via reflection, and type construction for native swift objects.
 
