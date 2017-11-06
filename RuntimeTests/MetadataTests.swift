@@ -76,6 +76,17 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.numberOfArguments == 0)
     }
     
+    func testEnum() {
+        var md = EnumMetadata(type: MyEnum<Int>.self)
+        let info = md.toTypeInfo()
+        XCTAssert(info.numberOfGenericTypes == 1)
+        XCTAssert(info.genericTypes[0] == Int.self)
+    }
+    
+}
+
+fileprivate enum MyEnum<T>: Int {
+    case a,b,c
 }
 
 func voidFunction() {
