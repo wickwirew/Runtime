@@ -23,20 +23,20 @@
 import Foundation
 
 
-public struct TypeInfo {
+public struct TypeInfo: NominalTypeInfo {
     
-    public let kind: Kind
-    public let name: String
-    public let type: Any.Type
-    public let mangledName: String
-    public var properties: [PropertyInfo]
-    public var inheritance: [Any.Type]
-    public let genericTypes: [Any.Type]
-    public let numberOfProperties: Int
-    public let numberOfGenericTypes: Int
-    public let size: Int
-    public let alignment: Int
-    public let stride: Int
+    public var kind: Kind = .unknown
+    public var name: String = ""
+    public var type: Any.Type = Any.self
+    public var mangledName: String = ""
+    public var properties: [PropertyInfo] = []
+    public var inheritance: [Any.Type] = []
+    public var genericTypes: [Any.Type] = []
+    public var numberOfProperties: Int = 0
+    public var numberOfGenericTypes: Int = 0
+    public var size: Int = 0
+    public var alignment: Int = 0
+    public var stride: Int = 0
     
     public var superClass: Any.Type? {
         return inheritance.first

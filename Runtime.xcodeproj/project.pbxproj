@@ -41,6 +41,10 @@
 		DE9AC70B1FAD206400A26B70 /* ValuePointerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AC70A1FAD206400A26B70 /* ValuePointerTests.swift */; };
 		DE9AC70D1FAD26BA00A26B70 /* ClassHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AC70C1FAD26BA00A26B70 /* ClassHeader.swift */; };
 		DE9D245A1FAF65C50092E080 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D24591FAF65C50092E080 /* String+Extensions.swift */; };
+		DE9D245C1FAFB45B0092E080 /* EnumMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D245B1FAFB45B0092E080 /* EnumMetadataLayout.swift */; };
+		DE9D245E1FAFB5020092E080 /* EnumMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D245D1FAFB5020092E080 /* EnumMetadata.swift */; };
+		DE9D24601FAFB55A0092E080 /* EnumInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D245F1FAFB55A0092E080 /* EnumInfo.swift */; };
+		DE9D24621FAFB5D20092E080 /* NominalTypeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D24611FAFB5D20092E080 /* NominalTypeInfo.swift */; };
 		DEB3E3D11FAE145B00855ED7 /* ProtocolDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D01FAE145B00855ED7 /* ProtocolDescriptor.swift */; };
 		DEB3E3D31FAE159400855ED7 /* ProtocolMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D21FAE159400855ED7 /* ProtocolMetadata.swift */; };
 		DEB3E3D51FAE15C800855ED7 /* ProtocolMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D41FAE15C800855ED7 /* ProtocolMetadataLayout.swift */; };
@@ -105,6 +109,10 @@
 		DE9AC70A1FAD206400A26B70 /* ValuePointerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuePointerTests.swift; sourceTree = "<group>"; };
 		DE9AC70C1FAD26BA00A26B70 /* ClassHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassHeader.swift; sourceTree = "<group>"; };
 		DE9D24591FAF65C50092E080 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		DE9D245B1FAFB45B0092E080 /* EnumMetadataLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumMetadataLayout.swift; sourceTree = "<group>"; };
+		DE9D245D1FAFB5020092E080 /* EnumMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumMetadata.swift; sourceTree = "<group>"; };
+		DE9D245F1FAFB55A0092E080 /* EnumInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumInfo.swift; sourceTree = "<group>"; };
+		DE9D24611FAFB5D20092E080 /* NominalTypeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominalTypeInfo.swift; sourceTree = "<group>"; };
 		DEB3E3D01FAE145B00855ED7 /* ProtocolDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolDescriptor.swift; sourceTree = "<group>"; };
 		DEB3E3D21FAE159400855ED7 /* ProtocolMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolMetadata.swift; sourceTree = "<group>"; };
 		DEB3E3D41FAE15C800855ED7 /* ProtocolMetadataLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolMetadataLayout.swift; sourceTree = "<group>"; };
@@ -155,6 +163,8 @@
 				DE79AF221FAA835100B0390B /* NominalTypeDescriptor.swift */,
 				DEB3E3D01FAE145B00855ED7 /* ProtocolDescriptor.swift */,
 				DEE061EA1FAE4DB300F2E8C1 /* FunctionInfo.swift */,
+				DE9D245F1FAFB55A0092E080 /* EnumInfo.swift */,
+				DE9D24611FAFB5D20092E080 /* NominalTypeInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,6 +179,7 @@
 				DEB3E3D41FAE15C800855ED7 /* ProtocolMetadataLayout.swift */,
 				DEE061E01FAE345900F2E8C1 /* TupleMetadataLayout.swift */,
 				DEE061E81FAE411B00F2E8C1 /* FunctionMetadataLayout.swift */,
+				DE9D245B1FAFB45B0092E080 /* EnumMetadataLayout.swift */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -183,6 +194,7 @@
 				DEB3E3D21FAE159400855ED7 /* ProtocolMetadata.swift */,
 				DEE061E21FAE350200F2E8C1 /* TupleMetadata.swift */,
 				DEE061E61FAE40F400F2E8C1 /* FuntionMetadata.swift */,
+				DE9D245D1FAFB5020092E080 /* EnumMetadata.swift */,
 			);
 			path = Metadata;
 			sourceTree = "<group>";
@@ -388,10 +400,12 @@
 				DEF38F181FAD5A8A00407647 /* DefaultValue.swift in Sources */,
 				DE37C24B1FAA83E4008C4CB4 /* Metadata.swift in Sources */,
 				DE37C2641FAAA86D008C4CB4 /* MetadataRelativePointer.swift in Sources */,
+				DE9D245E1FAFB5020092E080 /* EnumMetadata.swift in Sources */,
 				DE27970C1FABD73600C2430E /* Kind.swift in Sources */,
 				DEE061EB1FAE4DB300F2E8C1 /* FunctionInfo.swift in Sources */,
 				DE37C2551FAA9286008C4CB4 /* MetadataType.swift in Sources */,
 				DE37C2491FAA83CC008C4CB4 /* IntegerConvertible.swift in Sources */,
+				DE9D24601FAFB55A0092E080 /* EnumInfo.swift in Sources */,
 				DE37C2621FAAA82F008C4CB4 /* RelativeVectorPointer.swift in Sources */,
 				DE37C2661FAAA87B008C4CB4 /* MetadataRelativeVectorPointer.swift in Sources */,
 				DE3DF9BB1FAD2BD1000A8B8C /* GettersSetters.swift in Sources */,
@@ -402,6 +416,7 @@
 				DEB3E3D11FAE145B00855ED7 /* ProtocolDescriptor.swift in Sources */,
 				DE27970E1FAC17FE00C2430E /* Pointers.swift in Sources */,
 				DE37C24D1FAA89AF008C4CB4 /* MetadataLayoutType.swift in Sources */,
+				DE9D24621FAFB5D20092E080 /* NominalTypeInfo.swift in Sources */,
 				DE37C25A1FAA94EC008C4CB4 /* NominalMetadataLayoutType.swift in Sources */,
 				DE3DF9C11FAD4085000A8B8C /* ValueWitnessTable.swift in Sources */,
 				DE2797101FAC19D300C2430E /* Errors.swift in Sources */,
@@ -412,6 +427,7 @@
 				DEE061E51FAE3AAD00F2E8C1 /* Vector.swift in Sources */,
 				DEE061E91FAE411B00F2E8C1 /* FunctionMetadataLayout.swift in Sources */,
 				DE2797141FAC1B0000C2430E /* ExistentialContainter.swift in Sources */,
+				DE9D245C1FAFB45B0092E080 /* EnumMetadataLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

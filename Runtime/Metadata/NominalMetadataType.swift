@@ -70,6 +70,9 @@ extension NominalMetadataType {
 extension NominalMetadataType {
     
     mutating func toTypeInfo() -> TypeInfo {
+        var info = TypeInfo()
+        setNominalInfo(on: &info)
+        
         let names = fieldNames()
         let offsets = fieldOffsets()
         let types = fieldTypes()
@@ -78,19 +81,8 @@ extension NominalMetadataType {
         for i in 0..<num {
             properties.append(PropertyInfo(name: names[i], type: types[i], offset: offsets[i], ownerType: type))
         }
-        return TypeInfo(
-            kind: kind,
-            name: "\(type)",
-            type: type,
-            mangledName: mangledName(),
-            properties: properties,
-            inheritance: [],
-            genericTypes: genericParameters(),
-            numberOfProperties: num,
-            numberOfGenericTypes: genericParameterCount(),
-            size: size,
-            alignment: alignment,
-            stride: stride
-        )
+        
+        info.properties = properties
+        return info
     }
 }
