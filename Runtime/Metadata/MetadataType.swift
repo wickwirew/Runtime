@@ -56,7 +56,7 @@ extension MetadataType {
         self.init(type: type, metadata: metadata, base: base)
     }
     
-    func toTypeInfo() -> TypeInfo {
+    mutating func toTypeInfo() -> TypeInfo {
         return TypeInfo(metadata: self)
     }
 }
