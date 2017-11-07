@@ -24,7 +24,7 @@ import Foundation
 
 
 
-protocol MetadataType {
+protocol MetadataType: TypeInfoConvertible {
     associatedtype Layout: MetadataLayoutType
     var type: Any.Type { get set }
     var metadata: UnsafeMutablePointer<Layout> { get set }
@@ -54,5 +54,9 @@ extension MetadataType {
         let base = metadataPointer(type: type)
         let metadata = base.advanced(by: valueWitnessTableOffset).raw.assumingMemoryBound(to: Layout.self)
         self.init(type: type, metadata: metadata, base: base)
+    }
+    
+    func toTypeInfo() -> TypeInfo {
+        return TypeInfo(metadata: self)
     }
 }

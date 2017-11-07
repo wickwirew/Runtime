@@ -35,8 +35,9 @@ struct ClassMetadata: NominalMetadataType {
         return metadata.pointee.superClass != swiftObject() ? ClassMetadata(type: metadata.pointee.superClass) : nil
     }
     
-    mutating func fullTypeInfo() -> TypeInfo {
-        var info = toTypeInfo()
+    mutating func toTypeInfo() -> TypeInfo {
+        var info = TypeInfo(nominalMetadata: self)
+        info.properties = properties()
         var superClass = superClassMetadata()
         while var sc = superClass {
             info.inheritance.append(sc.type)

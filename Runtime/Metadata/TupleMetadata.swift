@@ -46,7 +46,7 @@ struct TupleMetadata: MetadataType, TypeInfoConvertible {
         return metadata.pointee.elementVector.vector(n: n)
     }
     
-    mutating func toTypeInfo() -> TypeInfo {
+    func properies() -> [PropertyInfo] {
         let names = labels()
         let el = elements()
         let num = numberOfElements()
@@ -54,19 +54,12 @@ struct TupleMetadata: MetadataType, TypeInfoConvertible {
         for i in 0..<num {
             properties.append(PropertyInfo(name: names[i], type: el[i].type, offset: el[i].offset, ownerType: type))
         }
-        return TypeInfo(
-            kind: kind,
-            name: "\(type)",
-            type: type,
-            mangledName: "",
-            properties: properties,
-            inheritance: [],
-            genericTypes: [],
-            numberOfProperties: num,
-            numberOfGenericTypes: 0,
-            size: size,
-            alignment: alignment,
-            stride: stride
-        )
+        return properties
+    }
+    
+    mutating func toTypeInfo() -> TypeInfo {
+        var info = TypeInfo(metadata: self)
+        info.properties = properies()
+        return info
     }
 }

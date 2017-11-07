@@ -23,7 +23,7 @@
 import Foundation
 
 
-public struct TypeInfo: NominalTypeInfo {
+public struct TypeInfo {
     
     public var kind: Kind = .unknown
     public var name: String = ""
@@ -33,10 +33,25 @@ public struct TypeInfo: NominalTypeInfo {
     public var inheritance: [Any.Type] = []
     public var genericTypes: [Any.Type] = []
     public var numberOfProperties: Int = 0
-    public var numberOfGenericTypes: Int = 0
     public var size: Int = 0
     public var alignment: Int = 0
     public var stride: Int = 0
+    
+    init<Metadata: MetadataType>(metadata: Metadata) {
+        kind = metadata.kind
+        name = String(describing: metadata.type)
+        type = metadata.type
+        size = metadata.size
+        alignment = metadata.alignment
+        stride = metadata.stride
+    }
+    
+    init<Metadata: NominalMetadataType>(nominalMetadata: Metadata) {
+        self.init(metadata: nominalMetadata)
+        var nominalMetadata = nominalMetadata
+        mangledName = nominalMetadata.mangledName()
+        genericTypes = nominalMetadata.genericParameters()
+    }
     
     public var superClass: Any.Type? {
         return inheritance.first
@@ -60,8 +75,7 @@ public func typeInfo(of type: Any.Type) throws -> TypeInfo {
     case .struct:
         typeInfoConvertible = StructMetadata(type: type)
     case .class:
-        var md = ClassMetadata(type: type)
-        return md.fullTypeInfo()
+        typeInfoConvertible = ClassMetadata(type: type)
     case .protocol:
         typeInfoConvertible = ProtocolMetadata(type: type)
     case .tuple:

@@ -24,7 +24,7 @@ import Foundation
 
 
 
-protocol NominalMetadataType: MetadataType, TypeInfoConvertible where Layout: NominalMetadataLayoutType {
+protocol NominalMetadataType: MetadataType where Layout: NominalMetadataLayoutType {
     init(type: Any.Type, metadata: UnsafeMutablePointer<Layout>, nominalTypeDescriptor: UnsafeMutablePointer<NominalTypeDescriptor>, base: UnsafeMutablePointer<Int>)
     var nominalTypeDescriptor: UnsafeMutablePointer<NominalTypeDescriptor> { get set }
 }
@@ -70,10 +70,7 @@ extension NominalMetadataType {
         return nominalTypeDescriptor.pointee.genericParameterVector.vector(metadata: base, n: genericParameterCount())
     }
     
-    mutating func toTypeInfo() -> TypeInfo {
-        var info = TypeInfo()
-        setNominalInfo(on: &info)
-        
+    mutating func properties() -> [PropertyInfo] {
         let names = fieldNames()
         let offsets = fieldOffsets()
         let types = fieldTypes()
@@ -82,8 +79,12 @@ extension NominalMetadataType {
         for i in 0..<num {
             properties.append(PropertyInfo(name: names[i], type: types[i], offset: offsets[i], ownerType: type))
         }
-        
-        info.properties = properties
+        return properties
+    }
+    
+    mutating func toTypeInfo() -> TypeInfo {
+        var info = TypeInfo(nominalMetadata: self)
+        info.properties = properties()
         return info
     }
 }

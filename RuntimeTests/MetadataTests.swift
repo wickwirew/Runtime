@@ -28,7 +28,8 @@ class MetadataTests: XCTestCase {
 
     func testSuperClass() {
         var md = ClassMetadata(type: MyClass.self)
-        let info = md.fullTypeInfo()
+        let info = md.toTypeInfo()
+        print(info.name)
         XCTAssert(info.properties.first{$0.name == "baseProperty"} != nil)
         XCTAssert(info.inheritance[0] == BaseClass.self)
     }
@@ -79,7 +80,7 @@ class MetadataTests: XCTestCase {
     func testEnum() {
         var md = EnumMetadata(type: MyEnum<Int>.self)
         let info = md.toTypeInfo()
-        XCTAssert(info.numberOfGenericTypes == 1)
+        XCTAssert(info.genericTypes.count == 1)
         XCTAssert(info.genericTypes[0] == Int.self)
     }
     
