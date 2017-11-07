@@ -62,7 +62,7 @@ public struct TypeInfo {
             return prop
         }
         
-        throw RuntimeError.noPropertyNamed
+        throw RuntimeError.noPropertyNamed(name: named)
     }
 }
 
@@ -81,7 +81,7 @@ public func typeInfo(of type: Any.Type) throws -> TypeInfo {
     case .tuple:
         typeInfoConvertible = TupleMetadata(type: type)
     default:
-        throw RuntimeError.couldNotGetTypeInfo
+        throw RuntimeError.couldNotGetTypeInfo(type: type, kind: kind)
     }
     
     return typeInfoConvertible.toTypeInfo()

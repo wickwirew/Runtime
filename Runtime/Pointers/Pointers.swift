@@ -36,7 +36,7 @@ func withValuePointer<Value, Result>(of value: inout Value, _ body: (UnsafeMutab
     case .protocol:
         return try withExistentialValuePointer(of: &value, body)
     default:
-        throw RuntimeError.couldNotGetPointer
+        throw RuntimeError.couldNotGetPointer(type: Value.self, value: value)
     }
 }
 

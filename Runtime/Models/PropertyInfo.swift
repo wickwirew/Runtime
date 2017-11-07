@@ -54,7 +54,7 @@ public struct PropertyInfo {
             return value
         }
         
-        throw RuntimeError.couldNotCastValue
+        throw RuntimeError.errorGettingValue(name: name, type: type)
     }
     
     public func get(from object: Any) throws -> Any {

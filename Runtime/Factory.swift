@@ -28,7 +28,7 @@ public func build<T>() throws -> T {
         return value
     }
     
-    throw RuntimeError.couldNotCastValue
+    throw RuntimeError.unableToBuildType(type: T.self)
 }
 
 public func build(type: Any.Type) throws -> Any {
@@ -45,7 +45,7 @@ public func build(type: Any.Type) throws -> Any {
     case .class:
         return try buildClass(type: type)
     default:
-        throw RuntimeError.unableToBuildType
+        throw RuntimeError.unableToBuildType(type: type)
     }
 }
 
@@ -67,7 +67,7 @@ func buildClass(type: Any.Type) throws -> Any {
         }
         return value
     }
-    throw RuntimeError.unableToBuildType
+    throw RuntimeError.unableToBuildType(type: type)
 }
 
 
