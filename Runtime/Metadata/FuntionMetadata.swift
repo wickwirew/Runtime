@@ -30,13 +30,7 @@ struct FunctionMetadata: MetadataType {
     var metadata: UnsafeMutablePointer<FunctionMetadataLayout>
     var base: UnsafeMutablePointer<Int>
     
-    init(type: Any.Type) {
-        self.type = type
-        base = metadataPointer(type: type)
-        metadata = base.advanced(by: -1).raw.assumingMemoryBound(to: FunctionMetadataLayout.self)
-    }
-    
-     func info() -> FunctionInfo {
+    func info() -> FunctionInfo {
         let (numberOfArguments, argumentTypes, returnType) = argumentInfo()
         return FunctionInfo(numberOfArguments: numberOfArguments,
                             argumentTypes: argumentTypes,

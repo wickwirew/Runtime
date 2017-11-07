@@ -29,6 +29,7 @@ protocol MetadataType {
     var type: Any.Type { get set }
     var metadata: UnsafeMutablePointer<Layout> { get set }
     var base: UnsafeMutablePointer<Int> { get set }
+    init(type: Any.Type, metadata: UnsafeMutablePointer<Layout>, base: UnsafeMutablePointer<Int>)
 }
 
 extension MetadataType {
@@ -47,5 +48,11 @@ extension MetadataType {
     
     var stride: Int {
         return metadata.pointee.valueWitnessTable.pointee.stride
+    }
+    
+    init(type: Any.Type) {
+        let base = metadataPointer(type: type)
+        let metadata = base.advanced(by: valueWitnessTableOffset).raw.assumingMemoryBound(to: Layout.self)
+        self.init(type: type, metadata: metadata, base: base)
     }
 }

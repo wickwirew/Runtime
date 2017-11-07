@@ -31,11 +31,11 @@ struct ProtocolMetadata: MetadataType, TypeInfoConvertible {
     var base: UnsafeMutablePointer<Int>
     var protocolDescriptor: UnsafeMutablePointer<ProtocolDescriptor>
     
-    init(type: Any.Type) {
+    init(type: Any.Type, metadata: UnsafeMutablePointer<Layout>, base: UnsafeMutablePointer<Int>) {
         self.type = type
-        base = metadataPointer(type: type)
-        metadata = base.advanced(by: -1).raw.assumingMemoryBound(to: ProtocolMetadataLayout.self)
-        protocolDescriptor = metadata.pointee.protocolDescriptorVector
+        self.metadata = metadata
+        self.base = base
+        self.protocolDescriptor = metadata.pointee.protocolDescriptorVector
     }
     
     mutating func mangledName() -> String {

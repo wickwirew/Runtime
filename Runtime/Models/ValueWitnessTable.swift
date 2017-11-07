@@ -23,6 +23,7 @@
 import Foundation
 
 
+let valueWitnessTableOffset = -1
 
 struct ValueWitnessTable {
     var a: Int

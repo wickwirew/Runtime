@@ -24,11 +24,16 @@ import Foundation
 
 
 
-protocol NominalMetadataType: MetadataType, TypeInfoConvertible {
+protocol NominalMetadataType: MetadataType, TypeInfoConvertible where Layout: NominalMetadataLayoutType {
+    init(type: Any.Type, metadata: UnsafeMutablePointer<Layout>, nominalTypeDescriptor: UnsafeMutablePointer<NominalTypeDescriptor>, base: UnsafeMutablePointer<Int>)
     var nominalTypeDescriptor: UnsafeMutablePointer<NominalTypeDescriptor> { get set }
 }
 
 extension NominalMetadataType {
+    
+    init(type: Any.Type, metadata: UnsafeMutablePointer<Layout>, base: UnsafeMutablePointer<Int>) {
+        self.init(type: type, metadata: metadata, nominalTypeDescriptor: metadata.pointee.nominalTypeDescriptor.advanced(), base: base)
+    }
     
     mutating func mangledName() -> String {
         return String(cString: nominalTypeDescriptor.pointee.mangledName.advanced())
@@ -64,10 +69,6 @@ extension NominalMetadataType {
     mutating func genericParameters() -> [Any.Type] {
         return nominalTypeDescriptor.pointee.genericParameterVector.vector(metadata: base, n: genericParameterCount())
     }
-}
-
-
-extension NominalMetadataType {
     
     mutating func toTypeInfo() -> TypeInfo {
         var info = TypeInfo()

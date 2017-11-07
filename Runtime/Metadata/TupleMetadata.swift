@@ -29,12 +29,6 @@ struct TupleMetadata: MetadataType, TypeInfoConvertible {
     var metadata: UnsafeMutablePointer<TupleMetadataLayout>
     var base: UnsafeMutablePointer<Int>
     
-    init(type: Any.Type) {
-        self.type = type
-        base = metadataPointer(type: type)
-        metadata = base.advanced(by: -1).raw.assumingMemoryBound(to: TupleMetadataLayout.self)
-    }
-    
     func numberOfElements() -> Int {
         return metadata.pointee.numberOfElements
     }
