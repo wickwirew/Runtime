@@ -26,12 +26,40 @@ import XCTest
 
 class MetadataTests: XCTestCase {
 
-    func testSuperClass() {
-        var md = ClassMetadata(type: MyClass.self)
+    func testClass() {
+        var md = ClassMetadata(type: MyClass<Int>.self)
         let info = md.toTypeInfo()
-        print(info.name)
         XCTAssert(info.properties.first{$0.name == "baseProperty"} != nil)
         XCTAssert(info.inheritance[0] == BaseClass.self)
+        XCTAssert(info.genericTypes[0] == Int.self)
+        XCTAssert(info.kind == .class)
+        XCTAssert(info.type == MyClass<Int>.self)
+        XCTAssert(info.properties.count == 3)
+        XCTAssert(info.size == MemoryLayout<MyClass<Int>>.size)
+        XCTAssert(info.alignment == MemoryLayout<MyClass<Int>>.alignment)
+        XCTAssert(info.stride == MemoryLayout<MyClass<Int>>.stride)
+    }
+    
+    func testStruct() {
+        var md = StructMetadata(type: MyStruct<Int>.self)
+        let info = md.toTypeInfo()
+        XCTAssert(info.genericTypes[0] == Int.self)
+        XCTAssert(info.kind == .struct)
+        XCTAssert(info.type == MyStruct<Int>.self)
+        XCTAssert(info.properties.count == 4)
+        XCTAssert(info.size == MemoryLayout<MyStruct<Int>>.size)
+        XCTAssert(info.alignment == MemoryLayout<MyStruct<Int>>.alignment)
+        XCTAssert(info.stride == MemoryLayout<MyStruct<Int>>.stride)
+    }
+    
+    func testProtocol() {
+        var md = ProtocolMetadata(type: MyProtocol.self)
+        let info = md.toTypeInfo()
+        XCTAssert(info.kind == .protocol)
+        XCTAssert(info.type == MyProtocol.self)
+        XCTAssert(info.size == MemoryLayout<MyProtocol>.size)
+        XCTAssert(info.alignment == MemoryLayout<MyProtocol>.alignment)
+        XCTAssert(info.stride == MemoryLayout<MyProtocol>.stride)
     }
     
     func testTuple() {
@@ -94,7 +122,8 @@ func voidFunction() {
     
 }
 
-@objc fileprivate protocol MyProtocol {
+fileprivate protocol MyProtocol {
+    var a: Int { get set }
     func doSomething(value: Int) -> Bool
 }
 
@@ -102,6 +131,16 @@ fileprivate class BaseClass {
     var baseProperty: Int = 0
 }
 
-fileprivate class MyClass: BaseClass {
+fileprivate class MyClass<T>: BaseClass {
     var property: String = ""
+    var gen: T
+    init(g: T) {
+        gen = g
+    }
+}
+
+fileprivate struct MyStruct<T> {
+    var a,b: Int
+    var c: String
+    var d: T
 }

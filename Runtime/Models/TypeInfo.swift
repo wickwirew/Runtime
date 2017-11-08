@@ -32,7 +32,6 @@ public struct TypeInfo {
     public var properties: [PropertyInfo] = []
     public var inheritance: [Any.Type] = []
     public var genericTypes: [Any.Type] = []
-    public var numberOfProperties: Int = 0
     public var size: Int = 0
     public var alignment: Int = 0
     public var stride: Int = 0
