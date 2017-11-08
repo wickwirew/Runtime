@@ -32,8 +32,11 @@ public struct FunctionInfo {
 
 
 public func functionInfo(of function: Any) throws -> FunctionInfo {
-    let funcType = type(of: function)
-    let kind = Kind(type: funcType)
-    guard kind == .function else { throw RuntimeError.couldNotGetTypeInfo(type: funcType, kind: kind) }
-    return FunctionMetadata(type: funcType).info()
+    return try functionInfo(of: type(of: function))
+}
+
+public func functionInfo(of type: Any.Type) throws -> FunctionInfo {
+    let kind = Kind(type: type)
+    guard kind == .function else { throw RuntimeError.couldNotGetTypeInfo(type: type, kind: kind) }
+    return FunctionMetadata(type: type).info()
 }

@@ -27,9 +27,7 @@
 		DE37C25A1FAA94EC008C4CB4 /* NominalMetadataLayoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2591FAA94EC008C4CB4 /* NominalMetadataLayoutType.swift */; };
 		DE37C25D1FAA957E008C4CB4 /* StructMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C25C1FAA957E008C4CB4 /* StructMetadata.swift */; };
 		DE37C25F1FAAA6CA008C4CB4 /* ClassMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C25E1FAAA6CA008C4CB4 /* ClassMetadata.swift */; };
-		DE37C2621FAAA82F008C4CB4 /* RelativeVectorPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2611FAAA82F008C4CB4 /* RelativeVectorPointer.swift */; };
-		DE37C2641FAAA86D008C4CB4 /* MetadataRelativePointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2631FAAA86D008C4CB4 /* MetadataRelativePointer.swift */; };
-		DE37C2661FAAA87B008C4CB4 /* MetadataRelativeVectorPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2651FAAA87B008C4CB4 /* MetadataRelativeVectorPointer.swift */; };
+		DE37C2661FAAA87B008C4CB4 /* RelativeVectorPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2651FAAA87B008C4CB4 /* RelativeVectorPointer.swift */; };
 		DE3DF9BB1FAD2BD1000A8B8C /* GettersSetters.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DF9BA1FAD2BD1000A8B8C /* GettersSetters.swift */; };
 		DE3DF9BD1FAD2D39000A8B8C /* GetSetStructTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DF9BC1FAD2D39000A8B8C /* GetSetStructTests.swift */; };
 		DE3DF9BF1FAD3CFA000A8B8C /* GetSetClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DF9BE1FAD3CFA000A8B8C /* GetSetClassTests.swift */; };
@@ -91,9 +89,7 @@
 		DE37C2591FAA94EC008C4CB4 /* NominalMetadataLayoutType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominalMetadataLayoutType.swift; sourceTree = "<group>"; };
 		DE37C25C1FAA957E008C4CB4 /* StructMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructMetadata.swift; sourceTree = "<group>"; };
 		DE37C25E1FAAA6CA008C4CB4 /* ClassMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassMetadata.swift; sourceTree = "<group>"; };
-		DE37C2611FAAA82F008C4CB4 /* RelativeVectorPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeVectorPointer.swift; sourceTree = "<group>"; };
-		DE37C2631FAAA86D008C4CB4 /* MetadataRelativePointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataRelativePointer.swift; sourceTree = "<group>"; };
-		DE37C2651FAAA87B008C4CB4 /* MetadataRelativeVectorPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataRelativeVectorPointer.swift; sourceTree = "<group>"; };
+		DE37C2651FAAA87B008C4CB4 /* RelativeVectorPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeVectorPointer.swift; sourceTree = "<group>"; };
 		DE3DF9BA1FAD2BD1000A8B8C /* GettersSetters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettersSetters.swift; sourceTree = "<group>"; };
 		DE3DF9BC1FAD2D39000A8B8C /* GetSetStructTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSetStructTests.swift; sourceTree = "<group>"; };
 		DE3DF9BE1FAD3CFA000A8B8C /* GetSetClassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSetClassTests.swift; sourceTree = "<group>"; };
@@ -200,9 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				DE37C2441FAA8381008C4CB4 /* RelativePointer.swift */,
-				DE37C2611FAAA82F008C4CB4 /* RelativeVectorPointer.swift */,
-				DE37C2631FAAA86D008C4CB4 /* MetadataRelativePointer.swift */,
-				DE37C2651FAAA87B008C4CB4 /* MetadataRelativeVectorPointer.swift */,
+				DE37C2651FAAA87B008C4CB4 /* RelativeVectorPointer.swift */,
 				DE27970D1FAC17FE00C2430E /* Pointers.swift */,
 				DEE061E41FAE3AAD00F2E8C1 /* Vector.swift */,
 			);
@@ -396,14 +390,12 @@
 				DE79AF231FAA835100B0390B /* NominalTypeDescriptor.swift in Sources */,
 				DEF38F181FAD5A8A00407647 /* DefaultValue.swift in Sources */,
 				DE37C24B1FAA83E4008C4CB4 /* Metadata.swift in Sources */,
-				DE37C2641FAAA86D008C4CB4 /* MetadataRelativePointer.swift in Sources */,
 				DE9D245E1FAFB5020092E080 /* EnumMetadata.swift in Sources */,
 				DE27970C1FABD73600C2430E /* Kind.swift in Sources */,
 				DEE061EB1FAE4DB300F2E8C1 /* FunctionInfo.swift in Sources */,
 				DE37C2551FAA9286008C4CB4 /* MetadataType.swift in Sources */,
 				DE37C2491FAA83CC008C4CB4 /* IntegerConvertible.swift in Sources */,
-				DE37C2621FAAA82F008C4CB4 /* RelativeVectorPointer.swift in Sources */,
-				DE37C2661FAAA87B008C4CB4 /* MetadataRelativeVectorPointer.swift in Sources */,
+				DE37C2661FAAA87B008C4CB4 /* RelativeVectorPointer.swift in Sources */,
 				DE3DF9BB1FAD2BD1000A8B8C /* GettersSetters.swift in Sources */,
 				DEE061E71FAE40F400F2E8C1 /* FuntionMetadata.swift in Sources */,
 				DE37C2511FAA8A26008C4CB4 /* ClassMetadataLayout.swift in Sources */,

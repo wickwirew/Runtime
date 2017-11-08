@@ -27,5 +27,4 @@ struct StructMetadataLayout: NominalMetadataLayoutType {
     var valueWitnessTable: UnsafePointer<ValueWitnessTable>
     var kind: Int
     var nominalTypeDescriptor: RelativePointer<Int, NominalTypeDescriptor>
-    var fieldVectorOffset: RelativeVectorPointer<Int, Int>
 }

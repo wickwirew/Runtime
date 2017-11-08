@@ -23,30 +23,17 @@
 import Foundation
 
 
-
-
-protocol RelativePointerType {
-    associatedtype OffsetType: IntegerConvertible
-    associatedtype PointeeType
-    var offset: OffsetType { get set }
-}
-
-
-struct RelativePointer<Offset: IntegerConvertible, Pointee>: RelativePointerType {
-    var offset: OffsetType
-    typealias PointeeType = Pointee
-    typealias OffsetType = Offset
-}
-
-extension RelativePointerType {
-    mutating func pointee() -> PointeeType {
+struct RelativePointer<Offset: IntegerConvertible, Pointee> {
+    var offset: Offset
+    
+    mutating func pointee() -> Pointee {
         return advanced().pointee
     }
     
-    mutating func advanced() -> UnsafeMutablePointer<PointeeType> {
+    mutating func advanced() -> UnsafeMutablePointer<Pointee> {
         let offsetCopy = self.offset
         return withUnsafePointer(to: &self) { p in
-            return p.raw.advanced(by: offsetCopy.getInt()).assumingMemoryBound(to: PointeeType.self).mutable
+            return p.raw.advanced(by: offsetCopy.getInt()).assumingMemoryBound(to: Pointee.self).mutable
         }
     }
 }

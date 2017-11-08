@@ -31,7 +31,9 @@ class MetadataTests: XCTestCase {
         let info = md.toTypeInfo()
         XCTAssert(info.properties.first{$0.name == "baseProperty"} != nil)
         XCTAssert(info.inheritance[0] == BaseClass.self)
+        XCTAssert(info.superClass == BaseClass.self)
         XCTAssert(info.genericTypes[0] == Int.self)
+        XCTAssert(info.mangledName != "")
         XCTAssert(info.kind == .class)
         XCTAssert(info.type == MyClass<Int>.self)
         XCTAssert(info.properties.count == 3)
@@ -50,6 +52,7 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.size == MemoryLayout<MyStruct<Int>>.size)
         XCTAssert(info.alignment == MemoryLayout<MyStruct<Int>>.alignment)
         XCTAssert(info.stride == MemoryLayout<MyStruct<Int>>.stride)
+        XCTAssert(info.mangledName != "")
     }
     
     func testProtocol() {
@@ -64,9 +67,14 @@ class MetadataTests: XCTestCase {
     
     func testTuple() {
         let type = (a: Int, b: Bool, c: String).self
-        let md = TupleMetadata(type: type)
-        XCTAssert(md.labels() == ["a", "b", "c"])
-        XCTAssert(md.numberOfElements() == 3)
+        var md = TupleMetadata(type: type)
+        let info = md.toTypeInfo()
+        XCTAssert(info.kind == .tuple)
+        XCTAssert(info.type == (a: Int, b: Bool, c: String).self)
+        XCTAssert(info.properties.count == 3)
+        XCTAssert(info.size == MemoryLayout<(a: Int, b: Bool, c: String)>.size)
+        XCTAssert(info.alignment == MemoryLayout<(a: Int, b: Bool, c: String)>.alignment)
+        XCTAssert(info.stride == MemoryLayout<(a: Int, b: Bool, c: String)>.stride)
     }
     
     func testTupleNoLabels() {
@@ -76,10 +84,8 @@ class MetadataTests: XCTestCase {
         XCTAssert(md.numberOfElements() == 3)
     }
     
-    func testFunction() {
-        let t = ((a: Int, b: Bool, c: String) -> String).self
-        let md = FunctionMetadata(type: t)
-        let info = md.info()
+    func testFunction() throws {
+        let info = try functionInfo(of: myFunc)
         XCTAssert(info.numberOfArguments == 3)
         XCTAssert(info.argumentTypes[0] == Int.self)
         XCTAssert(info.argumentTypes[1] == Bool.self)
@@ -120,6 +126,10 @@ fileprivate enum MyEnum<T>: Int {
 
 func voidFunction() {
     
+}
+
+func myFunc(a: Int, b: Bool, c: String) -> String {
+    return ""
 }
 
 fileprivate protocol MyProtocol {
