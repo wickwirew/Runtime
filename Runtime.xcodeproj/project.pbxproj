@@ -154,12 +154,6 @@
 				DE2797071FABD5B600C2430E /* PropertyInfo.swift */,
 				DE2797091FABD6A400C2430E /* TypeInfoConvertible.swift */,
 				DE27970B1FABD73600C2430E /* Kind.swift */,
-				DE2797111FAC1A8200C2430E /* ExistentialHeader.swift */,
-				DE2797131FAC1B0000C2430E /* ExistentialContainter.swift */,
-				DE9AC70C1FAD26BA00A26B70 /* ClassHeader.swift */,
-				DE3DF9C01FAD4085000A8B8C /* ValueWitnessTable.swift */,
-				DE79AF221FAA835100B0390B /* NominalTypeDescriptor.swift */,
-				DEB3E3D01FAE145B00855ED7 /* ProtocolDescriptor.swift */,
 				DEE061EA1FAE4DB300F2E8C1 /* FunctionInfo.swift */,
 				DE9D24611FAFB5D20092E080 /* NominalTypeInfo.swift */,
 			);
@@ -169,6 +163,12 @@
 		DE37C2581FAA94CD008C4CB4 /* Layouts */ = {
 			isa = PBXGroup;
 			children = (
+				DE9AC70C1FAD26BA00A26B70 /* ClassHeader.swift */,
+				DE2797111FAC1A8200C2430E /* ExistentialHeader.swift */,
+				DE2797131FAC1B0000C2430E /* ExistentialContainter.swift */,
+				DE3DF9C01FAD4085000A8B8C /* ValueWitnessTable.swift */,
+				DE79AF221FAA835100B0390B /* NominalTypeDescriptor.swift */,
+				DEB3E3D01FAE145B00855ED7 /* ProtocolDescriptor.swift */,
 				DE37C24C1FAA89AF008C4CB4 /* MetadataLayoutType.swift */,
 				DE37C2591FAA94EC008C4CB4 /* NominalMetadataLayoutType.swift */,
 				DE37C24E1FAA89F2008C4CB4 /* StructMetadataLayout.swift */,
