@@ -5,17 +5,17 @@ Runtime is a Swift library to give you more runtime abilities, including getting
 ## TypeInfo
 `TypeInfo` exposes metadata about native Swift structs, protocols, classes, tuples and enums. It captures the properties, generic types, inheritance levels, and more.
 ### Example
-Lets say you have a Person struct:
+Lets say you have a User struct:
 ```swift
-struct Person {
-  let firstName: String
-  let lastName: String
-  let age: Int
+struct User {
+  let id: Int
+  let username: String
+  let email: String
 }
 ```
-To get the `TypeInfo` of `Person`, all that you have to do is:
+To get the `TypeInfo` of `User`, all that you have to do is:
 ```swift
-let info = try typeInfo(of: Person.self)
+let info = try typeInfo(of: User.self)
 ```
 
 ## Property Info
@@ -23,26 +23,26 @@ Within the `TypeInfo` object, it contains a list of `PropertyInfo` which represe
 ### Example
 Using the same `Person` object as before first we get the `TypeInfo` and the property we want.
 ```swift
-let info = try typeInfo(of: Person.self)
-var steve = Person(firstName: "Steve", lastName: "Jobs", age: 56)
-let property = try info.property(named: "firstName")
+let info = try typeInfo(of: User.self)
+var user = User(id: 1, username: "example", email: "example@example.com")
+let property = try info.property(named: "username")
 ```
 To get a value:
 ```swift
-let firstName = try property.get(from: steve)
+let username = try property.get(from: user)
 ```
 To set a value:
 ```swift
-try property.set(value: "New_Name", on: &steve)
+try property.set(value: "newUsername", on: &user)
 ```
 Getting and setting the values works completely typeless. So your objects and values can be casted as an `Any` or any other protcol of your choosing and it will still work. 
 
 ## Factory
 Runtime also supports building an object from it's `Type`. Both structs and classes are supported and classes are still managed by ARC.
 
-To build a `Person` object:
+To build a `User` object:
 ```swift
-let person = try build(type: Person.self)
+let user = try build(type: User.self)
 ```
 
 ## Function Info
