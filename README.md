@@ -24,8 +24,8 @@ Within the `TypeInfo` object, it contains a list of `PropertyInfo` which represe
 Using the same `Person` object as before first we get the `TypeInfo` and the property we want.
 ```swift
 let info = try typeInfo(of: User.self)
-var user = User(id: 1, username: "example", email: "example@example.com")
 let property = try info.property(named: "username")
+var user = User(id: 1, username: "example", email: "example@example.com")
 ```
 To get a value:
 ```swift
@@ -35,6 +35,8 @@ To set a value:
 ```swift
 try property.set(value: "newUsername", on: &user)
 ```
+It's that easy! 🎉
+
 Getting and setting the values works completely typeless. So your objects and values can be casted as an `Any` or any other protcol of your choosing and it will still work. 
 
 ## Factory
@@ -42,7 +44,7 @@ Runtime also supports building an object from it's `Type`. Both structs and clas
 
 To build a `User` object:
 ```swift
-let user = try build(type: User.self)
+let user = try createInstance(type: User.self)
 ```
 
 ## Function Info
@@ -70,7 +72,7 @@ Contributions are welcome and encouraged!
 Want to know how it works? 
 Swift stores metadata about every type, however it is not exposed via the stdlib. Runtime opens this up. How the metadata is laid out and aquired is explained in [Type Metadata](https://github.com/apple/swift/blob/master/docs/ABI/TypeMetadata.rst) from the [Swift](https://github.com/apple/swift) repo. 
 
-Want to learn about Swift memory layout and pointers?
+Want to learn about Swift memory layout?
 [Mike Ash](https://github.com/mikeash) gave and awesome [talk](https://academy.realm.io/posts/goto-mike-ash-exploring-swift-memory-layout/) on just that.
 
 ## License
