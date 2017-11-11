@@ -37,10 +37,8 @@ try property.set(value: "newUsername", on: &user)
 ```
 It's that easy! 🎉
 
-Getting and setting the values works completely typeless. So your objects and values can be casted as an `Any` or any other protcol of your choosing and it will still work. 
-
 ## Factory
-Runtime also supports building an object from it's `Type`. Both structs and classes are supported and classes are still managed by ARC.
+Runtime also supports building an object from it's `Type`. Both structs and classes are supported.
 
 To build a `User` object:
 ```swift
@@ -57,6 +55,15 @@ func doSomething(a: Int, b: Bool) throws -> String {
 
 let info = functionInfo(of: doSomething)
 ```
+
+## FAQ
+Q: When getting and setting a value does it work typeless? (i.e. object casted as `Any`)
+
+A: Yes! The whole library was designed with working typeless in mind.
+
+Q: When creating a new instance of a class is it still protected by ARC?
+
+A: Yes! The retain counts are set properly so ARC can do its job. 
 
 ## Installation
 Runtime is available through [CocoaPods](http://cocoapods.org). To install
