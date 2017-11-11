@@ -22,9 +22,17 @@
 
 import Foundation
 
+protocol MetadataInfo {
+    
+    var kind: Kind { get }
+    var size: Int { get }
+    var alignment: Int { get }
+    var stride: Int { get }
+    
+    init(type: Any.Type)
+}
 
-
-protocol MetadataType: TypeInfoConvertible {
+protocol MetadataType: MetadataInfo, TypeInfoConvertible {
     associatedtype Layout: MetadataLayoutType
     var type: Any.Type { get set }
     var metadata: UnsafeMutablePointer<Layout> { get set }

@@ -180,6 +180,7 @@
 		DE37C25B1FAA9565008C4CB4 /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				DE37C24A1FAA83E4008C4CB4 /* Metadata.swift */,
 				DE37C2541FAA9286008C4CB4 /* MetadataType.swift */,
 				DE37C2561FAA929F008C4CB4 /* NominalMetadataType.swift */,
 				DE37C25C1FAA957E008C4CB4 /* StructMetadata.swift */,
@@ -224,6 +225,7 @@
 		DE79AF0A1FAA834200B0390B /* Runtime */ = {
 			isa = PBXGroup;
 			children = (
+				DEBEE47E1FB53A1D007EEE90 /* Factory */,
 				DE9D24581FAF65920092E080 /* Utilities */,
 				DE37C2601FAAA814008C4CB4 /* Pointers */,
 				DE37C25B1FAA9565008C4CB4 /* Metadata */,
@@ -231,8 +233,6 @@
 				DE2797041FABD59700C2430E /* Models */,
 				DE79AF0B1FAA834200B0390B /* Runtime.h */,
 				DE79AF0C1FAA834200B0390B /* Info.plist */,
-				DEF38F151FAD5A8000407647 /* Factory.swift */,
-				DE37C24A1FAA83E4008C4CB4 /* Metadata.swift */,
 				DEE061EF1FAE6F0600F2E8C1 /* README.md */,
 			);
 			path = Runtime;
@@ -258,10 +258,18 @@
 				DE37C2461FAA83AB008C4CB4 /* Pointer+Extensions.swift */,
 				DE9D24591FAF65C50092E080 /* String+Extensions.swift */,
 				DE37C2481FAA83CC008C4CB4 /* IntegerConvertible.swift */,
-				DEF38F171FAD5A8A00407647 /* DefaultValue.swift */,
 				DE3DF9BA1FAD2BD1000A8B8C /* GettersSetters.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		DEBEE47E1FB53A1D007EEE90 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				DEF38F171FAD5A8A00407647 /* DefaultValue.swift */,
+				DEF38F151FAD5A8000407647 /* Factory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

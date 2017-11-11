@@ -50,5 +50,6 @@ extension CGRect: DefaultConstructor {}
 extension CGPoint: DefaultConstructor {}
 extension CGSize: DefaultConstructor {}
 extension NSObject: DefaultConstructor {}
+extension UUID: DefaultConstructor {}
 
 

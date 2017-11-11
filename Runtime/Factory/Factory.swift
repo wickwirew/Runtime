@@ -23,15 +23,15 @@
 import Foundation
 
 
-public func build<T>() throws -> T {
-    if let value = try build(type: T.self) as? T {
+public func createInstance<T>() throws -> T {
+    if let value = try createInstance(of: T.self) as? T {
         return value
     }
     
     throw RuntimeError.unableToBuildType(type: T.self)
 }
 
-public func build(type: Any.Type) throws -> Any {
+public func createInstance(of type: Any.Type) throws -> Any {
     
     if let defaultConstructor = type as? DefaultConstructor.Type {
         return defaultConstructor.init()
@@ -89,5 +89,5 @@ func defaultValue(of type: Any.Type) throws -> Any {
         return isOptional.init(nilLiteral: ())
     }
     
-    return try build(type: type)
+    return try createInstance(of: type)
 }

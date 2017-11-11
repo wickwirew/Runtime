@@ -27,7 +27,7 @@ import XCTest
 class FactoryTests: XCTestCase {
 
     func testStruct() throws {
-        let person: PersonStruct = try build()
+        let person: PersonStruct = try createInstance()
         XCTAssert(person.firstname == "")
         XCTAssert(person.lastname == "")
         XCTAssert(person.age == 0)
@@ -37,7 +37,7 @@ class FactoryTests: XCTestCase {
     }
     
     func testClass() throws {
-        let person: PersonClass = try build()
+        let person: PersonClass = try createInstance()
         XCTAssert(person.firstname == "")
         XCTAssert(person.lastname == "")
         XCTAssert(person.age == 0)

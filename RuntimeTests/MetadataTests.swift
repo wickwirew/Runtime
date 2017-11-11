@@ -25,7 +25,7 @@ import XCTest
 
 
 class MetadataTests: XCTestCase {
-
+    
     func testClass() {
         var md = ClassMetadata(type: MyClass<Int>.self)
         let info = md.toTypeInfo()
