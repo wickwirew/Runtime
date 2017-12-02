@@ -30,7 +30,6 @@ Using the same `Person` object as before first we get the `TypeInfo` and the pro
 ```swift
 let info = try typeInfo(of: User.self)
 let property = try info.property(named: "username")
-var user = User(id: 1, username: "example", email: "example@example.com")
 ```
 To get a value:
 ```swift
