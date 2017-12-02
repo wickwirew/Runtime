@@ -1,0 +1,7 @@
+language: swift
+
+osx_image: xcode9.1
+
+xcode_project: Runtime.xcodeproj
+
+xcode_scheme: UnitTests

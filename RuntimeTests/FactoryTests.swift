@@ -36,6 +36,17 @@ class FactoryTests: XCTestCase {
         XCTAssert(person.favoriteNumbers == [])
     }
     
+    func testStructUntyped() throws {
+        let result = try createInstance(of: PersonStruct.self)
+        let person = result as! PersonStruct
+        XCTAssert(person.firstname == "")
+        XCTAssert(person.lastname == "")
+        XCTAssert(person.age == 0)
+        XCTAssert(person.pet.name == "")
+        XCTAssert(person.pet.age == 0)
+        XCTAssert(person.favoriteNumbers == [])
+    }
+    
     func testClass() throws {
         let person: PersonClass = try createInstance()
         XCTAssert(person.firstname == "")

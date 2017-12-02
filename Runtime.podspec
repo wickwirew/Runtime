@@ -4,12 +4,12 @@ Pod::Spec.new do |s|
     s.version      = "0.1.0"
     s.summary      = "Runtime"
     s.description  = <<-DESC
-    Reflection and Object Constructing for native swift types
+    Runtime abilities for native swift objects.
     DESC
     s.homepage     = "https://github.com/wickwirew/Runtime"
     s.license      = "MIT"
     s.author       = { "Wesley Wickwire" => "wickwirew@gmail.com" }
     s.platform     = :ios, "9.0"
-    s.source       = { :git => "git@github.com:wickwirew/Runtime.git" }
+    s.source       = { :git => "https://github.com/wickwirew/Runtime.git" }
     s.source_files  = 'Runtime/**/*.swift'
 end

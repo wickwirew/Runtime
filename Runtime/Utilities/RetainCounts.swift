@@ -21,47 +21,18 @@
 // SOFTWARE.
 
 import Foundation
-import UIKit
 
 
-public protocol DefaultConstructor {
-    init()
-}
 
-extension Int: DefaultConstructor {}
-extension Int8: DefaultConstructor {}
-extension Int16: DefaultConstructor {}
-extension Int32: DefaultConstructor {}
-extension Int64: DefaultConstructor {}
-extension UInt: DefaultConstructor {}
-extension UInt8: DefaultConstructor {}
-extension UInt16: DefaultConstructor {}
-extension UInt32: DefaultConstructor {}
-extension UInt64: DefaultConstructor {}
-extension String: DefaultConstructor {}
-
-extension Bool: DefaultConstructor {}
-extension Double: DefaultConstructor {}
-extension Decimal: DefaultConstructor {}
-extension Float: DefaultConstructor {}
-extension Date: DefaultConstructor {}
-extension UUID: DefaultConstructor {}
-
-extension Array: DefaultConstructor {}
-extension Dictionary: DefaultConstructor {}
-extension Set: DefaultConstructor {}
-
-extension NSObject: DefaultConstructor {}
-
-extension CGFloat: DefaultConstructor {}
-extension CGRect: DefaultConstructor {}
-extension CGPoint: DefaultConstructor {}
-extension CGSize: DefaultConstructor {}
-
-
-extension Character: DefaultConstructor {
-    public init() {
-        self = " "
+public func retainCounts(of object: inout AnyObject) throws -> Int {
+    return try withValuePointer(of: &object) { pointer in
+        return pointer.assumingMemoryBound(to: ClassHeader.self).pointee.strongRetainCounts.getInt()
     }
 }
 
+
+public func weakRetainCounts(of object: inout AnyObject) throws -> Int {
+    return try withValuePointer(of: &object) { pointer in
+        return pointer.assumingMemoryBound(to: ClassHeader.self).pointee.weakRetainCounts.getInt()
+    }
+}

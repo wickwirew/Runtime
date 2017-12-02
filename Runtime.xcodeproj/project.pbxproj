@@ -41,6 +41,7 @@
 		DE9D245A1FAF65C50092E080 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D24591FAF65C50092E080 /* String+Extensions.swift */; };
 		DE9D245C1FAFB45B0092E080 /* EnumMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D245B1FAFB45B0092E080 /* EnumMetadataLayout.swift */; };
 		DE9D245E1FAFB5020092E080 /* EnumMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D245D1FAFB5020092E080 /* EnumMetadata.swift */; };
+		DEAC0BDB1FB6904A000463F1 /* RetainCounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAC0BDA1FB6904A000463F1 /* RetainCounts.swift */; };
 		DEB3E3D11FAE145B00855ED7 /* ProtocolDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D01FAE145B00855ED7 /* ProtocolDescriptor.swift */; };
 		DEB3E3D31FAE159400855ED7 /* ProtocolMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D21FAE159400855ED7 /* ProtocolMetadata.swift */; };
 		DEB3E3D51FAE15C800855ED7 /* ProtocolMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D41FAE15C800855ED7 /* ProtocolMetadataLayout.swift */; };
@@ -106,6 +107,7 @@
 		DE9D24591FAF65C50092E080 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		DE9D245B1FAFB45B0092E080 /* EnumMetadataLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumMetadataLayout.swift; sourceTree = "<group>"; };
 		DE9D245D1FAFB5020092E080 /* EnumMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumMetadata.swift; sourceTree = "<group>"; };
+		DEAC0BDA1FB6904A000463F1 /* RetainCounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetainCounts.swift; sourceTree = "<group>"; };
 		DEB3E3D01FAE145B00855ED7 /* ProtocolDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolDescriptor.swift; sourceTree = "<group>"; };
 		DEB3E3D21FAE159400855ED7 /* ProtocolMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolMetadata.swift; sourceTree = "<group>"; };
 		DEB3E3D41FAE15C800855ED7 /* ProtocolMetadataLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolMetadataLayout.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				DE9D24591FAF65C50092E080 /* String+Extensions.swift */,
 				DE37C2481FAA83CC008C4CB4 /* IntegerConvertible.swift */,
 				DE3DF9BA1FAD2BD1000A8B8C /* GettersSetters.swift */,
+				DEAC0BDA1FB6904A000463F1 /* RetainCounts.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				DE37C2451FAA8381008C4CB4 /* RelativePointer.swift in Sources */,
 				DE27970A1FABD6A400C2430E /* TypeInfoConvertible.swift in Sources */,
 				DEE061E51FAE3AAD00F2E8C1 /* Vector.swift in Sources */,
+				DEAC0BDB1FB6904A000463F1 /* RetainCounts.swift in Sources */,
 				DEE061E91FAE411B00F2E8C1 /* FunctionMetadataLayout.swift in Sources */,
 				DEBEE4611FB28BDA007EEE90 /* ProtocolTypeContainer.swift in Sources */,
 				DE2797141FAC1B0000C2430E /* ExistentialContainter.swift in Sources */,
