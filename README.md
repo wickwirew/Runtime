@@ -81,7 +81,7 @@ Contributions are welcome and encouraged!
 
 ## Learn
 Want to know how it works? 
-Swift stores metadata about every type, however it is not exposed via the stdlib. Runtime opens this up. How the metadata is laid out and aquired is explained in [Type Metadata](https://github.com/apple/swift/blob/master/docs/ABI/TypeMetadata.rst) from the [Swift](https://github.com/apple/swift) repo. 
+[Here's an article](https://medium.com/@weswickwire/creating-a-swift-runtime-library-3cc92fc486cc) on how it was implemented.
 
 Want to learn about Swift memory layout?
 [Mike Ash](https://github.com/mikeash) gave and awesome [talk](https://academy.realm.io/posts/goto-mike-ash-exploring-swift-memory-layout/) on just that.
