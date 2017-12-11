@@ -78,10 +78,29 @@ pod 'Runtime'
 ```
 
 Runtime is available through [Swift Package Manager](https://swift.org/package-manager/). To install
-it, simply add the following line to your Podfile:
+it, simply add the following line to your `Package.swift`,  `dependencies` keys:
 ```swift
 .package(url: "https://github.com/wickwirew/Runtime.git",
          from: "0.1.1"),
+```
+and `Runtime` to your target's dependencies. Full example:
+
+```swift
+// swift-tools-version:4.0
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
+import PackageDescription
+
+let package = Package(
+  name: "testruntime",
+  dependencies: [
+    .package(url: "https://github.com/wickwirew/Runtime.git",
+             from: "0.1.1"),
+  ],
+  targets: [
+    .target(name: "testruntime", dependencies: [ "Runtime" ])
+  ]
+)
 ```
 
 ## Contributions
