@@ -118,6 +118,17 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.genericTypes[0] == Int.self)
     }
     
+    static var allTests = [
+        ( "testClass",          testClass ),
+        ( "testStruct",         testStruct ),
+        ( "testProtocol",       testProtocol ),
+        ( "testTuple",          testTuple ),
+        ( "testTupleNoLabels",  testTupleNoLabels ),
+        ( "testFunction",       testFunction ),
+        ( "testFunctionThrows", testFunctionThrows ),
+        ( "testVoidFunction",   testVoidFunction ),
+        ( "testEnum",           testEnum )
+    ]
 }
 
 fileprivate enum MyEnum<T>: Int {

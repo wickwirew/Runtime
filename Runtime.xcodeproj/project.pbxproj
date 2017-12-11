@@ -124,6 +124,7 @@
 		E8AA15EE1FDEAC89006FC597 /* ValueWitnessTableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValueWitnessTableTests.swift; path = Tests/RuntimeTests/ValueWitnessTableTests.swift; sourceTree = SOURCE_ROOT; };
 		E8AA15F01FDEAC8E006FC597 /* FactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FactoryTests.swift; path = Tests/RuntimeTests/FactoryTests.swift; sourceTree = SOURCE_ROOT; };
 		E8AA15F21FDEAC93006FC597 /* MetadataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MetadataTests.swift; path = Tests/RuntimeTests/MetadataTests.swift; sourceTree = SOURCE_ROOT; };
+		E8AA15F41FDEB372006FC597 /* LinuxMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LinuxMain.swift; path = Tests/LinuxMain.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				DE79AF181FAA834200B0390B /* Info.plist */,
+				E8AA15F41FDEB372006FC597 /* LinuxMain.swift */,
 				E8AA15E81FDEAC73006FC597 /* ValuePointerTests.swift */,
 				E8AA15EA1FDEAC7E006FC597 /* GetSetStructTests.swift */,
 				E8AA15EC1FDEAC84006FC597 /* GetSetClassTests.swift */,

@@ -228,6 +228,33 @@ class GetSetClassTests: XCTestCase {
         try pet.set(value: new, on: &person)
         XCTAssert((person as! Person).pet.name == "Rex")
     }
+
+    static var allTests = [
+        ( "testGet",                   testGet ),
+        ( "testGetUntypedValue",       testGetUntypedValue ),
+        ( "testGetUntypedObject",      testGetUntypedObject ),
+        ( "testGetUntyped",            testGetUntyped ),
+        ( "testGetClass",              testGetClass ),
+        ( "testGetClassUntypedValue",  testGetClassUntypedValue ),
+        ( "testGetClassUntypedObject", testGetClassUntypedObject ),
+        ( "testGetClassUntyped",       testGetClassUntyped ),
+        ( "testGetArray",              testGetArray ),
+        ( "testGetArrayUntypedValue",  testGetArrayUntypedValue ),
+        ( "testGetArrayUntypedObject", testGetArrayUntypedObject ),
+        ( "testGetArrayUntyped",       testGetArrayUntyped ),
+        ( "testSet",                   testSet ),
+        ( "testSetUntypedValue",       testSetUntypedValue ),
+        ( "testSetUntypedObject",      testSetUntypedObject ),
+        ( "testSetUntyped",            testSetUntyped ),
+        ( "testSetArray",              testSetArray ),
+        ( "testSetArrayUntypedValue",  testSetArrayUntypedValue ),
+        ( "testSetArrayUntypedObject", testSetArrayUntypedObject ),
+        ( "testSetArrayUntyped",       testSetArrayUntyped ),
+        ( "testSetClass",              testSetClass ),
+        ( "testSetClassUntypedValue",  testSetClassUntypedValue ),
+        ( "testSetClassUntypedObject", testSetClassUntypedObject ),
+        ( "testSetClassUntyped",       testSetClassUntyped )
+    ]
 }
 
 
