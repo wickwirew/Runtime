@@ -3,6 +3,7 @@
 ![Build](https://travis-ci.org/wickwirew/Runtime.svg?branch=master)
 ![Swift 4.0](https://img.shields.io/badge/Swift-4.0-green.svg)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/FluentLayout.svg)](#cocoapods)
+[![Swift Package Manager compatible](https://img.shields.io/badge/SPM-4.0-green.svg)](#SPM)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 Runtime is a Swift library to give you more runtime abilities, including getting type metadata, setting properties via reflection, and type construction for native swift objects.
@@ -74,6 +75,13 @@ Runtime is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 ```ruby
 pod 'Runtime'
+```
+
+Runtime is available through [Swift Package Manager](https://swift.org/package-manager/). To install
+it, simply add the following line to your Podfile:
+```swift
+.package(url: "https://github.com/wickwirew/Runtime.git",
+         from: "0.1.1"),
 ```
 
 ## Contributions
