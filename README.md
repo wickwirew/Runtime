@@ -111,7 +111,7 @@ Want to know how it works?
 [Here's an article](https://medium.com/@weswickwire/creating-a-swift-runtime-library-3cc92fc486cc) on how it was implemented.
 
 Want to learn about Swift memory layout?
-[Mike Ash](https://github.com/mikeash) gave and awesome [talk](https://academy.realm.io/posts/goto-mike-ash-exploring-swift-memory-layout/) on just that.
+[Mike Ash](https://github.com/mikeash) gave an awesome [talk](https://academy.realm.io/posts/goto-mike-ash-exploring-swift-memory-layout/) on just that.
 
 ## License
 Runtime is available under the MIT license. See the LICENSE file for more info.
