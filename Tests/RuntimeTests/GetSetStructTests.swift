@@ -24,7 +24,7 @@ import XCTest
 @testable import Runtime
 
 
-class GetSetClassTests: XCTestCase {
+class GetSetStructTests: XCTestCase {
     
     func testGet() throws {
         let info = try typeInfo(of: Person.self)
@@ -58,7 +58,7 @@ class GetSetClassTests: XCTestCase {
         XCTAssert((name as! String) == "Wes")
     }
     
-    func testGetClass() throws {
+    func testGetStruct() throws {
         let info = try typeInfo(of: Person.self)
         let pet = try info.property(named: "pet")
         let person = Person()
@@ -66,7 +66,7 @@ class GetSetClassTests: XCTestCase {
         XCTAssert(value.name == "Marley")
     }
     
-    func testGetClassUntypedValue() throws {
+    func testGetStructUntypedValue() throws {
         let info = try typeInfo(of: Person.self)
         let pet = try info.property(named: "pet")
         let person = Person()
@@ -74,7 +74,7 @@ class GetSetClassTests: XCTestCase {
         XCTAssert((value as! Pet).name == "Marley")
     }
     
-    func testGetClassUntypedObject() throws {
+    func testGetStructUntypedObject() throws {
         let info = try typeInfo(of: Person.self)
         let pet = try info.property(named: "pet")
         let person: Any = Person()
@@ -82,7 +82,7 @@ class GetSetClassTests: XCTestCase {
         XCTAssert(value.name == "Marley")
     }
     
-    func testGetClassUntyped() throws {
+    func testGetStructUntyped() throws {
         let info = try typeInfo(of: Person.self)
         let pet = try info.property(named: "pet")
         let person: Any = Person()
@@ -193,7 +193,7 @@ class GetSetClassTests: XCTestCase {
         XCTAssert((person as! Person).favoriteNumbers == [5,4,3,2,1])
     }
     
-    func testSetClass() throws {
+    func testSetStruct() throws {
         let info = try typeInfo(of: Person.self)
         let pet = try info.property(named: "pet")
         var person = Person()
@@ -202,7 +202,7 @@ class GetSetClassTests: XCTestCase {
         XCTAssert(person.pet.name == "Rex")
     }
     
-    func testSetClassUntypedValue() throws {
+    func testSetStructUntypedValue() throws {
         let info = try typeInfo(of: Person.self)
         let pet = try info.property(named: "pet")
         var person = Person()
@@ -211,7 +211,7 @@ class GetSetClassTests: XCTestCase {
         XCTAssert(person.pet.name == "Rex")
     }
     
-    func testSetClassUntypedObject() throws {
+    func testSetStructUntypedObject() throws {
         let info = try typeInfo(of: Person.self)
         let pet = try info.property(named: "pet")
         var person: Any = Person()
@@ -220,7 +220,7 @@ class GetSetClassTests: XCTestCase {
         XCTAssert((person as! Person).pet.name == "Rex")
     }
     
-    func testSetClassUntyped() throws {
+    func testSetStructUntyped() throws {
         let info = try typeInfo(of: Person.self)
         let pet = try info.property(named: "pet")
         var person: Any = Person()
@@ -228,10 +228,37 @@ class GetSetClassTests: XCTestCase {
         try pet.set(value: new, on: &person)
         XCTAssert((person as! Person).pet.name == "Rex")
     }
+
+    static let allTests = [
+        ( "testGet",                    testGet ),
+        ( "testGetUntypedValue",        testGetUntypedValue ),
+        ( "testGetUntypedObject",       testGetUntypedObject ),
+        ( "testGetUntyped",             testGetUntyped ),
+        ( "testGetStruct",              testGetStruct ),
+        ( "testGetStructUntypedValue",  testGetStructUntypedValue ),
+        ( "testGetStructUntypedObject", testGetStructUntypedObject ),
+        ( "testGetStructUntyped",       testGetStructUntyped ),
+        ( "testGetArray",               testGetArray ),
+        ( "testGetArrayUntypedValue",   testGetArrayUntypedValue ),
+        ( "testGetArrayUntypedObject",  testGetArrayUntypedObject ),
+        ( "testGetArrayUntyped",        testGetArrayUntyped ),
+        ( "testSet",                    testSet ),
+        ( "testSetUntypedValue",        testSetUntypedValue ),
+        ( "testSetUntypedObject",       testSetUntypedObject ),
+        ( "testSetUntyped",             testSetUntyped ),
+        ( "testSetArray",               testSetArray ),
+        ( "testSetArrayUntypedValue",   testSetArrayUntypedValue ),
+        ( "testSetArrayUntypedObject",  testSetArrayUntypedObject ),
+        ( "testSetArrayUntyped",        testSetArrayUntyped ),
+        ( "testSetStruct",              testSetStruct ),
+        ( "testSetStructUntypedValue",  testSetStructUntypedValue ),
+        ( "testSetStructUntypedObject", testSetStructUntypedObject ),
+        ( "testSetStructUntyped",       testSetStructUntyped )
+    ]
 }
 
 
-fileprivate class Person {
+fileprivate struct Person {
     var firstname = "Wes"
     var lastname = "Wickwire"
     var age = 25
@@ -239,7 +266,7 @@ fileprivate class Person {
     var favoriteNumbers = [1,2,3,4,5]
 }
 
-fileprivate class Pet {
+fileprivate struct Pet {
     var name = "Marley"
     var age = 12
     init() {}
@@ -248,5 +275,4 @@ fileprivate class Pet {
         self.age = age
     }
 }
-
 

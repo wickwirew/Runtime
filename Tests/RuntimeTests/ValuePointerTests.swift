@@ -70,6 +70,15 @@ class ValuePointerTests: XCTestCase {
             XCTAssert(p.assumingMemoryBound(to: String.self).pointee == "Wes")
         }
     }
+
+    static let allTests = [
+        ( "testStructValuePointer",         testStructValuePointer         ),
+        ( "testProtocolStructValuePointer", testProtocolStructValuePointer ),
+        ( "testClassValuePointer",          testClassValuePointer          ),
+        ( "testProtocolClassValuePointer",  testProtocolClassValuePointer  ),
+        ( "testAnyClassValuePointer",       testAnyClassValuePointer       ),
+        ( "testAnyStructValuePointer",      testAnyStructValuePointer      )
+    ]
 }
 
 

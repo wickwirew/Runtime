@@ -59,14 +59,18 @@ func buildStruct(type: Any.Type) throws -> Any {
 
 func buildClass(type: Any.Type) throws -> Any {
     let info = try typeInfo(of: type)
-    if let type = type as? AnyClass, var value = class_createInstance(type, 0) {
-        try withClassValuePointer(of: &value) { pointer in
-            try setProperties(typeInfo: info, pointer: pointer)
-            let header = pointer.assumingMemoryBound(to: ClassHeader.self)
-            header.pointee.strongRetainCounts = 2
+    #if os(Linux)
+        // hh: has no ObjC runtime and hence no `class_createInstance`, I think
+    #else
+        if let type = type as? AnyClass, var value = class_createInstance(type, 0) {
+            try withClassValuePointer(of: &value) { pointer in
+                try setProperties(typeInfo: info, pointer: pointer)
+                let header = pointer.assumingMemoryBound(to: ClassHeader.self)
+                header.pointee.strongRetainCounts = 2
+            }
+            return value
         }
-        return value
-    }
+    #endif
     throw RuntimeError.unableToBuildType(type: type)
 }
 

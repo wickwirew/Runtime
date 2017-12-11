@@ -2,7 +2,8 @@
 
 ![Build](https://travis-ci.org/wickwirew/Runtime.svg?branch=master)
 ![Swift 4.0](https://img.shields.io/badge/Swift-4.0-green.svg)
-[![CocoaPods compatible](https://img.shields.io/cocoapods/v/FluentLayout.svg)](#cocoapods)
+[![CocoaPods compatible](https://img.shields.io/cocoapods/v/FluentLayout.svg)](#installation)
+[![Swift Package Manager compatible](https://img.shields.io/badge/SPM-4.0-green.svg)](#installation)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 Runtime is a Swift library to give you more runtime abilities, including getting type metadata, setting properties via reflection, and type construction for native swift objects.
@@ -76,6 +77,32 @@ it, simply add the following line to your Podfile:
 pod 'Runtime'
 ```
 
+Runtime is available through [Swift Package Manager](https://swift.org/package-manager/). To install
+it, simply add the following line to your `Package.swift`,  `dependencies` keys:
+```swift
+.package(url: "https://github.com/wickwirew/Runtime.git",
+         from: "0.1.1"),
+```
+and `Runtime` to your target's dependencies. Full example:
+
+```swift
+// swift-tools-version:4.0
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
+import PackageDescription
+
+let package = Package(
+  name: "testruntime",
+  dependencies: [
+    .package(url: "https://github.com/wickwirew/Runtime.git",
+             from: "0.1.1"),
+  ],
+  targets: [
+    .target(name: "testruntime", dependencies: [ "Runtime" ])
+  ]
+)
+```
+
 ## Contributions
 Contributions are welcome and encouraged!
 
@@ -84,7 +111,7 @@ Want to know how it works?
 [Here's an article](https://medium.com/@weswickwire/creating-a-swift-runtime-library-3cc92fc486cc) on how it was implemented.
 
 Want to learn about Swift memory layout?
-[Mike Ash](https://github.com/mikeash) gave and awesome [talk](https://academy.realm.io/posts/goto-mike-ash-exploring-swift-memory-layout/) on just that.
+[Mike Ash](https://github.com/mikeash) gave an awesome [talk](https://academy.realm.io/posts/goto-mike-ash-exploring-swift-memory-layout/) on just that.
 
 ## License
 Runtime is available under the MIT license. See the LICENSE file for more info.

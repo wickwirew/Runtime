@@ -21,8 +21,6 @@
 // SOFTWARE.
 
 import Foundation
-import UIKit
-
 
 public protocol DefaultConstructor {
     init()
@@ -51,13 +49,12 @@ extension Array: DefaultConstructor {}
 extension Dictionary: DefaultConstructor {}
 extension Set: DefaultConstructor {}
 
-extension NSObject: DefaultConstructor {}
-
-extension CGFloat: DefaultConstructor {}
-extension CGRect: DefaultConstructor {}
-extension CGPoint: DefaultConstructor {}
-extension CGSize: DefaultConstructor {}
-
+#if os(Linux)
+    // error: initializer requirement 'init()' can only be satisfied by a
+    //        `required` initializer in non-final class 'NSObject'
+#else
+    extension NSObject: DefaultConstructor {}
+#endif
 
 extension Character: DefaultConstructor {
     public init() {
@@ -65,3 +62,11 @@ extension Character: DefaultConstructor {
     }
 }
 
+#if !SWIFT_PACKAGE
+  import CoreGraphics
+  
+  extension CGFloat: DefaultConstructor {}
+  extension CGRect: DefaultConstructor {}
+  extension CGPoint: DefaultConstructor {}
+  extension CGSize: DefaultConstructor {}
+#endif
