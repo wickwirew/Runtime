@@ -42,7 +42,7 @@ class ValueWitnessTableTests: XCTestCase {
         XCTAssert(info.stride == MemoryLayout<Person>.stride)
     }
     
-    static var allTests = [
+    static let allTests = [
         ( "testSize",      testSize      ),
         ( "testAlignment", testAlignment ),
         ( "testStride",    testStride    )

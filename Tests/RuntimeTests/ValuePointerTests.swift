@@ -71,7 +71,7 @@ class ValuePointerTests: XCTestCase {
         }
     }
 
-    static var allTests = [
+    static let allTests = [
         ( "testStructValuePointer",         testStructValuePointer         ),
         ( "testProtocolStructValuePointer", testProtocolStructValuePointer ),
         ( "testClassValuePointer",          testClassValuePointer          ),

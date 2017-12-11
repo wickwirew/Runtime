@@ -1,5 +1,10 @@
 import XCTest
-@testable import RuntimeTests
+@testable import ValuePointerTests
+@testable import GetSetStructTests
+@testable import GetSetClassTests
+@testable import ValueWitnessTableTests
+@testable import MetadataTests
+@testable import FactoryTests
 
 XCTMain([
     testCase(ValuePointerTests.allTests),

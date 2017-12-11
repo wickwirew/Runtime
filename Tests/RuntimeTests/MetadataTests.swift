@@ -118,7 +118,7 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.genericTypes[0] == Int.self)
     }
     
-    static var allTests = [
+    static let allTests = [
         ( "testClass",          testClass ),
         ( "testStruct",         testStruct ),
         ( "testProtocol",       testProtocol ),

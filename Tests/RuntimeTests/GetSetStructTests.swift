@@ -229,7 +229,7 @@ class GetSetStructTests: XCTestCase {
         XCTAssert((person as! Person).pet.name == "Rex")
     }
 
-    static var allTests = [
+    static let allTests = [
         ( "testGet",                    testGet ),
         ( "testGetUntypedValue",        testGetUntypedValue ),
         ( "testGetUntypedObject",       testGetUntypedObject ),

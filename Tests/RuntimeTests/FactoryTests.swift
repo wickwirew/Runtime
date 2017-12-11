@@ -57,7 +57,7 @@ class FactoryTests: XCTestCase {
         XCTAssert(person.favoriteNumbers == [])
     }
     
-    static var allTests = [
+    static let allTests = [
         ( "testStruct",        testStruct        ),
         ( "testStructUntyped", testStructUntyped ),
         ( "testClass",         testClass         )
