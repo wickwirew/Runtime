@@ -49,7 +49,12 @@ extension Array: DefaultConstructor {}
 extension Dictionary: DefaultConstructor {}
 extension Set: DefaultConstructor {}
 
-extension NSObject: DefaultConstructor {}
+#if os(Linux)
+    // error: initializer requirement 'init()' can only be satisfied by a
+    //        `required` initializer in non-final class 'NSObject'
+#else
+    extension NSObject: DefaultConstructor {}
+#endif
 
 extension Character: DefaultConstructor {
     public init() {
