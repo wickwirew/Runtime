@@ -21,8 +21,6 @@
 // SOFTWARE.
 
 import Foundation
-import UIKit
-
 
 public protocol DefaultConstructor {
     init()
@@ -53,15 +51,17 @@ extension Set: DefaultConstructor {}
 
 extension NSObject: DefaultConstructor {}
 
-extension CGFloat: DefaultConstructor {}
-extension CGRect: DefaultConstructor {}
-extension CGPoint: DefaultConstructor {}
-extension CGSize: DefaultConstructor {}
-
-
 extension Character: DefaultConstructor {
     public init() {
         self = " "
     }
 }
 
+#if !SWIFT_PACKAGE
+  import CoreGraphics
+  
+  extension CGFloat: DefaultConstructor {}
+  extension CGRect: DefaultConstructor {}
+  extension CGPoint: DefaultConstructor {}
+  extension CGSize: DefaultConstructor {}
+#endif
