@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		DE79AF121FAA834200B0390B /* Runtime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE79AF081FAA834200B0390B /* Runtime.framework */; };
 		DE79AF191FAA834200B0390B /* Runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = DE79AF0B1FAA834200B0390B /* Runtime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E8A5C25D1FE002B000F226BD /* ValuePointerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15E81FDEAC73006FC597 /* ValuePointerTests.swift */; };
+		E8A5C25E1FE002B000F226BD /* GetSetStructTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15EA1FDEAC7E006FC597 /* GetSetStructTests.swift */; };
+		E8A5C25F1FE002B000F226BD /* GetSetClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15EC1FDEAC84006FC597 /* GetSetClassTests.swift */; };
+		E8A5C2601FE002B000F226BD /* ValueWitnessTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15EE1FDEAC89006FC597 /* ValueWitnessTableTests.swift */; };
+		E8A5C2611FE002B000F226BD /* MetadataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15F21FDEAC93006FC597 /* MetadataTests.swift */; };
+		E8A5C2621FE002B000F226BD /* FactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15F01FDEAC8E006FC597 /* FactoryTests.swift */; };
 		E8AA15921FDEAAC7006FC597 /* DefaultValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15901FDEAAC7006FC597 /* DefaultValue.swift */; };
 		E8AA15931FDEAAC7006FC597 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15911FDEAAC7006FC597 /* Factory.swift */; };
 		E8AA159A1FDEAAD5006FC597 /* GettersSetters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15951FDEAAD5006FC597 /* GettersSetters.swift */; };
@@ -641,6 +647,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8A5C2601FE002B000F226BD /* ValueWitnessTableTests.swift in Sources */,
+				E8A5C25E1FE002B000F226BD /* GetSetStructTests.swift in Sources */,
+				E8A5C2611FE002B000F226BD /* MetadataTests.swift in Sources */,
+				E8A5C25D1FE002B000F226BD /* ValuePointerTests.swift in Sources */,
+				E8A5C2621FE002B000F226BD /* FactoryTests.swift in Sources */,
+				E8A5C25F1FE002B000F226BD /* GetSetClassTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
