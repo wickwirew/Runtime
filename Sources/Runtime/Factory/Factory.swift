@@ -60,7 +60,7 @@ func buildStruct(type: Any.Type) throws -> Any {
 func buildClass(type: Any.Type) throws -> Any {
     let info = try typeInfo(of: type)
     #if os(Linux)
-        // hh: has no ObjC runtime and hence no `class_createInstance`, I think
+        throw RuntimeError.cannotConstructClassOnLinux(type: type)
     #else
         if let type = type as? AnyClass, var value = class_createInstance(type, 0) {
             try withClassValuePointer(of: &value) { pointer in
