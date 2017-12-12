@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		DE79AF121FAA834200B0390B /* Runtime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE79AF081FAA834200B0390B /* Runtime.framework */; };
 		DE79AF191FAA834200B0390B /* Runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = DE79AF0B1FAA834200B0390B /* Runtime.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DEE061F01FAE6F0700F2E8C1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DEE061EF1FAE6F0600F2E8C1 /* README.md */; };
 		E8AA15921FDEAAC7006FC597 /* DefaultValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15901FDEAAC7006FC597 /* DefaultValue.swift */; };
 		E8AA15931FDEAAC7006FC597 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15911FDEAAC7006FC597 /* Factory.swift */; };
 		E8AA159A1FDEAAD5006FC597 /* GettersSetters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15951FDEAAD5006FC597 /* GettersSetters.swift */; };
@@ -57,6 +56,49 @@
 		E8AA15EF1FDEAC89006FC597 /* ValueWitnessTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15EE1FDEAC89006FC597 /* ValueWitnessTableTests.swift */; };
 		E8AA15F11FDEAC8E006FC597 /* FactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15F01FDEAC8E006FC597 /* FactoryTests.swift */; };
 		E8AA15F31FDEAC93006FC597 /* MetadataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15F21FDEAC93006FC597 /* MetadataTests.swift */; };
+		E8AA16051FE000DC006FC597 /* Runtime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8AA15FC1FE000DC006FC597 /* Runtime.framework */; };
+		E8AA16131FE000FB006FC597 /* DefaultValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15901FDEAAC7006FC597 /* DefaultValue.swift */; };
+		E8AA16141FE000FB006FC597 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15911FDEAAC7006FC597 /* Factory.swift */; };
+		E8AA16151FE000FF006FC597 /* GettersSetters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15951FDEAAD5006FC597 /* GettersSetters.swift */; };
+		E8AA16161FE000FF006FC597 /* IntegerConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15961FDEAAD5006FC597 /* IntegerConvertible.swift */; };
+		E8AA16171FE000FF006FC597 /* Pointer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15971FDEAAD5006FC597 /* Pointer+Extensions.swift */; };
+		E8AA16181FE000FF006FC597 /* RetainCounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15981FDEAAD5006FC597 /* RetainCounts.swift */; };
+		E8AA16191FE000FF006FC597 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15991FDEAAD5006FC597 /* String+Extensions.swift */; };
+		E8AA161A1FE00102006FC597 /* Pointers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15A01FDEAAE3006FC597 /* Pointers.swift */; };
+		E8AA161B1FE00102006FC597 /* RelativePointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15A11FDEAAE3006FC597 /* RelativePointer.swift */; };
+		E8AA161C1FE00102006FC597 /* RelativeVectorPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15A21FDEAAE3006FC597 /* RelativeVectorPointer.swift */; };
+		E8AA161D1FE00102006FC597 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15A31FDEAAE3006FC597 /* Vector.swift */; };
+		E8AA161E1FE00106006FC597 /* ClassMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15A91FDEAAEF006FC597 /* ClassMetadata.swift */; };
+		E8AA161F1FE00106006FC597 /* EnumMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15AA1FDEAAEF006FC597 /* EnumMetadata.swift */; };
+		E8AA16201FE00106006FC597 /* FuntionMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15AB1FDEAAEF006FC597 /* FuntionMetadata.swift */; };
+		E8AA16211FE00106006FC597 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15AC1FDEAAEF006FC597 /* Metadata.swift */; };
+		E8AA16221FE00106006FC597 /* MetadataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15AD1FDEAAEF006FC597 /* MetadataType.swift */; };
+		E8AA16231FE00106006FC597 /* NominalMetadataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15AE1FDEAAEF006FC597 /* NominalMetadataType.swift */; };
+		E8AA16241FE00106006FC597 /* ProtocolMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15AF1FDEAAEF006FC597 /* ProtocolMetadata.swift */; };
+		E8AA16251FE00106006FC597 /* StructMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15B01FDEAAEF006FC597 /* StructMetadata.swift */; };
+		E8AA16261FE00106006FC597 /* TupleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15B11FDEAAEF006FC597 /* TupleMetadata.swift */; };
+		E8AA16271FE0010C006FC597 /* ClassHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15BC1FDEAB09006FC597 /* ClassHeader.swift */; };
+		E8AA16281FE0010C006FC597 /* ClassMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15BD1FDEAB09006FC597 /* ClassMetadataLayout.swift */; };
+		E8AA16291FE0010C006FC597 /* EnumMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15BE1FDEAB09006FC597 /* EnumMetadataLayout.swift */; };
+		E8AA162A1FE0010C006FC597 /* ExistentialContainter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15BF1FDEAB09006FC597 /* ExistentialContainter.swift */; };
+		E8AA162B1FE0010C006FC597 /* ExistentialHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15C01FDEAB09006FC597 /* ExistentialHeader.swift */; };
+		E8AA162C1FE0010C006FC597 /* FunctionMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15C11FDEAB09006FC597 /* FunctionMetadataLayout.swift */; };
+		E8AA162D1FE0010C006FC597 /* MetadataLayoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15C21FDEAB09006FC597 /* MetadataLayoutType.swift */; };
+		E8AA162E1FE0010C006FC597 /* NominalMetadataLayoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15C31FDEAB09006FC597 /* NominalMetadataLayoutType.swift */; };
+		E8AA162F1FE0010C006FC597 /* NominalTypeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15C41FDEAB09006FC597 /* NominalTypeDescriptor.swift */; };
+		E8AA16301FE0010C006FC597 /* ProtocolDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15C51FDEAB09006FC597 /* ProtocolDescriptor.swift */; };
+		E8AA16311FE0010C006FC597 /* ProtocolMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15C61FDEAB09006FC597 /* ProtocolMetadataLayout.swift */; };
+		E8AA16321FE0010C006FC597 /* ProtocolTypeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15C71FDEAB09006FC597 /* ProtocolTypeContainer.swift */; };
+		E8AA16331FE0010C006FC597 /* StructMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15C81FDEAB09006FC597 /* StructMetadataLayout.swift */; };
+		E8AA16341FE0010C006FC597 /* TupleMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15C91FDEAB09006FC597 /* TupleMetadataLayout.swift */; };
+		E8AA16351FE0010C006FC597 /* ValueWitnessTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15CA1FDEAB09006FC597 /* ValueWitnessTable.swift */; };
+		E8AA16361FE00111006FC597 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15DB1FDEAB19006FC597 /* Errors.swift */; };
+		E8AA16371FE00111006FC597 /* FunctionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15DC1FDEAB19006FC597 /* FunctionInfo.swift */; };
+		E8AA16381FE00111006FC597 /* Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15DD1FDEAB19006FC597 /* Kind.swift */; };
+		E8AA16391FE00111006FC597 /* PropertyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15DE1FDEAB19006FC597 /* PropertyInfo.swift */; };
+		E8AA163A1FE00111006FC597 /* TypeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15DF1FDEAB19006FC597 /* TypeInfo.swift */; };
+		E8AA163B1FE00111006FC597 /* TypeInfoConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA15E01FDEAB19006FC597 /* TypeInfoConvertible.swift */; };
+		E8AA163C1FE00115006FC597 /* Runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = DE79AF0B1FAA834200B0390B /* Runtime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +108,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = DE79AF071FAA834100B0390B;
 			remoteInfo = Runtime;
+		};
+		E8AA16061FE000DC006FC597 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE79AEFF1FAA834100B0390B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8AA15FB1FE000DC006FC597;
+			remoteInfo = RuntimeMac;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -125,6 +174,8 @@
 		E8AA15F01FDEAC8E006FC597 /* FactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FactoryTests.swift; path = Tests/RuntimeTests/FactoryTests.swift; sourceTree = SOURCE_ROOT; };
 		E8AA15F21FDEAC93006FC597 /* MetadataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MetadataTests.swift; path = Tests/RuntimeTests/MetadataTests.swift; sourceTree = SOURCE_ROOT; };
 		E8AA15F41FDEB372006FC597 /* LinuxMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LinuxMain.swift; path = Tests/LinuxMain.swift; sourceTree = SOURCE_ROOT; };
+		E8AA15FC1FE000DC006FC597 /* Runtime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Runtime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8AA16041FE000DC006FC597 /* RuntimeMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RuntimeMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +191,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE79AF121FAA834200B0390B /* Runtime.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8AA15F81FE000DC006FC597 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8AA16011FE000DC006FC597 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8AA16051FE000DC006FC597 /* Runtime.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +226,8 @@
 			children = (
 				DE79AF081FAA834200B0390B /* Runtime.framework */,
 				DE79AF111FAA834200B0390B /* RuntimeTests.xctest */,
+				E8AA15FC1FE000DC006FC597 /* Runtime.framework */,
+				E8AA16041FE000DC006FC597 /* RuntimeMacTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -296,6 +364,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E8AA15F91FE000DC006FC597 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8AA163C1FE00115006FC597 /* Runtime.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -335,13 +411,49 @@
 			productReference = DE79AF111FAA834200B0390B /* RuntimeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		E8AA15FB1FE000DC006FC597 /* RuntimeMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8AA16111FE000DC006FC597 /* Build configuration list for PBXNativeTarget "RuntimeMac" */;
+			buildPhases = (
+				E8AA15F71FE000DC006FC597 /* Sources */,
+				E8AA15F81FE000DC006FC597 /* Frameworks */,
+				E8AA15F91FE000DC006FC597 /* Headers */,
+				E8AA15FA1FE000DC006FC597 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RuntimeMac;
+			productName = RuntimeMac;
+			productReference = E8AA15FC1FE000DC006FC597 /* Runtime.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E8AA16031FE000DC006FC597 /* RuntimeMacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8AA16121FE000DC006FC597 /* Build configuration list for PBXNativeTarget "RuntimeMacTests" */;
+			buildPhases = (
+				E8AA16001FE000DC006FC597 /* Sources */,
+				E8AA16011FE000DC006FC597 /* Frameworks */,
+				E8AA16021FE000DC006FC597 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E8AA16071FE000DC006FC597 /* PBXTargetDependency */,
+			);
+			name = RuntimeMacTests;
+			productName = RuntimeMacTests;
+			productReference = E8AA16041FE000DC006FC597 /* RuntimeMacTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		DE79AEFF1FAA834100B0390B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Wes Wickwire";
 				TargetAttributes = {
@@ -352,6 +464,14 @@
 					};
 					DE79AF101FAA834200B0390B = {
 						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+					};
+					E8AA15FB1FE000DC006FC597 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					E8AA16031FE000DC006FC597 = {
+						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -370,6 +490,8 @@
 			targets = (
 				DE79AF071FAA834100B0390B /* Runtime */,
 				DE79AF101FAA834200B0390B /* RuntimeTests */,
+				E8AA15FB1FE000DC006FC597 /* RuntimeMac */,
+				E8AA16031FE000DC006FC597 /* RuntimeMacTests */,
 			);
 		};
 /* End PBXProject section */
@@ -379,11 +501,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEE061F01FAE6F0700F2E8C1 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DE79AF0F1FAA834200B0390B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8AA15FA1FE000DC006FC597 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8AA16021FE000DC006FC597 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -454,6 +589,61 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E8AA15F71FE000DC006FC597 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8AA163B1FE00111006FC597 /* TypeInfoConvertible.swift in Sources */,
+				E8AA16221FE00106006FC597 /* MetadataType.swift in Sources */,
+				E8AA16141FE000FB006FC597 /* Factory.swift in Sources */,
+				E8AA161D1FE00102006FC597 /* Vector.swift in Sources */,
+				E8AA16381FE00111006FC597 /* Kind.swift in Sources */,
+				E8AA16371FE00111006FC597 /* FunctionInfo.swift in Sources */,
+				E8AA162B1FE0010C006FC597 /* ExistentialHeader.swift in Sources */,
+				E8AA16311FE0010C006FC597 /* ProtocolMetadataLayout.swift in Sources */,
+				E8AA163A1FE00111006FC597 /* TypeInfo.swift in Sources */,
+				E8AA16341FE0010C006FC597 /* TupleMetadataLayout.swift in Sources */,
+				E8AA161F1FE00106006FC597 /* EnumMetadata.swift in Sources */,
+				E8AA16291FE0010C006FC597 /* EnumMetadataLayout.swift in Sources */,
+				E8AA16191FE000FF006FC597 /* String+Extensions.swift in Sources */,
+				E8AA16131FE000FB006FC597 /* DefaultValue.swift in Sources */,
+				E8AA16251FE00106006FC597 /* StructMetadata.swift in Sources */,
+				E8AA162F1FE0010C006FC597 /* NominalTypeDescriptor.swift in Sources */,
+				E8AA16301FE0010C006FC597 /* ProtocolDescriptor.swift in Sources */,
+				E8AA16171FE000FF006FC597 /* Pointer+Extensions.swift in Sources */,
+				E8AA16331FE0010C006FC597 /* StructMetadataLayout.swift in Sources */,
+				E8AA16321FE0010C006FC597 /* ProtocolTypeContainer.swift in Sources */,
+				E8AA16361FE00111006FC597 /* Errors.swift in Sources */,
+				E8AA16201FE00106006FC597 /* FuntionMetadata.swift in Sources */,
+				E8AA16391FE00111006FC597 /* PropertyInfo.swift in Sources */,
+				E8AA16261FE00106006FC597 /* TupleMetadata.swift in Sources */,
+				E8AA162C1FE0010C006FC597 /* FunctionMetadataLayout.swift in Sources */,
+				E8AA16211FE00106006FC597 /* Metadata.swift in Sources */,
+				E8AA16351FE0010C006FC597 /* ValueWitnessTable.swift in Sources */,
+				E8AA16281FE0010C006FC597 /* ClassMetadataLayout.swift in Sources */,
+				E8AA16271FE0010C006FC597 /* ClassHeader.swift in Sources */,
+				E8AA161B1FE00102006FC597 /* RelativePointer.swift in Sources */,
+				E8AA162E1FE0010C006FC597 /* NominalMetadataLayoutType.swift in Sources */,
+				E8AA162D1FE0010C006FC597 /* MetadataLayoutType.swift in Sources */,
+				E8AA162A1FE0010C006FC597 /* ExistentialContainter.swift in Sources */,
+				E8AA16241FE00106006FC597 /* ProtocolMetadata.swift in Sources */,
+				E8AA16161FE000FF006FC597 /* IntegerConvertible.swift in Sources */,
+				E8AA161A1FE00102006FC597 /* Pointers.swift in Sources */,
+				E8AA16181FE000FF006FC597 /* RetainCounts.swift in Sources */,
+				E8AA161E1FE00106006FC597 /* ClassMetadata.swift in Sources */,
+				E8AA161C1FE00102006FC597 /* RelativeVectorPointer.swift in Sources */,
+				E8AA16231FE00106006FC597 /* NominalMetadataType.swift in Sources */,
+				E8AA16151FE000FF006FC597 /* GettersSetters.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8AA16001FE000DC006FC597 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -461,6 +651,11 @@
 			isa = PBXTargetDependency;
 			target = DE79AF071FAA834100B0390B /* Runtime */;
 			targetProxy = DE79AF131FAA834200B0390B /* PBXContainerItemProxy */;
+		};
+		E8AA16071FE000DC006FC597 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8AA15FB1FE000DC006FC597 /* RuntimeMac */;
+			targetProxy = E8AA16061FE000DC006FC597 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -651,6 +846,86 @@
 			};
 			name = Release;
 		};
+		E8AA160D1FE000DC006FC597 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Runtime/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weswickwire.Runtime.Runtime;
+				PRODUCT_NAME = Runtime;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		E8AA160E1FE000DC006FC597 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Runtime/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weswickwire.Runtime.Runtime;
+				PRODUCT_NAME = Runtime;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		E8AA160F1FE000DC006FC597 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RuntimeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weswickwire.Runtime.RuntimeMacTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		E8AA16101FE000DC006FC597 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RuntimeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weswickwire.Runtime.RuntimeMacTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -677,6 +952,24 @@
 			buildConfigurations = (
 				DE79AF201FAA834200B0390B /* Debug */,
 				DE79AF211FAA834200B0390B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8AA16111FE000DC006FC597 /* Build configuration list for PBXNativeTarget "RuntimeMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8AA160D1FE000DC006FC597 /* Debug */,
+				E8AA160E1FE000DC006FC597 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8AA16121FE000DC006FC597 /* Build configuration list for PBXNativeTarget "RuntimeMacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8AA160F1FE000DC006FC597 /* Debug */,
+				E8AA16101FE000DC006FC597 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
