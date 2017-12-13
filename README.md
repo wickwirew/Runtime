@@ -2,7 +2,7 @@
 
 ![Build](https://travis-ci.org/wickwirew/Runtime.svg?branch=master)
 ![Swift 4.0](https://img.shields.io/badge/Swift-4.0-green.svg)
-[![CocoaPods compatible](https://img.shields.io/cocoapods/v/FluentLayout.svg)](#cocoapods)
+[![CocoaPods compatible](https://img.shields.io/cocoapods/v/Runtime.svg)](#cocoapods)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 Runtime is a Swift library to give you more runtime abilities, including getting type metadata, setting properties via reflection, and type construction for native swift objects.
