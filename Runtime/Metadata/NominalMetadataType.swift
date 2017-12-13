@@ -20,10 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-
-
 protocol NominalMetadataType: MetadataType where Layout: NominalMetadataLayoutType {
     init(type: Any.Type, metadata: UnsafeMutablePointer<Layout>, nominalTypeDescriptor: UnsafeMutablePointer<NominalTypeDescriptor>, base: UnsafeMutablePointer<Int>)
     var nominalTypeDescriptor: UnsafeMutablePointer<NominalTypeDescriptor> { get set }

@@ -20,9 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-
 func withValuePointer<Value, Result>(of value: inout Value, _ body: (UnsafeMutableRawPointer) throws -> Result) throws -> Result {
 
     let kind = Kind(type: Value.self)

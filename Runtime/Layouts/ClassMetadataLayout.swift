@@ -20,9 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-
 struct ClassMetadataLayout: NominalMetadataLayoutType {
     var valueWitnessTable: UnsafePointer<ValueWitnessTable>
     var isaPointer: Int

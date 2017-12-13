@@ -20,9 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-
 extension Array where Element == String {
 
     static func from(pointer: UnsafePointer<CChar>, n: Int) -> [String] {
