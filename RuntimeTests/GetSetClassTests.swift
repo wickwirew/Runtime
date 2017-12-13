@@ -25,7 +25,7 @@ import XCTest
 
 
 class GetSetClassTests: XCTestCase {
-    
+
     func testGet() throws {
         let info = try typeInfo(of: Person.self)
         let firstname = try info.property(named: "firstname")
@@ -33,7 +33,7 @@ class GetSetClassTests: XCTestCase {
         let name: String = try firstname.get(from: person)
         XCTAssert(name == "Wes")
     }
-    
+
     func testGetUntypedValue() throws {
         let info = try typeInfo(of: Person.self)
         let firstname = try info.property(named: "firstname")
@@ -41,7 +41,7 @@ class GetSetClassTests: XCTestCase {
         let name: Any = try firstname.get(from: person)
         XCTAssert((name as! String) == "Wes")
     }
-    
+
     func testGetUntypedObject() throws {
         let info = try typeInfo(of: Person.self)
         let firstname = try info.property(named: "firstname")
@@ -49,7 +49,7 @@ class GetSetClassTests: XCTestCase {
         let name: String = try firstname.get(from: person)
         XCTAssert(name == "Wes")
     }
-    
+
     func testGetUntyped() throws {
         let info = try typeInfo(of: Person.self)
         let firstname = try info.property(named: "firstname")
@@ -57,7 +57,7 @@ class GetSetClassTests: XCTestCase {
         let name: Any = try firstname.get(from: person)
         XCTAssert((name as! String) == "Wes")
     }
-    
+
     func testGetClass() throws {
         let info = try typeInfo(of: Person.self)
         let pet = try info.property(named: "pet")
@@ -65,7 +65,7 @@ class GetSetClassTests: XCTestCase {
         let value: Pet = try pet.get(from: person)
         XCTAssert(value.name == "Marley")
     }
-    
+
     func testGetClassUntypedValue() throws {
         let info = try typeInfo(of: Person.self)
         let pet = try info.property(named: "pet")
@@ -73,7 +73,7 @@ class GetSetClassTests: XCTestCase {
         let value: Any = try pet.get(from: person)
         XCTAssert((value as! Pet).name == "Marley")
     }
-    
+
     func testGetClassUntypedObject() throws {
         let info = try typeInfo(of: Person.self)
         let pet = try info.property(named: "pet")
@@ -81,7 +81,7 @@ class GetSetClassTests: XCTestCase {
         let value: Pet = try pet.get(from: person)
         XCTAssert(value.name == "Marley")
     }
-    
+
     func testGetClassUntyped() throws {
         let info = try typeInfo(of: Person.self)
         let pet = try info.property(named: "pet")
@@ -89,7 +89,7 @@ class GetSetClassTests: XCTestCase {
         let value: Any = try pet.get(from: person)
         XCTAssert((value as! Pet).name == "Marley")
     }
-    
+
     func testGetArray() throws {
         let info = try typeInfo(of: Person.self)
         let favoriteNumbers = try info.property(named: "favoriteNumbers")
@@ -97,7 +97,7 @@ class GetSetClassTests: XCTestCase {
         let value: [Int] = try favoriteNumbers.get(from: person)
         XCTAssert(value == [1,2,3,4,5])
     }
-    
+
     func testGetArrayUntypedValue() throws {
         let info = try typeInfo(of: Person.self)
         let favoriteNumbers = try info.property(named: "favoriteNumbers")
@@ -105,7 +105,7 @@ class GetSetClassTests: XCTestCase {
         let value: Any = try favoriteNumbers.get(from: person)
         XCTAssert(value as! [Int] == [1,2,3,4,5])
     }
-    
+
     func testGetArrayUntypedObject() throws {
         let info = try typeInfo(of: Person.self)
         let favoriteNumbers = try info.property(named: "favoriteNumbers")
@@ -113,7 +113,7 @@ class GetSetClassTests: XCTestCase {
         let value: [Int] = try favoriteNumbers.get(from: person)
         XCTAssert(value == [1,2,3,4,5])
     }
-    
+
     func testGetArrayUntyped() throws {
         let info = try typeInfo(of: Person.self)
         let favoriteNumbers = try info.property(named: "favoriteNumbers")
@@ -121,8 +121,8 @@ class GetSetClassTests: XCTestCase {
         let value: Any = try favoriteNumbers.get(from: person)
         XCTAssert(value as! [Int] == [1,2,3,4,5])
     }
-    
-    
+
+
     func testSet() throws {
         let info = try typeInfo(of: Person.self)
         let firstname = try info.property(named: "firstname")
@@ -130,7 +130,7 @@ class GetSetClassTests: XCTestCase {
         try firstname.set(value: "John", on: &person)
         XCTAssert(person.firstname == "John")
     }
-    
+
     func testSetUntypedValue() throws {
         let info = try typeInfo(of: Person.self)
         let firstname = try info.property(named: "firstname")
@@ -139,7 +139,7 @@ class GetSetClassTests: XCTestCase {
         try firstname.set(value: new, on: &person)
         XCTAssert(person.firstname == "John")
     }
-    
+
     func testSetUntypedObject() throws {
         let info = try typeInfo(of: Person.self)
         let firstname = try info.property(named: "firstname")
@@ -147,7 +147,7 @@ class GetSetClassTests: XCTestCase {
         try firstname.set(value: "John", on: &person)
         XCTAssert((person as! Person).firstname == "John")
     }
-    
+
     func testSetUntyped() throws {
         let info = try typeInfo(of: Person.self)
         let firstname = try info.property(named: "firstname")
@@ -156,7 +156,7 @@ class GetSetClassTests: XCTestCase {
         try firstname.set(value: new, on: &person)
         XCTAssert((person as! Person).firstname == "John")
     }
-    
+
     func testSetArray() throws {
         let info = try typeInfo(of: Person.self)
         let favoriteNumbers = try info.property(named: "favoriteNumbers")
@@ -165,7 +165,7 @@ class GetSetClassTests: XCTestCase {
         try favoriteNumbers.set(value: new, on: &person)
         XCTAssert(person.favoriteNumbers == [5,4,3,2,1])
     }
-    
+
     func testSetArrayUntypedValue() throws {
         let info = try typeInfo(of: Person.self)
         let favoriteNumbers = try info.property(named: "favoriteNumbers")
@@ -174,7 +174,7 @@ class GetSetClassTests: XCTestCase {
         try favoriteNumbers.set(value: new, on: &person)
         XCTAssert(person.favoriteNumbers == [5,4,3,2,1])
     }
-    
+
     func testSetArrayUntypedObject() throws {
         let info = try typeInfo(of: Person.self)
         let favoriteNumbers = try info.property(named: "favoriteNumbers")
@@ -183,7 +183,7 @@ class GetSetClassTests: XCTestCase {
         try favoriteNumbers.set(value: new, on: &person)
         XCTAssert((person as! Person).favoriteNumbers == [5,4,3,2,1])
     }
-    
+
     func testSetArrayUntyped() throws {
         let info = try typeInfo(of: Person.self)
         let favoriteNumbers = try info.property(named: "favoriteNumbers")
@@ -192,7 +192,7 @@ class GetSetClassTests: XCTestCase {
         try favoriteNumbers.set(value: new, on: &person)
         XCTAssert((person as! Person).favoriteNumbers == [5,4,3,2,1])
     }
-    
+
     func testSetClass() throws {
         let info = try typeInfo(of: Person.self)
         let pet = try info.property(named: "pet")
@@ -201,7 +201,7 @@ class GetSetClassTests: XCTestCase {
         try pet.set(value: new, on: &person)
         XCTAssert(person.pet.name == "Rex")
     }
-    
+
     func testSetClassUntypedValue() throws {
         let info = try typeInfo(of: Person.self)
         let pet = try info.property(named: "pet")
@@ -210,7 +210,7 @@ class GetSetClassTests: XCTestCase {
         try pet.set(value: new, on: &person)
         XCTAssert(person.pet.name == "Rex")
     }
-    
+
     func testSetClassUntypedObject() throws {
         let info = try typeInfo(of: Person.self)
         let pet = try info.property(named: "pet")
@@ -219,7 +219,7 @@ class GetSetClassTests: XCTestCase {
         try pet.set(value: new, on: &person)
         XCTAssert((person as! Person).pet.name == "Rex")
     }
-    
+
     func testSetClassUntyped() throws {
         let info = try typeInfo(of: Person.self)
         let pet = try info.property(named: "pet")

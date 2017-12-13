@@ -20,25 +20,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-
 public func createInstance<T>() throws -> T {
     if let value = try createInstance(of: T.self) as? T {
         return value
     }
-    
+
     throw RuntimeError.unableToBuildType(type: T.self)
 }
 
 public func createInstance(of type: Any.Type) throws -> Any {
-    
+
     if let defaultConstructor = type as? DefaultConstructor.Type {
         return defaultConstructor.init()
     }
-    
+
     let kind = Kind(type: type)
-    
+
     switch kind {
     case .struct:
         return try buildStruct(type: type)
@@ -82,12 +79,12 @@ func setProperties(typeInfo: TypeInfo, pointer: UnsafeMutableRawPointer) throws 
 
 
 func defaultValue(of type: Any.Type) throws -> Any {
-    
+
     if let constructable = type as? DefaultConstructor.Type {
         return constructable.init()
     } else if let isOptional = type as? ExpressibleByNilLiteral.Type {
         return isOptional.init(nilLiteral: ())
     }
-    
+
     return try createInstance(of: type)
 }

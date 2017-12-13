@@ -31,7 +31,7 @@ struct ExistentialHeader {
 
 
 extension ExistentialHeader {
-    
+
     static var size: Int {
         return MemoryLayout<ExistentialHeader>.size
     }

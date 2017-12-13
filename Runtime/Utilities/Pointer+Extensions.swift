@@ -24,15 +24,15 @@ import Foundation
 
 
 extension UnsafePointer {
-    
+
     var raw: UnsafeRawPointer {
         return UnsafeRawPointer(self)
     }
-    
+
     var mutable: UnsafeMutablePointer<Pointee> {
         return UnsafeMutablePointer<Pointee>(mutating: self)
     }
-    
+
     func vector(n: IntegerConvertible) -> [Pointee] {
         var result = [Pointee]()
         for i in 0..<n.getInt() {
@@ -53,11 +53,11 @@ extension UnsafePointer where Pointee: Equatable {
 }
 
 extension UnsafeMutablePointer {
-    
+
     var raw: UnsafeMutableRawPointer {
         return UnsafeMutableRawPointer(self)
     }
-    
+
     func vector(n: IntegerConvertible) -> [Pointee] {
         var result = [Pointee]()
         for i in 0..<n.getInt() {

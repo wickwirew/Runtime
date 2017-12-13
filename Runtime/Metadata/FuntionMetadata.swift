@@ -25,11 +25,11 @@ import Foundation
 
 
 struct FunctionMetadata: MetadataType {
-    
+
     var type: Any.Type
     var metadata: UnsafeMutablePointer<FunctionMetadataLayout>
     var base: UnsafeMutablePointer<Int>
-    
+
     func info() -> FunctionInfo {
         let (numberOfArguments, argumentTypes, returnType) = argumentInfo()
         return FunctionInfo(numberOfArguments: numberOfArguments,
@@ -37,13 +37,13 @@ struct FunctionMetadata: MetadataType {
                             returnType: returnType,
                             throws: `throws`())
     }
-    
+
     private func argumentInfo() -> (Int, [Any.Type], Any.Type) {
         let n = numberArguments()
         var a = metadata.pointee.argumentVector.vector(n: n + 1)
         let resultType = a[0]
         let argsType = a[1]
-        
+
         if Kind(type: argsType) == .tuple {
             let md = TupleMetadata(type: argsType)
             let elements = md.elements()
@@ -52,11 +52,11 @@ struct FunctionMetadata: MetadataType {
             return (n, [argsType], resultType)
         }
     }
-    
+
     private func numberArguments() -> Int {
         return metadata.pointee.flags & 0x00FFFFFF
     }
-    
+
     private func `throws`() -> Bool {
         return metadata.pointee.flags & 0x10000000 != 0
     }

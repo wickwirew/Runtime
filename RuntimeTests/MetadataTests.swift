@@ -25,7 +25,7 @@ import XCTest
 
 
 class MetadataTests: XCTestCase {
-    
+
     func testClass() {
         var md = ClassMetadata(type: MyClass<Int>.self)
         let info = md.toTypeInfo()
@@ -41,7 +41,7 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.alignment == MemoryLayout<MyClass<Int>>.alignment)
         XCTAssert(info.stride == MemoryLayout<MyClass<Int>>.stride)
     }
-    
+
     func testStruct() {
         var md = StructMetadata(type: MyStruct<Int>.self)
         let info = md.toTypeInfo()
@@ -54,7 +54,7 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.stride == MemoryLayout<MyStruct<Int>>.stride)
         XCTAssert(info.mangledName != "")
     }
-    
+
     func testProtocol() {
         var md = ProtocolMetadata(type: MyProtocol.self)
         let info = md.toTypeInfo()
@@ -64,7 +64,7 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.alignment == MemoryLayout<MyProtocol>.alignment)
         XCTAssert(info.stride == MemoryLayout<MyProtocol>.stride)
     }
-    
+
     func testTuple() {
         let type = (a: Int, b: Bool, c: String).self
         var md = TupleMetadata(type: type)
@@ -76,14 +76,14 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.alignment == MemoryLayout<(a: Int, b: Bool, c: String)>.alignment)
         XCTAssert(info.stride == MemoryLayout<(a: Int, b: Bool, c: String)>.stride)
     }
-    
+
     func testTupleNoLabels() {
         let type = (Int, Bool, String).self
         let md = TupleMetadata(type: type)
         XCTAssert(md.labels() == ["", "", ""])
         XCTAssert(md.numberOfElements() == 3)
     }
-    
+
     func testFunction() throws {
         let info = try functionInfo(of: myFunc)
         XCTAssert(info.numberOfArguments == 3)
@@ -93,7 +93,7 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.returnType == String.self)
         XCTAssert(!info.throws)
     }
-    
+
     func testFunctionThrows() {
         let t = ((Int) throws -> String).self
         let md = FunctionMetadata(type: t)
@@ -103,21 +103,21 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.returnType == String.self)
         XCTAssert(info.throws)
     }
-    
+
     func testVoidFunction() {
         let t = type(of: voidFunction)
         let md = FunctionMetadata(type: t)
         let info = md.info()
         XCTAssert(info.numberOfArguments == 0)
     }
-    
+
     func testEnum() {
         var md = EnumMetadata(type: MyEnum<Int>.self)
         let info = md.toTypeInfo()
         XCTAssert(info.genericTypes.count == 1)
         XCTAssert(info.genericTypes[0] == Int.self)
     }
-    
+
 }
 
 fileprivate enum MyEnum<T>: Int {
@@ -125,7 +125,7 @@ fileprivate enum MyEnum<T>: Int {
 }
 
 func voidFunction() {
-    
+
 }
 
 func myFunc(a: Int, b: Bool, c: String) -> String {

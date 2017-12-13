@@ -30,7 +30,7 @@ struct ClassHeader {
 
 
 extension ClassHeader {
-    
+
     static var size: Int {
         return MemoryLayout<ClassHeader>.size
     }
