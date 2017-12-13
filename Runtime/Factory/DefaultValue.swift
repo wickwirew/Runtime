@@ -21,7 +21,6 @@
 // SOFTWARE.
 
 import Foundation
-import UIKit
 
 
 public protocol DefaultConstructor {
@@ -50,13 +49,6 @@ extension UUID: DefaultConstructor {}
 extension Array: DefaultConstructor {}
 extension Dictionary: DefaultConstructor {}
 extension Set: DefaultConstructor {}
-
-extension NSObject: DefaultConstructor {}
-
-extension CGFloat: DefaultConstructor {}
-extension CGRect: DefaultConstructor {}
-extension CGPoint: DefaultConstructor {}
-extension CGSize: DefaultConstructor {}
 
 
 extension Character: DefaultConstructor {
