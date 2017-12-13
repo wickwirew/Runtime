@@ -20,11 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-
 public enum Kind: Int {
-    
+
     case unknown = 0
     case `struct` = 1
     case `enum` = 2
@@ -34,7 +31,7 @@ public enum Kind: Int {
     case `protocol` = 12
     case metatype = 13
     case `class` = 4096
-    
+
     init(int: Int) {
         if let value = Kind(rawValue: int) {
             self = value
@@ -44,7 +41,7 @@ public enum Kind: Int {
             self = .unknown
         }
     }
-    
+
     init(type: Any.Type) {
         let pointer = metadataPointer(type: type)
         self.init(int: pointer.pointee)

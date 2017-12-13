@@ -20,10 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-
-
 struct TupleMetadataLayout: MetadataLayoutType {
     var valueWitnessTable: UnsafePointer<ValueWitnessTable>
     var kind: Int

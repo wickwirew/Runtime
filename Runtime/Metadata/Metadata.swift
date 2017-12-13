@@ -20,18 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-
 
 func metadataPointer(type: Any.Type) -> UnsafeMutablePointer<Int> {
     return unsafeBitCast(type, to: UnsafeMutablePointer<Int>.self)
 }
 
 func metadata(of type: Any.Type) throws -> MetadataInfo {
-    
+
     let kind = Kind(type: type)
-    
+
     switch kind {
     case .struct:
         return StructMetadata(type: type)

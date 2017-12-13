@@ -20,9 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-
 
 struct ExistentialContainer {
     let buffer: ExistentialContainerBuffer
@@ -38,7 +35,7 @@ struct ExistentialContainerBuffer {
 
 
 extension ExistentialContainerBuffer {
-    static func size() -> Int {
+    static var size: Int {
         return MemoryLayout<ExistentialContainerBuffer>.size
     }
 }

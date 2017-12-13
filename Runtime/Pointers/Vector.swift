@@ -20,15 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-
 struct Vector<Element> {
     var element: Element
     mutating func vector(n: IntegerConvertible) -> [Element] {
         return withUnsafePointer(to: &self) {
             $0.withMemoryRebound(to: Element.self, capacity: 1) { start in
-                return start.vector(n: n)
+                start.vector(n: n)
             }
         }
     }

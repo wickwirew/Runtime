@@ -20,9 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-
 struct ExistentialHeader {
     let witnessTable: Int
     let strongRetainCounts: Int32
@@ -31,8 +28,8 @@ struct ExistentialHeader {
 
 
 extension ExistentialHeader {
-    
-    static func size() -> Int {
+
+    static var size: Int {
         return MemoryLayout<ExistentialHeader>.size
     }
 }

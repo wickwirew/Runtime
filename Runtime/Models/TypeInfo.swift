@@ -20,11 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-
 public struct TypeInfo {
-    
+
     public var kind: Kind = .unknown
     public var name: String = ""
     public var type: Any.Type = Any.self
@@ -35,7 +32,7 @@ public struct TypeInfo {
     public var size: Int = 0
     public var alignment: Int = 0
     public var stride: Int = 0
-    
+
     init<Metadata: MetadataType>(metadata: Metadata) {
         kind = metadata.kind
         name = String(describing: metadata.type)
@@ -44,32 +41,32 @@ public struct TypeInfo {
         alignment = metadata.alignment
         stride = metadata.stride
     }
-    
+
     init<Metadata: NominalMetadataType>(nominalMetadata: Metadata) {
         self.init(metadata: nominalMetadata)
         var nominalMetadata = nominalMetadata
         mangledName = nominalMetadata.mangledName()
         genericTypes = nominalMetadata.genericParameters()
     }
-    
+
     public var superClass: Any.Type? {
         return inheritance.first
     }
-    
+
     public func property(named: String) throws -> PropertyInfo {
         if let prop = properties.first(where: { $0.name == named }) {
             return prop
         }
-        
+
         throw RuntimeError.noPropertyNamed(name: named)
     }
 }
 
 public func typeInfo(of type: Any.Type) throws -> TypeInfo {
     let kind = Kind(type: type)
-    
+
     var typeInfoConvertible: TypeInfoConvertible
-    
+
     switch kind {
     case .struct:
         typeInfoConvertible = StructMetadata(type: type)
@@ -84,6 +81,6 @@ public func typeInfo(of type: Any.Type) throws -> TypeInfo {
     default:
         throw RuntimeError.couldNotGetTypeInfo(type: type, kind: kind)
     }
-    
+
     return typeInfoConvertible.toTypeInfo()
 }
