@@ -32,7 +32,7 @@ struct ExistentialHeader {
 
 extension ExistentialHeader {
     
-    static func size() -> Int {
+    static var size: Int {
         return MemoryLayout<ExistentialHeader>.size
     }
 }

@@ -50,10 +50,10 @@ func withExistentialValuePointer<Value, Result>(of value: inout Value, _ body: (
     return try withUnsafePointer(to: &value) {
         let container = $0.withMemoryRebound(to: ExistentialContainer.self, capacity: 1){$0.pointee}
         let info = try metadata(of: container.type)
-        if info.kind == .class || info.size > ExistentialContainerBuffer.size() {
+        if info.kind == .class || info.size > ExistentialContainerBuffer.size {
             let base = $0.withMemoryRebound(to: UnsafeMutableRawPointer.self, capacity: 1){$0.pointee}
             if info.kind == .struct {
-                return try body(base.advanced(by: ExistentialHeader.size()))
+                return try body(base.advanced(by: ExistentialHeader.size))
             } else {
                 return try body(base)
             }

@@ -38,7 +38,7 @@ struct ExistentialContainerBuffer {
 
 
 extension ExistentialContainerBuffer {
-    static func size() -> Int {
+    static var size: Int {
         return MemoryLayout<ExistentialContainerBuffer>.size
     }
 }
