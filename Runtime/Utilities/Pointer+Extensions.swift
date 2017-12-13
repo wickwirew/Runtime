@@ -31,11 +31,7 @@ extension UnsafePointer {
     }
 
     func vector(n: IntegerConvertible) -> [Pointee] {
-        var result = [Pointee]()
-        for i in 0..<n.getInt() {
-            result.append(advanced(by: i).pointee)
-        }
-        return result
+        return (0..<n.getInt()).map { self[$0] }
     }
 }
 
@@ -56,10 +52,6 @@ extension UnsafeMutablePointer {
     }
 
     func vector(n: IntegerConvertible) -> [Pointee] {
-        var result = [Pointee]()
-        for i in 0..<n.getInt() {
-            result.append(advanced(by: i).pointee)
-        }
-        return result
+        return (0..<n.getInt()).map { self[$0] }
     }
 }
