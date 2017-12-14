@@ -70,14 +70,31 @@ Q: When creating a new instance of a class is it still protected by ARC?
 A: Yes! The retain counts are set properly so ARC can do its job. 
 
 ## Installation
+### Cocoapods
 Runtime is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 ```ruby
 pod 'Runtime'
 ```
+### Swift Package Manager
+
+You can install Runtime via [Swift Package Manager](https://swift.org/package-manager/) by adding the following line to your `Package.swift`:
+
+```swift
+import PackageDescription
+
+let package = Package(
+    [...]
+    dependencies: [
+        .Package(url: "https://github.com/wickwirew/Runtime.git", majorVersion: XYZ)
+    ]
+)
+```
 
 ## Contributions
 Contributions are welcome and encouraged!
+
+Please read [Contributing](https://github.com/wickwirew/Runtime/blob/master/CONTRIBUTING.md) before submitting any changes.
 
 ## Learn
 Want to know how it works? 
