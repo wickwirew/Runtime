@@ -79,6 +79,8 @@ pod 'Runtime'
 ## Contributions
 Contributions are welcome and encouraged!
 
+Please read [Contributing](https://github.com/wickwirew/Runtime/blob/master/CONTRIBUTING.md) before submitting any changes.
+
 ## Learn
 Want to know how it works? 
 [Here's an article](https://medium.com/@weswickwire/creating-a-swift-runtime-library-3cc92fc486cc) on how it was implemented.
