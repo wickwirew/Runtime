@@ -40,6 +40,8 @@ playground.xcworkspace
 # Packages/
 # Package.pins
 .build/
+RuntimeTests/TestProviders.swift
+RuntimeTests/LinuxMain.swift
 
 # CocoaPods
 #
