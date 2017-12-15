@@ -10,9 +10,12 @@ def build_provider_file():
 
 
 def build_provider_extension(class_name, functions):
+    if len(functions) == 0:
+        return ""
+        
     map = get_function_map(functions)
     return """
-extension """ + class_name + """: XCTestCaseProvider {
+extension """ + class_name + """ {
     var allTests : [(String, () throws -> Void)] {
         return [""" + map + """
         ]
@@ -116,7 +119,7 @@ def generate_providers():
 
         f.write("XCTMain([")
         for c in class_names:
-            f.write(" \n   " + c + "(),")
+            f.write(" \n   testCase(" + c + ".allTests),")
             continue
         f.write("\n])")
              
