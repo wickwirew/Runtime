@@ -46,17 +46,18 @@ class FactoryTests: XCTestCase {
         XCTAssert(person.pet.age == 0)
         XCTAssert(person.favoriteNumbers == [])
     }
-    
-    func testClass() throws {
-        let person: PersonClass = try createInstance()
-        XCTAssert(person.firstname == "")
-        XCTAssert(person.lastname == "")
-        XCTAssert(person.age == 0)
-        XCTAssert(person.pet.name == "")
-        XCTAssert(person.pet.age == 0)
-        XCTAssert(person.favoriteNumbers == [])
-    }
-    
+  
+    #if os(iOS) // does not work on macOS or Linux
+        func testClass() throws {
+            let person: PersonClass = try createInstance()
+            XCTAssert(person.firstname == "")
+            XCTAssert(person.lastname == "")
+            XCTAssert(person.age == 0)
+            XCTAssert(person.pet.name == "")
+            XCTAssert(person.pet.age == 0)
+            XCTAssert(person.favoriteNumbers == [])
+        }
+    #endif
 }
 
 

@@ -39,14 +39,23 @@ public func createInstance(of type: Any.Type) throws -> Any {
     
     let kind = Kind(type: type)
     
-    switch kind {
-    case .struct:
-        return try buildStruct(type: type)
-    case .class:
-        return try buildClass(type: type)
-    default:
-        throw RuntimeError.unableToBuildType(type: type)
-    }
+    #if os(iOS) // does not work on macOS or Linux
+        switch kind {
+        case .struct:
+            return try buildStruct(type: type)
+        case .class:
+            return try buildClass(type: type)
+        default:
+            throw RuntimeError.unableToBuildType(type: type)
+        }
+    #else // class does not work on macOS or Linux
+        switch kind {
+        case .struct:
+            return try buildStruct(type: type)
+        default:
+            throw RuntimeError.unableToBuildType(type: type)
+        }
+    #endif
 }
 
 func buildStruct(type: Any.Type) throws -> Any {
@@ -57,19 +66,20 @@ func buildStruct(type: Any.Type) throws -> Any {
     return getters(type: type).get(from: pointer)
 }
 
-func buildClass(type: Any.Type) throws -> Any {
-    let info = try typeInfo(of: type)
-    if let type = type as? AnyClass, var value = class_createInstance(type, 0) {
-        try withClassValuePointer(of: &value) { pointer in
-            try setProperties(typeInfo: info, pointer: pointer)
-            let header = pointer.assumingMemoryBound(to: ClassHeader.self)
-            header.pointee.strongRetainCounts = 2
+#if os(iOS) // does not work on macOS or Linux
+    func buildClass(type: Any.Type) throws -> Any {
+        let info = try typeInfo(of: type)
+        if let type = type as? AnyClass, var value = class_createInstance(type, 0) {
+            try withClassValuePointer(of: &value) { pointer in
+                try setProperties(typeInfo: info, pointer: pointer)
+                let header = pointer.assumingMemoryBound(to: ClassHeader.self)
+                header.pointee.strongRetainCounts = 2
+            }
+            return value
         }
-        return value
+        throw RuntimeError.unableToBuildType(type: type)
     }
-    throw RuntimeError.unableToBuildType(type: type)
-}
-
+#endif
 
 func setProperties(typeInfo: TypeInfo, pointer: UnsafeMutableRawPointer) throws {
     for property in typeInfo.properties {
