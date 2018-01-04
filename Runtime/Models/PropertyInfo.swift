@@ -66,3 +66,13 @@ public struct PropertyInfo {
         }
     }
 }
+
+
+extension PropertyInfo: Equatable {
+    public static func ==(lhs: PropertyInfo, rhs: PropertyInfo) -> Bool {
+        return lhs.name == rhs.name
+            && lhs.type == rhs.type
+            && lhs.offset == rhs.offset
+            && lhs.ownerType == rhs.ownerType
+    }
+}
