@@ -70,6 +70,7 @@ Q: When creating a new instance of a class is it still protected by ARC?
 A: Yes! The retain counts are set properly so ARC can do its job. 
 
 ## Installation
+For Swift 4.1 support please use the `swift-4.1` branch. All tests pass currently but it's still a WIP.
 ### Cocoapods
 Runtime is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
