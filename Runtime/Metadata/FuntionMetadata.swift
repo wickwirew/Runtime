@@ -53,7 +53,6 @@ struct FunctionMetadata: MetadataType {
     }
     
     private func `throws`() -> Bool {
-        print(metadata.pointee.flags)
         return metadata.pointee.flags & 0x01000000 != 0
     }
 }
