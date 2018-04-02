@@ -43,7 +43,7 @@ class ValuePointerTests: XCTestCase {
     func testClassValuePointer() throws {
         var person = PersonClass()
         try withValuePointer(of: &person) { p in
-            let base = p.advanced(by: ClassHeader.size())
+            let base = p.advanced(by: existentialHeaderSize)
             XCTAssert(base.assumingMemoryBound(to: String.self).pointee == "Wes")
         }
     }
@@ -51,7 +51,7 @@ class ValuePointerTests: XCTestCase {
     func testProtocolClassValuePointer() throws {
         var person: PersonProtocol = PersonClass()
         try withValuePointer(of: &person) { p in
-            let base = p.advanced(by: ClassHeader.size())
+            let base = p.advanced(by: existentialHeaderSize)
             XCTAssert(base.assumingMemoryBound(to: String.self).pointee == "Wes")
         }
     }
@@ -59,7 +59,7 @@ class ValuePointerTests: XCTestCase {
     func testAnyClassValuePointer() throws {
         var person: Any = PersonClass()
         try withValuePointer(of: &person) { p in
-            let base = p.advanced(by: ClassHeader.size())
+            let base = p.advanced(by: existentialHeaderSize)
             XCTAssert(base.assumingMemoryBound(to: String.self).pointee == "Wes")
         }
     }

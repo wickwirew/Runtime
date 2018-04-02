@@ -40,17 +40,12 @@ struct FunctionMetadata: MetadataType {
     
     private func argumentInfo() -> (Int, [Any.Type], Any.Type) {
         let n = numberArguments()
-        var a = metadata.pointee.argumentVector.vector(n: n + 1)
-        let resultType = a[0]
-        let argsType = a[1]
+        var argTypes = metadata.pointee.argumentVector.vector(n: n + 1)
         
-        if Kind(type: argsType) == .tuple {
-            let md = TupleMetadata(type: argsType)
-            let elements = md.elements()
-            return (elements.count, elements.map{$0.type}, resultType)
-        } else {
-            return (n, [argsType], resultType)
-        }
+        let resultType = argTypes[0]
+        argTypes.removeFirst()
+        
+        return (n, argTypes, resultType)
     }
     
     private func numberArguments() -> Int {
@@ -58,6 +53,6 @@ struct FunctionMetadata: MetadataType {
     }
     
     private func `throws`() -> Bool {
-        return metadata.pointee.flags & 0x10000000 != 0
+        return metadata.pointee.flags & 0x01000000 != 0
     }
 }

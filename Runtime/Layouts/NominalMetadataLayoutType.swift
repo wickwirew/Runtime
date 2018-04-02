@@ -24,5 +24,5 @@ import Foundation
 
 
 protocol NominalMetadataLayoutType: MetadataLayoutType {
-    var nominalTypeDescriptor: RelativePointer<Int, NominalTypeDescriptor> { get set }
+    var nominalTypeDescriptor: UnsafeMutablePointer<NominalTypeDescriptor> { get set }
 }

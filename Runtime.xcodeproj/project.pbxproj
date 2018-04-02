@@ -13,7 +13,6 @@
 		DE27970C1FABD73600C2430E /* Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27970B1FABD73600C2430E /* Kind.swift */; };
 		DE27970E1FAC17FE00C2430E /* Pointers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27970D1FAC17FE00C2430E /* Pointers.swift */; };
 		DE2797101FAC19D300C2430E /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27970F1FAC19D300C2430E /* Errors.swift */; };
-		DE2797121FAC1A8200C2430E /* ExistentialHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2797111FAC1A8200C2430E /* ExistentialHeader.swift */; };
 		DE2797141FAC1B0000C2430E /* ExistentialContainter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2797131FAC1B0000C2430E /* ExistentialContainter.swift */; };
 		DE37C2451FAA8381008C4CB4 /* RelativePointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2441FAA8381008C4CB4 /* RelativePointer.swift */; };
 		DE37C2471FAA83AB008C4CB4 /* Pointer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2461FAA83AB008C4CB4 /* Pointer+Extensions.swift */; };
@@ -79,7 +78,6 @@
 		E80B3DC91FE145210081DC43 /* FuntionMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE061E61FAE40F400F2E8C1 /* FuntionMetadata.swift */; };
 		E80B3DCA1FE145210081DC43 /* EnumMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D245D1FAFB5020092E080 /* EnumMetadata.swift */; };
 		E80B3DCB1FE145250081DC43 /* ClassHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AC70C1FAD26BA00A26B70 /* ClassHeader.swift */; };
-		E80B3DCC1FE145250081DC43 /* ExistentialHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2797111FAC1A8200C2430E /* ExistentialHeader.swift */; };
 		E80B3DCD1FE145250081DC43 /* ExistentialContainter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2797131FAC1B0000C2430E /* ExistentialContainter.swift */; };
 		E80B3DCE1FE145250081DC43 /* ValueWitnessTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DF9C01FAD4085000A8B8C /* ValueWitnessTable.swift */; };
 		E80B3DCF1FE145250081DC43 /* NominalTypeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79AF221FAA835100B0390B /* NominalTypeDescriptor.swift */; };
@@ -132,7 +130,6 @@
 		DE27970B1FABD73600C2430E /* Kind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kind.swift; sourceTree = "<group>"; };
 		DE27970D1FAC17FE00C2430E /* Pointers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pointers.swift; sourceTree = "<group>"; };
 		DE27970F1FAC19D300C2430E /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
-		DE2797111FAC1A8200C2430E /* ExistentialHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistentialHeader.swift; sourceTree = "<group>"; };
 		DE2797131FAC1B0000C2430E /* ExistentialContainter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistentialContainter.swift; sourceTree = "<group>"; };
 		DE37C2441FAA8381008C4CB4 /* RelativePointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativePointer.swift; sourceTree = "<group>"; };
 		DE37C2461FAA83AB008C4CB4 /* Pointer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pointer+Extensions.swift"; sourceTree = "<group>"; };
@@ -234,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				DE9AC70C1FAD26BA00A26B70 /* ClassHeader.swift */,
-				DE2797111FAC1A8200C2430E /* ExistentialHeader.swift */,
 				DE2797131FAC1B0000C2430E /* ExistentialContainter.swift */,
 				DE3DF9C01FAD4085000A8B8C /* ValueWitnessTable.swift */,
 				DE79AF221FAA835100B0390B /* NominalTypeDescriptor.swift */,
@@ -562,7 +558,6 @@
 				DE3DF9C11FAD4085000A8B8C /* ValueWitnessTable.swift in Sources */,
 				DE2797101FAC19D300C2430E /* Errors.swift in Sources */,
 				DE37C25D1FAA957E008C4CB4 /* StructMetadata.swift in Sources */,
-				DE2797121FAC1A8200C2430E /* ExistentialHeader.swift in Sources */,
 				DE37C2451FAA8381008C4CB4 /* RelativePointer.swift in Sources */,
 				DE27970A1FABD6A400C2430E /* TypeInfoConvertible.swift in Sources */,
 				DEE061E51FAE3AAD00F2E8C1 /* Vector.swift in Sources */,
@@ -624,7 +619,6 @@
 				E80B3DC81FE145210081DC43 /* TupleMetadata.swift in Sources */,
 				E80B3DC21FE145210081DC43 /* Metadata.swift in Sources */,
 				E80B3DCF1FE145250081DC43 /* NominalTypeDescriptor.swift in Sources */,
-				E80B3DCC1FE145250081DC43 /* ExistentialHeader.swift in Sources */,
 				E80B3DC71FE145210081DC43 /* ProtocolMetadata.swift in Sources */,
 				E80B3DDC1FE145290081DC43 /* PropertyInfo.swift in Sources */,
 				E80B3DBF1FE1451E0081DC43 /* RelativeVectorPointer.swift in Sources */,
@@ -719,6 +713,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -771,6 +766,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

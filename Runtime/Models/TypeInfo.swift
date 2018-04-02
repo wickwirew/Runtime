@@ -38,11 +38,11 @@ public struct TypeInfo {
     
     init<Metadata: MetadataType>(metadata: Metadata) {
         kind = metadata.kind
-        name = String(describing: metadata.type)
-        type = metadata.type
         size = metadata.size
         alignment = metadata.alignment
         stride = metadata.stride
+        type = metadata.type
+        name = String(describing: metadata.type)
     }
     
     init<Metadata: NominalMetadataType>(nominalMetadata: Metadata) {

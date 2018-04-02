@@ -37,6 +37,6 @@ struct ClassMetadataLayout: NominalMetadataLayoutType {
     var runtimeReserveField: Int16
     var classObjectSize: Int32
     var classObjectAddressPoint: Int32
-    var nominalTypeDescriptor: RelativePointer<Int, NominalTypeDescriptor>
+    var nominalTypeDescriptor: UnsafeMutablePointer<NominalTypeDescriptor>
 }
 
