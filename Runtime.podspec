@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
     s.name         = "Runtime"
-    s.version      = "0.3.0"
+    s.version      = "0.4.0"
     s.summary      = "Runtime"
     s.description  = <<-DESC
     Runtime abilities for native swift objects.
@@ -10,6 +10,6 @@ Pod::Spec.new do |s|
     s.license      = "MIT"
     s.author       = { "Wesley Wickwire" => "wickwirew@gmail.com" }
     s.platform     = :ios, "9.0"
-    s.source       = { :git => "https://github.com/wickwirew/Runtime.git", :tag => "0.3.0" }
+    s.source       = { :git => "https://github.com/wickwirew/Runtime.git", :tag => "0.4.0" }
     s.source_files  = 'Runtime/**/*.swift'
 end
