@@ -35,14 +35,6 @@ struct ValueWitnessTable {
     var g: Int
     var h: Int
     var i: Int
-    var j: Int
-    var k: Int
-    var l: Int
-    var m: Int
-    var n: Int
-    var o: Int
-    var p: Int
-    var q: Int
     var size: Int
     var flags: Int
     var stride: Int

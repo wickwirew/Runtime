@@ -32,7 +32,7 @@ protocol NominalMetadataType: MetadataType where Layout: NominalMetadataLayoutTy
 extension NominalMetadataType {
     
     init(type: Any.Type, metadata: UnsafeMutablePointer<Layout>, base: UnsafeMutablePointer<Int>) {
-        self.init(type: type, metadata: metadata, nominalTypeDescriptor: metadata.pointee.nominalTypeDescriptor.advanced(), base: base)
+        self.init(type: type, metadata: metadata, nominalTypeDescriptor: metadata.pointee.nominalTypeDescriptor, base: base)
     }
     
     mutating func mangledName() -> String {

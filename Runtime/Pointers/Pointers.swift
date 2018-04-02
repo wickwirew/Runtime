@@ -53,7 +53,7 @@ func withExistentialValuePointer<Value, Result>(of value: inout Value, _ body: (
         if info.kind == .class || info.size > ExistentialContainerBuffer.size() {
             let base = $0.withMemoryRebound(to: UnsafeMutableRawPointer.self, capacity: 1){$0.pointee}
             if info.kind == .struct {
-                return try body(base.advanced(by: ExistentialHeader.size()))
+                return try body(base.advanced(by: existentialHeaderSize))
             } else {
                 return try body(base)
             }
@@ -62,4 +62,18 @@ func withExistentialValuePointer<Value, Result>(of value: inout Value, _ body: (
         }
     }
 }
+
+var existentialHeaderSize: Int {
+    if is64Bit {
+        return 16
+    } else {
+        return 8
+    }
+}
+
+var is64Bit: Bool {
+    return MemoryLayout<Int>.size == 8
+}
+
+
 
