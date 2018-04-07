@@ -26,6 +26,20 @@ import XCTest
 
 class MetadataTests: XCTestCase {
     
+    static var allTests: [(String, (MetadataTests) -> () throws -> Void)] {
+        return [
+            ("testClass", testClass),
+            ("testStruct", testStruct),
+            ("testProtocol", testProtocol),
+            ("testTuple", testTuple),
+            ("testTupleNoLabels", testTupleNoLabels),
+            ("testFunction", testFunction),
+            ("testFunctionThrows", testFunctionThrows),
+            ("testVoidFunction", testVoidFunction),
+            ("testEnum", testEnum),
+        ]
+    }
+    
     func testClass() {
         var md = ClassMetadata(type: MyClass<Int>.self)
         let info = md.toTypeInfo()

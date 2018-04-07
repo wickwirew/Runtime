@@ -26,6 +26,13 @@ import XCTest
 
 class FactoryTests: XCTestCase {
 
+    static var allTests: [(String, (FactoryTests) -> () throws -> Void)] {
+        return [
+            ("testStruct", testStruct),
+            ("testStructUntyped", testStructUntyped),
+        ]
+    }
+    
     func testStruct() throws {
         let person: PersonStruct = try createInstance()
         XCTAssert(person.firstname == "")
