@@ -26,6 +26,36 @@ import XCTest
 
 class GetSetClassTests: XCTestCase {
     
+    static var allTests: [(String, (GetSetClassTests) -> () throws -> Void)] {
+        return [
+            ("testGet", testGet),
+            ("testGetUntypedValue", testGetUntypedValue),
+            ("testGetUntypedObject", testGetUntypedObject),
+            ("testGetUntyped", testGetUntyped),
+            ("testGetClass", testGetClass),
+            ("testGetClassUntypedValue", testGetClassUntypedValue),
+            ("testGetClassUntypedObject", testGetClassUntypedObject),
+            ("testGetClassUntyped", testGetClassUntyped),
+            ("testGetArray", testGetArray),
+            ("testGetArrayUntypedValue", testGetArrayUntypedValue),
+            ("testGetArrayUntypedObject", testGetArrayUntypedObject),
+            ("testGetArrayUntyped", testGetArrayUntyped),
+            
+            ("testSet", testSet),
+            ("testSetUntypedValue", testSetUntypedValue),
+            ("testSetUntypedObject", testSetUntypedObject),
+            ("testSetUntyped", testSetUntyped),
+            ("testSetClass", testSetClass),
+            ("testSetClassUntypedValue", testSetClassUntypedValue),
+            ("testSetClassUntypedObject", testSetClassUntypedObject),
+            ("testSetClassUntyped", testSetClassUntyped),
+            ("testSetArray", testSetArray),
+            ("testSetArrayUntypedValue", testSetArrayUntypedValue),
+            ("testSetArrayUntypedObject", testSetArrayUntypedObject),
+            ("testSetArrayUntyped", testSetArrayUntyped)
+        ]
+    }
+    
     func testGet() throws {
         let info = try typeInfo(of: Person.self)
         let firstname = try info.property(named: "firstname")

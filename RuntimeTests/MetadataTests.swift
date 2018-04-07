@@ -26,6 +26,20 @@ import XCTest
 
 class MetadataTests: XCTestCase {
     
+    static var allTests: [(String, (MetadataTests) -> () throws -> Void)] {
+        return [
+            ("testClass", testClass),
+            ("testStruct", testStruct),
+            ("testProtocol", testProtocol),
+            ("testTuple", testTuple),
+            ("testTupleNoLabels", testTupleNoLabels),
+            ("testFunction", testFunction),
+            ("testFunctionThrows", testFunctionThrows),
+            ("testVoidFunction", testVoidFunction),
+            ("testEnum", testEnum),
+        ]
+    }
+    
     func testClass() {
         var md = ClassMetadata(type: MyClass<Int>.self)
         let info = md.toTypeInfo()
@@ -58,7 +72,7 @@ class MetadataTests: XCTestCase {
     func testProtocol() {
         var md = ProtocolMetadata(type: MyProtocol.self)
         let info = md.toTypeInfo()
-        XCTAssert(info.kind == .protocol)
+        XCTAssert(info.kind == .existential)
         XCTAssert(info.type == MyProtocol.self)
         XCTAssert(info.size == MemoryLayout<MyProtocol>.size)
         XCTAssert(info.alignment == MemoryLayout<MyProtocol>.alignment)

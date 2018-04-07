@@ -27,6 +27,14 @@ import XCTest
 
 class ValueWitnessTableTests: XCTestCase {
 
+    static var allTests: [(String, (ValueWitnessTableTests) -> () throws -> Void)] {
+        return [
+            ("testSize", testSize),
+            ("testAlignment", testAlignment),
+            ("testStride", testStride),
+        ]
+    }
+    
     func testSize() throws {
         let info = try typeInfo(of: Person.self)
         XCTAssert(info.size == MemoryLayout<Person>.size)

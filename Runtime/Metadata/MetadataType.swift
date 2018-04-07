@@ -43,7 +43,7 @@ protocol MetadataType: MetadataInfo, TypeInfoConvertible {
 extension MetadataType {
     
     var kind: Kind {
-        return Kind(int: base.pointee)
+        return Kind(flag: base.pointee)
     }
     
     var size: Int {

@@ -37,7 +37,7 @@ func metadata(of type: Any.Type) throws -> MetadataInfo {
         return StructMetadata(type: type)
     case .class:
         return ClassMetadata(type: type)
-    case .protocol:
+    case .existential:
         return ProtocolMetadata(type: type)
     case .tuple:
         return TupleMetadata(type: type)

@@ -25,7 +25,7 @@ import Foundation
 
 public struct TypeInfo {
     
-    public var kind: Kind = .unknown
+    public var kind: Kind = .class
     public var name: String = ""
     public var type: Any.Type = Any.self
     public var mangledName: String = ""
@@ -75,7 +75,7 @@ public func typeInfo(of type: Any.Type) throws -> TypeInfo {
         typeInfoConvertible = StructMetadata(type: type)
     case .class:
         typeInfoConvertible = ClassMetadata(type: type)
-    case .protocol:
+    case .existential:
         typeInfoConvertible = ProtocolMetadata(type: type)
     case .tuple:
         typeInfoConvertible = TupleMetadata(type: type)
