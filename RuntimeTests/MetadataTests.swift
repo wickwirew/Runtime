@@ -58,7 +58,7 @@ class MetadataTests: XCTestCase {
     func testProtocol() {
         var md = ProtocolMetadata(type: MyProtocol.self)
         let info = md.toTypeInfo()
-        XCTAssert(info.kind == .protocol)
+        XCTAssert(info.kind == .existential)
         XCTAssert(info.type == MyProtocol.self)
         XCTAssert(info.size == MemoryLayout<MyProtocol>.size)
         XCTAssert(info.alignment == MemoryLayout<MyProtocol>.alignment)
