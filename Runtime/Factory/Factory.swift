@@ -60,8 +60,8 @@ public func createInstance(of type: Any.Type, constructor: ((PropertyInfo) throw
 
 func buildStruct(type: Any.Type, constructor: ((PropertyInfo) throws -> Any)? = nil) throws -> Any {
     let info = try typeInfo(of: type)
-    let pointer = UnsafeMutableRawPointer.allocate(bytes: info.size, alignedTo: info.alignment)
-    defer { pointer.deallocate(bytes: info.size, alignedTo: info.alignment) }
+    let pointer = UnsafeMutableRawPointer.allocate(byteCount: info.size, alignment: info.alignment)
+    defer { pointer.deallocate() }
     try setProperties(typeInfo: info, pointer: pointer, constructor: constructor)
     return getters(type: type).get(from: pointer)
 }
