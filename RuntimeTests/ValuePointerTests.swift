@@ -26,6 +26,17 @@ import XCTest
 
 class ValuePointerTests: XCTestCase {
     
+    static var allTests: [(String, (ValuePointerTests) -> () throws -> Void)] {
+        return [
+            ("testStructValuePointer", testStructValuePointer),
+            ("testProtocolStructValuePointer", testProtocolStructValuePointer),
+            ("testClassValuePointer", testClassValuePointer),
+            ("testProtocolClassValuePointer", testProtocolClassValuePointer),
+            ("testAnyClassValuePointer", testAnyClassValuePointer),
+            ("testAnyStructValuePointer", testAnyStructValuePointer),
+        ]
+    }
+    
     func testStructValuePointer() throws {
         var person = PersonStruct()
         try withValuePointer(of: &person) { p in

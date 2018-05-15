@@ -32,7 +32,7 @@ func withValuePointer<Value, Result>(of value: inout Value, _ body: (UnsafeMutab
         return try withUnsafePointer(to: &value) { try body($0.mutable.raw) }
     case .class:
         return try withClassValuePointer(of: &value, body)
-    case .protocol:
+    case .existential:
         return try withExistentialValuePointer(of: &value, body)
     default:
         throw RuntimeError.couldNotGetPointer(type: Value.self, value: value)

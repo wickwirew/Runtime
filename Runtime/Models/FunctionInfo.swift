@@ -24,10 +24,10 @@ import Foundation
 
 
 public struct FunctionInfo {
-    var numberOfArguments: Int
-    var argumentTypes: [Any.Type]
-    var returnType: Any.Type
-    var `throws`: Bool
+    public var numberOfArguments: Int
+    public var argumentTypes: [Any.Type]
+    public var returnType: Any.Type
+    public var `throws`: Bool
 }
 
 

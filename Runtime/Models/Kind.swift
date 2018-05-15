@@ -22,31 +22,45 @@
 
 import Foundation
 
-
-public enum Kind: Int {
-    
-    case unknown = 0
-    case `struct` = 1
-    case `enum` = 2
-    case opaque = 8
-    case tuple = 9
-    case function = 10
-    case `protocol` = 12
-    case metatype = 13
-    case `class` = 4096
-    
-    init(int: Int) {
-        if let value = Kind(rawValue: int) {
-            self = value
-        } else if int >= 4096 {
-            self = .class
-        } else {
-            self = .unknown
+public enum Kind {
+    case `struct`
+    case `enum`
+    case optional
+    case opaque
+    case tuple
+    case function
+    case existential
+    case metatype
+    case objCClassWrapper
+    case existentialMetatype
+    case foreignClass
+    case heapLocalVariable
+    case heapGenericLocalVariable
+    case errorObject
+    case `class`
+    init(flag: Int) {
+        switch flag {
+        case 1: self = .struct
+        case 2: self = .enum
+        case 3: self = .optional
+        case 8: self = .opaque
+        case 9: self = .tuple
+        case 10: self = .function
+        case 12: self = .existential
+        case 13: self = .metatype
+        case 14: self = .objCClassWrapper
+        case 15: self = .existentialMetatype
+        case 16: self = .foreignClass
+        case 64: self = .heapLocalVariable
+        case 65: self = .heapGenericLocalVariable
+        case 128: self = .errorObject
+        default: self = .class
         }
     }
     
     init(type: Any.Type) {
         let pointer = metadataPointer(type: type)
-        self.init(int: pointer.pointee)
+        self.init(flag: pointer.pointee)
     }
+
 }

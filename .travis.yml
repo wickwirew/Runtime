@@ -1,7 +1,14 @@
-language: swift
-
-osx_image: xcode9.1
-
-xcode_project: Runtime.xcodeproj
-
-xcode_scheme: UnitTests
+language: generic
+matrix:
+  include:
+    - os: osx
+      env: JOB=SwiftPM_OSX
+      osx_image: xcode9.3beta
+    - os: linux
+      env: JOB=SwiftPM_linux
+      dist: trusty
+      sudo: required
+      install:
+        -  travis_retry eval "$(curl -sL https://gist.githubusercontent.com/kylef/5c0475ff02b7c7671d2a/raw/9f442512a46d7a2af7b850d65a7e9bd31edfb09b/swiftenv-install.sh)"
+script:
+  - swift test
