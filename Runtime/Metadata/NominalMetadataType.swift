@@ -44,7 +44,7 @@ extension NominalMetadataType {
     }
     
     mutating func fieldOffsets() -> [Int] {
-        return nominalTypeDescriptor.pointee.offsetToTheFieldOffsetVector.vector(metadata: base, n: numberOfFields())
+        return nominalTypeDescriptor.pointee.offsetToTheFieldOffsetVector.vector(metadata: base, n: numberOfFields()).map{ Int($0) }
     }
     
     mutating func fieldNames() -> [String] {
