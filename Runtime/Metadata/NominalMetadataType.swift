@@ -87,4 +87,21 @@ extension NominalMetadataType {
         info.properties = properties()
         return info
     }
+    
+    func getFields() {
+        var context = ""
+        _getFieldAt(type, 0, { name, type, ctx in
+            let name = String(cString: name)
+            let type = unsafeBitCast(type, to: Any.Type.self)
+            print("\(name): \(type)")
+        }, &context)
+    }
 }
+
+@_silgen_name("swift_getFieldAt")
+func _getFieldAt(
+    _ type: Any.Type,
+    _ index: Int,
+    _ callback: @convention(c) (UnsafePointer<CChar>, UnsafeRawPointer, UnsafeRawPointer) -> Void,
+    _ ctx: UnsafeRawPointer
+)
