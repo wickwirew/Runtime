@@ -48,8 +48,8 @@ public struct TypeInfo {
     init<Metadata: NominalMetadataType>(nominalMetadata: Metadata) {
         self.init(metadata: nominalMetadata)
         var nominalMetadata = nominalMetadata
-//        mangledName = nominalMetadata.mangledName()
-//        genericTypes = nominalMetadata.genericParameters()
+        mangledName = nominalMetadata.mangledName()
+        genericTypes = nominalMetadata.genericParameters()
     }
     
     public var superClass: Any.Type? {

@@ -47,21 +47,6 @@ extension NominalMetadataType {
         return nominalTypeDescriptor.pointee.offsetToTheFieldOffsetVector.vector(metadata: base, n: numberOfFields()).map{ Int($0) }
     }
     
-    mutating func fieldNames() -> [String] {
-        return [String].from(pointer: nominalTypeDescriptor.pointee.fieldNames.advanced(), n: numberOfFields())
-    }
-    
-    mutating func fieldTypeAccessor() -> FieldTypeAccessor {
-        let function = nominalTypeDescriptor.pointee.fieldTypeAccessor.advanced()
-        return unsafeBitCast(function, to: FieldTypeAccessor.self)
-    }
-    
-    mutating func fieldTypes() -> [Any.Type] {
-        let start = fieldTypeAccessor()(base)
-        let types = start.vector(n: numberOfFields())
-        return types.map{ unsafeBitCast($0, to: Any.Type.self) }
-    }
-    
     mutating func genericParameterCount() -> Int {
         return nominalTypeDescriptor.pointee.exclusiveGenericParametersCount.getInt()
     }
@@ -71,30 +56,26 @@ extension NominalMetadataType {
     }
     
     mutating func properties() -> [PropertyInfo] {
-        let names = fieldNames()
         let offsets = fieldOffsets()
-        let types = fieldTypes()
-        let num = numberOfFields()
-        var properties = [PropertyInfo]()
-        for i in 0..<num {
-            properties.append(PropertyInfo(name: names[i], type: types[i], offset: offsets[i], ownerType: type))
+        
+        return (0..<offsets.count).map{ index in
+            let offset = offsets[index]
+            var context = PropertyInfoContext(name: "", type: Any.self)
+            _getFieldAt(type, index, { name, type, ctx in
+                let infoContext = ctx.assumingMemoryBound(to: PropertyInfoContext.self).mutable
+                infoContext.pointee = PropertyInfoContext(
+                    name: String(cString: name),
+                    type: unsafeBitCast(type, to: Any.Type.self)
+                )
+            }, &context)
+            return PropertyInfo(name: context.name, type: context.type, offset: offset, ownerType: type)
         }
-        return properties
     }
     
     mutating func toTypeInfo() -> TypeInfo {
         var info = TypeInfo(nominalMetadata: self)
         info.properties = properties()
         return info
-    }
-    
-    func getFields() {
-        var context = ""
-        _getFieldAt(type, 0, { name, type, ctx in
-            let name = String(cString: name)
-            let type = unsafeBitCast(type, to: Any.Type.self)
-            print("\(name): \(type)")
-        }, &context)
     }
 }
 
@@ -105,3 +86,9 @@ func _getFieldAt(
     _ callback: @convention(c) (UnsafePointer<CChar>, UnsafeRawPointer, UnsafeRawPointer) -> Void,
     _ ctx: UnsafeRawPointer
 )
+
+/// Type to use as the context in the `_getFieldAt` function.
+fileprivate struct PropertyInfoContext {
+    let name: String
+    let type: Any.Type
+}

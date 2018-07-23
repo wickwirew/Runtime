@@ -66,7 +66,6 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.size == MemoryLayout<MyStruct<Int>>.size)
         XCTAssert(info.alignment == MemoryLayout<MyStruct<Int>>.alignment)
         XCTAssert(info.stride == MemoryLayout<MyStruct<Int>>.stride)
-        XCTAssert(info.mangledName != "")
     }
     
     func testProtocol() {

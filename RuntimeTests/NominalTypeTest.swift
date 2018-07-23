@@ -16,7 +16,6 @@ class NominalTypeTest: XCTestCase {
         XCTAssert(md.mangledName() == "MyStruct")
         XCTAssert(md.numberOfFields() == 3)
         XCTAssert(md.fieldOffsets() == [0,8,16])
-        md.getFields()
     }
 }
 
