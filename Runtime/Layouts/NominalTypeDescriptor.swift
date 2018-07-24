@@ -33,13 +33,37 @@ struct NominalTypeDescriptor {
     var numberOfFields: Int32
     var offsetToTheFieldOffsetVector: RelativeVectorPointer<Int32, Int32>
     var fieldTypeAccessor: RelativePointer<Int32, Int>
-    var fieldNames: RelativePointer<Int32, CChar>
+//    var fieldNames: RelativePointer<Int32, CChar>
     var metadataPattern: Int32
-    var somethingNotInTheDocs: Int32
-    var genericParameterVector: RelativeVectorPointer<Int32, Any.Type>
     var inclusiveGenericParametersCount: Int32
     var exclusiveGenericParametersCount: Int32
+    var idk2: Int32
+    var genericParameterVector: RelativeVectorPointer<Int32, Any.Type>
 }
+
+struct ClassTypeDescriptor {
+    var unknown1: Int32
+    var unknown2: Int32
+    var className: RelativePointer<Int32, CChar>
+    var superClass: RelativePointer<Int32, Int>
+    var metadataNegativeSizeInWords: Int32
+    var resilientMetadataBounds: Int32
+    var metadataPositiveSizeInWords: Int32
+    var numImmediateMembers: Int32
+    var numberOfFields: Int32
+    var fieldOffsetVectorOffset: Int32
+    var unknown11: Int32
+    var unknown12: Int32
+    var unknown13: Int32
+    var unknown14: Int32
+    var unknown15: Int32
+    var unknown16: Int32
+    var unknown17: Int32
+    var unknown18: Int32
+    var unknown19: Int32
+    var unknown20: Int32
+}
+
 
 /*
  
