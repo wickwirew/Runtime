@@ -45,13 +45,6 @@ public struct TypeInfo {
         name = String(describing: metadata.type)
     }
     
-    init<Metadata: NominalMetadataType>(nominalMetadata: Metadata) {
-        self.init(metadata: nominalMetadata)
-        var nominalMetadata = nominalMetadata
-        mangledName = nominalMetadata.mangledName()
-        genericTypes = nominalMetadata.genericParameters()
-    }
-    
     public var superClass: Any.Type? {
         return inheritance.first
     }

@@ -34,7 +34,7 @@ struct TupleMetadata: MetadataType, TypeInfoConvertible {
     }
     
     func labels() -> [String] {
-        guard metadata.pointee.labelsString.hashValue != 0 else { return (0..<numberOfElements()).map{ a in "" } }
+        guard unsafeBitCast(metadata.pointee.labelsString, to: UInt.self) != 0 else { return (0..<numberOfElements()).map{ a in "" } }
         var labels = String(cString: metadata.pointee.labelsString).components(separatedBy: " ")
         labels.removeLast()
         return labels

@@ -25,7 +25,7 @@ import Foundation
 
 typealias FieldTypeAccessor = @convention(c) (UnsafePointer<Int>) -> UnsafePointer<Int>
 
-struct NominalTypeDescriptor {
+struct StructTypeDescriptor {
     var unknown1: Int32
     var unknown2: Int32
     var mangledName: RelativePointer<Int32, CChar>
@@ -33,7 +33,6 @@ struct NominalTypeDescriptor {
     var numberOfFields: Int32
     var offsetToTheFieldOffsetVector: RelativeVectorPointer<Int32, Int32>
     var fieldTypeAccessor: RelativePointer<Int32, Int>
-//    var fieldNames: RelativePointer<Int32, CChar>
     var metadataPattern: Int32
     var inclusiveGenericParametersCount: Int32
     var exclusiveGenericParametersCount: Int32
@@ -51,7 +50,7 @@ struct ClassTypeDescriptor {
     var metadataPositiveSizeInWords: Int32
     var numImmediateMembers: Int32
     var numberOfFields: Int32
-    var fieldOffsetVectorOffset: Int32
+    var fieldOffsetVectorOffset: RelativeVectorPointer<Int32, Int32>
     var unknown11: Int32
     var unknown12: Int32
     var unknown13: Int32

@@ -22,8 +22,7 @@
 		DE37C24F1FAA89F2008C4CB4 /* StructMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C24E1FAA89F2008C4CB4 /* StructMetadataLayout.swift */; };
 		DE37C2511FAA8A26008C4CB4 /* ClassMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2501FAA8A26008C4CB4 /* ClassMetadataLayout.swift */; };
 		DE37C2551FAA9286008C4CB4 /* MetadataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2541FAA9286008C4CB4 /* MetadataType.swift */; };
-		DE37C2571FAA929F008C4CB4 /* NominalMetadataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2561FAA929F008C4CB4 /* NominalMetadataType.swift */; };
-		DE37C25A1FAA94EC008C4CB4 /* NominalMetadataLayoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2591FAA94EC008C4CB4 /* NominalMetadataLayoutType.swift */; };
+		DE37C2571FAA929F008C4CB4 /* GetFieldAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2561FAA929F008C4CB4 /* GetFieldAt.swift */; };
 		DE37C25D1FAA957E008C4CB4 /* StructMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C25C1FAA957E008C4CB4 /* StructMetadata.swift */; };
 		DE37C25F1FAAA6CA008C4CB4 /* ClassMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C25E1FAAA6CA008C4CB4 /* ClassMetadata.swift */; };
 		DE37C2661FAAA87B008C4CB4 /* RelativeVectorPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2651FAAA87B008C4CB4 /* RelativeVectorPointer.swift */; };
@@ -34,7 +33,7 @@
 		DE3DF9C31FAD40FA000A8B8C /* ValueWitnessTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DF9C21FAD40FA000A8B8C /* ValueWitnessTableTests.swift */; };
 		DE79AF121FAA834200B0390B /* Runtime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE79AF081FAA834200B0390B /* Runtime.framework */; };
 		DE79AF191FAA834200B0390B /* Runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = DE79AF0B1FAA834200B0390B /* Runtime.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DE79AF231FAA835100B0390B /* NominalTypeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79AF221FAA835100B0390B /* NominalTypeDescriptor.swift */; };
+		DE79AF231FAA835100B0390B /* StructTypeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79AF221FAA835100B0390B /* StructTypeDescriptor.swift */; };
 		DE9AC70B1FAD206400A26B70 /* ValuePointerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AC70A1FAD206400A26B70 /* ValuePointerTests.swift */; };
 		DE9AC70D1FAD26BA00A26B70 /* ClassHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AC70C1FAD26BA00A26B70 /* ClassHeader.swift */; };
 		DE9D245A1FAF65C50092E080 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D24591FAF65C50092E080 /* String+Extensions.swift */; };
@@ -72,7 +71,7 @@
 		E80B3DC11FE1451E0081DC43 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE061E41FAE3AAD00F2E8C1 /* Vector.swift */; };
 		E80B3DC21FE145210081DC43 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C24A1FAA83E4008C4CB4 /* Metadata.swift */; };
 		E80B3DC31FE145210081DC43 /* MetadataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2541FAA9286008C4CB4 /* MetadataType.swift */; };
-		E80B3DC41FE145210081DC43 /* NominalMetadataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2561FAA929F008C4CB4 /* NominalMetadataType.swift */; };
+		E80B3DC41FE145210081DC43 /* GetFieldAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2561FAA929F008C4CB4 /* GetFieldAt.swift */; };
 		E80B3DC51FE145210081DC43 /* StructMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C25C1FAA957E008C4CB4 /* StructMetadata.swift */; };
 		E80B3DC61FE145210081DC43 /* ClassMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C25E1FAAA6CA008C4CB4 /* ClassMetadata.swift */; };
 		E80B3DC71FE145210081DC43 /* ProtocolMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D21FAE159400855ED7 /* ProtocolMetadata.swift */; };
@@ -82,10 +81,9 @@
 		E80B3DCB1FE145250081DC43 /* ClassHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AC70C1FAD26BA00A26B70 /* ClassHeader.swift */; };
 		E80B3DCD1FE145250081DC43 /* ExistentialContainter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2797131FAC1B0000C2430E /* ExistentialContainter.swift */; };
 		E80B3DCE1FE145250081DC43 /* ValueWitnessTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DF9C01FAD4085000A8B8C /* ValueWitnessTable.swift */; };
-		E80B3DCF1FE145250081DC43 /* NominalTypeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79AF221FAA835100B0390B /* NominalTypeDescriptor.swift */; };
+		E80B3DCF1FE145250081DC43 /* StructTypeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79AF221FAA835100B0390B /* StructTypeDescriptor.swift */; };
 		E80B3DD01FE145250081DC43 /* ProtocolDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D01FAE145B00855ED7 /* ProtocolDescriptor.swift */; };
 		E80B3DD11FE145250081DC43 /* MetadataLayoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C24C1FAA89AF008C4CB4 /* MetadataLayoutType.swift */; };
-		E80B3DD21FE145250081DC43 /* NominalMetadataLayoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2591FAA94EC008C4CB4 /* NominalMetadataLayoutType.swift */; };
 		E80B3DD31FE145250081DC43 /* StructMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C24E1FAA89F2008C4CB4 /* StructMetadataLayout.swift */; };
 		E80B3DD41FE145250081DC43 /* ClassMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37C2501FAA8A26008C4CB4 /* ClassMetadataLayout.swift */; };
 		E80B3DD51FE145250081DC43 /* ProtocolMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D41FAE15C800855ED7 /* ProtocolMetadataLayout.swift */; };
@@ -141,8 +139,7 @@
 		DE37C24E1FAA89F2008C4CB4 /* StructMetadataLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructMetadataLayout.swift; sourceTree = "<group>"; };
 		DE37C2501FAA8A26008C4CB4 /* ClassMetadataLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassMetadataLayout.swift; sourceTree = "<group>"; };
 		DE37C2541FAA9286008C4CB4 /* MetadataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataType.swift; sourceTree = "<group>"; };
-		DE37C2561FAA929F008C4CB4 /* NominalMetadataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominalMetadataType.swift; sourceTree = "<group>"; };
-		DE37C2591FAA94EC008C4CB4 /* NominalMetadataLayoutType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominalMetadataLayoutType.swift; sourceTree = "<group>"; };
+		DE37C2561FAA929F008C4CB4 /* GetFieldAt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFieldAt.swift; sourceTree = "<group>"; };
 		DE37C25C1FAA957E008C4CB4 /* StructMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructMetadata.swift; sourceTree = "<group>"; };
 		DE37C25E1FAAA6CA008C4CB4 /* ClassMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassMetadata.swift; sourceTree = "<group>"; };
 		DE37C2651FAAA87B008C4CB4 /* RelativeVectorPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeVectorPointer.swift; sourceTree = "<group>"; };
@@ -156,7 +153,7 @@
 		DE79AF0C1FAA834200B0390B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE79AF111FAA834200B0390B /* RuntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RuntimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE79AF181FAA834200B0390B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DE79AF221FAA835100B0390B /* NominalTypeDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominalTypeDescriptor.swift; sourceTree = "<group>"; };
+		DE79AF221FAA835100B0390B /* StructTypeDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructTypeDescriptor.swift; sourceTree = "<group>"; };
 		DE9AC70A1FAD206400A26B70 /* ValuePointerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuePointerTests.swift; sourceTree = "<group>"; };
 		DE9AC70C1FAD26BA00A26B70 /* ClassHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassHeader.swift; sourceTree = "<group>"; };
 		DE9D24591FAF65C50092E080 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -236,10 +233,9 @@
 				DE9AC70C1FAD26BA00A26B70 /* ClassHeader.swift */,
 				DE2797131FAC1B0000C2430E /* ExistentialContainter.swift */,
 				DE3DF9C01FAD4085000A8B8C /* ValueWitnessTable.swift */,
-				DE79AF221FAA835100B0390B /* NominalTypeDescriptor.swift */,
+				DE79AF221FAA835100B0390B /* StructTypeDescriptor.swift */,
 				DEB3E3D01FAE145B00855ED7 /* ProtocolDescriptor.swift */,
 				DE37C24C1FAA89AF008C4CB4 /* MetadataLayoutType.swift */,
-				DE37C2591FAA94EC008C4CB4 /* NominalMetadataLayoutType.swift */,
 				DE37C24E1FAA89F2008C4CB4 /* StructMetadataLayout.swift */,
 				DE37C2501FAA8A26008C4CB4 /* ClassMetadataLayout.swift */,
 				DEB3E3D41FAE15C800855ED7 /* ProtocolMetadataLayout.swift */,
@@ -256,7 +252,6 @@
 			children = (
 				DE37C24A1FAA83E4008C4CB4 /* Metadata.swift */,
 				DE37C2541FAA9286008C4CB4 /* MetadataType.swift */,
-				DE37C2561FAA929F008C4CB4 /* NominalMetadataType.swift */,
 				DE37C25C1FAA957E008C4CB4 /* StructMetadata.swift */,
 				DE37C25E1FAAA6CA008C4CB4 /* ClassMetadata.swift */,
 				DEB3E3D21FAE159400855ED7 /* ProtocolMetadata.swift */,
@@ -332,6 +327,7 @@
 		DE9D24581FAF65920092E080 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				DE37C2561FAA929F008C4CB4 /* GetFieldAt.swift */,
 				DE37C2461FAA83AB008C4CB4 /* Pointer+Extensions.swift */,
 				DE9D24591FAF65C50092E080 /* String+Extensions.swift */,
 				DE37C2481FAA83CC008C4CB4 /* IntegerConvertible.swift */,
@@ -530,7 +526,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE37C2571FAA929F008C4CB4 /* NominalMetadataType.swift in Sources */,
+				DE37C2571FAA929F008C4CB4 /* GetFieldAt.swift in Sources */,
 				DE9D245A1FAF65C50092E080 /* String+Extensions.swift in Sources */,
 				DE2797061FABD5AA00C2430E /* TypeInfo.swift in Sources */,
 				DE37C25F1FAAA6CA008C4CB4 /* ClassMetadata.swift in Sources */,
@@ -541,7 +537,7 @@
 				DEB3E3D51FAE15C800855ED7 /* ProtocolMetadataLayout.swift in Sources */,
 				DEF38F161FAD5A8000407647 /* Factory.swift in Sources */,
 				DEE061E31FAE350200F2E8C1 /* TupleMetadata.swift in Sources */,
-				DE79AF231FAA835100B0390B /* NominalTypeDescriptor.swift in Sources */,
+				DE79AF231FAA835100B0390B /* StructTypeDescriptor.swift in Sources */,
 				DEF38F181FAD5A8A00407647 /* DefaultValue.swift in Sources */,
 				DE37C24B1FAA83E4008C4CB4 /* Metadata.swift in Sources */,
 				DE9D245E1FAFB5020092E080 /* EnumMetadata.swift in Sources */,
@@ -558,7 +554,6 @@
 				DEB3E3D11FAE145B00855ED7 /* ProtocolDescriptor.swift in Sources */,
 				DE27970E1FAC17FE00C2430E /* Pointers.swift in Sources */,
 				DE37C24D1FAA89AF008C4CB4 /* MetadataLayoutType.swift in Sources */,
-				DE37C25A1FAA94EC008C4CB4 /* NominalMetadataLayoutType.swift in Sources */,
 				DE3DF9C11FAD4085000A8B8C /* ValueWitnessTable.swift in Sources */,
 				DE2797101FAC19D300C2430E /* Errors.swift in Sources */,
 				DE37C25D1FAA957E008C4CB4 /* StructMetadata.swift in Sources */,
@@ -615,7 +610,6 @@
 				E80B3DD01FE145250081DC43 /* ProtocolDescriptor.swift in Sources */,
 				E80B3DBE1FE1451E0081DC43 /* RelativePointer.swift in Sources */,
 				E80B3DB71FE145160081DC43 /* DefaultValue.swift in Sources */,
-				E80B3DD21FE145250081DC43 /* NominalMetadataLayoutType.swift in Sources */,
 				E80B3DDD1FE145290081DC43 /* TypeInfoConvertible.swift in Sources */,
 				E80B3DDB1FE145290081DC43 /* TypeInfo.swift in Sources */,
 				E80B3DD11FE145250081DC43 /* MetadataLayoutType.swift in Sources */,
@@ -623,13 +617,13 @@
 				E80B3DD81FE145250081DC43 /* EnumMetadataLayout.swift in Sources */,
 				E80B3DC81FE145210081DC43 /* TupleMetadata.swift in Sources */,
 				E80B3DC21FE145210081DC43 /* Metadata.swift in Sources */,
-				E80B3DCF1FE145250081DC43 /* NominalTypeDescriptor.swift in Sources */,
+				E80B3DCF1FE145250081DC43 /* StructTypeDescriptor.swift in Sources */,
 				E80B3DC71FE145210081DC43 /* ProtocolMetadata.swift in Sources */,
 				E80B3DDC1FE145290081DC43 /* PropertyInfo.swift in Sources */,
 				E80B3DBF1FE1451E0081DC43 /* RelativeVectorPointer.swift in Sources */,
 				E80B3DC91FE145210081DC43 /* FuntionMetadata.swift in Sources */,
 				E80B3DD61FE145250081DC43 /* TupleMetadataLayout.swift in Sources */,
-				E80B3DC41FE145210081DC43 /* NominalMetadataType.swift in Sources */,
+				E80B3DC41FE145210081DC43 /* GetFieldAt.swift in Sources */,
 				E80B3DD41FE145250081DC43 /* ClassMetadataLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

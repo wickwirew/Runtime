@@ -23,9 +23,52 @@
 import Foundation
 
 
-struct StructMetadata: NominalMetadataType {
+struct StructMetadata: MetadataType {
+    
     var type: Any.Type
     var metadata: UnsafeMutablePointer<StructMetadataLayout>
-    var nominalTypeDescriptor: UnsafeMutablePointer<NominalTypeDescriptor>
+    var typeDescriptor: UnsafeMutablePointer<StructTypeDescriptor>
     var base: UnsafeMutablePointer<Int>
+    
+    init(type: Any.Type, metadata: UnsafeMutablePointer<Layout>, base: UnsafeMutablePointer<Int>) {
+        self.type = type
+        self.metadata = metadata
+        self.typeDescriptor = metadata.pointee.typeDescriptor
+        self.base = base
+    }
+    
+    mutating func mangledName() -> String {
+        return String(cString: typeDescriptor.pointee.mangledName.advanced())
+    }
+    
+    mutating func numberOfFields() -> Int {
+        return typeDescriptor.pointee.numberOfFields.getInt()
+    }
+    
+    mutating func fieldOffsets() -> [Int] {
+        return typeDescriptor.pointee
+            .offsetToTheFieldOffsetVector
+            .vector(metadata: base, n: numberOfFields())
+            .map{ Int($0) }
+    }
+    
+    mutating func genericParameterCount() -> Int {
+        return typeDescriptor.pointee
+            .exclusiveGenericParametersCount
+            .getInt()
+    }
+    
+    mutating func genericParameters() -> [Any.Type] {
+        return typeDescriptor.pointee
+            .genericParameterVector
+            .vector(metadata: base, n: genericParameterCount())
+    }
+    
+    mutating func toTypeInfo() -> TypeInfo {
+        var info = TypeInfo(metadata: self)
+        info.properties = getProperties(of: type, offsets: fieldOffsets())
+        info.mangledName = mangledName()
+        info.genericTypes = genericParameters()
+        return info
+    }
 }

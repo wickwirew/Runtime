@@ -23,7 +23,7 @@
 import Foundation
 
 
-struct ClassMetadataLayout: NominalMetadataLayoutType {
+struct ClassMetadataLayout: MetadataLayoutType {
     var valueWitnessTable: UnsafePointer<ValueWitnessTable>
     var isaPointer: Int
     var superClass: Any.Type
@@ -37,6 +37,6 @@ struct ClassMetadataLayout: NominalMetadataLayoutType {
     var runtimeReserveField: Int16
     var classObjectSize: Int32
     var classObjectAddressPoint: Int32
-    var nominalTypeDescriptor: UnsafeMutablePointer<NominalTypeDescriptor>
+    var nominalTypeDescriptor: UnsafeMutablePointer<ClassTypeDescriptor>
 }
 
