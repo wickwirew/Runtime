@@ -32,7 +32,14 @@ struct ClassMetadata: NominalMetadataType {
     var base: UnsafeMutablePointer<Int>
     
     func superClassMetadata() -> ClassMetadata? {
-        return metadata.pointee.superClass != swiftObject() ? ClassMetadata(type: metadata.pointee.superClass) : nil
+        let superClass = metadata.pointee.superClass
+        // type comparison directly to NSObject.self does not work.
+        // just compare the type name instead.
+        if superClass != swiftObject() && "\(superClass)" != "NSObject" {
+            return ClassMetadata(type: superClass)
+        } else {
+            return nil
+        }
     }
     
     mutating func toTypeInfo() -> TypeInfo {

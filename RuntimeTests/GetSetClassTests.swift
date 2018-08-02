@@ -258,6 +258,22 @@ class GetSetClassTests: XCTestCase {
         try pet.set(value: new, on: &person)
         XCTAssert((person as! Person).pet.name == "Rex")
     }
+    
+    /// Test case from: https://github.com/wickwirew/Runtime/issues/25
+    func testNSObjectBaseClass() throws {
+        
+        class User: NSObject {
+            let id: Int = 0
+            let username: String = ""
+            let email: String = ""
+        }
+        
+        let info = try typeInfo(of: User.self)
+        let property = try info.property(named: "username")
+        
+        XCTAssert(property.name == "username")
+        XCTAssert(property.type == String.self)
+    }
 }
 
 
