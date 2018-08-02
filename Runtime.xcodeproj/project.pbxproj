@@ -45,8 +45,6 @@
 		DEB3E3D51FAE15C800855ED7 /* ProtocolMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D41FAE15C800855ED7 /* ProtocolMetadataLayout.swift */; };
 		DEB3E3D81FAE16CC00855ED7 /* MetadataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D71FAE16CC00855ED7 /* MetadataTests.swift */; };
 		DEBEE4611FB28BDA007EEE90 /* ProtocolTypeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBEE4601FB28BDA007EEE90 /* ProtocolTypeContainer.swift */; };
-		DED347A020CCA6F60001835D /* NominalTypeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED3479F20CCA6F60001835D /* NominalTypeTest.swift */; };
-		DED347A120CCA6F60001835D /* NominalTypeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED3479F20CCA6F60001835D /* NominalTypeTest.swift */; };
 		DEE061E11FAE345900F2E8C1 /* TupleMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE061E01FAE345900F2E8C1 /* TupleMetadataLayout.swift */; };
 		DEE061E31FAE350200F2E8C1 /* TupleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE061E21FAE350200F2E8C1 /* TupleMetadata.swift */; };
 		DEE061E51FAE3AAD00F2E8C1 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE061E41FAE3AAD00F2E8C1 /* Vector.swift */; };
@@ -165,7 +163,6 @@
 		DEB3E3D41FAE15C800855ED7 /* ProtocolMetadataLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolMetadataLayout.swift; sourceTree = "<group>"; };
 		DEB3E3D71FAE16CC00855ED7 /* MetadataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataTests.swift; sourceTree = "<group>"; };
 		DEBEE4601FB28BDA007EEE90 /* ProtocolTypeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolTypeContainer.swift; sourceTree = "<group>"; };
-		DED3479F20CCA6F60001835D /* NominalTypeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominalTypeTest.swift; sourceTree = "<group>"; };
 		DEE061E01FAE345900F2E8C1 /* TupleMetadataLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TupleMetadataLayout.swift; sourceTree = "<group>"; };
 		DEE061E21FAE350200F2E8C1 /* TupleMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TupleMetadata.swift; sourceTree = "<group>"; };
 		DEE061E41FAE3AAD00F2E8C1 /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
@@ -319,7 +316,6 @@
 				DE3DF9C21FAD40FA000A8B8C /* ValueWitnessTableTests.swift */,
 				DEF38F191FAD5BC000407647 /* FactoryTests.swift */,
 				DEB3E3D71FAE16CC00855ED7 /* MetadataTests.swift */,
-				DED3479F20CCA6F60001835D /* NominalTypeTest.swift */,
 			);
 			path = RuntimeTests;
 			sourceTree = "<group>";
@@ -572,7 +568,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DED347A020CCA6F60001835D /* NominalTypeTest.swift in Sources */,
 				DE3DF9C31FAD40FA000A8B8C /* ValueWitnessTableTests.swift in Sources */,
 				DEF38F1A1FAD5BC000407647 /* FactoryTests.swift in Sources */,
 				DEB3E3D81FAE16CC00855ED7 /* MetadataTests.swift in Sources */,
@@ -632,7 +627,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DED347A120CCA6F60001835D /* NominalTypeTest.swift in Sources */,
 				E80B3DE41FE145500081DC43 /* ValueWitnessTableTests.swift in Sources */,
 				E80B3DE51FE145500081DC43 /* FactoryTests.swift in Sources */,
 				E80B3DE61FE145500081DC43 /* MetadataTests.swift in Sources */,

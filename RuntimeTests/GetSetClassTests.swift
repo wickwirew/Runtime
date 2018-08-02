@@ -258,6 +258,27 @@ class GetSetClassTests: XCTestCase {
         try pet.set(value: new, on: &person)
         XCTAssert((person as! Person).pet.name == "Rex")
     }
+    
+    func testGettinIt() throws {
+        
+        class Meow { }
+        
+        class Cat {
+            var random = 55
+            var meow = Meow()
+//            var another = 24
+        }
+        
+        let info = try typeInfo(of: Cat.self)
+        print(info)
+        
+        
+//        let meow = try info.property(named: "meow")
+//        let cat = Cat()
+//        let value: Meow = try meow.get(from: cat)
+//        XCTAssert(value === cat.meow)
+//        print(cat.meow)
+    }
 }
 
 

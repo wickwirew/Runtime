@@ -53,15 +53,17 @@ struct StructMetadata: MetadataType {
     }
     
     mutating func genericParameterCount() -> Int {
-        return typeDescriptor.pointee
-            .exclusiveGenericParametersCount
-            .getInt()
+        return 0
+//        return typeDescriptor.pointee
+//            .exclusiveGenericParametersCount
+//            .getInt()
     }
     
     mutating func genericParameters() -> [Any.Type] {
-        return typeDescriptor.pointee
-            .genericParameterVector
-            .vector(metadata: base, n: genericParameterCount())
+        return []
+//        return typeDescriptor.pointee
+//            .genericParameterVector
+//            .vector(metadata: base, n: genericParameterCount())
     }
     
     mutating func toTypeInfo() -> TypeInfo {
