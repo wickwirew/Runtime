@@ -50,7 +50,7 @@ struct ClassTypeDescriptor {
     var metadataPositiveSizeInWords: Int32
     var numImmediateMembers: Int32
     var numberOfFields: Int32
-    var fieldOffsetVectorOffset: RelativeVectorPointer<Int32, Int32>
+    var fieldOffsetVectorOffset: RelativeVectorPointer<Int32, Int>
     var unknown11: Int32
     var unknown12: Int32
     var unknown13: Int32

@@ -73,16 +73,9 @@ struct ClassMetadata: MetadataType {
         var info = TypeInfo(metadata: self)
         info.mangledName = className()
 //        info.genericTypes = genericParameters()
+        
         info.properties = getProperties(of: type, offsets: fieldOffsets())
         
-        for p in info.properties {
-            if p.offset == 0 {
-                let ivar: Ivar = class_getInstanceVariable(type as! AnyClass, p.name)!
-                let fieldOffset = ivar_getOffset(ivar)
-                print("offset was 0, found: \(fieldOffset)")
-            }
-        }
-                
         var superClass = superClassMetadata()
         while var sc = superClass {
             info.inheritance.append(sc.type)
