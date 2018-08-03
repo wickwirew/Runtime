@@ -258,6 +258,24 @@ class GetSetStructTests: XCTestCase {
         try pet.set(value: new, on: &person)
         XCTAssert((person as! Person).pet.name == "Rex")
     }
+    
+    func testSetCasting() throws {
+        let info = try typeInfo(of: Person.self)
+        let age = try info.property(named: "age")
+        var person = Person()
+        let newValue: NSNumber = 40
+        try age.set(value: newValue, on: &person)
+        XCTAssert(person.age == 40)
+    }
+    
+    func testSetCastingFailure() throws {
+        let info = try typeInfo(of: Person.self)
+        let age = try info.property(named: "age")
+        var person = Person()
+        let newValue = "this will not work"
+        try age.set(value: newValue, on: &person)
+        XCTAssert(person.age == 25)
+    }
 }
 
 
