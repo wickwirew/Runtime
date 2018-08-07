@@ -259,25 +259,20 @@ class GetSetClassTests: XCTestCase {
         XCTAssert((person as! Person).pet.name == "Rex")
     }
     
-    func testGettinIt() throws {
+    /// Test case from: https://github.com/wickwirew/Runtime/issues/25
+    func testNSObjectBaseClass() throws {
         
-        class Meow { }
-        
-        class Cat {
-            var random = 55
-            var meow = Meow()
-//            var another = 24
+        class User: NSObject {
+            let id: Int = 0
+            let username: String = ""
+            let email: String = ""
         }
         
-        let info = try typeInfo(of: Cat.self)
-        print(info)
+        let info = try typeInfo(of: User.self)
+        let property = try info.property(named: "username")
         
-        
-//        let meow = try info.property(named: "meow")
-//        let cat = Cat()
-//        let value: Meow = try meow.get(from: cat)
-//        XCTAssert(value === cat.meow)
-//        print(cat.meow)
+        XCTAssert(property.name == "username")
+        XCTAssert(property.type == String.self)
     }
 }
 
