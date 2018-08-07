@@ -37,6 +37,7 @@ struct ClassMetadataLayout: MetadataLayoutType {
     var runtimeReserveField: Int16
     var classObjectSize: Int32
     var classObjectAddressPoint: Int32
-    var nominalTypeDescriptor: UnsafeMutablePointer<ClassTypeDescriptor>
+    var typeDescriptor: UnsafeMutablePointer<ClassTypeDescriptor>
+    var genericParameterVector: RelativeVectorPointer<Int32, Any.Type>
 }
 

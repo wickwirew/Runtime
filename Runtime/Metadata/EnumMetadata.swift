@@ -28,58 +28,32 @@ struct EnumMetadata: MetadataType {
     
     var type: Any.Type
     var metadata: UnsafeMutablePointer<EnumMetadataLayout>
-    var nominalTypeDescriptor: UnsafeMutablePointer<StructTypeDescriptor>
+    var typeDescriptor: UnsafeMutablePointer<StructTypeDescriptor>
     var base: UnsafeMutablePointer<Int>
     
     init(type: Any.Type, metadata: UnsafeMutablePointer<Layout>, base: UnsafeMutablePointer<Int>) {
         self.type = type
         self.metadata = metadata
-        self.nominalTypeDescriptor = metadata.pointee.typeDescriptor
+        self.typeDescriptor = metadata.pointee.typeDescriptor
         self.base = base
     }
     
     mutating func mangledName() -> String {
-        return String(cString: nominalTypeDescriptor.pointee.mangledName.advanced())
+        return String(cString: typeDescriptor.pointee.mangledName.advanced())
     }
     
     mutating func numberOfFields() -> Int {
-        return nominalTypeDescriptor.pointee.numberOfFields.getInt()
+        return typeDescriptor.pointee.numberOfFields.getInt()
     }
     
     mutating func fieldOffsets() -> [Int] {
-        return nominalTypeDescriptor.pointee.offsetToTheFieldOffsetVector.vector(metadata: base, n: numberOfFields()).map{ Int($0) }
-    }
-    
-    mutating func genericParameterCount() -> Int {
-        return nominalTypeDescriptor.pointee.exclusiveGenericParametersCount.getInt()
-    }
-    
-    mutating func genericParameters() -> [Any.Type] {
-        return nominalTypeDescriptor.pointee.genericParameterVector.vector(metadata: base, n: genericParameterCount())
-    }
-    
-    mutating func properties() -> [PropertyInfo] {
-        let offsets = fieldOffsets()
-        
-        return (0..<offsets.count).map{ index in
-            let offset = offsets[index]
-            var context = PropertyInfoContext(name: "", type: Any.self)
-            _getFieldAt(type, index, { name, type, ctx in
-                let infoContext = ctx.assumingMemoryBound(to: PropertyInfoContext.self).mutable
-                infoContext.pointee = PropertyInfoContext(
-                    name: String(cString: name),
-                    type: unsafeBitCast(type, to: Any.Type.self)
-                )
-            }, &context)
-            return PropertyInfo(name: context.name, type: context.type, offset: offset, ownerType: type)
-        }
+        return typeDescriptor.pointee.offsetToTheFieldOffsetVector.vector(metadata: base, n: numberOfFields()).map{ Int($0) }
     }
     
     mutating func toTypeInfo() -> TypeInfo {
         var info = TypeInfo(metadata: self)
-        info.properties = properties()
+        info.properties = getProperties(of: type, offsets: fieldOffsets())
         info.mangledName = mangledName()
-        info.genericTypes = genericParameters()
         return info
     }
 }

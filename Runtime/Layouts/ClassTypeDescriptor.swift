@@ -20,22 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-
-typealias FieldTypeAccessor = @convention(c) (UnsafePointer<Int>) -> UnsafePointer<Int>
-
-struct StructTypeDescriptor {
+struct ClassTypeDescriptor {
     var flags: Int32
     var parent: Int32
-    var mangledName: RelativePointer<Int32, CChar>
-    var unknown3: Int32
+    var className: RelativePointer<Int32, CChar>
+    var fieldTypesAccessor: RelativePointer<Int32, Int>
+    var superClass: RelativePointer<Int32, Any.Type>
+    var resilientMetadataBounds: Int32
+    var metadataPositiveSizeInWords: Int32
+    var numImmediateMembers: Int32
     var numberOfFields: Int32
-    var offsetToTheFieldOffsetVector: RelativeVectorPointer<Int32, Int32>
-    var fieldTypeAccessor: RelativePointer<Int32, Int>
-    var metadataPattern: Int32
-    var inclusiveGenericParametersCount: Int32
-    var exclusiveGenericParametersCount: Int32
-    var idk2: Int32
-    var genericParameterVector: RelativeVectorPointer<Int32, Any.Type>
+    var fieldOffsetVectorOffset: RelativeVectorPointer<Int32, Int>
 }

@@ -39,6 +39,7 @@
 		DE9D245A1FAF65C50092E080 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D24591FAF65C50092E080 /* String+Extensions.swift */; };
 		DE9D245C1FAFB45B0092E080 /* EnumMetadataLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D245B1FAFB45B0092E080 /* EnumMetadataLayout.swift */; };
 		DE9D245E1FAFB5020092E080 /* EnumMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D245D1FAFB5020092E080 /* EnumMetadata.swift */; };
+		DEABF73C211A56C500C5F932 /* ClassTypeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEABF73B211A56C500C5F932 /* ClassTypeDescriptor.swift */; };
 		DEAC0BDB1FB6904A000463F1 /* RetainCounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAC0BDA1FB6904A000463F1 /* RetainCounts.swift */; };
 		DEB3E3D11FAE145B00855ED7 /* ProtocolDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D01FAE145B00855ED7 /* ProtocolDescriptor.swift */; };
 		DEB3E3D31FAE159400855ED7 /* ProtocolMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB3E3D21FAE159400855ED7 /* ProtocolMetadata.swift */; };
@@ -157,6 +158,7 @@
 		DE9D24591FAF65C50092E080 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		DE9D245B1FAFB45B0092E080 /* EnumMetadataLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumMetadataLayout.swift; sourceTree = "<group>"; };
 		DE9D245D1FAFB5020092E080 /* EnumMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumMetadata.swift; sourceTree = "<group>"; };
+		DEABF73B211A56C500C5F932 /* ClassTypeDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTypeDescriptor.swift; sourceTree = "<group>"; };
 		DEAC0BDA1FB6904A000463F1 /* RetainCounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetainCounts.swift; sourceTree = "<group>"; };
 		DEB3E3D01FAE145B00855ED7 /* ProtocolDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolDescriptor.swift; sourceTree = "<group>"; };
 		DEB3E3D21FAE159400855ED7 /* ProtocolMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolMetadata.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				DEE061E81FAE411B00F2E8C1 /* FunctionMetadataLayout.swift */,
 				DE9D245B1FAFB45B0092E080 /* EnumMetadataLayout.swift */,
 				DEBEE4601FB28BDA007EEE90 /* ProtocolTypeContainer.swift */,
+				DEABF73B211A56C500C5F932 /* ClassTypeDescriptor.swift */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -448,11 +451,12 @@
 				TargetAttributes = {
 					DE79AF071FAA834100B0390B = {
 						CreatedOnToolsVersion = 9.0.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					DE79AF101FAA834200B0390B = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					E80B3D9F1FE144BC0081DC43 = {
@@ -549,6 +553,7 @@
 				DE9AC70D1FAD26BA00A26B70 /* ClassHeader.swift in Sources */,
 				DEB3E3D11FAE145B00855ED7 /* ProtocolDescriptor.swift in Sources */,
 				DE27970E1FAC17FE00C2430E /* Pointers.swift in Sources */,
+				DEABF73C211A56C500C5F932 /* ClassTypeDescriptor.swift in Sources */,
 				DE37C24D1FAA89AF008C4CB4 /* MetadataLayoutType.swift in Sources */,
 				DE3DF9C11FAD4085000A8B8C /* ValueWitnessTable.swift in Sources */,
 				DE2797101FAC19D300C2430E /* Errors.swift in Sources */,
@@ -789,7 +794,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -811,7 +816,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.weswickwire.Runtime;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -825,7 +830,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.weswickwire.RuntimeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -839,7 +844,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.weswickwire.RuntimeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

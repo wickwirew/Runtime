@@ -31,7 +31,6 @@ public struct TypeInfo {
     public var mangledName: String = ""
     public var properties: [PropertyInfo] = []
     public var inheritance: [Any.Type] = []
-    public var genericTypes: [Any.Type] = []
     public var size: Int = 0
     public var alignment: Int = 0
     public var stride: Int = 0

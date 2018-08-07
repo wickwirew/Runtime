@@ -52,25 +52,10 @@ struct StructMetadata: MetadataType {
             .map{ Int($0) }
     }
     
-    mutating func genericParameterCount() -> Int {
-        return 0
-//        return typeDescriptor.pointee
-//            .exclusiveGenericParametersCount
-//            .getInt()
-    }
-    
-    mutating func genericParameters() -> [Any.Type] {
-        return []
-//        return typeDescriptor.pointee
-//            .genericParameterVector
-//            .vector(metadata: base, n: genericParameterCount())
-    }
-    
     mutating func toTypeInfo() -> TypeInfo {
         var info = TypeInfo(metadata: self)
         info.properties = getProperties(of: type, offsets: fieldOffsets())
         info.mangledName = mangledName()
-        info.genericTypes = genericParameters()
         return info
     }
 }

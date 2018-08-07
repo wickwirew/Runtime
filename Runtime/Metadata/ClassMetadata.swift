@@ -22,8 +22,6 @@
 
 import Foundation
 
-
-
 struct ClassMetadata: MetadataType {
     
     var type: Any.Type
@@ -34,7 +32,7 @@ struct ClassMetadata: MetadataType {
     init(type: Any.Type, metadata: UnsafeMutablePointer<Layout>, base: UnsafeMutablePointer<Int>) {
         self.type = type
         self.metadata = metadata
-        self.typeDescriptor = metadata.pointee.nominalTypeDescriptor
+        self.typeDescriptor = metadata.pointee.typeDescriptor
         self.base = base
     }
     
@@ -55,16 +53,6 @@ struct ClassMetadata: MetadataType {
             .map{ Int($0) }
     }
     
-    mutating func genericParameterCount() -> Int {
-//        return nominalTypeDescriptor.pointee.exclusiveGenericParametersCount.getInt()
-        fatalError()
-    }
-    
-    mutating func genericParameters() -> [Any.Type] {
-//        return nominalTypeDescriptor.pointee.genericParameterVector.vector(metadata: base, n: genericParameterCount())
-        fatalError()
-    }
-    
     func superClassMetadata() -> ClassMetadata? {
         return metadata.pointee.superClass != swiftObject() ? ClassMetadata(type: metadata.pointee.superClass) : nil
     }
@@ -72,7 +60,6 @@ struct ClassMetadata: MetadataType {
     mutating func toTypeInfo() -> TypeInfo {
         var info = TypeInfo(metadata: self)
         info.mangledName = className()
-//        info.genericTypes = genericParameters()
         
         info.properties = getProperties(of: type, offsets: fieldOffsets())
         
