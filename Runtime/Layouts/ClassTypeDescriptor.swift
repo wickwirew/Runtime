@@ -20,9 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-
-protocol NominalMetadataLayoutType: MetadataLayoutType {
-    var nominalTypeDescriptor: UnsafeMutablePointer<NominalTypeDescriptor> { get set }
+struct ClassTypeDescriptor {
+    var flags: Int32
+    var parent: Int32
+    var className: RelativePointer<Int32, CChar>
+    var fieldTypesAccessor: RelativePointer<Int32, Int>
+    var superClass: RelativePointer<Int32, Any.Type>
+    var resilientMetadataBounds: Int32
+    var metadataPositiveSizeInWords: Int32
+    var numImmediateMembers: Int32
+    var numberOfFields: Int32
+    var fieldOffsetVectorOffset: RelativeVectorPointer<Int32, Int>
 }

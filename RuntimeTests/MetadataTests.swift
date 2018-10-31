@@ -46,7 +46,6 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.properties.first{$0.name == "baseProperty"} != nil)
         XCTAssert(info.inheritance[0] == BaseClass.self)
         XCTAssert(info.superClass == BaseClass.self)
-        XCTAssert(info.genericTypes[0] == Int.self)
         XCTAssert(info.mangledName != "")
         XCTAssert(info.kind == .class)
         XCTAssert(info.type == MyClass<Int>.self)
@@ -59,14 +58,12 @@ class MetadataTests: XCTestCase {
     func testStruct() {
         var md = StructMetadata(type: MyStruct<Int>.self)
         let info = md.toTypeInfo()
-        XCTAssert(info.genericTypes[0] == Int.self)
         XCTAssert(info.kind == .struct)
         XCTAssert(info.type == MyStruct<Int>.self)
         XCTAssert(info.properties.count == 4)
         XCTAssert(info.size == MemoryLayout<MyStruct<Int>>.size)
         XCTAssert(info.alignment == MemoryLayout<MyStruct<Int>>.alignment)
         XCTAssert(info.stride == MemoryLayout<MyStruct<Int>>.stride)
-        XCTAssert(info.mangledName != "")
     }
     
     func testProtocol() {
@@ -128,8 +125,6 @@ class MetadataTests: XCTestCase {
     func testEnum() {
         var md = EnumMetadata(type: MyEnum<Int>.self)
         let info = md.toTypeInfo()
-        XCTAssert(info.genericTypes.count == 1)
-        XCTAssert(info.genericTypes[0] == Int.self)
     }
     
 }

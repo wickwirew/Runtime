@@ -22,14 +22,36 @@
 
 import Foundation
 
-
-
-struct ClassMetadata: NominalMetadataType {
+struct ClassMetadata: MetadataType {
     
     var type: Any.Type
     var metadata: UnsafeMutablePointer<ClassMetadataLayout>
-    var nominalTypeDescriptor: UnsafeMutablePointer<NominalTypeDescriptor>
+    var typeDescriptor: UnsafeMutablePointer<ClassTypeDescriptor>
     var base: UnsafeMutablePointer<Int>
+    
+    init(type: Any.Type, metadata: UnsafeMutablePointer<Layout>, base: UnsafeMutablePointer<Int>) {
+        self.type = type
+        self.metadata = metadata
+        self.typeDescriptor = metadata.pointee.typeDescriptor
+        self.base = base
+    }
+    
+    mutating func className() -> String {
+        return String(cString: typeDescriptor.pointee.className.advanced())
+    }
+    
+    mutating func numberOfFields() -> Int {
+        return typeDescriptor.pointee
+            .numberOfFields
+            .getInt()
+    }
+    
+    mutating func fieldOffsets() -> [Int] {
+        return typeDescriptor.pointee
+            .fieldOffsetVectorOffset
+            .vector(metadata: base, n: numberOfFields())
+            .map{ Int($0) }
+    }
     
     func superClassMetadata() -> ClassMetadata? {
         let superClass = metadata.pointee.superClass
@@ -43,8 +65,11 @@ struct ClassMetadata: NominalMetadataType {
     }
     
     mutating func toTypeInfo() -> TypeInfo {
-        var info = TypeInfo(nominalMetadata: self)
-        info.properties = properties()
+        var info = TypeInfo(metadata: self)
+        info.mangledName = className()
+        
+        info.properties = getProperties(of: type, offsets: fieldOffsets())
+        
         var superClass = superClassMetadata()
         while var sc = superClass {
             info.inheritance.append(sc.type)

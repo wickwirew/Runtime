@@ -26,7 +26,7 @@ import Foundation
 protocol Getters {}
 extension Getters {
     static func get(from pointer: UnsafeRawPointer) -> Any {
-        return pointer.assumingMemoryBound(to: self).pointee
+        return pointer.assumingMemoryBound(to: Self.self).pointee
     }
 }
 

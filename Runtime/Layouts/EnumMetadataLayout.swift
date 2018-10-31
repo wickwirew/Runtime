@@ -24,9 +24,9 @@ import Foundation
 
 
 
-struct EnumMetadataLayout: NominalMetadataLayoutType {
+struct EnumMetadataLayout: MetadataLayoutType {
     var valueWitnessTable: UnsafePointer<ValueWitnessTable>
     var kind: Int
-    var nominalTypeDescriptor: UnsafeMutablePointer<NominalTypeDescriptor>
+    var typeDescriptor: UnsafeMutablePointer<StructTypeDescriptor>
     var parent: Int
 }

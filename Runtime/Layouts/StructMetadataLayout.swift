@@ -23,8 +23,8 @@
 import Foundation
 
 
-struct StructMetadataLayout: NominalMetadataLayoutType {
+struct StructMetadataLayout: MetadataLayoutType {
     var valueWitnessTable: UnsafePointer<ValueWitnessTable>
     var kind: Int
-    var nominalTypeDescriptor: UnsafeMutablePointer<NominalTypeDescriptor>
+    var typeDescriptor: UnsafeMutablePointer<StructTypeDescriptor>
 }
