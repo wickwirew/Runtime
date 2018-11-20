@@ -37,7 +37,7 @@ func getProperties(of type: Any.Type, offsets: [Int]) -> [PropertyInfo] {
         let pointer = unsafeBitCast(type, to: UnsafeRawPointer.self)
         swift_getFieldAt(pointer, UInt32(index), { name, type, ctx in
             guard let name = name, let ctx = ctx else { 
-                return
+                fatalError("name and ctx should not be nil")
             }
             let infoContext = ctx.assumingMemoryBound(to: PropertyInfoContext.self)
             infoContext.pointee = PropertyInfoContext(
