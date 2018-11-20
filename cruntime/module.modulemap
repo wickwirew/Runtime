@@ -1,0 +1,4 @@
+module cruntime {
+    header "Sources/cruntime.h"
+    link "cruntime"
+}

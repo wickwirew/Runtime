@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:4.2
 import PackageDescription
 
 let package = Package(
@@ -8,16 +8,16 @@ let package = Package(
             name: "Runtime",
             targets: ["Runtime"]),
         ],
-    dependencies: [],
+    dependencies: [.package(path: "./cruntime")],
     targets: [
         .target(
             name: "Runtime",
-            dependencies: [],
+            dependencies: ["cruntime"],
             path: "Runtime"),
         .testTarget(
             name: "RuntimeTests",
             dependencies: ["Runtime"],
             path: "RuntimeTests"),
         ],
-    swiftLanguageVersions: [4]
+    swiftLanguageVersions: [.v4_2]
 )
