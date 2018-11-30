@@ -21,7 +21,7 @@
 // SOFTWARE.
 
 import Foundation
-import cruntime
+import CRuntime
 
 /// Type to use as the context in the `_getFieldAt` function.
 struct PropertyInfoContext {
