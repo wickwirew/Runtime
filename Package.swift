@@ -1,6 +1,5 @@
 // swift-tools-version:4.2
 import PackageDescription
-
 let package = Package(
     name: "Runtime",
     products: [
@@ -8,16 +7,16 @@ let package = Package(
             name: "Runtime",
             targets: ["Runtime"]),
         ],
-    dependencies: [.package(path: "./cruntime")],
+        dependencies: [
+            .package(url: "https://github.com/noahemmet/CRuntime.git", from: "1.0.0")
+        ],
     targets: [
         .target(
             name: "Runtime",
-            dependencies: ["cruntime"],
-            path: "Runtime"),
+            dependencies: ["CRuntime"]),
         .testTarget(
             name: "RuntimeTests",
-            dependencies: ["Runtime"],
-            path: "RuntimeTests"),
-        ],
+            dependencies: ["Runtime"])
+    ],
     swiftLanguageVersions: [.v4_2]
 )

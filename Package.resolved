@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CRuntime",
+        "repositoryURL": "https://github.com/noahemmet/CRuntime.git",
+        "state": {
+          "branch": null,
+          "revision": "f2a282f1b8ac204f4143b31a6490ad1d66612be5",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
