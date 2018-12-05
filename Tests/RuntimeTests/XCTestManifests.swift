@@ -101,7 +101,7 @@ extension ValueWitnessTableTests {
     ]
 }
 
-#if !os(macOS)
+#if !os(macOS) && !os(iOS)
 public func __allTests() -> [XCTestCaseEntry] {
     return [
         testCase(FactoryTests.__allTests),

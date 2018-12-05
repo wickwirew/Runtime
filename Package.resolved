@@ -3,10 +3,10 @@
     "pins": [
       {
         "package": "CRuntime",
-        "repositoryURL": "https://github.com/noahemmet/CRuntime.git",
+        "repositoryURL": "https://github.com/wickwirew/CRuntime.git",
         "state": {
           "branch": null,
-          "revision": "f2a282f1b8ac204f4143b31a6490ad1d66612be5",
+          "revision": "8d0dd0ca3787d15682c1f44de3d298459870b121",
           "version": "1.0.0"
         }
       }
