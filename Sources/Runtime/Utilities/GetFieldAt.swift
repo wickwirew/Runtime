@@ -21,15 +21,7 @@
 // SOFTWARE.
 
 import Foundation
-
-// https://github.com/apple/swift/blob/457fab40c598428250cd091c45a4ae3c58bc3640/stdlib/public/runtime/MetadataLookup.cpp#L1114
-@_silgen_name("swift_getFieldAt")
-func _getFieldAt(
-    _ type: Any.Type,
-    _ index: Int,
-    _ callback: @convention(c) (UnsafePointer<CChar>, UnsafeRawPointer, UnsafeRawPointer) -> Void,
-    _ ctx: UnsafeRawPointer
-)
+import CRuntime
 
 /// Type to use as the context in the `_getFieldAt` function.
 struct PropertyInfoContext {
@@ -42,8 +34,12 @@ func getProperties(of type: Any.Type, offsets: [Int]) -> [PropertyInfo] {
     return (0..<offsets.count).map{ index in
         let offset = offsets[index]
         var context = PropertyInfoContext(name: "", type: Any.self)
-        _getFieldAt(type, index, { name, type, ctx in
-            let infoContext = ctx.assumingMemoryBound(to: PropertyInfoContext.self).mutable
+        let pointer = unsafeBitCast(type, to: UnsafeRawPointer.self)
+        swift_getFieldAt(pointer, UInt32(index), { name, type, ctx in
+            guard let name = name, let ctx = ctx else { 
+                fatalError("name and ctx should not be nil")
+            }
+            let infoContext = ctx.assumingMemoryBound(to: PropertyInfoContext.self)
             infoContext.pointee = PropertyInfoContext(
                 name: String(cString: name),
                 type: unsafeBitCast(type, to: Any.Type.self)
