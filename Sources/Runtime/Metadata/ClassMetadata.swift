@@ -29,7 +29,7 @@ struct ClassMetadata: MetadataType {
     var typeDescriptor: UnsafeMutablePointer<ClassTypeDescriptor>
     var base: UnsafeMutablePointer<Int>
     
-    init(type: Any.Type, metadata: UnsafeMutablePointer<Layout>, base: UnsafeMutablePointer<Int>) {
+    init(type: Any.Type, metadata: UnsafeMutablePointer<ClassMetadataLayout>, base: UnsafeMutablePointer<Int>) {
         self.type = type
         self.metadata = metadata
         self.typeDescriptor = metadata.pointee.typeDescriptor

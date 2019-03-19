@@ -31,7 +31,7 @@ struct ProtocolMetadata: MetadataType {
     var base: UnsafeMutablePointer<Int>
     var protocolDescriptor: UnsafeMutablePointer<ProtocolDescriptor>
     
-    init(type: Any.Type, metadata: UnsafeMutablePointer<Layout>, base: UnsafeMutablePointer<Int>) {
+    init(type: Any.Type, metadata: UnsafeMutablePointer<ProtocolMetadataLayout>, base: UnsafeMutablePointer<Int>) {
         self.type = type
         self.metadata = metadata
         self.base = base

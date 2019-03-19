@@ -262,7 +262,7 @@
             );
             HEADER_SEARCH_PATHS = (
                "$(inherited)",
-               "$(SRCROOT)/.build/checkouts/CRuntime.git--1672828878229581488/Sources/CRuntime"
+               "$(SRCROOT)/.build/checkouts/CRuntime.git--4913803245925083066/Sources/CRuntime"
             );
             INFOPLIST_FILE = "Runtime.xcodeproj/RuntimeTests_Info.plist";
             LD_RUNPATH_SEARCH_PATHS = (
@@ -298,7 +298,7 @@
             );
             HEADER_SEARCH_PATHS = (
                "$(inherited)",
-               "$(SRCROOT)/.build/checkouts/CRuntime.git--1672828878229581488/Sources/CRuntime"
+               "$(SRCROOT)/.build/checkouts/CRuntime.git--4913803245925083066/Sources/CRuntime"
             );
             INFOPLIST_FILE = "Runtime.xcodeproj/RuntimeTests_Info.plist";
             LD_RUNPATH_SEARCH_PATHS = (
@@ -810,8 +810,8 @@
       "OBJ_69" = {
          isa = "PBXGroup";
          children = (
-            "Runtime::Runtime::Product",
-            "Runtime::RuntimeTests::Product"
+            "Runtime::RuntimeTests::Product",
+            "Runtime::Runtime::Product"
          );
          name = "Products";
          path = "";
@@ -866,7 +866,7 @@
             );
             HEADER_SEARCH_PATHS = (
                "$(inherited)",
-               "$(SRCROOT)/.build/checkouts/CRuntime.git--1672828878229581488/Sources/CRuntime"
+               "$(SRCROOT)/.build/checkouts/CRuntime.git--4913803245925083066/Sources/CRuntime"
             );
             INFOPLIST_FILE = "Runtime.xcodeproj/Runtime_Info.plist";
             LD_RUNPATH_SEARCH_PATHS = (
@@ -904,7 +904,7 @@
             );
             HEADER_SEARCH_PATHS = (
                "$(inherited)",
-               "$(SRCROOT)/.build/checkouts/CRuntime.git--1672828878229581488/Sources/CRuntime"
+               "$(SRCROOT)/.build/checkouts/CRuntime.git--4913803245925083066/Sources/CRuntime"
             );
             INFOPLIST_FILE = "Runtime.xcodeproj/Runtime_Info.plist";
             LD_RUNPATH_SEARCH_PATHS = (

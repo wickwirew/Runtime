@@ -35,16 +35,16 @@ func getProperties(of type: Any.Type, offsets: [Int]) -> [PropertyInfo] {
         let offset = offsets[index]
         var context = PropertyInfoContext(name: "", type: Any.self)
         let pointer = unsafeBitCast(type, to: UnsafeRawPointer.self)
-        swift_getFieldAt(pointer, UInt32(index), { name, type, ctx in
-            guard let name = name, let ctx = ctx else { 
-                fatalError("name and ctx should not be nil")
-            }
-            let infoContext = ctx.assumingMemoryBound(to: PropertyInfoContext.self)
-            infoContext.pointee = PropertyInfoContext(
-                name: String(cString: name),
-                type: unsafeBitCast(type, to: Any.Type.self)
-            )
-        }, &context)
-        return PropertyInfo(name: context.name, type: context.type, offset: offset, ownerType: type)
+//        swift_getFieldAt(pointer, UInt32(index), { name, type, ctx in
+//            guard let name = name, let ctx = ctx else {
+//                fatalError("name and ctx should not be nil")
+//            }
+//            let infoContext = ctx.assumingMemoryBound(to: PropertyInfoContext.self)
+//            infoContext.pointee = PropertyInfoContext(
+//                name: String(cString: name),
+//                type: unsafeBitCast(type, to: Any.Type.self)
+//            )
+//        }, &context)
+        return PropertyInfo(name: "", type: context.type, offset: offset, ownerType: type)
     }
 }
