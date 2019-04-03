@@ -52,18 +52,42 @@ struct StructMetadata: MetadataType {
             .map{ Int($0) }
     }
     
-    mutating func fieldRecords() -> [FieldRecord] {
-        return typeDescriptor.pointee
+    mutating func properties() -> [PropertyInfo] {
+        let offsets = fieldOffsets()
+        let fieldDescriptor = typeDescriptor.pointee
             .fieldDescriptor
             .advanced()
-            .pointee
-            .fields
-            .vector(n: numberOfFields())
+        
+        
+        
+        return (0..<numberOfFields()).map { i in
+            let record = fieldDescriptor
+                .pointee
+                .fields
+                .element(at: i)
+            
+            return PropertyInfo(
+                name: record.pointee.fieldName(),
+                type: record.pointee.type(
+                    genericContext: typeDescriptor,
+                    genericArguments: metadata.pointee.genericArgumentVector.element(at: 0)
+                ),
+                offset: offsets[i],
+                ownerType: type
+            )
+        }
+    }
+    
+    mutating func genericArguments() -> [Any.Type] {
+        let n = metadata.pointee.typeDescriptor.pointee.numberOfGenericArguments
+        return metadata.pointee
+            .genericArgumentVector
+            .vector(n: n)
     }
     
     mutating func toTypeInfo() -> TypeInfo {
         var info = TypeInfo(metadata: self)
-        info.properties = getProperties(of: type, offsets: fieldOffsets())
+        info.properties = properties()
         info.mangledName = mangledName()
         return info
     }

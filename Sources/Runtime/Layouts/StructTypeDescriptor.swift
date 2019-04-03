@@ -35,8 +35,5 @@ struct StructTypeDescriptor {
     var offsetToTheFieldOffsetVector: RelativeVectorPointer<Int32, Int32>
     var fieldTypeAccessor: RelativePointer<Int32, Int>
     var metadataPattern: Int32
-    var inclusiveGenericParametersCount: Int32
-    var exclusiveGenericParametersCount: Int32
-    var idk2: Int32
-    var genericParameterVector: RelativeVectorPointer<Int32, Any.Type>
+    var numberOfGenericArguments: Int32
 }

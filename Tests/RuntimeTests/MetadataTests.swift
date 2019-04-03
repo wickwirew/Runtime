@@ -55,15 +55,28 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.stride == MemoryLayout<MyClass<Int>>.stride)
     }
     
+    func testGenericStruct() {
+        struct A<B,C,D,E,F,G,H> { let b: B }
+        var md = StructMetadata(type: A<Int, Int, Int, Int, Int, Int, Int>.self)
+        var args = md.genericArguments()
+        let props = md.properties()
+        XCTAssert(args.count == 7)
+        XCTAssert(args[1] == Int.self)
+        XCTAssert(props.count == 1)
+        XCTAssert(props[0].type == Int.self)
+    }
+    
     func testStruct() {
-        var md = StructMetadata(type: MyStruct<Int>.self)
+        struct A { let a,b,c,d: Int }
+        
+        var md = StructMetadata(type: A.self)
         let info = md.toTypeInfo()
         XCTAssert(info.kind == .struct)
-        XCTAssert(info.type == MyStruct<Int>.self)
+        XCTAssert(info.type == A.self)
         XCTAssert(info.properties.count == 4)
-//        XCTAssert(info.size == MemoryLayout<MyStruct<Int>>.size)
-//        XCTAssert(info.alignment == MemoryLayout<MyStruct<Int>>.alignment)
-//        XCTAssert(info.stride == MemoryLayout<MyStruct<Int>>.stride)
+        XCTAssert(info.size == MemoryLayout<A>.size)
+        XCTAssert(info.alignment == MemoryLayout<A>.alignment)
+        XCTAssert(info.stride == MemoryLayout<A>.stride)
     }
     
     func testProtocol() {

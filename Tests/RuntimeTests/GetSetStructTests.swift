@@ -64,6 +64,15 @@ class GetSetStructTests: XCTestCase {
         XCTAssert(name == "Wes")
     }
     
+    func testGetSimple() throws {
+        struct A { let a = 2 }
+        let info = try typeInfo(of: A.self)
+        let a = try info.property(named: "a")
+        let value = A()
+        let result: Int = try a.get(from: value)
+        XCTAssert(result == 2)
+    }
+    
     func testGetUntypedValue() throws {
         let info = try typeInfo(of: Person.self)
         let firstname = try info.property(named: "firstname")

@@ -29,7 +29,13 @@ struct FieldRecord {
         return String(cString: _mangledTypeName.advanced())
     }
     
-    mutating func type() -> Any.Type {
-        return _getTypeByMangledNameInContext(mangedTypeName(), 256, genericContext: nil, genericArguments: nil)!
+    mutating func type(genericContext: UnsafeRawPointer?,
+                       genericArguments: UnsafeRawPointer?) -> Any.Type {
+        return _getTypeByMangledNameInContext(
+            mangedTypeName(),
+            256,
+            genericContext: genericContext,
+            genericArguments: genericArguments
+        )!
     }
 }

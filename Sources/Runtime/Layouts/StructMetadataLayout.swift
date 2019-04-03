@@ -27,4 +27,5 @@ struct StructMetadataLayout: MetadataLayoutType {
     var valueWitnessTable: UnsafePointer<ValueWitnessTable>
     var kind: Int
     var typeDescriptor: UnsafeMutablePointer<StructTypeDescriptor>
+    var genericArgumentVector: Vector<Any.Type>
 }
