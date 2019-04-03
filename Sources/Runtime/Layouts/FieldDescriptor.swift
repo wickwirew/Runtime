@@ -31,11 +31,26 @@ struct FieldRecord {
     
     mutating func type(genericContext: UnsafeRawPointer?,
                        genericArguments: UnsafeRawPointer?) -> Any.Type {
+        let typeName = _mangledTypeName.advanced()
         return _getTypeByMangledNameInContext(
-            mangedTypeName(),
-            256,
+            typeName,
+            getSymbolicMangledNameLength(typeName),
             genericContext: genericContext,
             genericArguments: genericArguments
         )!
+    }
+    
+    func getSymbolicMangledNameLength(_ base: UnsafeRawPointer) -> Int {
+        var end = base
+        while let current = Optional(end.load(as: UInt8.self)), current != 0 {
+            end = end + 1
+            if current >= 0x1 && current <= 0x17 {
+                end += 4
+            } else if current >= 0x18 && current <= 0x1F {
+                end += MemoryLayout<Int>.size
+            }
+        }
+        
+        return end - base
     }
 }

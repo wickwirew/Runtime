@@ -65,10 +65,10 @@ class GetSetStructTests: XCTestCase {
     }
     
     func testGetSimple() throws {
-        struct A { let a = 2 }
-        let info = try typeInfo(of: A.self)
+        struct Test { let a: Int = 2 }
+        let info = try typeInfo(of: Test.self)
         let a = try info.property(named: "a")
-        let value = A()
+        let value = Test()
         let result: Int = try a.get(from: value)
         XCTAssert(result == 2)
     }
