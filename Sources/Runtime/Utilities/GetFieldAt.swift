@@ -48,3 +48,11 @@ func getProperties(of type: Any.Type, offsets: [Int]) -> [PropertyInfo] {
         return PropertyInfo(name: "", type: context.type, offset: offset, ownerType: type)
     }
 }
+
+@_silgen_name("swift_getTypeByMangledNameInContext")
+public func _getTypeByMangledNameInContext(
+    _ name: UnsafePointer<UInt8>,
+    _ nameLength: Int,
+    genericContext: UnsafeRawPointer?,
+    genericArguments: UnsafeRawPointer?)
+    -> Any.Type?

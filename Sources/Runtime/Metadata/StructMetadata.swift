@@ -52,6 +52,15 @@ struct StructMetadata: MetadataType {
             .map{ Int($0) }
     }
     
+    mutating func fieldRecords() -> [FieldRecord] {
+        return typeDescriptor.pointee
+            .fieldDescriptor
+            .advanced()
+            .pointee
+            .fields
+            .vector(n: numberOfFields())
+    }
+    
     mutating func toTypeInfo() -> TypeInfo {
         var info = TypeInfo(metadata: self)
         info.properties = getProperties(of: type, offsets: fieldOffsets())

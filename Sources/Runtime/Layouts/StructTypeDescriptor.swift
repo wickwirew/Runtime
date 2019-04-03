@@ -30,6 +30,7 @@ struct StructTypeDescriptor {
     var parent: Int32
     var mangledName: RelativePointer<Int32, CChar>
     var unknown3: Int32
+    var fieldDescriptor: RelativePointer<Int32, FieldDescriptor>
     var numberOfFields: Int32
     var offsetToTheFieldOffsetVector: RelativeVectorPointer<Int32, Int32>
     var fieldTypeAccessor: RelativePointer<Int32, Int>
