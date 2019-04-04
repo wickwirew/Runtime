@@ -64,11 +64,35 @@ struct ClassMetadata: MetadataType {
         }
     }
     
+    mutating func properties() -> [PropertyInfo] {
+        let offsets = fieldOffsets()
+        let fieldDescriptor = typeDescriptor.pointee
+            .fieldDescriptor
+            .advanced()
+        
+        return (0..<numberOfFields()).map { i in
+            let record = fieldDescriptor
+                .pointee
+                .fields
+                .element(at: i)
+            
+            return PropertyInfo(
+                name: record.pointee.fieldName(),
+                type: record.pointee.type(
+                    genericContext: typeDescriptor,
+                    genericArguments: metadata.pointee.genericArgumentVector.element(at: 0)
+                ),
+                offset: offsets[i],
+                ownerType: type
+            )
+        }
+    }
+    
     mutating func toTypeInfo() -> TypeInfo {
         var info = TypeInfo(metadata: self)
         info.mangledName = className()
         
-        info.properties = getProperties(of: type, offsets: fieldOffsets())
+        info.properties = properties()
         
         var superClass = superClassMetadata()
         while var sc = superClass {

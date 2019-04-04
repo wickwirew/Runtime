@@ -38,6 +38,11 @@ struct ClassMetadataLayout: MetadataLayoutType {
     var classObjectSize: Int32
     var classObjectAddressPoint: Int32
     var typeDescriptor: UnsafeMutablePointer<ClassTypeDescriptor>
-    var genericParameterVector: RelativeVectorPointer<Int32, Any.Type>
+    
+    // FIXME: this is a temporary fix to get the `genericArgumentVector` in sort of the right spot.
+    // this should really be calculated.
+    var a,b,c,d,e,f: Int
+    
+    var genericArgumentVector: Vector<Any.Type>
 }
 

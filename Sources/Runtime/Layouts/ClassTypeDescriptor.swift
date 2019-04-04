@@ -25,6 +25,7 @@ struct ClassTypeDescriptor {
     var parent: Int32
     var className: RelativePointer<Int32, CChar>
     var fieldTypesAccessor: RelativePointer<Int32, Int>
+    var fieldDescriptor: RelativePointer<Int32, FieldDescriptor>
     var superClass: RelativePointer<Int32, Any.Type>
     var resilientMetadataBounds: Int32
     var metadataPositiveSizeInWords: Int32
