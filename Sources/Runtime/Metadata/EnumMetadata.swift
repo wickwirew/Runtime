@@ -52,7 +52,7 @@ struct EnumMetadata: MetadataType {
     
     mutating func toTypeInfo() -> TypeInfo {
         var info = TypeInfo(metadata: self)
-        info.properties = getProperties(of: type, offsets: fieldOffsets())
+//        info.properties = getProperties(of: type, offsets: fieldOffsets())
         info.mangledName = mangledName()
         return info
     }
