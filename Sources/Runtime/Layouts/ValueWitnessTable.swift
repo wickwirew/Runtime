@@ -22,7 +22,6 @@
 
 import Foundation
 
-
 let valueWitnessTableOffset = -1
 
 struct ValueWitnessTable {
@@ -38,7 +37,6 @@ struct ValueWitnessTable {
     var stride: Int
     var flags: Int
 }
-
 
 struct ValueWitnessFlags {
     static let alignmentMask = 0x0000FFFF

@@ -22,7 +22,6 @@
 
 import Foundation
 
-
 typealias FieldTypeAccessor = @convention(c) (UnsafePointer<Int>) -> UnsafePointer<Int>
 
 struct StructTypeDescriptor {

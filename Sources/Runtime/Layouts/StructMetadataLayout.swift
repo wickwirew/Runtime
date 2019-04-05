@@ -22,7 +22,6 @@
 
 import Foundation
 
-
 struct StructMetadataLayout: MetadataLayoutType {
     var valueWitnessTable: UnsafePointer<ValueWitnessTable>
     var kind: Int

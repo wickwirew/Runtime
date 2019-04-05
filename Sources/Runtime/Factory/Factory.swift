@@ -22,7 +22,6 @@
 
 import Foundation
 
-
 public func createInstance<T>(constructor: ((PropertyInfo) throws -> Any)? = nil) throws -> T {
     if let value = try createInstance(of: T.self, constructor: constructor) as? T {
         return value
@@ -92,7 +91,6 @@ func setProperties(typeInfo: TypeInfo, pointer: UnsafeMutableRawPointer, constru
         sets.set(value: value, pointer: valuePointer)
     }
 }
-
 
 func defaultValue(of type: Any.Type) throws -> Any {
     

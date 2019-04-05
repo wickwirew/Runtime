@@ -22,6 +22,7 @@
 
 import Foundation
 
+// swiftlint:disable cyclomatic_complexity
 public enum Kind {
     case `struct`
     case `enum`
@@ -83,3 +84,4 @@ public enum Kind {
         static let kindIsNonType = 0x400
     }
 }
+// swiftlint:enable cyclomatic_complexity

@@ -22,7 +22,6 @@
 
 import Foundation
 
-
 public struct TypeInfo {
     
     public var kind: Kind = .class

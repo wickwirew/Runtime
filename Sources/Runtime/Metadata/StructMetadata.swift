@@ -22,7 +22,6 @@
 
 import Foundation
 
-
 struct StructMetadata: MetadataType {
     
     var type: Any.Type
@@ -49,7 +48,7 @@ struct StructMetadata: MetadataType {
         return typeDescriptor.pointee
             .offsetToTheFieldOffsetVector
             .vector(metadata: base, n: numberOfFields())
-            .map{ Int($0) }
+            .map { Int($0) }
     }
     
     mutating func properties() -> [PropertyInfo] {
@@ -57,8 +56,6 @@ struct StructMetadata: MetadataType {
         let fieldDescriptor = typeDescriptor.pointee
             .fieldDescriptor
             .advanced()
-        
-        
         
         return (0..<numberOfFields()).map { i in
             let record = fieldDescriptor
@@ -72,6 +69,7 @@ struct StructMetadata: MetadataType {
                     genericContext: typeDescriptor,
                     genericArguments: metadata.pointee.genericArgumentVector.element(at: 0)
                 ),
+                isVar: record.pointee.isVar,
                 offset: offsets[i],
                 ownerType: type
             )

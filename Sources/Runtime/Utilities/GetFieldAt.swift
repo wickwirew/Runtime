@@ -21,7 +21,6 @@
 // SOFTWARE.
 
 import Foundation
-import CRuntime
 
 // TODO: Move this to CRuntime
 @_silgen_name("swift_getTypeByMangledNameInContext")

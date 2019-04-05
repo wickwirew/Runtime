@@ -3,7 +3,7 @@ import XCTest
 extension FactoryTests {
     static let __allTests = [
         ("testStruct", testStruct),
-        ("testStructUntyped", testStructUntyped),
+        ("testStructUntyped", testStructUntyped)
     ]
 }
 
@@ -33,7 +33,7 @@ extension GetSetClassTests {
         ("testSetClassUntypedValue", testSetClassUntypedValue),
         ("testSetUntyped", testSetUntyped),
         ("testSetUntypedObject", testSetUntypedObject),
-        ("testSetUntypedValue", testSetUntypedValue),
+        ("testSetUntypedValue", testSetUntypedValue)
     ]
 }
 
@@ -64,7 +64,7 @@ extension GetSetStructTests {
         ("testSetStructUntypedValue", testSetStructUntypedValue),
         ("testSetUntyped", testSetUntyped),
         ("testSetUntypedObject", testSetUntypedObject),
-        ("testSetUntypedValue", testSetUntypedValue),
+        ("testSetUntypedValue", testSetUntypedValue)
     ]
 }
 
@@ -78,7 +78,7 @@ extension MetadataTests {
         ("testStruct", testStruct),
         ("testTuple", testTuple),
         ("testTupleNoLabels", testTupleNoLabels),
-        ("testVoidFunction", testVoidFunction),
+        ("testVoidFunction", testVoidFunction)
     ]
 }
 
@@ -89,7 +89,7 @@ extension ValuePointerTests {
         ("testClassValuePointer", testClassValuePointer),
         ("testProtocolClassValuePointer", testProtocolClassValuePointer),
         ("testProtocolStructValuePointer", testProtocolStructValuePointer),
-        ("testStructValuePointer", testStructValuePointer),
+        ("testStructValuePointer", testStructValuePointer)
     ]
 }
 
@@ -97,7 +97,7 @@ extension ValueWitnessTableTests {
     static let __allTests = [
         ("testAlignment", testAlignment),
         ("testSize", testSize),
-        ("testStride", testStride),
+        ("testStride", testStride)
     ]
 }
 
@@ -109,7 +109,7 @@ public func __allTests() -> [XCTestCaseEntry] {
         testCase(GetSetStructTests.__allTests),
         testCase(MetadataTests.__allTests),
         testCase(ValuePointerTests.__allTests),
-        testCase(ValueWitnessTableTests.__allTests),
+        testCase(ValueWitnessTableTests.__allTests)
     ]
 }
 #endif

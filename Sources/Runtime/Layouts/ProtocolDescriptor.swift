@@ -22,8 +22,6 @@
 
 import Foundation
 
-
-
 struct ProtocolDescriptor {
     var isaPointer: Int
     var mangledName: UnsafeMutablePointer<CChar>

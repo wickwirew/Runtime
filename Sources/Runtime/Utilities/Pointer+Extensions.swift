@@ -22,7 +22,6 @@
 
 import Foundation
 
-
 extension UnsafePointer {
     
     var raw: UnsafeRawPointer {

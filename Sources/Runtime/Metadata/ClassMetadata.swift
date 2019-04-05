@@ -50,7 +50,7 @@ struct ClassMetadata: MetadataType {
         return typeDescriptor.pointee
             .fieldOffsetVectorOffset
             .vector(metadata: base, n: numberOfFields())
-            .map{ Int($0) }
+            .map { Int($0) }
     }
     
     func superClassMetadata() -> ClassMetadata? {
@@ -82,6 +82,7 @@ struct ClassMetadata: MetadataType {
                     genericContext: typeDescriptor,
                     genericArguments: metadata.pointee.genericArgumentVector.element(at: 0)
                 ),
+                isVar: record.pointee.isVar,
                 offset: offsets[i],
                 ownerType: type
             )

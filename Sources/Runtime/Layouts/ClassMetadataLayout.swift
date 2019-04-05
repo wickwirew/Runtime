@@ -22,7 +22,6 @@
 
 import Foundation
 
-
 struct ClassMetadataLayout: MetadataLayoutType {
     var valueWitnessTable: UnsafePointer<ValueWitnessTable>
     var isaPointer: Int
@@ -41,8 +40,7 @@ struct ClassMetadataLayout: MetadataLayoutType {
     
     // FIXME: this is a temporary fix to get the `genericArgumentVector` in sort of the right spot.
     // this should really be calculated.
-    var a,b,c,d,e,f: Int
+    var a, b, c, d, e, f: Int
     
     var genericArgumentVector: Vector<Any.Type>
 }
-

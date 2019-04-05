@@ -22,8 +22,6 @@
 
 import Foundation
 
-
-
 func metadataPointer(type: Any.Type) -> UnsafeMutablePointer<Int> {
     return unsafeBitCast(type, to: UnsafeMutablePointer<Int>.self)
 }
@@ -53,4 +51,3 @@ func swiftObject() -> Any.Type {
     let md = ClassMetadata(type: Temp.self)
     return md.metadata.pointee.superClass
 }
-

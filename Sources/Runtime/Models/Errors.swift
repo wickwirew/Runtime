@@ -22,7 +22,6 @@
 
 import Foundation
 
-
 enum RuntimeError: Error {
     case couldNotGetTypeInfo(type: Any.Type, kind: Kind)
     case couldNotGetPointer(type: Any.Type, value: Any)

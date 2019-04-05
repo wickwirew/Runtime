@@ -344,6 +344,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_77 /* Build configuration list for PBXNativeTarget "Runtime" */;
 			buildPhases = (
+				9DEE0C712257E9B6006DF169 /* Run SwiftLint */,
 				OBJ_80 /* Sources */,
 				OBJ_121 /* Frameworks */,
 			);
@@ -403,7 +404,7 @@
 				English,
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_69 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -416,6 +417,27 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9DEE0C712257E9B6006DF169 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint or with HomeBrew: 'brew install swiftlint' \"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		OBJ_126 /* Sources */ = {

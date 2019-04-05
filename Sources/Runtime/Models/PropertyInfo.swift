@@ -22,11 +22,11 @@
 
 import Foundation
 
-
 public struct PropertyInfo {
     
     public let name: String
     public let type: Any.Type
+    public let isVar: Bool
     public let offset: Int
     public let ownerType: Any.Type
     
@@ -66,11 +66,11 @@ public struct PropertyInfo {
     }
 }
 
-
 extension PropertyInfo: Equatable {
-    public static func ==(lhs: PropertyInfo, rhs: PropertyInfo) -> Bool {
+    public static func == (lhs: PropertyInfo, rhs: PropertyInfo) -> Bool {
         return lhs.name == rhs.name
             && lhs.type == rhs.type
+            && lhs.isVar == rhs.isVar
             && lhs.offset == rhs.offset
             && lhs.ownerType == rhs.ownerType
     }

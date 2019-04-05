@@ -22,7 +22,6 @@
 
 import Foundation
 
-
 protocol Getters {}
 extension Getters {
     static func get(from pointer: UnsafeRawPointer) -> Any {
@@ -34,7 +33,6 @@ func getters(type: Any.Type) -> Getters.Type {
     let container = ProtocolTypeContainer(type: type, witnessTable: 0)
     return unsafeBitCast(container, to: Getters.Type.self)
 }
-
 
 protocol Setters {}
 extension Setters {
@@ -49,4 +47,3 @@ func setters(type: Any.Type) -> Setters.Type {
     let container = ProtocolTypeContainer(type: type, witnessTable: 0)
     return unsafeBitCast(container, to: Setters.Type.self)
 }
-

@@ -21,6 +21,10 @@ struct FieldRecord {
     var _mangledTypeName: RelativePointer<Int32, UInt8>
     var _fieldName: RelativePointer<Int32, UInt8>
     
+    var isVar: Bool {
+        return (fieldRecordFlags & 0x2) == 0x2
+    }
+    
     mutating func fieldName() -> String {
         return String(cString: _fieldName.advanced())
     }
@@ -43,7 +47,7 @@ struct FieldRecord {
     func getSymbolicMangledNameLength(_ base: UnsafeRawPointer) -> Int {
         var end = base
         while let current = Optional(end.load(as: UInt8.self)), current != 0 {
-            end = end + 1
+            end += 1
             if current >= 0x1 && current <= 0x17 {
                 end += 4
             } else if current >= 0x18 && current <= 0x1F {

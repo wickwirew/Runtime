@@ -22,7 +22,6 @@
 
 import Foundation
 
-
 protocol IntegerConvertible {
     func getInt() -> Int
 }

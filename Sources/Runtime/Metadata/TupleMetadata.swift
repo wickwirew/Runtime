@@ -21,8 +21,6 @@
 // SOFTWARE.
 import Foundation
 
-
-
 struct TupleMetadata: MetadataType, TypeInfoConvertible {
     
     var type: Any.Type
@@ -34,7 +32,7 @@ struct TupleMetadata: MetadataType, TypeInfoConvertible {
     }
     
     func labels() -> [String] {
-        guard Int(bitPattern: metadata.pointee.labelsString) != 0 else { return (0..<numberOfElements()).map{ a in "" } }
+        guard Int(bitPattern: metadata.pointee.labelsString) != 0 else { return (0..<numberOfElements()).map { _ in "" } }
         var labels = String(cString: metadata.pointee.labelsString).components(separatedBy: " ")
         labels.removeLast()
         return labels
@@ -52,7 +50,7 @@ struct TupleMetadata: MetadataType, TypeInfoConvertible {
         let num = numberOfElements()
         var properties = [PropertyInfo]()
         for i in 0..<num {
-            properties.append(PropertyInfo(name: names[i], type: el[i].type, offset: el[i].offset, ownerType: type))
+            properties.append(PropertyInfo(name: names[i], type: el[i].type, isVar: true, offset: el[i].offset, ownerType: type))
         }
         return properties
     }

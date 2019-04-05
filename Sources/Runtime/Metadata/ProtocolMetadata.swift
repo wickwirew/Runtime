@@ -22,8 +22,6 @@
 
 import Foundation
 
-
-
 struct ProtocolMetadata: MetadataType {
     
     var type: Any.Type

@@ -23,7 +23,6 @@
 import XCTest
 @testable import Runtime
 
-
 class MetadataTests: XCTestCase {
     
     static var allTests: [(String, (MetadataTests) -> () throws -> Void)] {
@@ -36,14 +35,14 @@ class MetadataTests: XCTestCase {
             ("testFunction", testFunction),
             ("testFunctionThrows", testFunctionThrows),
             ("testVoidFunction", testVoidFunction),
-            ("testEnum", testEnum),
+            ("testEnum", testEnum)
         ]
     }
     
     func testClass() {
         var md = ClassMetadata(type: MyClass<Int>.self)
         let info = md.toTypeInfo()
-        XCTAssert(info.properties.first{$0.name == "baseProperty"} != nil)
+        XCTAssert(info.properties.first {$0.name == "baseProperty"} != nil)
         XCTAssert(info.inheritance[0] == BaseClass.self)
         XCTAssert(info.superClass == BaseClass.self)
         XCTAssert(info.mangledName != "")
@@ -56,7 +55,7 @@ class MetadataTests: XCTestCase {
     }
     
     func testGenericStruct() {
-        struct A<B,C,D,E,F,G,H> { let b: B }
+        struct A<B, C, D, E, F, G, H> { let b: B }
         var md = StructMetadata(type: A<Int, Int, Int, Int, Int, Int, Int>.self)
         var args = md.genericArguments()
         let props = md.properties()
@@ -67,16 +66,21 @@ class MetadataTests: XCTestCase {
     }
     
     func testStruct() {
-        struct A { let a,b,c,d: Int }
+        struct A {
+            let a, b, c, d: Int
+            var e: Int
+        }
         
         var md = StructMetadata(type: A.self)
         let info = md.toTypeInfo()
         XCTAssert(info.kind == .struct)
         XCTAssert(info.type == A.self)
-        XCTAssert(info.properties.count == 4)
+        XCTAssert(info.properties.count == 5)
         XCTAssert(info.size == MemoryLayout<A>.size)
         XCTAssert(info.alignment == MemoryLayout<A>.alignment)
         XCTAssert(info.stride == MemoryLayout<A>.stride)
+        XCTAssert(!info.properties[0].isVar)
+        XCTAssert(info.properties[4].isVar)
     }
     
     func testProtocol() {
@@ -143,7 +147,7 @@ class MetadataTests: XCTestCase {
 }
 
 fileprivate enum MyEnum<T>: Int {
-    case a,b,c
+    case a, b, c
 }
 
 func voidFunction() {
@@ -172,7 +176,7 @@ fileprivate class MyClass<T>: BaseClass {
 }
 
 fileprivate struct MyStruct<T> {
-    var a,b: Int
+    var a, b: Int
     var c: String
     var d: T
 }

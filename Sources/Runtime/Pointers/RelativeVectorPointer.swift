@@ -22,8 +22,6 @@
 
 import Foundation
 
-
-
 struct RelativeVectorPointer<Offset: IntegerConvertible, Pointee> {
     var offset: Offset
     mutating func vector(metadata: UnsafePointer<Int>, n: IntegerConvertible) -> [Pointee] {

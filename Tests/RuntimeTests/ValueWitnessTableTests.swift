@@ -24,14 +24,13 @@ import Foundation
 import XCTest
 @testable import Runtime
 
-
 class ValueWitnessTableTests: XCTestCase {
 
     static var allTests: [(String, (ValueWitnessTableTests) -> () throws -> Void)] {
         return [
             ("testSize", testSize),
             ("testAlignment", testAlignment),
-            ("testStride", testStride),
+            ("testStride", testStride)
         ]
     }
     
@@ -51,7 +50,6 @@ class ValueWitnessTableTests: XCTestCase {
     }
     
 }
-
 
 fileprivate struct Person {
     let firstname: String

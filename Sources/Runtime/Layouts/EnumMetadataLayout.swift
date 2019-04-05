@@ -22,8 +22,6 @@
 
 import Foundation
 
-
-
 struct EnumMetadataLayout: MetadataLayoutType {
     var valueWitnessTable: UnsafePointer<ValueWitnessTable>
     var kind: Int

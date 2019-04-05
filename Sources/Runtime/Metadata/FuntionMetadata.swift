@@ -22,8 +22,6 @@
 
 import Foundation
 
-
-
 struct FunctionMetadata: MetadataType {
     
     var type: Any.Type

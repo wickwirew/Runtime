@@ -22,8 +22,6 @@
 
 import Foundation
 
-
-
 struct EnumMetadata: MetadataType {
     
     var type: Any.Type
@@ -47,7 +45,7 @@ struct EnumMetadata: MetadataType {
     }
     
     mutating func fieldOffsets() -> [Int] {
-        return typeDescriptor.pointee.offsetToTheFieldOffsetVector.vector(metadata: base, n: numberOfFields()).map{ Int($0) }
+        return typeDescriptor.pointee.offsetToTheFieldOffsetVector.vector(metadata: base, n: numberOfFields()).map { Int($0) }
     }
     
     mutating func toTypeInfo() -> TypeInfo {

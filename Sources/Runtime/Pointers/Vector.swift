@@ -22,7 +22,6 @@
 
 import Foundation
 
-
 struct Vector<Element> {
     
     var element: Element
