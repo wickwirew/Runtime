@@ -45,6 +45,7 @@ struct EnumMetadata: MetadataType {
         var info = TypeInfo(metadata: self)
         info.mangledName = mangledName()
         info.cases = cases()
+        info.genericTypes = genericArguments()
         return info
     }
 }

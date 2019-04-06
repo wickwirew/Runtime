@@ -55,15 +55,22 @@ class FactoryTests: XCTestCase {
     }
   
     #if os(iOS) // does not work on macOS or Linux
-        func testClass() throws {
-            let person: PersonClass = try createInstance()
-            XCTAssert(person.firstname == "")
-            XCTAssert(person.lastname == "")
-            XCTAssert(person.age == 0)
-            XCTAssert(person.pet.name == "")
-            XCTAssert(person.pet.age == 0)
-            XCTAssert(person.favoriteNumbers == [])
-        }
+    func testClass() throws {
+        let person: PersonClass<Int> = try createInstance()
+        XCTAssert(person.firstname == "")
+        XCTAssert(person.lastname == "")
+        XCTAssert(person.age == 0)
+        XCTAssert(person.pet.name == "")
+        XCTAssert(person.pet.age == 0)
+        XCTAssert(person.favoriteNumbers == [])
+    }
+    
+    func testGenericClass() throws {
+        class B {}
+        class A<T> { let a: Int = 0; let b = B() }
+        let a: A<Int> = try createInstance()
+        XCTAssert(a.a == 0)
+    }
     #endif
     // swiftlint:enable force_cast
 }
@@ -86,7 +93,7 @@ fileprivate struct PetStruct {
     }
 }
 
-fileprivate class PersonClass {
+fileprivate class PersonClass<T> {
     var firstname = "Jobie"
     var lastname = "Gillis"
     var age = 40

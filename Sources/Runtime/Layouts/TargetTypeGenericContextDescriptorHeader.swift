@@ -20,17 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+struct TargetTypeGenericContextDescriptorHeader {
+    var instantiationCache: Int32
+    var defaultInstantiationPattern: Int32
+    var base: TargetGenericContextDescriptorHeader
+}
 
-struct StructMetadata: MetadataType {
-    
-    var pointer: UnsafeMutablePointer<StructMetadataLayout>
-    
-    mutating func toTypeInfo() -> TypeInfo {
-        var info = TypeInfo(metadata: self)
-        info.properties = properties()
-        info.mangledName = mangledName()
-        info.genericTypes = genericArguments()
-        return info
-    }
+struct TargetGenericContextDescriptorHeader {
+    var numberOfParams: UInt16
+    var numberOfRequirements: UInt16
+    var numberOfKeyArguments: UInt16
+    var numberOfExtraArguments: UInt16
 }

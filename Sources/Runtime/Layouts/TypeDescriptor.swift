@@ -30,8 +30,7 @@ protocol TypeDescriptor {
     var fieldDescriptor: RelativePointer<Int32, FieldDescriptor> { get set }
     var numberOfFields: Int32 { get set }
     var offsetToTheFieldOffsetVector: RelativeVectorPointer<Int32, FieldOffsetVectorOffsetType> { get set }
-    var numberOfGenericArguments: Int32 { get set }
+    var genericContextHeader: TargetTypeGenericContextDescriptorHeader { get set }
 }
-
 
 typealias ContextDescriptorFlags = Int32

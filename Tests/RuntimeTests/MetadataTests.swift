@@ -21,6 +21,7 @@
 // SOFTWARE.
 
 import XCTest
+import UIKit
 @testable import Runtime
 
 class MetadataTests: XCTestCase {
@@ -42,6 +43,7 @@ class MetadataTests: XCTestCase {
     func testClass() {
         var md = ClassMetadata(type: MyClass<Int>.self)
         let info = md.toTypeInfo()
+        XCTAssert(md.genericArgumentOffset == 15)
         XCTAssert(info.properties.first {$0.name == "baseProperty"} != nil)
         XCTAssert(info.inheritance[0] == BaseClass.self)
         XCTAssert(info.superClass == BaseClass.self)
@@ -52,6 +54,8 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.size == MemoryLayout<MyClass<Int>>.size)
         XCTAssert(info.alignment == MemoryLayout<MyClass<Int>>.alignment)
         XCTAssert(info.stride == MemoryLayout<MyClass<Int>>.stride)
+        XCTAssert(info.genericTypes.count == 1)
+        XCTAssert(info.genericTypes[0] == Int.self)
     }
     
     func testGenericStruct() {

@@ -125,7 +125,7 @@ extension MetadataType where Layout: NominalMetadataLayoutType {
     }
     
     mutating func genericArguments() -> [Any.Type] {
-        let n = pointer.pointee.typeDescriptor.pointee.numberOfGenericArguments
+        let n = pointer.pointee.typeDescriptor.pointee.genericContextHeader.base.numberOfParams
         return pointer.pointee
             .genericArgumentVector
             .vector(n: n)

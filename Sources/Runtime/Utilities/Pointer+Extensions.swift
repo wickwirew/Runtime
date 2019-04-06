@@ -64,4 +64,8 @@ extension UnsafeMutablePointer {
         }
         return result
     }
+    
+    func advanced(by n: Int, wordSize: Int) -> UnsafeMutableRawPointer {
+        return self.raw.advanced(by: n * wordSize)
+    }
 }

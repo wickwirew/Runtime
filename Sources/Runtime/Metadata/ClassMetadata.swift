@@ -35,19 +35,41 @@ struct ClassMetadata: MetadataType {
     }
     
     var genericArgumentOffset: Int {
+        let typeDescriptor = pointer.pointee.typeDescriptor
+        
         if !hasResilientSuperclass {
-//            return areImmediateMembersNegative
-//                ? -Int32(pointer.pointee.typeDescriptor.pointee.metadataPositiveSizeInWords)
-//                : -Int32(pointer.pointee.typeDescriptor.pointee.metadataPositiveSizeInWords)
-            /*
-             return areImmediateMembersNegative()
-             ? -int32_t(MetadataNegativeSizeInWords)
-             : int32_t(MetadataPositiveSizeInWords - NumImmediateMembers);
-             */
-            
+            return areImmediateMembersNegative
+                ? -Int(typeDescriptor.pointee.negativeSizeAndBoundsUnion.metadataNegativeSizeInWords)
+                : Int(typeDescriptor.pointee.metadataPositiveSizeInWords - typeDescriptor.pointee.numImmediateMembers)
         }
         
-        return 10
+        /*
+        let storedBounds = typeDescriptor.pointee
+            .negativeSizeAndBoundsUnion
+            .resilientMetadataBounds()
+            .pointee
+            .advanced()
+            .pointee
+        */
+        
+        // To do this something like `computeMetadataBoundsFromSuperclass` in Metadata.cpp
+        // will need to be implemented. To do that we also need to get the resilient superclass
+        // from the trailing objects.
+        fatalError("Cannot get the `genericArgumentOffset` for classes with a resilient superclass")
+    }
+    
+    func genericArguments() -> [Any.Type] {
+        let vector = pointer
+            .advanced(by: genericArgumentOffset, wordSize: MemoryLayout<UnsafeRawPointer>.size)
+            .assumingMemoryBound(to: Vector<Any.Type>.self)
+        
+        let n = pointer.pointee.typeDescriptor.pointee.genericContextHeader.base.numberOfParams
+        
+        guard n > 0 else { return [] }
+        
+        return (0..<Int(pointer.pointee.typeDescriptor.pointee.genericContextHeader.base.numberOfParams)).map { i in
+            return vector.pointee.element(at: i).pointee
+        }
     }
     
     func superClassMetadata() -> ClassMetadata? {
@@ -65,6 +87,7 @@ struct ClassMetadata: MetadataType {
         var info = TypeInfo(metadata: self)
         info.mangledName = mangledName()
         info.properties = properties()
+        info.genericTypes = genericArguments()
         
         var superClass = superClassMetadata()
         while var sc = superClass {

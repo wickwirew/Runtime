@@ -20,17 +20,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+/// Helper for when binding to a c++ `union`
+protocol Union {
+    associatedtype Raw
+    var raw: Raw { get set }
+}
 
-struct StructMetadata: MetadataType {
-    
-    var pointer: UnsafeMutablePointer<StructMetadataLayout>
-    
-    mutating func toTypeInfo() -> TypeInfo {
-        var info = TypeInfo(metadata: self)
-        info.properties = properties()
-        info.mangledName = mangledName()
-        info.genericTypes = genericArguments()
-        return info
+extension Union {
+    mutating func bind<T>() -> UnsafeMutablePointer<T> {
+        return withUnsafePointer(to: &self) { pointer in
+            return pointer.raw.assumingMemoryBound(to: T.self).mutable
+        }
     }
 }
