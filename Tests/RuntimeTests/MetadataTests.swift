@@ -60,11 +60,14 @@ class MetadataTests: XCTestCase {
     
     func testGenericStruct() {
         struct A<B, C, D, E, F, G, H> { let b: B }
-        var md = StructMetadata(type: A<Int, Int, Int, Int, Int, Int, Int>.self)
+        var md = StructMetadata(type: A<Int, String, Bool, Int, Int, Int, Int>.self)
         var args = md.genericArguments()
         let props = md.properties()
         XCTAssert(args.count == 7)
-        XCTAssert(args[1] == Int.self)
+        XCTAssert(args[0] == Int.self)
+        XCTAssert(args[1] == String.self)
+        XCTAssert(args[2] == Bool.self)
+        XCTAssert(args[3] == Int.self)
         XCTAssert(props.count == 1)
         XCTAssert(props[0].type == Int.self)
     }

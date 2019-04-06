@@ -1,4 +1,4 @@
-// swift-tools-version:4.2
+// swift-tools-version:5.0
 import PackageDescription
 let package = Package(
     name: "Runtime",
@@ -8,7 +8,7 @@ let package = Package(
             targets: ["Runtime"])
         ],
         dependencies: [
-            .package(url: "https://github.com/wickwirew/CRuntime.git", from: "1.0.0")
+             .package(url: "https://github.com/wickwirew/CRuntime.git", from: "2.0.1")
         ],
     targets: [
         .target(
@@ -18,5 +18,5 @@ let package = Package(
             name: "RuntimeTests",
             dependencies: ["Runtime"])
     ],
-    swiftLanguageVersions: [.v4_2]
+    swiftLanguageVersions: [.v5]
 )
