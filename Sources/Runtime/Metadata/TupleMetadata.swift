@@ -23,17 +23,15 @@ import Foundation
 
 struct TupleMetadata: MetadataType, TypeInfoConvertible {
     
-    var type: Any.Type
-    var metadata: UnsafeMutablePointer<TupleMetadataLayout>
-    var base: UnsafeMutablePointer<Int>
-    
+    var pointer: UnsafeMutablePointer<TupleMetadataLayout>
+ 
     func numberOfElements() -> Int {
-        return metadata.pointee.numberOfElements
+        return pointer.pointee.numberOfElements
     }
     
     func labels() -> [String] {
-        guard Int(bitPattern: metadata.pointee.labelsString) != 0 else { return (0..<numberOfElements()).map { _ in "" } }
-        var labels = String(cString: metadata.pointee.labelsString).components(separatedBy: " ")
+        guard Int(bitPattern: pointer.pointee.labelsString) != 0 else { return (0..<numberOfElements()).map { _ in "" } }
+        var labels = String(cString: pointer.pointee.labelsString).components(separatedBy: " ")
         labels.removeLast()
         return labels
     }
@@ -41,7 +39,7 @@ struct TupleMetadata: MetadataType, TypeInfoConvertible {
     func elements() -> [TupleElementLayout] {
         let n = numberOfElements()
         guard n > 0 else { return [] }
-        return metadata.pointee.elementVector.vector(n: n)
+        return pointer.pointee.elementVector.vector(n: n)
     }
     
     func properies() -> [PropertyInfo] {

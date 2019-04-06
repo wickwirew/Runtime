@@ -22,9 +22,8 @@
 
 import Foundation
 
-struct StructMetadataLayout: MetadataLayoutType {
-    var valueWitnessTable: UnsafePointer<ValueWitnessTable>
-    var kind: Int
+struct StructMetadataLayout: NominalMetadataLayoutType {
+    var _kind: Int
     var typeDescriptor: UnsafeMutablePointer<StructTypeDescriptor>
     var genericArgumentVector: Vector<Any.Type>
 }

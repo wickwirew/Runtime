@@ -24,34 +24,27 @@ import Foundation
 
 struct EnumMetadata: MetadataType {
     
-    var type: Any.Type
-    var metadata: UnsafeMutablePointer<EnumMetadataLayout>
-    var typeDescriptor: UnsafeMutablePointer<StructTypeDescriptor>
-    var base: UnsafeMutablePointer<Int>
-    
-    init(type: Any.Type, metadata: UnsafeMutablePointer<EnumMetadataLayout>, base: UnsafeMutablePointer<Int>) {
-        self.type = type
-        self.metadata = metadata
-        self.typeDescriptor = metadata.pointee.typeDescriptor
-        self.base = base
-    }
-    
-    mutating func mangledName() -> String {
-        return String(cString: typeDescriptor.pointee.mangledName.advanced())
-    }
-    
-    mutating func numberOfFields() -> Int {
-        return typeDescriptor.pointee.numberOfFields.getInt()
-    }
-    
-    mutating func fieldOffsets() -> [Int] {
-        return typeDescriptor.pointee.offsetToTheFieldOffsetVector.vector(metadata: base, n: numberOfFields()).map { Int($0) }
+    var pointer: UnsafeMutablePointer<EnumMetadataLayout>
+
+    mutating func cases() -> [Case] {
+        let fieldDescriptor = pointer.pointee.typeDescriptor.pointee
+            .fieldDescriptor
+            .advanced()
+        
+        return (0..<numberOfFields()).map { i in
+            let record = fieldDescriptor
+                .pointee
+                .fields
+                .element(at: i)
+            
+            return Case(name: record.pointee.fieldName())
+        }
     }
     
     mutating func toTypeInfo() -> TypeInfo {
         var info = TypeInfo(metadata: self)
-//        info.properties = getProperties(of: type, offsets: fieldOffsets())
         info.mangledName = mangledName()
+        info.cases = cases()
         return info
     }
 }

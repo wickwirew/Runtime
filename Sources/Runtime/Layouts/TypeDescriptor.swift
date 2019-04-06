@@ -20,10 +20,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-struct FunctionMetadataLayout: MetadataLayoutType {
-    var _kind: Int
-    var flags: Int
-    var argumentVector: Vector<Any.Type>
+protocol TypeDescriptor {
+    
+    /// The offset type can differ between TypeDescriptors
+    /// e.g. Struct are an Int32 and classes are an Int
+    associatedtype FieldOffsetVectorOffsetType: IntegerConvertible
+    
+    var mangledName: RelativePointer<Int32, CChar> { get set }
+    var fieldDescriptor: RelativePointer<Int32, FieldDescriptor> { get set }
+    var numberOfFields: Int32 { get set }
+    var offsetToTheFieldOffsetVector: RelativeVectorPointer<Int32, FieldOffsetVectorOffsetType> { get set }
+    var numberOfGenericArguments: Int32 { get set }
 }
+
+
+typealias ContextDescriptorFlags = Int32

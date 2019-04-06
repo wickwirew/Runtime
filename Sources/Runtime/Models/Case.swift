@@ -20,10 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-struct FunctionMetadataLayout: MetadataLayoutType {
-    var _kind: Int
-    var flags: Int
-    var argumentVector: Vector<Any.Type>
+/// An enum case
+public struct Case {
+    public let name: String
 }

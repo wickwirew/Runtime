@@ -22,25 +22,25 @@
 
 import Foundation
 
-struct ClassMetadataLayout: MetadataLayoutType {
-    var valueWitnessTable: UnsafePointer<ValueWitnessTable>
-    var isaPointer: Int
+struct ClassMetadataLayout: NominalMetadataLayoutType {
+    var _kind: Int // isaPointer for classes
     var superClass: Any.Type
     var objCRuntimeReserve1: Int
     var objCRuntimeReserve2: Int
     var rodataPointer: Int
     var classFlags: Int32
-    var instanceAddressPoint: Int32
-    var instanceSize: Int32
-    var instanceAlignmentMask: Int16
-    var runtimeReserveField: Int16
-    var classObjectSize: Int32
-    var classObjectAddressPoint: Int32
+    var instanceAddressPoint: UInt32
+    var instanceSize: UInt32
+    var instanceAlignmentMask: UInt16
+    var reserved: UInt16
+    var classSize: UInt32
+    var classAddressPoint: UInt32
     var typeDescriptor: UnsafeMutablePointer<ClassTypeDescriptor>
+    var iVarDestroyer: UnsafeRawPointer
     
     // FIXME: this is a temporary fix to get the `genericArgumentVector` in sort of the right spot.
     // this should really be calculated.
-    var a, b, c, d, e, f: Int
+    var a, b, c, d, e: Int
     
     var genericArgumentVector: Vector<Any.Type>
 }

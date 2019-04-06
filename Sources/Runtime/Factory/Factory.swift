@@ -80,7 +80,9 @@ func buildStruct(type: Any.Type, constructor: ((PropertyInfo) throws -> Any)? = 
     }
 #endif
 
-func setProperties(typeInfo: TypeInfo, pointer: UnsafeMutableRawPointer, constructor: ((PropertyInfo) throws -> Any)? = nil) throws {
+func setProperties(typeInfo: TypeInfo,
+                   pointer: UnsafeMutableRawPointer,
+                   constructor: ((PropertyInfo) throws -> Any)? = nil) throws {
     for property in typeInfo.properties {
         let value = try constructor.map { (resolver) -> Any in
             return try resolver(property)

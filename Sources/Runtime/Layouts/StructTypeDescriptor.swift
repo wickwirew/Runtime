@@ -24,8 +24,8 @@ import Foundation
 
 typealias FieldTypeAccessor = @convention(c) (UnsafePointer<Int>) -> UnsafePointer<Int>
 
-struct StructTypeDescriptor {
-    var flags: Int32
+struct StructTypeDescriptor: TypeDescriptor {
+    var flags: ContextDescriptorFlags
     var parent: Int32
     var mangledName: RelativePointer<Int32, CChar>
     var unknown3: Int32

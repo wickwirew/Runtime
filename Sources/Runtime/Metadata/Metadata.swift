@@ -49,5 +49,5 @@ func metadata(of type: Any.Type) throws -> MetadataInfo {
 func swiftObject() -> Any.Type {
     class Temp {}
     let md = ClassMetadata(type: Temp.self)
-    return md.metadata.pointee.superClass
+    return md.pointer.pointee.superClass
 }

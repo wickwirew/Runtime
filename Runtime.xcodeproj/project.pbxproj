@@ -31,7 +31,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		DE2C1CAA22581BA400DF6CB5 /* TypeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2C1CA922581BA400DF6CB5 /* TypeDescriptor.swift */; };
+		DE2C1CAC2258FED800DF6CB5 /* EnumTypeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2C1CAB2258FED800DF6CB5 /* EnumTypeDescriptor.swift */; };
 		DE6544C62254377E001352E1 /* FieldDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6544C52254377E001352E1 /* FieldDescriptor.swift */; };
+		DEB67B5A2259132800CE3E27 /* Case.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB67B592259132800CE3E27 /* Case.swift */; };
 		OBJ_100 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* Metadata.swift */; };
 		OBJ_101 /* MetadataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* MetadataType.swift */; };
 		OBJ_102 /* ProtocolMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* ProtocolMetadata.swift */; };
@@ -101,7 +104,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE2C1CA922581BA400DF6CB5 /* TypeDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDescriptor.swift; sourceTree = "<group>"; };
+		DE2C1CAB2258FED800DF6CB5 /* EnumTypeDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTypeDescriptor.swift; sourceTree = "<group>"; };
 		DE6544C52254377E001352E1 /* FieldDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldDescriptor.swift; sourceTree = "<group>"; };
+		DEB67B592259132800CE3E27 /* Case.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Case.swift; sourceTree = "<group>"; };
 		OBJ_10 /* DefaultValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultValue.swift; sourceTree = "<group>"; };
 		OBJ_11 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		OBJ_13 /* ClassHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassHeader.swift; sourceTree = "<group>"; };
@@ -154,8 +160,8 @@
 		OBJ_65 /* Runtime */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Runtime; sourceTree = SOURCE_ROOT; };
 		OBJ_66 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = SOURCE_ROOT; };
 		OBJ_67 /* RuntimeTests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RuntimeTests; sourceTree = SOURCE_ROOT; };
-		"Runtime::Runtime::Product" /* Runtime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Runtime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"Runtime::RuntimeTests::Product" /* RuntimeTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = RuntimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Runtime::Runtime::Product" /* Runtime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Runtime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Runtime::RuntimeTests::Product" /* RuntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = RuntimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +201,8 @@
 				OBJ_25 /* TupleMetadataLayout.swift */,
 				OBJ_26 /* ValueWitnessTable.swift */,
 				DE6544C52254377E001352E1 /* FieldDescriptor.swift */,
+				DE2C1CA922581BA400DF6CB5 /* TypeDescriptor.swift */,
+				DE2C1CAB2258FED800DF6CB5 /* EnumTypeDescriptor.swift */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -223,6 +231,7 @@
 				OBJ_40 /* PropertyInfo.swift */,
 				OBJ_41 /* TypeInfo.swift */,
 				OBJ_42 /* TypeInfoConvertible.swift */,
+				DEB67B592259132800CE3E27 /* Case.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -251,7 +260,7 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -264,7 +273,6 @@
 				OBJ_68 /* Dependencies */,
 				OBJ_69 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_55 /* Tests */ = {
@@ -395,6 +403,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 9999;
+				TargetAttributes = {
+					"Runtime::Runtime" = {
+						LastSwiftMigration = 1020;
+					};
+					"Runtime::RuntimeTests" = {
+						LastSwiftMigration = 1020;
+					};
+				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Runtime" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -467,6 +483,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_81 /* DefaultValue.swift in Sources */,
+				DE2C1CAC2258FED800DF6CB5 /* EnumTypeDescriptor.swift in Sources */,
 				OBJ_82 /* Factory.swift in Sources */,
 				OBJ_83 /* ClassHeader.swift in Sources */,
 				OBJ_84 /* ClassMetadataLayout.swift in Sources */,
@@ -502,6 +519,8 @@
 				OBJ_114 /* Vector.swift in Sources */,
 				OBJ_115 /* GetFieldAt.swift in Sources */,
 				OBJ_116 /* GettersSetters.swift in Sources */,
+				DEB67B5A2259132800CE3E27 /* Case.swift in Sources */,
+				DE2C1CAA22581BA400DF6CB5 /* TypeDescriptor.swift in Sources */,
 				OBJ_117 /* IntegerConvertible.swift in Sources */,
 				OBJ_118 /* Pointer+Extensions.swift in Sources */,
 				OBJ_119 /* RetainCounts.swift in Sources */,
@@ -575,7 +594,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = RuntimeTests;
 			};
 			name = Debug;
@@ -599,7 +618,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = RuntimeTests;
 			};
 			name = Release;
@@ -684,7 +703,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = Runtime;
 			};
 			name = Debug;
@@ -711,7 +730,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = Runtime;
 			};
 			name = Release;

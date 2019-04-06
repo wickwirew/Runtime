@@ -24,37 +24,34 @@ import Foundation
 
 struct ClassMetadata: MetadataType {
     
-    var type: Any.Type
-    var metadata: UnsafeMutablePointer<ClassMetadataLayout>
-    var typeDescriptor: UnsafeMutablePointer<ClassTypeDescriptor>
-    var base: UnsafeMutablePointer<Int>
+    var pointer: UnsafeMutablePointer<ClassMetadataLayout>
     
-    init(type: Any.Type, metadata: UnsafeMutablePointer<ClassMetadataLayout>, base: UnsafeMutablePointer<Int>) {
-        self.type = type
-        self.metadata = metadata
-        self.typeDescriptor = metadata.pointee.typeDescriptor
-        self.base = base
+    var hasResilientSuperclass: Bool {
+        return (0x4000 & pointer.pointee.classFlags) != 0
     }
     
-    mutating func className() -> String {
-        return String(cString: typeDescriptor.pointee.className.advanced())
+    var areImmediateMembersNegative: Bool {
+        return (0x800 & pointer.pointee.classFlags) != 0
     }
     
-    mutating func numberOfFields() -> Int {
-        return typeDescriptor.pointee
-            .numberOfFields
-            .getInt()
-    }
-    
-    mutating func fieldOffsets() -> [Int] {
-        return typeDescriptor.pointee
-            .fieldOffsetVectorOffset
-            .vector(metadata: base, n: numberOfFields())
-            .map { Int($0) }
+    var genericArgumentOffset: Int {
+        if !hasResilientSuperclass {
+//            return areImmediateMembersNegative
+//                ? -Int32(pointer.pointee.typeDescriptor.pointee.metadataPositiveSizeInWords)
+//                : -Int32(pointer.pointee.typeDescriptor.pointee.metadataPositiveSizeInWords)
+            /*
+             return areImmediateMembersNegative()
+             ? -int32_t(MetadataNegativeSizeInWords)
+             : int32_t(MetadataPositiveSizeInWords - NumImmediateMembers);
+             */
+            
+        }
+        
+        return 10
     }
     
     func superClassMetadata() -> ClassMetadata? {
-        let superClass = metadata.pointee.superClass
+        let superClass = pointer.pointee.superClass
         // type comparison directly to NSObject.self does not work.
         // just compare the type name instead.
         if superClass != swiftObject() && "\(superClass)" != "NSObject" {
@@ -64,35 +61,9 @@ struct ClassMetadata: MetadataType {
         }
     }
     
-    mutating func properties() -> [PropertyInfo] {
-        let offsets = fieldOffsets()
-        let fieldDescriptor = typeDescriptor.pointee
-            .fieldDescriptor
-            .advanced()
-        
-        return (0..<numberOfFields()).map { i in
-            let record = fieldDescriptor
-                .pointee
-                .fields
-                .element(at: i)
-            
-            return PropertyInfo(
-                name: record.pointee.fieldName(),
-                type: record.pointee.type(
-                    genericContext: typeDescriptor,
-                    genericArguments: metadata.pointee.genericArgumentVector.element(at: 0)
-                ),
-                isVar: record.pointee.isVar,
-                offset: offsets[i],
-                ownerType: type
-            )
-        }
-    }
-    
     mutating func toTypeInfo() -> TypeInfo {
         var info = TypeInfo(metadata: self)
-        info.mangledName = className()
-        
+        info.mangledName = mangledName()
         info.properties = properties()
         
         var superClass = superClassMetadata()
@@ -102,6 +73,7 @@ struct ClassMetadata: MetadataType {
             info.properties.append(contentsOf: superInfo.properties)
             superClass = sc.superClassMetadata()
         }
+        
         return info
     }
 }

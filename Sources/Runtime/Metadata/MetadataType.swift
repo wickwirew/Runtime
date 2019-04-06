@@ -33,38 +33,101 @@ protocol MetadataInfo {
 }
 
 protocol MetadataType: MetadataInfo, TypeInfoConvertible {
+    
     associatedtype Layout: MetadataLayoutType
-    var type: Any.Type { get set }
-    var metadata: UnsafeMutablePointer<Layout> { get set }
-    var base: UnsafeMutablePointer<Int> { get set }
-    init(type: Any.Type, metadata: UnsafeMutablePointer<Layout>, base: UnsafeMutablePointer<Int>)
+    
+    var pointer: UnsafeMutablePointer<Layout> { get set }
+    
+    init(pointer: UnsafeMutablePointer<Layout>)
 }
 
 extension MetadataType {
     
+    init(type: Any.Type) {
+        self = Self(pointer: unsafeBitCast(type, to: UnsafeMutablePointer<Layout>.self))
+    }
+    
+    var type: Any.Type {
+        return unsafeBitCast(pointer, to: Any.Type.self)
+    }
+    
     var kind: Kind {
-        return Kind(flag: base.pointee)
+        return Kind(flag: pointer.pointee._kind)
     }
     
     var size: Int {
-        return metadata.pointee.valueWitnessTable.pointee.size
+        return valueWitnessTable.pointee.size
     }
     
     var alignment: Int {
-        return (metadata.pointee.valueWitnessTable.pointee.flags & ValueWitnessFlags.alignmentMask) + 1
+        return (valueWitnessTable.pointee.flags & ValueWitnessFlags.alignmentMask) + 1
     }
     
     var stride: Int {
-        return metadata.pointee.valueWitnessTable.pointee.stride
+        return valueWitnessTable.pointee.stride
     }
     
-    init(type: Any.Type) {
-        let base = metadataPointer(type: type)
-        let metadata = base.advanced(by: valueWitnessTableOffset).raw.assumingMemoryBound(to: Layout.self)
-        self.init(type: type, metadata: metadata, base: base)
+    /// The ValueWitnessTable for the type.
+    /// A pointer to the table is located one pointer sized word behind the metadata pointer.
+    var valueWitnessTable: UnsafeMutablePointer<ValueWitnessTable> {
+        return pointer
+            .raw
+            .advanced(by: -MemoryLayout<UnsafeRawPointer>.size)
+            .assumingMemoryBound(to: UnsafeMutablePointer<ValueWitnessTable>.self)
+            .pointee
     }
     
     mutating func toTypeInfo() -> TypeInfo {
         return TypeInfo(metadata: self)
+    }
+}
+
+extension MetadataType where Layout: NominalMetadataLayoutType {
+    
+    mutating func mangledName() -> String {
+        return String(cString: pointer.pointee.typeDescriptor.pointee.mangledName.advanced())
+    }
+    
+    mutating func numberOfFields() -> Int {
+        return pointer.pointee.typeDescriptor.pointee.numberOfFields.getInt()
+    }
+    
+    mutating func fieldOffsets() -> [Int] {
+        return pointer.pointee.typeDescriptor.pointee
+            .offsetToTheFieldOffsetVector
+            .vector(metadata: pointer.raw.assumingMemoryBound(to: Int.self), n: numberOfFields())
+            .map { $0.getInt() }
+    }
+    
+    mutating func properties() -> [PropertyInfo] {
+        let offsets = fieldOffsets()
+        let fieldDescriptor = pointer.pointee.typeDescriptor.pointee
+            .fieldDescriptor
+            .advanced()
+        
+        return (0..<numberOfFields()).map { i in
+            let record = fieldDescriptor
+                .pointee
+                .fields
+                .element(at: i)
+            
+            return PropertyInfo(
+                name: record.pointee.fieldName(),
+                type: record.pointee.type(
+                    genericContext: pointer.pointee.typeDescriptor,
+                    genericArguments: pointer.pointee.genericArgumentVector.element(at: 0)
+                ),
+                isVar: record.pointee.isVar,
+                offset: offsets[i],
+                ownerType: type
+            )
+        }
+    }
+    
+    mutating func genericArguments() -> [Any.Type] {
+        let n = pointer.pointee.typeDescriptor.pointee.numberOfGenericArguments
+        return pointer.pointee
+            .genericArgumentVector
+            .vector(n: n)
     }
 }

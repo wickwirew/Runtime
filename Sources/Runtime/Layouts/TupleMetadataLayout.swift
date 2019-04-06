@@ -23,8 +23,7 @@
 import Foundation
 
 struct TupleMetadataLayout: MetadataLayoutType {
-    var valueWitnessTable: UnsafePointer<ValueWitnessTable>
-    var kind: Int
+    var _kind: Int
     var numberOfElements: Int
     var labelsString: UnsafeMutablePointer<CChar>
     var elementVector: Vector<TupleElementLayout>

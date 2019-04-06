@@ -22,7 +22,9 @@
 
 import Foundation
 
-func withValuePointer<Value, Result>(of value: inout Value, _ body: (UnsafeMutableRawPointer) throws -> Result) throws -> Result {
+func withValuePointer<Value, Result>(
+    of value: inout Value,
+    _ body: (UnsafeMutableRawPointer) throws -> Result) throws -> Result {
     
     let kind = Kind(type: Value.self)
     
@@ -38,14 +40,18 @@ func withValuePointer<Value, Result>(of value: inout Value, _ body: (UnsafeMutab
     }
 }
 
-func withClassValuePointer<Value, Result>(of value: inout Value, _ body: (UnsafeMutableRawPointer) throws -> Result) throws -> Result {
+func withClassValuePointer<Value, Result>(
+    of value: inout Value,
+    _ body: (UnsafeMutableRawPointer) throws -> Result) throws -> Result {
     return try withUnsafePointer(to: &value) {
         let pointer = $0.withMemoryRebound(to: UnsafeMutableRawPointer.self, capacity: 1) {$0.pointee}
         return try body(pointer)
     }
 }
 
-func withExistentialValuePointer<Value, Result>(of value: inout Value, _ body: (UnsafeMutableRawPointer) throws -> Result) throws -> Result {
+func withExistentialValuePointer<Value, Result>(
+    of value: inout Value,
+    _ body: (UnsafeMutableRawPointer) throws -> Result) throws -> Result {
     return try withUnsafePointer(to: &value) {
         let container = $0.withMemoryRebound(to: ExistentialContainer.self, capacity: 1) {$0.pointee}
         let info = try metadata(of: container.type)

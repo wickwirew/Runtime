@@ -33,6 +33,7 @@ public struct TypeInfo {
     public var size: Int = 0
     public var alignment: Int = 0
     public var stride: Int = 0
+    public var cases: [Case] = []
     
     init<Metadata: MetadataType>(metadata: Metadata) {
         kind = metadata.kind

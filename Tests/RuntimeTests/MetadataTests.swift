@@ -140,14 +140,18 @@ class MetadataTests: XCTestCase {
     }
     
     func testEnum() {
-        var md = EnumMetadata(type: MyEnum<Int>.self)
+        var md = EnumMetadata(type: MyEnum<String>.self)
         let info = md.toTypeInfo()
+        XCTAssert(info.cases[0].name == "a")
+        XCTAssert(info.cases[1].name == "b")
+        XCTAssert(info.cases[2].name == "c")
+        XCTAssert(info.cases[3].name == "d")
     }
     
 }
 
 fileprivate enum MyEnum<T>: Int {
-    case a, b, c
+    case a, b, c, d
 }
 
 func voidFunction() {

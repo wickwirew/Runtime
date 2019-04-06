@@ -20,16 +20,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-struct ClassTypeDescriptor {
-    var flags: Int32
+struct ClassTypeDescriptor: TypeDescriptor {
+    var flags: ContextDescriptorFlags
     var parent: Int32
-    var className: RelativePointer<Int32, CChar>
+    var mangledName: RelativePointer<Int32, CChar>
     var fieldTypesAccessor: RelativePointer<Int32, Int>
     var fieldDescriptor: RelativePointer<Int32, FieldDescriptor>
     var superClass: RelativePointer<Int32, Any.Type>
-    var resilientMetadataBounds: Int32
+    var metadataNegativeSizeInWords: Int32
     var metadataPositiveSizeInWords: Int32
     var numImmediateMembers: Int32
     var numberOfFields: Int32
-    var fieldOffsetVectorOffset: RelativeVectorPointer<Int32, Int>
+    var offsetToTheFieldOffsetVector: RelativeVectorPointer<Int32, Int>
+    var genericContextHeader: Int
+    var numberOfGenericArguments: Int32
 }
