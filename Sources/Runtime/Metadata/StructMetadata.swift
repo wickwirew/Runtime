@@ -22,7 +22,7 @@
 
 import Foundation
 
-struct StructMetadata: MetadataType {
+struct StructMetadata: NominalMetadataType {
     
     var pointer: UnsafeMutablePointer<StructMetadataLayout>
     

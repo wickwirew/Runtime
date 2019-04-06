@@ -25,5 +25,4 @@ import Foundation
 struct EnumMetadataLayout: NominalMetadataLayoutType {
     var _kind: Int
     var typeDescriptor: UnsafeMutablePointer<EnumTypeDescriptor>
-    var genericArgumentVector: Vector<Any.Type>
 }

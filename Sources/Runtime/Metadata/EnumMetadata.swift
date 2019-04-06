@@ -22,7 +22,7 @@
 
 import Foundation
 
-struct EnumMetadata: MetadataType {
+struct EnumMetadata: NominalMetadataType {
     
     var pointer: UnsafeMutablePointer<EnumMetadataLayout>
 

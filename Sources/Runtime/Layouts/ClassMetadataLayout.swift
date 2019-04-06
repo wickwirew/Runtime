@@ -37,10 +37,4 @@ struct ClassMetadataLayout: NominalMetadataLayoutType {
     var classAddressPoint: UInt32
     var typeDescriptor: UnsafeMutablePointer<ClassTypeDescriptor>
     var iVarDestroyer: UnsafeRawPointer
-    
-    // FIXME: this is a temporary fix to get the `genericArgumentVector` in sort of the right spot.
-    // this should really be calculated.
-    var a, b, c, d, e: Int
-    
-    var genericArgumentVector: Vector<Any.Type>
 }

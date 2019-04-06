@@ -29,5 +29,4 @@ protocol MetadataLayoutType {
 protocol NominalMetadataLayoutType: MetadataLayoutType {
     associatedtype Descriptor: TypeDescriptor
     var typeDescriptor: UnsafeMutablePointer<Descriptor> { get set }
-    var genericArgumentVector: Vector<Any.Type> { get set }
 }

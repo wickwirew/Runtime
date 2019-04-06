@@ -25,5 +25,4 @@ import Foundation
 struct StructMetadataLayout: NominalMetadataLayoutType {
     var _kind: Int
     var typeDescriptor: UnsafeMutablePointer<StructTypeDescriptor>
-    var genericArgumentVector: Vector<Any.Type>
 }

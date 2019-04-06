@@ -37,6 +37,7 @@
 		DEB67B5A2259132800CE3E27 /* Case.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB67B592259132800CE3E27 /* Case.swift */; };
 		DEB67B5C225924FE00CE3E27 /* Union.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB67B5B225924FE00CE3E27 /* Union.swift */; };
 		DEB67B5E22593EF800CE3E27 /* TargetTypeGenericContextDescriptorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB67B5D22593EF800CE3E27 /* TargetTypeGenericContextDescriptorHeader.swift */; };
+		DEB67B602259448F00CE3E27 /* NominalMetadataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB67B5F2259448F00CE3E27 /* NominalMetadataType.swift */; };
 		OBJ_100 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* Metadata.swift */; };
 		OBJ_101 /* MetadataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* MetadataType.swift */; };
 		OBJ_102 /* ProtocolMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* ProtocolMetadata.swift */; };
@@ -112,6 +113,7 @@
 		DEB67B592259132800CE3E27 /* Case.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Case.swift; sourceTree = "<group>"; };
 		DEB67B5B225924FE00CE3E27 /* Union.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Union.swift; sourceTree = "<group>"; };
 		DEB67B5D22593EF800CE3E27 /* TargetTypeGenericContextDescriptorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetTypeGenericContextDescriptorHeader.swift; sourceTree = "<group>"; };
+		DEB67B5F2259448F00CE3E27 /* NominalMetadataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominalMetadataType.swift; sourceTree = "<group>"; };
 		OBJ_10 /* DefaultValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultValue.swift; sourceTree = "<group>"; };
 		OBJ_11 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		OBJ_13 /* ClassHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassHeader.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				OBJ_33 /* ProtocolMetadata.swift */,
 				OBJ_34 /* StructMetadata.swift */,
 				OBJ_35 /* TupleMetadata.swift */,
+				DEB67B5F2259448F00CE3E27 /* NominalMetadataType.swift */,
 			);
 			path = Metadata;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				OBJ_97 /* ClassMetadata.swift in Sources */,
 				OBJ_98 /* EnumMetadata.swift in Sources */,
 				OBJ_99 /* FuntionMetadata.swift in Sources */,
+				DEB67B602259448F00CE3E27 /* NominalMetadataType.swift in Sources */,
 				OBJ_100 /* Metadata.swift in Sources */,
 				OBJ_101 /* MetadataType.swift in Sources */,
 				OBJ_102 /* ProtocolMetadata.swift in Sources */,
