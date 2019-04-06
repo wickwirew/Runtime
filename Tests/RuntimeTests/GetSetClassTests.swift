@@ -23,7 +23,6 @@
 import XCTest
 @testable import Runtime
 
-
 class GetSetClassTests: XCTestCase {
     
     static var allTests: [(String, (GetSetClassTests) -> () throws -> Void)] {
@@ -55,7 +54,8 @@ class GetSetClassTests: XCTestCase {
             ("testSetArrayUntyped", testSetArrayUntyped)
         ]
     }
-    
+
+    // swiftlint:disable force_cast
     func testGet() throws {
         let info = try typeInfo(of: Person.self)
         let firstname = try info.property(named: "firstname")
@@ -125,7 +125,7 @@ class GetSetClassTests: XCTestCase {
         let favoriteNumbers = try info.property(named: "favoriteNumbers")
         let person = Person()
         let value: [Int] = try favoriteNumbers.get(from: person)
-        XCTAssert(value == [1,2,3,4,5])
+        XCTAssert(value == [1, 2, 3, 4, 5])
     }
     
     func testGetArrayUntypedValue() throws {
@@ -133,7 +133,7 @@ class GetSetClassTests: XCTestCase {
         let favoriteNumbers = try info.property(named: "favoriteNumbers")
         let person = Person()
         let value: Any = try favoriteNumbers.get(from: person)
-        XCTAssert(value as! [Int] == [1,2,3,4,5])
+        XCTAssert(value as! [Int] == [1, 2, 3, 4, 5])
     }
     
     func testGetArrayUntypedObject() throws {
@@ -141,7 +141,7 @@ class GetSetClassTests: XCTestCase {
         let favoriteNumbers = try info.property(named: "favoriteNumbers")
         let person: Any = Person()
         let value: [Int] = try favoriteNumbers.get(from: person)
-        XCTAssert(value == [1,2,3,4,5])
+        XCTAssert(value == [1, 2, 3, 4, 5])
     }
     
     func testGetArrayUntyped() throws {
@@ -149,9 +149,8 @@ class GetSetClassTests: XCTestCase {
         let favoriteNumbers = try info.property(named: "favoriteNumbers")
         let person: Any = Person()
         let value: Any = try favoriteNumbers.get(from: person)
-        XCTAssert(value as! [Int] == [1,2,3,4,5])
+        XCTAssert(value as! [Int] == [1, 2, 3, 4, 5])
     }
-    
     
     func testSet() throws {
         let info = try typeInfo(of: Person.self)
@@ -191,36 +190,36 @@ class GetSetClassTests: XCTestCase {
         let info = try typeInfo(of: Person.self)
         let favoriteNumbers = try info.property(named: "favoriteNumbers")
         var person = Person()
-        let new = [5,4,3,2,1]
+        let new = [5, 4, 3, 2, 1]
         try favoriteNumbers.set(value: new, on: &person)
-        XCTAssert(person.favoriteNumbers == [5,4,3,2,1])
+        XCTAssert(person.favoriteNumbers == [5, 4, 3, 2, 1])
     }
     
     func testSetArrayUntypedValue() throws {
         let info = try typeInfo(of: Person.self)
         let favoriteNumbers = try info.property(named: "favoriteNumbers")
         var person = Person()
-        let new = [5,4,3,2,1]
+        let new = [5, 4, 3, 2, 1]
         try favoriteNumbers.set(value: new, on: &person)
-        XCTAssert(person.favoriteNumbers == [5,4,3,2,1])
+        XCTAssert(person.favoriteNumbers == [5, 4, 3, 2, 1])
     }
     
     func testSetArrayUntypedObject() throws {
         let info = try typeInfo(of: Person.self)
         let favoriteNumbers = try info.property(named: "favoriteNumbers")
         var person: Any = Person()
-        let new = [5,4,3,2,1]
+        let new = [5, 4, 3, 2, 1]
         try favoriteNumbers.set(value: new, on: &person)
-        XCTAssert((person as! Person).favoriteNumbers == [5,4,3,2,1])
+        XCTAssert((person as! Person).favoriteNumbers == [5, 4, 3, 2, 1])
     }
     
     func testSetArrayUntyped() throws {
         let info = try typeInfo(of: Person.self)
         let favoriteNumbers = try info.property(named: "favoriteNumbers")
         var person: Any = Person()
-        let new = [5,4,3,2,1]
+        let new = [5, 4, 3, 2, 1]
         try favoriteNumbers.set(value: new, on: &person)
-        XCTAssert((person as! Person).favoriteNumbers == [5,4,3,2,1])
+        XCTAssert((person as! Person).favoriteNumbers == [5, 4, 3, 2, 1])
     }
     
     func testSetClass() throws {
@@ -274,15 +273,15 @@ class GetSetClassTests: XCTestCase {
         XCTAssert(property.name == "username")
         XCTAssert(property.type == String.self)
     }
+    // swiftlint:enable force_cast
 }
-
 
 fileprivate class Person {
     var firstname = "Wes"
     var lastname = "Wickwire"
     var age = 25
     var pet = Pet()
-    var favoriteNumbers = [1,2,3,4,5]
+    var favoriteNumbers = [1, 2, 3, 4, 5]
 }
 
 fileprivate class Pet {
@@ -294,5 +293,3 @@ fileprivate class Pet {
         self.age = age
     }
 }
-
-

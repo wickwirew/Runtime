@@ -21,21 +21,17 @@
 // SOFTWARE.
 import Foundation
 
-
-
 struct TupleMetadata: MetadataType, TypeInfoConvertible {
     
-    var type: Any.Type
-    var metadata: UnsafeMutablePointer<TupleMetadataLayout>
-    var base: UnsafeMutablePointer<Int>
-    
+    var pointer: UnsafeMutablePointer<TupleMetadataLayout>
+ 
     func numberOfElements() -> Int {
-        return metadata.pointee.numberOfElements
+        return pointer.pointee.numberOfElements
     }
     
     func labels() -> [String] {
-        guard Int(bitPattern: metadata.pointee.labelsString) != 0 else { return (0..<numberOfElements()).map{ a in "" } }
-        var labels = String(cString: metadata.pointee.labelsString).components(separatedBy: " ")
+        guard Int(bitPattern: pointer.pointee.labelsString) != 0 else { return (0..<numberOfElements()).map { _ in "" } }
+        var labels = String(cString: pointer.pointee.labelsString).components(separatedBy: " ")
         labels.removeLast()
         return labels
     }
@@ -43,7 +39,7 @@ struct TupleMetadata: MetadataType, TypeInfoConvertible {
     func elements() -> [TupleElementLayout] {
         let n = numberOfElements()
         guard n > 0 else { return [] }
-        return metadata.pointee.elementVector.vector(n: n)
+        return pointer.pointee.elementVector.vector(n: n)
     }
     
     func properies() -> [PropertyInfo] {
@@ -52,7 +48,7 @@ struct TupleMetadata: MetadataType, TypeInfoConvertible {
         let num = numberOfElements()
         var properties = [PropertyInfo]()
         for i in 0..<num {
-            properties.append(PropertyInfo(name: names[i], type: el[i].type, offset: el[i].offset, ownerType: type))
+            properties.append(PropertyInfo(name: names[i], type: el[i].type, isVar: true, offset: el[i].offset, ownerType: type))
         }
         return properties
     }

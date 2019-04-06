@@ -20,39 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-import XCTest
-@testable import Runtime
-
-class ValueWitnessTableTests: XCTestCase {
-
-    static var allTests: [(String, (ValueWitnessTableTests) -> () throws -> Void)] {
-        return [
-            ("testSize", testSize),
-            ("testAlignment", testAlignment),
-            ("testStride", testStride)
-        ]
-    }
-    
-    func testSize() throws {
-        let info = try typeInfo(of: Person.self)
-        XCTAssert(info.size == MemoryLayout<Person>.size)
-    }
-    
-    func testAlignment() throws {
-        let info = try typeInfo(of: Person.self)
-        XCTAssert(info.alignment == MemoryLayout<Person>.alignment)
-    }
-    
-    func testStride() throws {
-        let info = try typeInfo(of: Person.self)
-        XCTAssert(info.stride == MemoryLayout<Person>.stride)
-    }
-    
+struct TargetTypeGenericContextDescriptorHeader {
+    var instantiationCache: Int32
+    var defaultInstantiationPattern: Int32
+    var base: TargetGenericContextDescriptorHeader
 }
 
-fileprivate struct Person {
-    let firstname: String
-    let lastname: String
-    let age: Int
+struct TargetGenericContextDescriptorHeader {
+    var numberOfParams: UInt16
+    var numberOfRequirements: UInt16
+    var numberOfKeyArguments: UInt16
+    var numberOfExtraArguments: UInt16
 }

@@ -21,8 +21,8 @@
 // SOFTWARE.
 
 import XCTest
+import UIKit
 @testable import Runtime
-
 
 class MetadataTests: XCTestCase {
     
@@ -36,14 +36,15 @@ class MetadataTests: XCTestCase {
             ("testFunction", testFunction),
             ("testFunctionThrows", testFunctionThrows),
             ("testVoidFunction", testVoidFunction),
-            ("testEnum", testEnum),
+            ("testEnum", testEnum)
         ]
     }
     
     func testClass() {
         var md = ClassMetadata(type: MyClass<Int>.self)
         let info = md.toTypeInfo()
-        XCTAssert(info.properties.first{$0.name == "baseProperty"} != nil)
+        XCTAssert(md.genericArgumentOffset == 15)
+        XCTAssert(info.properties.first {$0.name == "baseProperty"} != nil)
         XCTAssert(info.inheritance[0] == BaseClass.self)
         XCTAssert(info.superClass == BaseClass.self)
         XCTAssert(info.mangledName != "")
@@ -53,17 +54,40 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.size == MemoryLayout<MyClass<Int>>.size)
         XCTAssert(info.alignment == MemoryLayout<MyClass<Int>>.alignment)
         XCTAssert(info.stride == MemoryLayout<MyClass<Int>>.stride)
+        XCTAssert(info.genericTypes.count == 1)
+        XCTAssert(info.genericTypes[0] == Int.self)
+    }
+    
+    func testGenericStruct() {
+        struct A<B, C, D, E, F, G, H> { let b: B }
+        var md = StructMetadata(type: A<Int, String, Bool, Int, Int, Int, Int>.self)
+        var args = md.genericArguments()
+        let props = md.properties()
+        XCTAssert(args.count == 7)
+        XCTAssert(args[0] == Int.self)
+        XCTAssert(args[1] == String.self)
+        XCTAssert(args[2] == Bool.self)
+        XCTAssert(args[3] == Int.self)
+        XCTAssert(props.count == 1)
+        XCTAssert(props[0].type == Int.self)
     }
     
     func testStruct() {
-        var md = StructMetadata(type: MyStruct<Int>.self)
+        struct A {
+            let a, b, c, d: Int
+            var e: Int
+        }
+        
+        var md = StructMetadata(type: A.self)
         let info = md.toTypeInfo()
         XCTAssert(info.kind == .struct)
-        XCTAssert(info.type == MyStruct<Int>.self)
-        XCTAssert(info.properties.count == 4)
-        XCTAssert(info.size == MemoryLayout<MyStruct<Int>>.size)
-        XCTAssert(info.alignment == MemoryLayout<MyStruct<Int>>.alignment)
-        XCTAssert(info.stride == MemoryLayout<MyStruct<Int>>.stride)
+        XCTAssert(info.type == A.self)
+        XCTAssert(info.properties.count == 5)
+        XCTAssert(info.size == MemoryLayout<A>.size)
+        XCTAssert(info.alignment == MemoryLayout<A>.alignment)
+        XCTAssert(info.stride == MemoryLayout<A>.stride)
+        XCTAssert(!info.properties[0].isVar)
+        XCTAssert(info.properties[4].isVar)
     }
     
     func testProtocol() {
@@ -123,14 +147,18 @@ class MetadataTests: XCTestCase {
     }
     
     func testEnum() {
-        var md = EnumMetadata(type: MyEnum<Int>.self)
+        var md = EnumMetadata(type: MyEnum<String>.self)
         let info = md.toTypeInfo()
+        XCTAssert(info.cases[0].name == "a")
+        XCTAssert(info.cases[1].name == "b")
+        XCTAssert(info.cases[2].name == "c")
+        XCTAssert(info.cases[3].name == "d")
     }
     
 }
 
 fileprivate enum MyEnum<T>: Int {
-    case a,b,c
+    case a, b, c, d
 }
 
 func voidFunction() {
@@ -159,7 +187,7 @@ fileprivate class MyClass<T>: BaseClass {
 }
 
 fileprivate struct MyStruct<T> {
-    var a,b: Int
+    var a, b: Int
     var c: String
     var d: T
 }

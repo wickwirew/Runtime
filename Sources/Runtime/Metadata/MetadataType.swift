@@ -33,35 +33,48 @@ protocol MetadataInfo {
 }
 
 protocol MetadataType: MetadataInfo, TypeInfoConvertible {
+    
     associatedtype Layout: MetadataLayoutType
-    var type: Any.Type { get set }
-    var metadata: UnsafeMutablePointer<Layout> { get set }
-    var base: UnsafeMutablePointer<Int> { get set }
-    init(type: Any.Type, metadata: UnsafeMutablePointer<Layout>, base: UnsafeMutablePointer<Int>)
+    
+    var pointer: UnsafeMutablePointer<Layout> { get set }
+    
+    init(pointer: UnsafeMutablePointer<Layout>)
 }
 
 extension MetadataType {
     
+    init(type: Any.Type) {
+        self = Self(pointer: unsafeBitCast(type, to: UnsafeMutablePointer<Layout>.self))
+    }
+    
+    var type: Any.Type {
+        return unsafeBitCast(pointer, to: Any.Type.self)
+    }
+    
     var kind: Kind {
-        return Kind(flag: base.pointee)
+        return Kind(flag: pointer.pointee._kind)
     }
     
     var size: Int {
-        return metadata.pointee.valueWitnessTable.pointee.size
+        return valueWitnessTable.pointee.size
     }
     
     var alignment: Int {
-        return (metadata.pointee.valueWitnessTable.pointee.flags & ValueWitnessFlags.alignmentMask) + 1
+        return (valueWitnessTable.pointee.flags & ValueWitnessFlags.alignmentMask) + 1
     }
     
     var stride: Int {
-        return metadata.pointee.valueWitnessTable.pointee.stride
+        return valueWitnessTable.pointee.stride
     }
     
-    init(type: Any.Type) {
-        let base = metadataPointer(type: type)
-        let metadata = base.advanced(by: valueWitnessTableOffset).raw.assumingMemoryBound(to: Layout.self)
-        self.init(type: type, metadata: metadata, base: base)
+    /// The ValueWitnessTable for the type.
+    /// A pointer to the table is located one pointer sized word behind the metadata pointer.
+    var valueWitnessTable: UnsafeMutablePointer<ValueWitnessTable> {
+        return pointer
+            .raw
+            .advanced(by: -MemoryLayout<UnsafeRawPointer>.size)
+            .assumingMemoryBound(to: UnsafeMutablePointer<ValueWitnessTable>.self)
+            .pointee
     }
     
     mutating func toTypeInfo() -> TypeInfo {

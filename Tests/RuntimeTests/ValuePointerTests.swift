@@ -23,7 +23,6 @@
 import XCTest
 @testable import Runtime
 
-
 class ValuePointerTests: XCTestCase {
     
     static var allTests: [(String, (ValuePointerTests) -> () throws -> Void)] {
@@ -33,7 +32,7 @@ class ValuePointerTests: XCTestCase {
             ("testClassValuePointer", testClassValuePointer),
             ("testProtocolClassValuePointer", testProtocolClassValuePointer),
             ("testAnyClassValuePointer", testAnyClassValuePointer),
-            ("testAnyStructValuePointer", testAnyStructValuePointer),
+            ("testAnyStructValuePointer", testAnyStructValuePointer)
         ]
     }
     
@@ -82,7 +81,6 @@ class ValuePointerTests: XCTestCase {
         }
     }
 }
-
 
 fileprivate protocol PersonProtocol {
     var fistname: String { get set }

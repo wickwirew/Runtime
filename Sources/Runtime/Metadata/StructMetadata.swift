@@ -22,40 +22,15 @@
 
 import Foundation
 
-
-struct StructMetadata: MetadataType {
+struct StructMetadata: NominalMetadataType {
     
-    var type: Any.Type
-    var metadata: UnsafeMutablePointer<StructMetadataLayout>
-    var typeDescriptor: UnsafeMutablePointer<StructTypeDescriptor>
-    var base: UnsafeMutablePointer<Int>
-    
-    init(type: Any.Type, metadata: UnsafeMutablePointer<Layout>, base: UnsafeMutablePointer<Int>) {
-        self.type = type
-        self.metadata = metadata
-        self.typeDescriptor = metadata.pointee.typeDescriptor
-        self.base = base
-    }
-    
-    mutating func mangledName() -> String {
-        return String(cString: typeDescriptor.pointee.mangledName.advanced())
-    }
-    
-    mutating func numberOfFields() -> Int {
-        return typeDescriptor.pointee.numberOfFields.getInt()
-    }
-    
-    mutating func fieldOffsets() -> [Int] {
-        return typeDescriptor.pointee
-            .offsetToTheFieldOffsetVector
-            .vector(metadata: base, n: numberOfFields())
-            .map{ Int($0) }
-    }
+    var pointer: UnsafeMutablePointer<StructMetadataLayout>
     
     mutating func toTypeInfo() -> TypeInfo {
         var info = TypeInfo(metadata: self)
-        info.properties = getProperties(of: type, offsets: fieldOffsets())
+        info.properties = properties()
         info.mangledName = mangledName()
+        info.genericTypes = genericArguments()
         return info
     }
 }

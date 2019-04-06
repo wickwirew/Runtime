@@ -20,39 +20,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-import XCTest
-@testable import Runtime
-
-class ValueWitnessTableTests: XCTestCase {
-
-    static var allTests: [(String, (ValueWitnessTableTests) -> () throws -> Void)] {
-        return [
-            ("testSize", testSize),
-            ("testAlignment", testAlignment),
-            ("testStride", testStride)
-        ]
-    }
-    
-    func testSize() throws {
-        let info = try typeInfo(of: Person.self)
-        XCTAssert(info.size == MemoryLayout<Person>.size)
-    }
-    
-    func testAlignment() throws {
-        let info = try typeInfo(of: Person.self)
-        XCTAssert(info.alignment == MemoryLayout<Person>.alignment)
-    }
-    
-    func testStride() throws {
-        let info = try typeInfo(of: Person.self)
-        XCTAssert(info.stride == MemoryLayout<Person>.stride)
-    }
-    
+/// Helper for when binding to a c++ `union`
+protocol Union {
+    associatedtype Raw
+    var raw: Raw { get set }
 }
 
-fileprivate struct Person {
-    let firstname: String
-    let lastname: String
-    let age: Int
+extension Union {
+    mutating func bind<T>() -> UnsafeMutablePointer<T> {
+        return withUnsafePointer(to: &self) { pointer in
+            return pointer.raw.assumingMemoryBound(to: T.self).mutable
+        }
+    }
 }

@@ -22,7 +22,6 @@
 
 import Foundation
 
-
 public protocol DefaultConstructor {
     init()
 }
@@ -50,10 +49,8 @@ extension Array: DefaultConstructor {}
 extension Dictionary: DefaultConstructor {}
 extension Set: DefaultConstructor {}
 
-
 extension Character: DefaultConstructor {
     public init() {
         self = " "
     }
 }
-

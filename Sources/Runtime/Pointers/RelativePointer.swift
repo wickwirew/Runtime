@@ -22,7 +22,6 @@
 
 import Foundation
 
-
 struct RelativePointer<Offset: IntegerConvertible, Pointee> {
     var offset: Offset
     

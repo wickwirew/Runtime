@@ -20,26 +20,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-
-let valueWitnessTableOffset = -1
-
 struct ValueWitnessTable {
-    var a: Int
-    var b: Int
-    var c: Int
-    var d: Int
-    var e: Int
-    var f: Int
-    var g: Int
-    var h: Int
-    var i: Int
+    var initializeBufferWithCopyOfBuffer: UnsafeRawPointer
+    var destroy: UnsafeRawPointer
+    var initializeWithCopy: UnsafeRawPointer
+    var assignWithCopy: UnsafeRawPointer
+    var initializeWithTake: UnsafeRawPointer
+    var assignWithTake: UnsafeRawPointer
+    var getEnumTagSinglePayload: UnsafeRawPointer
+    var storeEnumTagSinglePayload: UnsafeRawPointer
     var size: Int
-    var flags: Int
     var stride: Int
+    var flags: Int
 }
-
 
 struct ValueWitnessFlags {
     static let alignmentMask = 0x0000FFFF

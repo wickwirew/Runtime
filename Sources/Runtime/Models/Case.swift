@@ -20,31 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-import CRuntime
-
-/// Type to use as the context in the `_getFieldAt` function.
-struct PropertyInfoContext {
-    let name: String
-    let type: Any.Type
-}
-
-/// Gets the list of properties of the inputted type.
-func getProperties(of type: Any.Type, offsets: [Int]) -> [PropertyInfo] {
-    return (0..<offsets.count).map{ index in
-        let offset = offsets[index]
-        var context = PropertyInfoContext(name: "", type: Any.self)
-        let pointer = unsafeBitCast(type, to: UnsafeRawPointer.self)
-        swift_getFieldAt(pointer, UInt32(index), { name, type, ctx in
-            guard let name = name, let ctx = ctx else { 
-                fatalError("name and ctx should not be nil")
-            }
-            let infoContext = ctx.assumingMemoryBound(to: PropertyInfoContext.self)
-            infoContext.pointee = PropertyInfoContext(
-                name: String(cString: name),
-                type: unsafeBitCast(type, to: Any.Type.self)
-            )
-        }, &context)
-        return PropertyInfo(name: context.name, type: context.type, offset: offset, ownerType: type)
-    }
+/// An enum case
+public struct Case {
+    public let name: String
 }

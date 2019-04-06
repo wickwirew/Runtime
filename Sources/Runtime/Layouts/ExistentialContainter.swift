@@ -22,8 +22,6 @@
 
 import Foundation
 
-
-
 struct ExistentialContainer {
     let buffer: ExistentialContainerBuffer
     let type: Any.Type
@@ -35,7 +33,6 @@ struct ExistentialContainerBuffer {
     let buffer2: Int
     let buffer3: Int
 }
-
 
 extension ExistentialContainerBuffer {
     static func size() -> Int {

@@ -1,0 +1,6 @@
+disabled_rules:
+    - identifier_name
+    - trailing_whitespace
+    - cyclomatic_complexity
+included:
+    - Sources

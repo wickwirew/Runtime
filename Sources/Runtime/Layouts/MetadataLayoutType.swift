@@ -22,7 +22,11 @@
 
 import Foundation
 
-
 protocol MetadataLayoutType {
-    var valueWitnessTable: UnsafePointer<ValueWitnessTable> { get set }
+    var _kind: Int { get set }
+}
+
+protocol NominalMetadataLayoutType: MetadataLayoutType {
+    associatedtype Descriptor: TypeDescriptor
+    var typeDescriptor: UnsafeMutablePointer<Descriptor> { get set }
 }

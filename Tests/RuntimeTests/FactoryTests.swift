@@ -23,16 +23,16 @@
 import XCTest
 @testable import Runtime
 
-
 class FactoryTests: XCTestCase {
 
     static var allTests: [(String, (FactoryTests) -> () throws -> Void)] {
         return [
             ("testStruct", testStruct),
-            ("testStructUntyped", testStructUntyped),
+            ("testStructUntyped", testStructUntyped)
         ]
     }
     
+    // swiftlint:disable force_cast
     func testStruct() throws {
         let person: PersonStruct = try createInstance()
         XCTAssert(person.firstname == "")
@@ -55,26 +55,32 @@ class FactoryTests: XCTestCase {
     }
   
     #if os(iOS) // does not work on macOS or Linux
-        func testClass() throws {
-            let person: PersonClass = try createInstance()
-            XCTAssert(person.firstname == "")
-            XCTAssert(person.lastname == "")
-            XCTAssert(person.age == 0)
-            XCTAssert(person.pet.name == "")
-            XCTAssert(person.pet.age == 0)
-            XCTAssert(person.favoriteNumbers == [])
-        }
+    func testClass() throws {
+        let person: PersonClass<Int> = try createInstance()
+        XCTAssert(person.firstname == "")
+        XCTAssert(person.lastname == "")
+        XCTAssert(person.age == 0)
+        XCTAssert(person.pet.name == "")
+        XCTAssert(person.pet.age == 0)
+        XCTAssert(person.favoriteNumbers == [])
+    }
+    
+    func testGenericClass() throws {
+        class B {}
+        class A<T> { let a: Int = 0; let b = B() }
+        let a: A<Int> = try createInstance()
+        XCTAssert(a.a == 0)
+    }
     #endif
+    // swiftlint:enable force_cast
 }
-
-
 
 fileprivate struct PersonStruct {
     var firstname = "Jobie"
     var lastname = "Gillis"
     var age = 40
     var pet = PetStruct()
-    var favoriteNumbers = [1,2,3,4,5]
+    var favoriteNumbers = [1, 2, 3, 4, 5]
 }
 
 fileprivate struct PetStruct {
@@ -87,12 +93,12 @@ fileprivate struct PetStruct {
     }
 }
 
-fileprivate class PersonClass {
+fileprivate class PersonClass<T> {
     var firstname = "Jobie"
     var lastname = "Gillis"
     var age = 40
     var pet = PetClass()
-    var favoriteNumbers = [1,2,3,4,5]
+    var favoriteNumbers = [1, 2, 3, 4, 5]
 }
 
 fileprivate class PetClass {

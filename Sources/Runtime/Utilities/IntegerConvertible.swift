@@ -22,7 +22,6 @@
 
 import Foundation
 
-
 protocol IntegerConvertible {
     func getInt() -> Int
 }
@@ -34,6 +33,12 @@ extension Int: IntegerConvertible {
 }
 
 extension Int32: IntegerConvertible {
+    func getInt() -> Int {
+        return Int(self)
+    }
+}
+
+extension UInt16: IntegerConvertible {
     func getInt() -> Int {
         return Int(self)
     }

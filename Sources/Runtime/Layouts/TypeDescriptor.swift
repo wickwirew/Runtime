@@ -20,39 +20,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-import XCTest
-@testable import Runtime
-
-class ValueWitnessTableTests: XCTestCase {
-
-    static var allTests: [(String, (ValueWitnessTableTests) -> () throws -> Void)] {
-        return [
-            ("testSize", testSize),
-            ("testAlignment", testAlignment),
-            ("testStride", testStride)
-        ]
-    }
+protocol TypeDescriptor {
     
-    func testSize() throws {
-        let info = try typeInfo(of: Person.self)
-        XCTAssert(info.size == MemoryLayout<Person>.size)
-    }
+    /// The offset type can differ between TypeDescriptors
+    /// e.g. Struct are an Int32 and classes are an Int
+    associatedtype FieldOffsetVectorOffsetType: IntegerConvertible
     
-    func testAlignment() throws {
-        let info = try typeInfo(of: Person.self)
-        XCTAssert(info.alignment == MemoryLayout<Person>.alignment)
-    }
-    
-    func testStride() throws {
-        let info = try typeInfo(of: Person.self)
-        XCTAssert(info.stride == MemoryLayout<Person>.stride)
-    }
-    
+    var mangledName: RelativePointer<Int32, CChar> { get set }
+    var fieldDescriptor: RelativePointer<Int32, FieldDescriptor> { get set }
+    var numberOfFields: Int32 { get set }
+    var offsetToTheFieldOffsetVector: RelativeVectorPointer<Int32, FieldOffsetVectorOffsetType> { get set }
+    var genericContextHeader: TargetTypeGenericContextDescriptorHeader { get set }
 }
 
-fileprivate struct Person {
-    let firstname: String
-    let lastname: String
-    let age: Int
-}
+typealias ContextDescriptorFlags = Int32

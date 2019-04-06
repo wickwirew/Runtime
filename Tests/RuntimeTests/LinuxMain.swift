@@ -8,5 +8,5 @@ XCTMain([
    testCase(GetSetStructTests.allTests), 
    testCase(MetadataTests.allTests), 
    testCase(ValuePointerTests.allTests), 
-   testCase(ValueWitnessTableTests.allTests),
+   testCase(ValueWitnessTableTests.allTests)
 ])

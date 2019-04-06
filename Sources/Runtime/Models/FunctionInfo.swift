@@ -22,14 +22,12 @@
 
 import Foundation
 
-
 public struct FunctionInfo {
     public var numberOfArguments: Int
     public var argumentTypes: [Any.Type]
     public var returnType: Any.Type
     public var `throws`: Bool
 }
-
 
 public func functionInfo(of function: Any) throws -> FunctionInfo {
     return try functionInfo(of: type(of: function))

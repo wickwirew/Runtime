@@ -22,7 +22,6 @@
 
 import Foundation
 
-
 extension UnsafePointer {
     
     var raw: UnsafeRawPointer {
@@ -64,5 +63,9 @@ extension UnsafeMutablePointer {
             result.append(advanced(by: i).pointee)
         }
         return result
+    }
+    
+    func advanced(by n: Int, wordSize: Int) -> UnsafeMutableRawPointer {
+        return self.raw.advanced(by: n * wordSize)
     }
 }

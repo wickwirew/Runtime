@@ -22,39 +22,44 @@
 
 import Foundation
 
-struct ClassMetadata: MetadataType {
+struct ClassMetadata: NominalMetadataType {
     
-    var type: Any.Type
-    var metadata: UnsafeMutablePointer<ClassMetadataLayout>
-    var typeDescriptor: UnsafeMutablePointer<ClassTypeDescriptor>
-    var base: UnsafeMutablePointer<Int>
+    var pointer: UnsafeMutablePointer<ClassMetadataLayout>
     
-    init(type: Any.Type, metadata: UnsafeMutablePointer<Layout>, base: UnsafeMutablePointer<Int>) {
-        self.type = type
-        self.metadata = metadata
-        self.typeDescriptor = metadata.pointee.typeDescriptor
-        self.base = base
+    var hasResilientSuperclass: Bool {
+        return (0x4000 & pointer.pointee.classFlags) != 0
     }
     
-    mutating func className() -> String {
-        return String(cString: typeDescriptor.pointee.className.advanced())
+    var areImmediateMembersNegative: Bool {
+        return (0x800 & pointer.pointee.classFlags) != 0
     }
     
-    mutating func numberOfFields() -> Int {
-        return typeDescriptor.pointee
-            .numberOfFields
-            .getInt()
-    }
-    
-    mutating func fieldOffsets() -> [Int] {
-        return typeDescriptor.pointee
-            .fieldOffsetVectorOffset
-            .vector(metadata: base, n: numberOfFields())
-            .map{ Int($0) }
+    var genericArgumentOffset: Int {
+        let typeDescriptor = pointer.pointee.typeDescriptor
+        
+        if !hasResilientSuperclass {
+            return areImmediateMembersNegative
+                ? -Int(typeDescriptor.pointee.negativeSizeAndBoundsUnion.metadataNegativeSizeInWords)
+                : Int(typeDescriptor.pointee.metadataPositiveSizeInWords - typeDescriptor.pointee.numImmediateMembers)
+        }
+        
+        /*
+        let storedBounds = typeDescriptor.pointee
+            .negativeSizeAndBoundsUnion
+            .resilientMetadataBounds()
+            .pointee
+            .advanced()
+            .pointee
+        */
+        
+        // To do this something like `computeMetadataBoundsFromSuperclass` in Metadata.cpp
+        // will need to be implemented. To do that we also need to get the resilient superclass
+        // from the trailing objects.
+        fatalError("Cannot get the `genericArgumentOffset` for classes with a resilient superclass")
     }
     
     func superClassMetadata() -> ClassMetadata? {
-        let superClass = metadata.pointee.superClass
+        let superClass = pointer.pointee.superClass
         // type comparison directly to NSObject.self does not work.
         // just compare the type name instead.
         if superClass != swiftObject() && "\(superClass)" != "NSObject" {
@@ -66,9 +71,9 @@ struct ClassMetadata: MetadataType {
     
     mutating func toTypeInfo() -> TypeInfo {
         var info = TypeInfo(metadata: self)
-        info.mangledName = className()
-        
-        info.properties = getProperties(of: type, offsets: fieldOffsets())
+        info.mangledName = mangledName()
+        info.properties = properties()
+        info.genericTypes = genericArguments()
         
         var superClass = superClassMetadata()
         while var sc = superClass {
@@ -77,6 +82,7 @@ struct ClassMetadata: MetadataType {
             info.properties.append(contentsOf: superInfo.properties)
             superClass = sc.superClassMetadata()
         }
+        
         return info
     }
 }
