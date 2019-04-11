@@ -938,8 +938,8 @@
       "OBJ_73" = {
          isa = "PBXGroup";
          children = (
-            "Runtime::RuntimeTests::Product",
-            "Runtime::Runtime::Product"
+            "Runtime::Runtime::Product",
+            "Runtime::RuntimeTests::Product"
          );
          name = "Products";
          path = "";
