@@ -21,6 +21,7 @@
 // SOFTWARE.
 
 import Foundation
+import CRuntime
 
 public func createInstance<T>(constructor: ((PropertyInfo) throws -> Any)? = nil) throws -> T {
     if let value = try createInstance(of: T.self, constructor: constructor) as? T {
@@ -37,24 +38,14 @@ public func createInstance(of type: Any.Type, constructor: ((PropertyInfo) throw
     }
     
     let kind = Kind(type: type)
-    
-    #if os(iOS) // does not work on macOS or Linux
-        switch kind {
-        case .struct:
-            return try buildStruct(type: type, constructor: constructor)
-        case .class:
-            return try buildClass(type: type)
-        default:
-            throw RuntimeError.unableToBuildType(type: type)
-        }
-    #else // class does not work on macOS or Linux
-        switch kind {
-        case .struct:
-            return try buildStruct(type: type, constructor: constructor)
-        default:
-            throw RuntimeError.unableToBuildType(type: type)
-        }
-    #endif
+    switch kind {
+    case .struct:
+        return try buildStruct(type: type, constructor: constructor)
+    case .class:
+        return try buildClass(type: type)
+    default:
+        throw RuntimeError.unableToBuildType(type: type)
+    }
 }
 
 func buildStruct(type: Any.Type, constructor: ((PropertyInfo) throws -> Any)? = nil) throws -> Any {
@@ -65,20 +56,23 @@ func buildStruct(type: Any.Type, constructor: ((PropertyInfo) throws -> Any)? = 
     return getters(type: type).get(from: pointer)
 }
 
-#if os(iOS) // does not work on macOS or Linux
-    func buildClass(type: Any.Type) throws -> Any {
-        let info = try typeInfo(of: type)
-        if let type = type as? AnyClass, var value = class_createInstance(type, 0) {
-            try withClassValuePointer(of: &value) { pointer in
-                try setProperties(typeInfo: info, pointer: pointer)
-                let header = pointer.assumingMemoryBound(to: ClassHeader.self)
-                header.pointee.strongRetainCounts = 2
-            }
-            return value
-        }
-        throw RuntimeError.unableToBuildType(type: type)
+func buildClass(type: Any.Type) throws -> Any {
+    var md = ClassMetadata(type: type)
+    let info = md.toTypeInfo()
+    let metadata = unsafeBitCast(type, to: UnsafeRawPointer.self)
+    let instanceSize = Int32(md.pointer.pointee.classSize)
+    let alignment = Int32(md.alignment)
+
+    guard var value = swift_allocObject(metadata, instanceSize, alignment) else {
+            throw RuntimeError.unableToBuildType(type: type)
     }
-#endif
+
+    try withClassValuePointer(of: &value) { pointer in
+        try setProperties(typeInfo: info, pointer: pointer)
+    }
+
+    return value
+}
 
 func setProperties(typeInfo: TypeInfo,
                    pointer: UnsafeMutableRawPointer,
