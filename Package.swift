@@ -8,7 +8,7 @@ let package = Package(
             targets: ["Runtime"])
         ],
         dependencies: [
-             .package(url: "https://github.com/wickwirew/CRuntime.git", from: "2.1.1")
+             .package(url: "https://github.com/wickwirew/CRuntime.git", from: "2.1.2")
         ],
     targets: [
         .target(

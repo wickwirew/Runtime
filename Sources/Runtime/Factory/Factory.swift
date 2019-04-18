@@ -63,15 +63,13 @@ func buildClass(type: Any.Type) throws -> Any {
     let instanceSize = Int32(md.pointer.pointee.classSize)
     let alignment = Int32(md.alignment)
 
-    guard var value = swift_allocObject(metadata, instanceSize, alignment) else {
+    guard let value = swift_allocObject(metadata, instanceSize, alignment) else {
             throw RuntimeError.unableToBuildType(type: type)
     }
 
-    try withClassValuePointer(of: &value) { pointer in
-        try setProperties(typeInfo: info, pointer: pointer)
-    }
+    try setProperties(typeInfo: info, pointer: UnsafeMutableRawPointer(mutating: value))
 
-    return value
+    return unsafeBitCast(value, to: AnyObject.self)
 }
 
 func setProperties(typeInfo: TypeInfo,

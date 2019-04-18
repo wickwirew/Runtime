@@ -28,11 +28,12 @@ class FactoryTests: XCTestCase {
     static var allTests: [(String, (FactoryTests) -> () throws -> Void)] {
         return [
             ("testStruct", testStruct),
-            ("testStructUntyped", testStructUntyped)
+            ("testStructUntyped", testStructUntyped),
+            ("testClass", testClass),
+            ("testGenericClass", testGenericClass)
         ]
     }
     
-    // swiftlint:disable force_cast
     func testStruct() throws {
         let person: PersonStruct = try createInstance()
         XCTAssert(person.firstname == "")
@@ -53,8 +54,7 @@ class FactoryTests: XCTestCase {
         XCTAssert(person.pet.age == 0)
         XCTAssert(person.favoriteNumbers == [])
     }
-  
-    #if os(iOS) // does not work on macOS or Linux
+    
     func testClass() throws {
         let person: PersonClass<Int> = try createInstance()
         XCTAssert(person.firstname == "")
@@ -71,8 +71,6 @@ class FactoryTests: XCTestCase {
         let a: A<Int> = try createInstance()
         XCTAssert(a.a == 0)
     }
-    #endif
-    // swiftlint:enable force_cast
 }
 
 fileprivate struct PersonStruct {
