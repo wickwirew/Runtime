@@ -21,7 +21,6 @@
 // SOFTWARE.
 
 import XCTest
-import UIKit
 @testable import Runtime
 
 class MetadataTests: XCTestCase {
