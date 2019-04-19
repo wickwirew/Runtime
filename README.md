@@ -1,7 +1,7 @@
 ![Runtime](https://github.com/wickwirew/Runtime/blob/master/Resources/Runtime.png)
 
 ![Build](https://travis-ci.org/wickwirew/Runtime.svg?branch=master)
-![Swift 4.0](https://img.shields.io/badge/Swift-4.1-green.svg)
+![Swift 5.0](https://img.shields.io/badge/Swift-5.0-green.svg)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/Runtime.svg)](#cocoapods)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
@@ -70,7 +70,6 @@ Q: When creating a new instance of a class is it still protected by ARC?
 A: Yes! The retain counts are set properly so ARC can do its job. 
 
 ## Installation
-For Swift 4 support please use the `swift-4` branch.
 ### Cocoapods
 Runtime is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
