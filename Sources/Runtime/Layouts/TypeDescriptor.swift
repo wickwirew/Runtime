@@ -26,6 +26,7 @@ protocol TypeDescriptor {
     /// e.g. Struct are an Int32 and classes are an Int
     associatedtype FieldOffsetVectorOffsetType: IntegerConvertible
     
+    var flags: ContextDescriptorFlags { get set }
     var mangledName: RelativePointer<Int32, CChar> { get set }
     var fieldDescriptor: RelativePointer<Int32, FieldDescriptor> { get set }
     var numberOfFields: Int32 { get set }

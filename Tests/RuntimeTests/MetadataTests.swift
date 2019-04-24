@@ -79,6 +79,7 @@ class MetadataTests: XCTestCase {
         
         var md = StructMetadata(type: A.self)
         let info = md.toTypeInfo()
+        XCTAssert(info.genericTypes.count == 0)
         XCTAssert(info.kind == .struct)
         XCTAssert(info.type == A.self)
         XCTAssert(info.properties.count == 5)
@@ -87,6 +88,32 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.stride == MemoryLayout<A>.stride)
         XCTAssert(!info.properties[0].isVar)
         XCTAssert(info.properties[4].isVar)
+    }
+    
+    // https://github.com/wickwirew/Runtime/issues/42
+    func testNestedStruct() {
+        
+        let nest: () -> Void = {
+            
+            struct NestedA {
+                let a, b, c, d: Int
+                var e: Int
+            }
+            
+            var md = StructMetadata(type: NestedA.self)
+            let info = md.toTypeInfo()
+            XCTAssert(info.genericTypes.count == 0)
+            XCTAssert(info.kind == .struct)
+            XCTAssert(info.type == NestedA.self)
+            XCTAssert(info.properties.count == 5)
+            XCTAssert(info.size == MemoryLayout<NestedA>.size)
+            XCTAssert(info.alignment == MemoryLayout<NestedA>.alignment)
+            XCTAssert(info.stride == MemoryLayout<NestedA>.stride)
+            XCTAssert(!info.properties[0].isVar)
+            XCTAssert(info.properties[4].isVar)
+        }
+        
+        nest()
     }
     
     func testProtocol() {
