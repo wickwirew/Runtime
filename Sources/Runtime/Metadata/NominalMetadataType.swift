@@ -35,6 +35,10 @@ extension NominalMetadataType {
         return 2
     }
     
+    var isGeneric: Bool {
+        return (pointer.pointee.typeDescriptor.pointee.flags & 0x80) != 0
+    }
+    
     mutating func mangledName() -> String {
         return String(cString: pointer.pointee.typeDescriptor.pointee.mangledName.advanced())
     }
@@ -78,11 +82,18 @@ extension NominalMetadataType {
     }
     
     func genericArguments() -> [Any.Type] {
-        let n = pointer.pointee.typeDescriptor.pointee.genericContextHeader.base.numberOfParams
-        guard n > 0 else { return [] }
+        guard isGeneric else { return [] }
+        
+        let genericHeader = pointer.pointee
+            .typeDescriptor
+            .pointee
+            .genericContextHeader
+        
+        guard genericHeader.base.numberOfParams > 0 else { return [] }
         
         let vector = genericArgumentVector()
-        return (0..<Int(pointer.pointee.typeDescriptor.pointee.genericContextHeader.base.numberOfParams)).map { i in
+        
+        return (0..<Int(genericHeader.base.numberOfParams)).map { i in
             return vector.pointee.element(at: i).pointee
         }
     }
