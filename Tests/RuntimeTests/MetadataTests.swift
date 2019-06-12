@@ -21,7 +21,6 @@
 // SOFTWARE.
 
 import XCTest
-import UIKit
 @testable import Runtime
 
 class MetadataTests: XCTestCase {
@@ -61,7 +60,7 @@ class MetadataTests: XCTestCase {
     func testGenericStruct() {
         struct A<B, C, D, E, F, G, H> { let b: B }
         var md = StructMetadata(type: A<Int, String, Bool, Int, Int, Int, Int>.self)
-        var args = md.genericArguments()
+        let args = md.genericArguments()
         let props = md.properties()
         XCTAssert(args.count == 7)
         XCTAssert(args[0] == Int.self)
