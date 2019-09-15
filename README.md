@@ -26,7 +26,7 @@ let info = try typeInfo(of: User.self)
 ## Property Info
 Within the `TypeInfo` object, it contains a list of `PropertyInfo` which represents all properties for the type. `PropertyInfo` exposes the name and type of the property. It also allows the getting and setting of a value on an object.
 ### Example
-Using the same `Person` object as before first we get the `TypeInfo` and the property we want.
+Using the same `User` object as before first we get the `TypeInfo` and the property we want.
 ```swift
 let info = try typeInfo(of: User.self)
 let property = try info.property(named: "username")
