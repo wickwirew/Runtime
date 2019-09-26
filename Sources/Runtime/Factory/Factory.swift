@@ -21,7 +21,6 @@
 // SOFTWARE.
 
 import Foundation
-import CRuntime
 
 public func createInstance<T>(constructor: ((PropertyInfo) throws -> Any)? = nil) throws -> T {
     if let value = try createInstance(of: T.self, constructor: constructor) as? T {
