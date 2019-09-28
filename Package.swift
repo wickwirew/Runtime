@@ -10,6 +10,9 @@ let package = Package(
     targets: [
         .target(
             name: "Runtime",
+            dependencies: ["CRuntime"]),
+        .target(
+            name: "CRuntime",
             dependencies: []),
         .testTarget(
             name: "RuntimeTests",

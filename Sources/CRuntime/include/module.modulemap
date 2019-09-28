@@ -1,0 +1,4 @@
+module CRuntime {
+    header "CRuntime.h"
+    export *
+}
