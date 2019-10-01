@@ -44,14 +44,14 @@ extension NominalMetadataType {
     }
     
     mutating func numberOfFields() -> Int {
-        return pointer.pointee.typeDescriptor.pointee.numberOfFields.getInt()
+        return Int(pointer.pointee.typeDescriptor.pointee.numberOfFields)
     }
     
     mutating func fieldOffsets() -> [Int] {
         return pointer.pointee.typeDescriptor.pointee
             .offsetToTheFieldOffsetVector
             .vector(metadata: pointer.raw.assumingMemoryBound(to: Int.self), n: numberOfFields())
-            .map { $0.getInt() }
+            .map(numericCast)
     }
     
     mutating func properties() -> [PropertyInfo] {
