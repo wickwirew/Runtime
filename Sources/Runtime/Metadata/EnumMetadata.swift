@@ -35,7 +35,7 @@ struct EnumMetadata: NominalMetadataType {
             let record = fieldDescriptor
                 .pointee
                 .fields
-                .element(at: i)
+                .element(at: Int(i))
             
             return Case(name: record.pointee.fieldName())
         }
