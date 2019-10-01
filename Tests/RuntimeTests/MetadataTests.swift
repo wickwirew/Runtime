@@ -181,6 +181,11 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.cases[3].name == "d")
     }
     
+    func testOptional() throws {
+        let info = try typeInfo(of: Double?.self)
+        XCTAssert(info.cases[0].name == "some")
+        XCTAssert(info.cases[1].name == "none")
+    }
 }
 
 fileprivate enum MyEnum<T>: Int {
