@@ -24,10 +24,10 @@ import Foundation
 
 struct RelativeVectorPointer<Offset: FixedWidthInteger, Pointee> {
     var offset: Offset
-    mutating func vector(metadata: UnsafePointer<Int>, n: Int) -> [Pointee] {
+    mutating func vector(metadata: UnsafePointer<Int>, n: Int) -> UnsafeBufferPointer<Pointee> {
         return metadata.advanced(by: numericCast(offset))
             .raw.assumingMemoryBound(to: Pointee.self)
-            .vector(n: n)
+            .buffer(n: n)
     }
 }
 

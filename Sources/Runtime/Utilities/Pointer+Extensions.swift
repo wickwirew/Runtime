@@ -32,12 +32,8 @@ extension UnsafePointer {
         return UnsafeMutablePointer<Pointee>(mutating: self)
     }
     
-    func vector(n: Int) -> [Pointee] {
-        var result = [Pointee]()
-        for i in 0..<n {
-            result.append(advanced(by: i).pointee)
-        }
-        return result
+    func buffer(n: Int) -> UnsafeBufferPointer<Pointee> {
+        return UnsafeBufferPointer(start: self, count: n)
     }
 }
 
@@ -57,12 +53,8 @@ extension UnsafeMutablePointer {
         return UnsafeMutableRawPointer(self)
     }
     
-    func vector(n: Int) -> [Pointee] {
-        var result = [Pointee]()
-        for i in 0..<n {
-            result.append(advanced(by: i).pointee)
-        }
-        return result
+    func buffer(n: Int) -> UnsafeMutableBufferPointer<Pointee> {
+        return UnsafeMutableBufferPointer(start: self, count: n)
     }
     
     func advanced(by n: Int, wordSize: Int) -> UnsafeMutableRawPointer {

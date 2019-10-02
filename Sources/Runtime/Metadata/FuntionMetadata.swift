@@ -36,10 +36,10 @@ struct FunctionMetadata: MetadataType {
     
     private func argumentInfo() -> (Int, [Any.Type], Any.Type) {
         let n = numberArguments()
-        var argTypes = pointer.pointee.argumentVector.vector(n: n + 1)
+        let argTypeBuffer = pointer.pointee.argumentVector.vector(n: n + 1)
         
-        let resultType = argTypes[0]
-        argTypes.removeFirst()
+        let resultType = argTypeBuffer[0]
+        let argTypes = Array(argTypeBuffer.dropFirst())
         
         return (n, argTypes, resultType)
     }

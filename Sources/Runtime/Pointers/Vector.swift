@@ -26,10 +26,10 @@ struct Vector<Element> {
     
     var element: Element
     
-    mutating func vector(n: Int) -> [Element] {
+    mutating func vector(n: Int) -> UnsafeBufferPointer<Element> {
         return withUnsafePointer(to: &self) {
             $0.withMemoryRebound(to: Element.self, capacity: 1) { start in
-                return start.vector(n: n)
+                return start.buffer(n: n)
             }
         }
     }
