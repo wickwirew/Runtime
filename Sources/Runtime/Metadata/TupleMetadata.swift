@@ -36,10 +36,8 @@ struct TupleMetadata: MetadataType, TypeInfoConvertible {
         return labels
     }
     
-    func elements() -> [TupleElementLayout] {
-        let n = numberOfElements()
-        guard n > 0 else { return [] }
-        return pointer.pointee.elementVector.vector(n: n)
+    func elements() -> UnsafeBufferPointer<TupleElementLayout> {
+        return pointer.pointee.elementVector.vector(n: numberOfElements())
     }
     
     func properies() -> [PropertyInfo] {
