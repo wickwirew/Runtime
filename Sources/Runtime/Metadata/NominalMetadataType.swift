@@ -72,7 +72,7 @@ extension NominalMetadataType {
                 name: record.pointee.fieldName(),
                 type: record.pointee.type(
                     genericContext: pointer.pointee.typeDescriptor,
-                    genericArguments: genericVector.pointee.element(at: 0)
+                    genericArguments: genericVector
                 ),
                 isVar: record.pointee.isVar,
                 offset: offsets[i],
@@ -81,26 +81,21 @@ extension NominalMetadataType {
         }
     }
     
-    func genericArguments() -> [Any.Type] {
-        guard isGeneric else { return [] }
+    func genericArguments() -> UnsafeMutableBufferPointer<Any.Type> {
+        guard isGeneric else { return .init(start: nil, count: 0) }
         
-        let genericHeader = pointer.pointee
+        let count = pointer.pointee
             .typeDescriptor
             .pointee
             .genericContextHeader
-        
-        guard genericHeader.base.numberOfParams > 0 else { return [] }
-        
-        let vector = genericArgumentVector()
-        
-        return (0..<Int(genericHeader.base.numberOfParams)).map { i in
-            return vector.pointee.element(at: i).pointee
-        }
+            .base
+            .numberOfParams
+        return genericArgumentVector().buffer(n: Int(count))
     }
     
-    func genericArgumentVector() -> UnsafeMutablePointer<Vector<Any.Type>> {
+    func genericArgumentVector() -> UnsafeMutablePointer<Any.Type> {
         return pointer
             .advanced(by: genericArgumentOffset, wordSize: MemoryLayout<UnsafeRawPointer>.size)
-            .assumingMemoryBound(to: Vector<Any.Type>.self)
+            .assumingMemoryBound(to: Any.Type.self)
     }
 }

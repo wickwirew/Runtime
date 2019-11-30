@@ -30,7 +30,7 @@ struct StructMetadata: NominalMetadataType {
         var info = TypeInfo(metadata: self)
         info.properties = properties()
         info.mangledName = mangledName()
-        info.genericTypes = genericArguments()
+        info.genericTypes = Array(genericArguments())
         return info
     }
 }

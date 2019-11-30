@@ -45,7 +45,7 @@ struct EnumMetadata: NominalMetadataType {
         var info = TypeInfo(metadata: self)
         info.mangledName = mangledName()
         info.cases = cases()
-        info.genericTypes = genericArguments()
+        info.genericTypes = Array(genericArguments())
         return info
     }
 }

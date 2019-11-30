@@ -73,7 +73,7 @@ struct ClassMetadata: NominalMetadataType {
         var info = TypeInfo(metadata: self)
         info.mangledName = mangledName()
         info.properties = properties()
-        info.genericTypes = genericArguments()
+        info.genericTypes = Array(genericArguments())
         
         var superClass = superClassMetadata()
         while var sc = superClass {
