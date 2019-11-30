@@ -22,11 +22,22 @@
 
 import Foundation
 
+// Swift class or objc class
+struct AnyClassMetadataLayout {
+    var _kind: Int // isaPointer for classes
+    var superClass: Any.Type
+    var objCRuntimeReserve: (Int, Int)
+    var rodataPointer: Int
+    
+    var isSwiftClass: Bool {
+        return (rodataPointer & classIsSwiftMask()) != 0
+    }
+}
+
 struct ClassMetadataLayout: NominalMetadataLayoutType {
     var _kind: Int // isaPointer for classes
     var superClass: Any.Type
-    var objCRuntimeReserve1: Int
-    var objCRuntimeReserve2: Int
+    var objCRuntimeReserve: (Int, Int)
     var rodataPointer: Int
     var classFlags: Int32
     var instanceAddressPoint: UInt32
