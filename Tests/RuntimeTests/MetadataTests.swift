@@ -28,7 +28,10 @@ class MetadataTests: XCTestCase {
     static var allTests: [(String, (MetadataTests) -> () throws -> Void)] {
         return [
             ("testClass", testClass),
+            ("testResilientClass", testResilientClass),
             ("testStruct", testStruct),
+            ("testGenericStruct", testGenericStruct),
+            ("testNestedStruct", testNestedStruct),
             ("testProtocol", testProtocol),
             ("testTuple", testTuple),
             ("testTupleNoLabels", testTupleNoLabels),
@@ -55,6 +58,18 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.stride == MemoryLayout<MyClass<Int>>.stride)
         XCTAssert(info.genericTypes.count == 1)
         XCTAssert(info.genericTypes[0] == Int.self)
+    }
+    
+    func testResilientClass() {
+        #if canImport(Darwin)
+        class DerivedResilient: JSONEncoder {}
+        let md1 = ClassMetadata(type: BaseClass.self)
+        let md2 = ClassMetadata(type: JSONDecoder.self)
+        let md3 = ClassMetadata(type: DerivedResilient.self)
+        XCTAssertFalse(md1.hasResilientSuperclass)
+        XCTAssertFalse(md2.hasResilientSuperclass)
+        XCTAssertTrue(md3.hasResilientSuperclass)
+        #endif
     }
     
     func testGenericStruct() {

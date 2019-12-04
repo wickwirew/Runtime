@@ -27,11 +27,13 @@ struct ClassMetadata: NominalMetadataType {
     var pointer: UnsafeMutablePointer<ClassMetadataLayout>
     
     var hasResilientSuperclass: Bool {
-        return (0x4000 & pointer.pointee.classFlags) != 0
+        let typeDescriptor = pointer.pointee.typeDescriptor
+        return ((typeDescriptor.pointee.flags >> 16) & 0x2000) != 0
     }
     
     var areImmediateMembersNegative: Bool {
-        return (0x800 & pointer.pointee.classFlags) != 0
+        let typeDescriptor = pointer.pointee.typeDescriptor
+        return ((typeDescriptor.pointee.flags >> 16) & 0x1000) != 0
     }
     
     var genericArgumentOffset: Int {
