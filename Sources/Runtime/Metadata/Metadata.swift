@@ -51,3 +51,12 @@ func swiftObject() -> Any.Type {
     let md = ClassMetadata(type: Temp.self)
     return md.pointer.pointee.superClass
 }
+
+func classIsSwiftMask() -> Int {
+    #if canImport(Darwin)
+    if #available(macOS 10.14.4, iOS 12.2, tvOS 12.2, watchOS 5.2, *) {
+        return 2
+    }
+    #endif
+    return 1
+}
