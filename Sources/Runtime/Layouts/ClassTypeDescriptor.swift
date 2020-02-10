@@ -32,7 +32,6 @@ struct ClassTypeDescriptor: TypeDescriptor {
     var numImmediateMembers: Int32
     var numberOfFields: Int32
     var offsetToTheFieldOffsetVector: RelativeVectorPointer<Int32, Int>
-    var genericContextHeader: TargetTypeGenericContextDescriptorHeader
     
     struct NegativeSizeAndBoundsUnion: Union {
         var raw: Int32

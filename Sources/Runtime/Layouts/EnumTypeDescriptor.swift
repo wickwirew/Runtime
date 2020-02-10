@@ -14,5 +14,4 @@ struct EnumTypeDescriptor: TypeDescriptor {
     var numPayloadCasesAndPayloadSizeOffset: UInt32
     var numberOfFields: Int32 // numEmptyCases
     var offsetToTheFieldOffsetVector: RelativeVectorPointer<Int32, Int32>
-    var genericContextHeader: TargetTypeGenericContextDescriptorHeader
 }

@@ -72,6 +72,22 @@ class MetadataTests: XCTestCase {
         #endif
     }
     
+    func testGetGenericsResilientSuperclass() {
+        class Foo {
+            init() {}
+            func method1() { print("Hey bitch") }
+            func method2() { print("Hey bitch") }
+            func method3() { print("Hey bitch") }
+            func method4() { print("Hey bitch") }
+            func method5() { print("Hey bitch") }
+            func method6() { print("Hey bitch") }
+            var bar: Int { return 0}
+        }
+        
+        let md = ClassMetadata(type: Foo.self)
+        print(md.getMangledMethodNames())
+    }
+    
     func testGenericStruct() {
         struct A<B, C, D, E, F, G, H> { let b: B }
         var md = StructMetadata(type: A<Int, String, Bool, Int, Int, Int, Int>.self)

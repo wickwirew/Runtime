@@ -32,5 +32,4 @@ struct StructTypeDescriptor: TypeDescriptor {
     var fieldDescriptor: RelativePointer<Int32, FieldDescriptor>
     var numberOfFields: Int32
     var offsetToTheFieldOffsetVector: RelativeVectorPointer<Int32, Int32>
-    var genericContextHeader: TargetTypeGenericContextDescriptorHeader
 }

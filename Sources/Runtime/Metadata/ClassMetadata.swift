@@ -43,6 +43,16 @@ struct ClassMetadata: NominalMetadataType {
     
     var pointer: UnsafeMutablePointer<ClassMetadataLayout>
     
+    var vtable: UnsafeMutableBufferPointer<UnsafeRawPointer> {
+        let vTableDesc = vtableHeader
+        
+        let vtableStart = pointer
+            .advanced(by: Int(vTableDesc.vTableOffset), wordSize: MemoryLayout<UnsafeRawPointer>.size)
+            .assumingMemoryBound(to: UnsafeRawPointer.self)
+        
+        return UnsafeMutableBufferPointer<UnsafeRawPointer>(start: vtableStart, count: Int(vTableDesc.vTableSive))
+    }
+    
     var hasResilientSuperclass: Bool {
         let typeDescriptor = pointer.pointee.typeDescriptor
         return ((typeDescriptor.pointee.flags >> 16) & 0x2000) != 0
@@ -62,21 +72,26 @@ struct ClassMetadata: NominalMetadataType {
                 : Int(typeDescriptor.pointee.metadataPositiveSizeInWords - typeDescriptor.pointee.numImmediateMembers)
         }
         
-        /*
         let storedBounds = typeDescriptor.pointee
             .negativeSizeAndBoundsUnion
             .resilientMetadataBounds()
             .pointee
             .advanced()
             .pointee
-        */
         
-        // To do this something like `computeMetadataBoundsFromSuperclass` in Metadata.cpp
-        // will need to be implemented. To do that we also need to get the resilient superclass
-        // from the trailing objects.
-        fatalError("Cannot get the `genericArgumentOffset` for classes with a resilient superclass")
+        return storedBounds.immediateMembersOffset / MemoryLayout<UnsafeRawPointer>.size
     }
-    
+
+    func getMangledMethodNames() -> [String] {
+        return Array(vtable).map { impl in
+            let result = UnsafeMutablePointer<Dl_info>.allocate(capacity: 1)
+            dladdr(impl, result)
+            let name = String(cString: result.pointee.dli_sname)
+            result.deallocate()
+            return name
+        }
+    }
+
     func superClassMetadata() -> AnyClassMetadata? {
         let superClass = pointer.pointee.superClass
         guard superClass != swiftObject() else {
@@ -101,4 +116,37 @@ struct ClassMetadata: NominalMetadataType {
         
         return info
     }
+}
+
+typealias Meth = @convention(c) (UnsafeRawPointer) -> Void
+
+struct TargetMethodDescriptor {
+    var flags: UInt
+    var impl: RelativePointer<Int, Meth>
+    
+    var kind: Kind {
+        return Kind(rawValue: flags & 0x0F)!
+    }
+    
+    var isInstance: Bool {
+        return flags & 0x10 != 0
+    }
+    
+    var isDynamic: Bool {
+        return flags & 0x20 != 0
+    }
+    
+    enum Kind: UInt {
+        case method
+        case `init`
+        case getter
+        case setter
+        case modifyCoroutine
+        case readCoroutine
+    }
+}
+
+struct TargetVTableDescriptorHeader {
+    let vTableOffset: UInt32
+    let vTableSive: UInt32
 }

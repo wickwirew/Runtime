@@ -39,6 +39,18 @@ extension NominalMetadataType {
         return (pointer.pointee.typeDescriptor.pointee.flags & 0x80) != 0
     }
     
+    var genericContextHeader: TargetTypeGenericContextDescriptorHeader {
+        return getTypeDescTrailingObject(at: 0, as: TargetTypeGenericContextDescriptorHeader.self)
+    }
+    
+    var vtableHeader: TargetVTableDescriptorHeader {
+        let genericOffset = isGeneric
+            ? MemoryLayout<TargetTypeGenericContextDescriptorHeader>.size
+            : 0
+        
+        return getTypeDescTrailingObject(at: genericOffset, as: TargetVTableDescriptorHeader.self)
+    }
+    
     mutating func mangledName() -> String {
         return String(cString: pointer.pointee.typeDescriptor.pointee.mangledName.advanced())
     }
@@ -83,13 +95,7 @@ extension NominalMetadataType {
     
     func genericArguments() -> UnsafeMutableBufferPointer<Any.Type> {
         guard isGeneric else { return .init(start: nil, count: 0) }
-        
-        let count = pointer.pointee
-            .typeDescriptor
-            .pointee
-            .genericContextHeader
-            .base
-            .numberOfParams
+        let count = genericContextHeader.base.numberOfParams
         return genericArgumentVector().buffer(n: Int(count))
     }
     
@@ -97,5 +103,14 @@ extension NominalMetadataType {
         return pointer
             .advanced(by: genericArgumentOffset, wordSize: MemoryLayout<UnsafeRawPointer>.size)
             .assumingMemoryBound(to: Any.Type.self)
+    }
+    
+    /// Retreives a trailing object from the `typeDescriptor`
+    /// The offset is in the bytes from the end of the object.
+    func getTypeDescTrailingObject<T>(at offset: Int, as: T.Type) -> T {
+        return pointer.pointee.typeDescriptor.advanced(by: 1)
+            .raw.advanced(by: offset)
+            .assumingMemoryBound(to: T.self)
+            .pointee
     }
 }
