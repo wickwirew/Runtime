@@ -7,13 +7,13 @@ let package = Package(
             name: "Runtime",
             targets: ["Runtime"])
         ],
-        dependencies: [
-             .package(url: "https://github.com/wickwirew/CRuntime.git", from: "2.1.2")
-        ],
     targets: [
         .target(
             name: "Runtime",
             dependencies: ["CRuntime"]),
+        .target(
+            name: "CRuntime",
+            dependencies: []),
         .testTarget(
             name: "RuntimeTests",
             dependencies: ["Runtime"])
