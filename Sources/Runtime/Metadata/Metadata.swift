@@ -20,8 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
 func metadataPointer(type: Any.Type) -> UnsafeMutablePointer<Int> {
     return unsafeBitCast(type, to: UnsafeMutablePointer<Int>.self)
 }

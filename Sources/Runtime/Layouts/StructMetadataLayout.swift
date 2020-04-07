@@ -20,8 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
 struct StructMetadataLayout: NominalMetadataLayoutType {
     var _kind: Int
     var typeDescriptor: UnsafeMutablePointer<StructTypeDescriptor>
