@@ -42,10 +42,10 @@ extension String: DefaultConstructor {}
 
 extension Bool: DefaultConstructor {}
 extension Double: DefaultConstructor {}
-extension Decimal: DefaultConstructor {}
 extension Float: DefaultConstructor {}
 
 #if canImport(Foundation)
+extension Decimal: DefaultConstructor {}
 extension Date: DefaultConstructor {}
 extension UUID: DefaultConstructor {}
 #endif
