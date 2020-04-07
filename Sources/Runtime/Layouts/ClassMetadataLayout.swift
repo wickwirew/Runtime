@@ -20,8 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
 // Swift class or objc class
 struct AnyClassMetadataLayout {
     var _kind: Int // isaPointer for classes

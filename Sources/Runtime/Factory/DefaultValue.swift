@@ -20,7 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#if canImport(Foundation)
 import Foundation
+#endif
 
 public protocol DefaultConstructor {
     init()
@@ -40,10 +42,13 @@ extension String: DefaultConstructor {}
 
 extension Bool: DefaultConstructor {}
 extension Double: DefaultConstructor {}
-extension Decimal: DefaultConstructor {}
 extension Float: DefaultConstructor {}
+
+#if canImport(Foundation)
+extension Decimal: DefaultConstructor {}
 extension Date: DefaultConstructor {}
 extension UUID: DefaultConstructor {}
+#endif
 
 extension Array: DefaultConstructor {}
 extension Dictionary: DefaultConstructor {}
