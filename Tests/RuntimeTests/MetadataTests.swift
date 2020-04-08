@@ -196,6 +196,27 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.cases[3].name == "d")
     }
     
+    func testEnumTestEnumWithPayload() {
+        enum Foo {
+            case a,b,c
+            case hasPayload(Int)
+            case hasTuplePayload(Bool, Int)
+        }
+        
+        var md = EnumMetadata(type: Foo.self)
+        let info = md.toTypeInfo()
+        
+        guard let hasPayload = info.cases.first(where: { $0.name == "hasPayload" }),
+            let hasTuplePayload = info.cases.first(where: { $0.name == "hasTuplePayload" }) else {
+                return XCTFail("Missing payload cases")
+        }
+        
+        XCTAssertEqual(md.numberOfCases, 5)
+        XCTAssertEqual(md.numberOfPayloadCases, 2)
+        XCTAssert(hasPayload.payloadType == Int.self)
+        XCTAssert(hasTuplePayload.payloadType == (Bool, Int).self)
+    }
+    
     func testOptional() throws {
         let info = try typeInfo(of: Double?.self)
         XCTAssert(info.cases[0].name == "some")

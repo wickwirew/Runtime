@@ -12,7 +12,12 @@ struct EnumTypeDescriptor: TypeDescriptor {
     var accessFunctionPointer: RelativePointer<Int32, UnsafeRawPointer>
     var fieldDescriptor: RelativePointer<Int32, FieldDescriptor>
     var numPayloadCasesAndPayloadSizeOffset: UInt32
-    var numberOfFields: Int32 // numEmptyCases
+    var numEmptyCases: UInt32
     var offsetToTheFieldOffsetVector: RelativeVectorPointer<Int32, Int32>
     var genericContextHeader: TargetTypeGenericContextDescriptorHeader
+    
+    var numberOfFields: Int32 {
+        get { 0 }
+        set {   }
+    }
 }
