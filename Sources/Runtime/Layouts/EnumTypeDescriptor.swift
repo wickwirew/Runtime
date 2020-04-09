@@ -17,7 +17,7 @@ struct EnumTypeDescriptor: TypeDescriptor {
     var genericContextHeader: TargetTypeGenericContextDescriptorHeader
     
     var numberOfFields: Int32 {
-        get { 0 }
+        get { return 0 }
         set {   }
     }
 }
