@@ -217,6 +217,13 @@ class MetadataTests: XCTestCase {
         XCTAssert(hasTuplePayload.payloadType == (Bool, Int).self)
     }
     
+    func testObjcEnum() {
+        var md = EnumMetadata(type: ComparisonResult.self)
+        let info = md.toTypeInfo()
+        print(info.cases)
+        XCTAssertEqual(md.numberOfCases, 3)
+    }
+    
     func testOptional() throws {
         let info = try typeInfo(of: Double?.self)
         XCTAssert(info.cases[0].name == "some")

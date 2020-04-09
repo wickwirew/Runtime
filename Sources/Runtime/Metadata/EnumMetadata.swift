@@ -33,9 +33,13 @@ struct EnumMetadata: NominalMetadataType {
     }
     
     mutating func cases() -> [Case] {
-        let fieldDescriptor = pointer.pointee.typeDescriptor.pointee
-            .fieldDescriptor
-            .advanced()
+        guard pointer.pointee.typeDescriptor.pointee.fieldDescriptor.offset != 0 else {
+            return []
+        }
+        
+        let fieldDescriptor = pointer.pointee
+            .typeDescriptor.pointee
+            .fieldDescriptor.advanced()
         
         let genericVector = genericArgumentVector()
         
@@ -62,6 +66,8 @@ struct EnumMetadata: NominalMetadataType {
         info.mangledName = mangledName()
         info.cases = cases()
         info.genericTypes = Array(genericArguments())
+        info.numberOfEnumCases = Int(numberOfCases)
+        info.numberOfPayloadEnumCases = Int(numberOfPayloadCases)
         return info
     }
 }
