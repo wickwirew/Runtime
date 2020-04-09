@@ -23,4 +23,5 @@
 /// An enum case
 public struct Case {
     public let name: String
+    public let payloadType: Any.Type?
 }
