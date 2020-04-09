@@ -20,6 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#if canImport(Foundation)
+import Foundation
+#endif
+
 import XCTest
 @testable import Runtime
 
@@ -217,12 +221,14 @@ class MetadataTests: XCTestCase {
         XCTAssert(hasTuplePayload.payloadType == (Bool, Int).self)
     }
     
+    #if canImport(Foundation)
     func testObjcEnum() {
         var md = EnumMetadata(type: ComparisonResult.self)
         let info = md.toTypeInfo()
-        print(info.cases)
-        XCTAssertEqual(md.numberOfCases, 3)
+        XCTAssertEqual(info.numberOfEnumCases, 3)
+        XCTAssertEqual(info.numberOfPayloadEnumCases, 0)
     }
+    #endif
     
     func testOptional() throws {
         let info = try typeInfo(of: Double?.self)
