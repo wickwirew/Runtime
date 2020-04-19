@@ -7,6 +7,9 @@ let package = Package(
             name: "Runtime",
             targets: ["Runtime"])
         ],
+        dependencies: [
+            .package(url: "https://github.com/swiftwasm/swift-corelibs-xctest.git", .branch("swiftwasm")),
+        ],
     targets: [
         .target(
             name: "Runtime",
@@ -16,7 +19,7 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "RuntimeTests",
-            dependencies: ["Runtime"])
+            dependencies: ["Runtime", "XCTest"])
     ],
     swiftLanguageVersions: [.v5]
 )

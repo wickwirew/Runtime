@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "AnyCodable",
+        "repositoryURL": "https://github.com/MaxDesiatov/AnyCodable",
+        "state": {
+          "branch": "master",
+          "revision": "6324b004d13f203a56ac27d650932e0e14286adc",
+          "version": null
+        }
+      },
+      {
+        "package": "pure-swift-json",
+        "repositoryURL": "https://github.com/fabianfett/pure-swift-json.git",
+        "state": {
+          "branch": null,
+          "revision": "816db7e4e35d584476ba52965224e4abf3517065",
+          "version": "0.2.1"
+        }
+      },
+      {
+        "package": "XCTest",
+        "repositoryURL": "https://github.com/swiftwasm/swift-corelibs-xctest.git",
+        "state": {
+          "branch": "swiftwasm",
+          "revision": "011030c98c7dbe24386e23e3aac401984583b3ed",
+          "version": null
+        }
+      },
+      {
+        "package": "WASIFoundation",
+        "repositoryURL": "https://github.com/MaxDesiatov/WASIFoundation.git",
+        "state": {
+          "branch": "master",
+          "revision": "a533d932063fcc83c23a8673cb8141c7ee1b1503",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
