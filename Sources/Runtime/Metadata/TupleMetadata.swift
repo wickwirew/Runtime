@@ -30,9 +30,9 @@ struct TupleMetadata: MetadataType, TypeInfoConvertible {
     
     func labels() -> [String] {
         guard Int(bitPattern: pointer.pointee.labelsString) != 0 else { return (0..<numberOfElements()).map { _ in "" } }
-        var labels = String(cString: pointer.pointee.labelsString).components(separatedBy: " ")
+        var labels = String(cString: pointer.pointee.labelsString).split(separator: " ")
         labels.removeLast()
-        return labels
+        return labels.map(String.init)
     }
     
     func elements() -> UnsafeBufferPointer<TupleElementLayout> {
