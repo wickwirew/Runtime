@@ -70,7 +70,7 @@ struct FieldRecord {
         return unsafeBitCast(metadataPtr, to: Any.Type.self)
     }
     
-    func getSymbolicMangledNameLength(_ base: UnsafeRawPointer) -> Int32 {
+    func getSymbolicMangledNameLength(_ base: UnsafeRawPointer) -> Int {
         var end = base
         while let current = Optional(end.load(as: UInt8.self)), current != 0 {
             end += 1
@@ -81,7 +81,7 @@ struct FieldRecord {
             }
         }
         
-        return Int32(end - base)
+        return Int(end - base)
     }
 }
 
