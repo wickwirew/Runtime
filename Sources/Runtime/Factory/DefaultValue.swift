@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if canImport(Foundation)
+#if !os(WASI)
 import Foundation
 #endif
 
@@ -44,7 +44,7 @@ extension Bool: DefaultConstructor {}
 extension Double: DefaultConstructor {}
 extension Float: DefaultConstructor {}
 
-#if canImport(Foundation)
+#if !os(WASI)
 extension Decimal: DefaultConstructor {}
 extension Date: DefaultConstructor {}
 extension UUID: DefaultConstructor {}
