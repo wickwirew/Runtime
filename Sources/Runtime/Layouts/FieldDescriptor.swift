@@ -52,11 +52,7 @@ struct FieldRecord {
     mutating func fieldName() -> String {
         return String(cString: _fieldName.advanced())
     }
-    
-    mutating func mangedTypeName() -> String {
-        return String(cString: _mangledTypeName.advanced())
-    }
-    
+
     mutating func type(genericContext: UnsafeRawPointer?,
                        genericArguments: UnsafeRawPointer?) -> Any.Type {
         let typeName = _mangledTypeName.advanced()
