@@ -23,6 +23,7 @@
 #if canImport(CRuntime)
 import CRuntime
 #endif
+import Foundation
 
 public func createInstance<T>(constructor: ((PropertyInfo) throws -> Any)? = nil) throws -> T {
     if let value = try createInstance(of: T.self, constructor: constructor) as? T {
@@ -44,6 +45,8 @@ public func createInstance(of type: Any.Type, constructor: ((PropertyInfo) throw
         return try buildStruct(type: type, constructor: constructor)
     case .class:
         return try buildClass(type: type)
+    case .objCClassWrapper:
+        return try buildObjcClass(type: type)
     default:
         throw RuntimeError.unableToBuildType(type: type)
     }
@@ -73,6 +76,28 @@ func buildClass(type: Any.Type) throws -> Any {
     return unsafeBitCast(value, to: AnyObject.self)
 }
 
+func buildObjcClass(type: Any.Type) throws -> Any {
+    
+    var value: AnyObject
+    
+    if let constructable = type as? DefaultConstructor.Type {
+        value = constructable.init() as AnyObject
+    } else if let isOptional = type as? ExpressibleByNilLiteral.Type {
+        value = isOptional.init(nilLiteral: ()) as AnyObject
+    }
+    else if let fac = type as? NSObject.Type {
+        value = fac.init()
+    }
+    else {
+        throw RuntimeError.unableToBuildType(type: type)
+    }
+    let info = try typeInfo(of: type)
+    let pointer = UnsafeMutableRawPointer(Unmanaged.passUnretained(value).toOpaque())
+    try setProperties(typeInfo: info, pointer: pointer)
+    
+    return value
+}
+
 func setProperties(typeInfo: TypeInfo,
                    pointer: UnsafeMutableRawPointer,
                    constructor: ((PropertyInfo) throws -> Any)? = nil) throws {
@@ -93,6 +118,10 @@ func defaultValue(of type: Any.Type) throws -> Any {
         return constructable.init()
     } else if let isOptional = type as? ExpressibleByNilLiteral.Type {
         return isOptional.init(nilLiteral: ())
+    }
+    // jmj
+    else if let fac = type as? NSObject.Type {
+        return fac.init()
     }
     
     return try createInstance(of: type)

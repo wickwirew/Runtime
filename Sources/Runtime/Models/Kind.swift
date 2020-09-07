@@ -70,7 +70,7 @@ public enum Kind {
         }
     }
     
-    init(type: Any.Type) {
+    public init(type: Any.Type) {
         let pointer = metadataPointer(type: type)
         self.init(flag: pointer.pointee)
     }
@@ -80,4 +80,8 @@ public enum Kind {
         static let kindIsRuntimePrivate = 0x100
         static let kindIsNonType = 0x400
     }
+}
+
+public func kind(of type: Any.Type) -> Kind {
+    Kind(type: type)
 }
