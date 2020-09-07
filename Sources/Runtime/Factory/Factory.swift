@@ -80,13 +80,13 @@ func buildObjcClass(type: Any.Type) throws -> Any {
     
     var value: AnyObject
     
-    if let constructable = type as? DefaultConstructor.Type {
-        value = constructable.init() as AnyObject
-    } else if let isOptional = type as? ExpressibleByNilLiteral.Type {
-        value = isOptional.init(nilLiteral: ()) as AnyObject
+    if let factory = type as? DefaultConstructor.Type {
+        value = factory.init() as AnyObject
+    } else if let factory = type as? ExpressibleByNilLiteral.Type {
+        value = factory.init(nilLiteral: ()) as AnyObject
     }
-    else if let fac = type as? NSObject.Type {
-        value = fac.init()
+    else if let factory = type as? NSObject.Type {
+        value = factory.init()
     }
     else {
         throw RuntimeError.unableToBuildType(type: type)
