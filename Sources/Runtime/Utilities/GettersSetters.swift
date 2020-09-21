@@ -36,7 +36,7 @@ protocol Setters {}
 extension Setters {
     static func set(value: Any, pointer: UnsafeMutableRawPointer) {
         if let value = value as? Self {
-            pointer.assumingMemoryBound(to: self).initialize(to: value)
+            pointer.assumingMemoryBound(to: self).pointee = value
         }
     }
 }
