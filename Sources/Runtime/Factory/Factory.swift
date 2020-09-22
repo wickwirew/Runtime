@@ -83,7 +83,7 @@ func setProperties(typeInfo: TypeInfo,
         
         let valuePointer = pointer.advanced(by: property.offset)
         let sets = setters(type: property.type)
-        sets.set(value: value, pointer: valuePointer)
+        sets.set(value: value, pointer: valuePointer, initialize: true)
     }
 }
 

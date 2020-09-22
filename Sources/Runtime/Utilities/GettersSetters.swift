@@ -34,9 +34,14 @@ func getters(type: Any.Type) -> Getters.Type {
 
 protocol Setters {}
 extension Setters {
-    static func set(value: Any, pointer: UnsafeMutableRawPointer) {
+    static func set(value: Any, pointer: UnsafeMutableRawPointer, initialize: Bool = false) {
         if let value = value as? Self {
-            pointer.assumingMemoryBound(to: self).initialize(to: value)
+            let boundPointer = pointer.assumingMemoryBound(to: self);
+            if initialize {
+                boundPointer.initialize(to: value)
+            } else {
+                boundPointer.pointee = value
+            }
         }
     }
 }
