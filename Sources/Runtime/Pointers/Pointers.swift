@@ -42,26 +42,31 @@ func withClassValuePointer<Value, Result>(
     of value: inout Value,
     _ body: (UnsafeMutableRawPointer) throws -> Result) throws -> Result {
     return try withUnsafePointer(to: &value) {
-        let pointer = $0.withMemoryRebound(to: UnsafeMutableRawPointer.self, capacity: 1) {$0.pointee}
-        return try body(pointer)
+        return try $0.withMemoryRebound(to: UnsafeMutableRawPointer.self, capacity: 1) {
+            try body($0.pointee)
+        }
     }
 }
 
 func withExistentialValuePointer<Value, Result>(
     of value: inout Value,
     _ body: (UnsafeMutableRawPointer) throws -> Result) throws -> Result {
-    return try withUnsafePointer(to: &value) {
-        let container = $0.withMemoryRebound(to: ExistentialContainer.self, capacity: 1) {$0.pointee}
-        let info = try metadata(of: container.type)
-        if info.kind == .class || info.size > ExistentialContainerBuffer.size() {
-            let base = $0.withMemoryRebound(to: UnsafeMutableRawPointer.self, capacity: 1) {$0.pointee}
-            if info.kind == .struct {
-                return try body(base.advanced(by: existentialHeaderSize))
+    return try withUnsafePointer(to: &value) { ptr in
+        try ptr.withMemoryRebound(to: ExistentialContainer.self, capacity: 1) {
+            let container = $0.pointee
+            let info = try metadata(of: container.type)
+            if info.kind == .class || info.size > ExistentialContainerBuffer.size() {
+                return try ptr.withMemoryRebound(to: UnsafeMutableRawPointer.self, capacity: 1) {
+                    let base = $0.pointee
+                    if info.kind == .struct {
+                        return try body(base.advanced(by: existentialHeaderSize))
+                    } else {
+                        return try body(base)
+                    }
+                }
             } else {
-                return try body(base)
+                return try body($0.mutable.raw)
             }
-        } else {
-            return try body($0.mutable.raw)
         }
     }
 }
