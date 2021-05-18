@@ -260,7 +260,7 @@ class GetSetClassTests: XCTestCase {
     
     /// Test case from: https://github.com/wickwirew/Runtime/issues/25
     func testNSObjectBaseClass() throws {
-        
+#if !os(WASI)
         class User: NSObject {
             let id: Int = 0
             let username: String = ""
@@ -272,6 +272,7 @@ class GetSetClassTests: XCTestCase {
         
         XCTAssert(property.name == "username")
         XCTAssert(property.type == String.self)
+#endif
     }
     // swiftlint:enable force_cast
 }

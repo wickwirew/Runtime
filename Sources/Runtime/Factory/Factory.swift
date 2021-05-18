@@ -61,8 +61,8 @@ func buildClass(type: Any.Type) throws -> Any {
     var md = ClassMetadata(type: type)
     let info = md.toTypeInfo()
     let metadata = unsafeBitCast(type, to: UnsafeRawPointer.self)
-    let instanceSize = Int32(md.pointer.pointee.classSize)
-    let alignment = Int32(md.alignment)
+    let instanceSize = Int(md.pointer.pointee.classSize)
+    let alignment = Int(md.alignment)
 
     guard let value = swift_allocObject(metadata, instanceSize, alignment) else {
             throw RuntimeError.unableToBuildType(type: type)

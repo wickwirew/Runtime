@@ -28,12 +28,16 @@ struct RelativePointer<Offset: FixedWidthInteger, Pointee> {
     }
     
     mutating func advanced() -> UnsafeMutablePointer<Pointee> {
+        #if arch(wasm32)
+        return unsafeBitCast(offset, to: UnsafeMutablePointer<Pointee>.self)
+        #else
         let offset = self.offset
         return withUnsafePointer(to: &self) { p in
             return p.raw.advanced(by: numericCast(offset))
                 .assumingMemoryBound(to: Pointee.self)
                 .mutable
         }
+        #endif
     }
 }
 

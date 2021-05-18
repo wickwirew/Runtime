@@ -35,8 +35,10 @@ struct AnyClassMetadataLayout {
 struct ClassMetadataLayout: NominalMetadataLayoutType {
     var _kind: Int // isaPointer for classes
     var superClass: Any.Type
+    #if !os(WASI)
     var objCRuntimeReserve: (Int, Int)
     var rodataPointer: Int
+    #endif
     var classFlags: Int32
     var instanceAddressPoint: UInt32
     var instanceSize: UInt32

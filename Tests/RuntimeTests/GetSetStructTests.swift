@@ -269,12 +269,14 @@ class GetSetStructTests: XCTestCase {
     }
     
     func testSetCasting() throws {
+#if !os(WASI)
         let info = try typeInfo(of: Person.self)
         let age = try info.property(named: "age")
         var person = Person()
         let newValue: NSNumber = 40
         try age.set(value: newValue, on: &person)
         XCTAssert(person.age == 40)
+#endif
     }
     
     func testSetCastingFailure() throws {
