@@ -44,6 +44,8 @@ public func createInstance(of type: Any.Type, constructor: ((PropertyInfo) throw
         return try buildStruct(type: type, constructor: constructor)
     case .class:
         return try buildClass(type: type)
+    case .enum:
+        return try buildEnum(type: type, constructor: constructor)
     default:
         throw RuntimeError.unableToBuildType(type: type)
     }
@@ -71,6 +73,14 @@ func buildClass(type: Any.Type) throws -> Any {
     try setProperties(typeInfo: info, pointer: UnsafeMutableRawPointer(mutating: value))
 
     return unsafeBitCast(value, to: AnyObject.self)
+}
+
+func buildEnum(type: Any.Type, constructor: ((PropertyInfo) throws -> Any)? = nil) throws -> Any {
+    let info = try typeInfo(of: type)
+    let pointer = UnsafeMutableRawPointer.allocate(byteCount: info.size, alignment: info.alignment)
+    defer { pointer.deallocate() }
+    
+    return getters(type: type).get(from: pointer)
 }
 
 func setProperties(typeInfo: TypeInfo,
