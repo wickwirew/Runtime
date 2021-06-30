@@ -30,14 +30,14 @@ struct AnyClassMetadataLayout {
     var superClass: Any.Type
 
     // see comment above
-    #if !swift(>=5.4) || canImport(Darwin)
+    #if !swift(>=5.4) || canImport(ObjectiveC)
     var objCRuntimeReserve: (Int, Int)
     var rodataPointer: Int
     #endif
     
     var isSwiftClass: Bool {
         // see comment above
-        #if !swift(>=5.4) || canImport(Darwin)
+        #if !swift(>=5.4) || canImport(ObjectiveC)
         return (rodataPointer & classIsSwiftMask()) != 0
         #else
         return true
@@ -50,7 +50,7 @@ struct ClassMetadataLayout: NominalMetadataLayoutType {
     var superClass: Any.Type
 
     // see comment above
-    #if !swift(>=5.4) || canImport(Darwin)
+    #if !swift(>=5.4) || canImport(ObjectiveC)
     var objCRuntimeReserve: (Int, Int)
     var rodataPointer: Int
     #endif

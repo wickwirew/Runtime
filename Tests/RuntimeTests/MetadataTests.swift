@@ -51,7 +51,7 @@ class MetadataTests: XCTestCase {
         let info = md.toTypeInfo()
 
         // see comment in ClassMetadataLayout.swift
-        #if !swift(>=5.4) || canImport(Darwin)
+        #if !swift(>=5.4) || canImport(ObjectiveC)
         XCTAssert(md.genericArgumentOffset == 15)
         #else
         XCTAssert(md.genericArgumentOffset == 15 - 3)
