@@ -1,0 +1,88 @@
+name: Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - feature/github-workflow
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - swift:5.1-xenial
+          - swift:5.1-bionic
+          - swift:5.2-xenial
+          - swift:5.2-bionic
+          - swift:5.2-focal
+          - swift:5.2-centos8
+          - swift:5.2-amazonlinux2
+          - swift:5.3-xenial
+          - swift:5.3-bionic
+          - swift:5.3-focal
+          - swift:5.3-centos8
+          - swift:5.3-amazonlinux2
+          - swift:5.4-xenial
+          - swift:5.4-bionic
+          - swift:5.4-focal
+          - swift:5.4-centos8
+          - swift:5.4-amazonlinux2
+          - swiftlang/swift:nightly-5.4-xenial
+          - swiftlang/swift:nightly-5.4-bionic
+          - swiftlang/swift:nightly-5.4-focal
+          - swiftlang/swift:nightly-5.4-centos8
+          - swiftlang/swift:nightly-5.4-amazonlinux2
+          - swiftlang/swift:nightly-5.5-xenial
+          - swiftlang/swift:nightly-5.5-bionic
+          - swiftlang/swift:nightly-5.5-focal
+          - swiftlang/swift:nightly-5.5-centos8
+          - swiftlang/swift:nightly-5.5-amazonlinux2
+        configuration:
+          - debug
+          - release
+
+    container: ${{ matrix.image }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run tests (debug)
+        if: matrix.configuration == 'debug'
+        run: swift test
+
+      # running tests in release configuration to ensure everything works as expected with compiler optimizations
+      - name: Run tests (release)
+        if: matrix.configuration == 'release'
+        run: swift test -c release -Xswiftc -enable-testing -Xswiftc -DDEBUG
+  macos:
+
+    runs-on: macos-latest
+
+    strategy:
+      matrix:
+        configuration:
+          - debug
+          - release
+
+    steps:
+      - name: Select latest available Xcode
+        uses: maxim-lobanov/setup-xcode@v1.2.1
+        with: { 'xcode-version': 'latest' }
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run tests (debug)
+        if: matrix.configuration == 'debug'
+        run: swift test
+
+      # running tests in release configuration to ensure everything works as expected with compiler optimizations
+      - name: Run tests (release)
+        if: matrix.configuration == 'release'
+        run: swift test -c release -Xswiftc -enable-testing -Xswiftc -DDEBUG
