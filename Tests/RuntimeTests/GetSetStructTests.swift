@@ -29,6 +29,7 @@ class GetSetStructTests: XCTestCase {
     static var allTests: [(String, (GetSetStructTests) -> () throws -> Void)] {
         return [
             ("testGet", testGet),
+            ("testGetSimple", testGetSimple),
             ("testGetUntypedValue", testGetUntypedValue),
             ("testGetUntypedObject", testGetUntypedObject),
             ("testGetUntyped", testGetUntyped),
