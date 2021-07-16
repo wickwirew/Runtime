@@ -3,7 +3,9 @@ import XCTest
 extension FactoryTests {
     static let __allTests = [
         ("testStruct", testStruct),
-        ("testStructUntyped", testStructUntyped)
+        ("testStructUntyped", testStructUntyped),
+        ("testClass", testClass),
+        ("testGenericClass", testGenericClass)
     ]
 }
 
@@ -40,6 +42,7 @@ extension GetSetClassTests {
 extension GetSetStructTests {
     static let __allTests = [
         ("testGet", testGet),
+        ("testGetSimple", testGetSimple),
         ("testGetArray", testGetArray),
         ("testGetArrayUntyped", testGetArrayUntyped),
         ("testGetArrayUntypedObject", testGetArrayUntypedObject),
@@ -71,14 +74,20 @@ extension GetSetStructTests {
 extension MetadataTests {
     static let __allTests = [
         ("testClass", testClass),
-        ("testEnum", testEnum),
-        ("testFunction", testFunction),
-        ("testFunctionThrows", testFunctionThrows),
-        ("testProtocol", testProtocol),
+        ("testResilientClass", testResilientClass),
         ("testStruct", testStruct),
+        ("testGenericStruct", testGenericStruct),
+        ("testNestedStruct", testNestedStruct),
+        ("testProtocol", testProtocol),
         ("testTuple", testTuple),
         ("testTupleNoLabels", testTupleNoLabels),
-        ("testVoidFunction", testVoidFunction)
+        ("testFunction", testFunction),
+        ("testFunctionThrows", testFunctionThrows),
+        ("testVoidFunction", testVoidFunction),
+        ("testEnum", testEnum),
+        ("testEnumTestEnumWithPayload", testEnumTestEnumWithPayload),
+        ("testObjcEnum", testObjcEnum),
+        ("testOptional", testOptional)
     ]
 }
 
