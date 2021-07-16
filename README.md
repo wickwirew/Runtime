@@ -1,6 +1,6 @@
 ![Runtime](https://github.com/wickwirew/Runtime/blob/master/Resources/Runtime.png)
 
-![Build](https://travis-ci.org/wickwirew/Runtime.svg?branch=master)
+<!-- TODO replace with GitHub build badge -->
 ![Swift 5.0](https://img.shields.io/badge/Swift-5.0-green.svg)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/Runtime.svg)](#cocoapods)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
