@@ -48,6 +48,11 @@ extension Float: DefaultConstructor {}
 extension Decimal: DefaultConstructor {}
 extension Date: DefaultConstructor {}
 extension UUID: DefaultConstructor {}
+extension URL: DefaultConstructor {
+    public init() {
+        self.init(fileURLWithPath: "")
+    }
+}
 #endif
 
 extension Array: DefaultConstructor {}
@@ -55,6 +60,12 @@ extension Dictionary: DefaultConstructor {}
 extension Set: DefaultConstructor {}
 
 extension Character: DefaultConstructor {
+    public init() {
+        self = " "
+    }
+}
+
+extension UnicodeScalar: DefaultConstructor {
     public init() {
         self = " "
     }
