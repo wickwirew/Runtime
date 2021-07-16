@@ -49,7 +49,14 @@ class MetadataTests: XCTestCase {
     func testClass() {
         var md = ClassMetadata(type: MyClass<Int>.self)
         let info = md.toTypeInfo()
+
+        // see comment in ClassMetadataLayout.swift
+        #if !swift(>=5.4) || canImport(ObjectiveC)
         XCTAssert(md.genericArgumentOffset == 15)
+        #else
+        XCTAssert(md.genericArgumentOffset == 15 - 3)
+        #endif
+
         XCTAssert(info.properties.first {$0.name == "baseProperty"} != nil)
         XCTAssert(info.inheritance[0] == BaseClass.self)
         XCTAssert(info.superClass == BaseClass.self)
