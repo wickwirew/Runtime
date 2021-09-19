@@ -48,6 +48,7 @@ extension Float: DefaultConstructor {}
 extension Decimal: DefaultConstructor {}
 extension Date: DefaultConstructor {}
 extension UUID: DefaultConstructor {}
+extension Data: DefaultConstructor {}
 #endif
 
 extension Array: DefaultConstructor {}
