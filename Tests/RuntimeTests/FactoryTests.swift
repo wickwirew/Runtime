@@ -34,6 +34,18 @@ class FactoryTests: XCTestCase {
         ]
     }
     
+    func testCreatePerformance() throws {
+        self.measureMetrics(XCTestCase.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
+            
+            let count = 10_000
+            startMeasuring()
+            for _ in 0...count {
+                let _: PetStruct = try! createInstance()
+            }
+            stopMeasuring()
+        }
+    }
+
     func testStruct() throws {
         let person: PersonStruct = try createInstance()
         XCTAssert(person.firstname == "")

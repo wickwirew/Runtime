@@ -102,6 +102,8 @@ func setProperties(typeInfo: TypeInfo,
                    pointer: UnsafeMutableRawPointer,
                    constructor: ((PropertyInfo) throws -> Any)? = nil) throws {
     for property in typeInfo.properties {
+        // jmj changed 1st `try` below to `try?` to allow
+        // the `defaultValue(of:)` to be given a go if `resolver` throws
         let value = try constructor.map { (resolver) -> Any in
             return try resolver(property)
         } ?? defaultValue(of: property.type)
