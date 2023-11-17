@@ -43,7 +43,7 @@ struct FunctionMetadata: MetadataType {
     }
     
     private func numberArguments() -> Int {
-        return pointer.pointee.flags & 0x00FFFFFF
+        return pointer.pointee.flags & 0x0000FFFF
     }
     
     private func `throws`() -> Bool {
