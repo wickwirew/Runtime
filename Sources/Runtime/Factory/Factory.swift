@@ -61,13 +61,13 @@ func buildClass(type: Any.Type) throws -> Any {
     var md = ClassMetadata(type: type)
     let info = md.toTypeInfo()
     let metadata = unsafeBitCast(type, to: UnsafeRawPointer.self)
-    let instanceSize = Int32(md.pointer.pointee.instanceSize)
+    let instanceSize = Int(md.pointer.pointee.instanceSize)
 
     // https://github.com/wickwirew/Runtime/issues/49
     // Docs specify that the alignment should be "always one less than a power of 2 that's at least alignof(void*)"
     // https://github.com/apple/swift/blob/7123d2614b5f222d03b3762cb110d27a9dd98e24/include/swift/Runtime/HeapObject.h#L56-L57
     // We could use md.alignment and deduct 1, or just use the instanceAlignmentMask from the ClassMetadata.
-    let alignmentMask = Int32(md.pointer.pointee.instanceAlignmentMask)
+    let alignmentMask = Int(md.pointer.pointee.instanceAlignmentMask)
 
     guard let value = swift_allocObject(metadata, instanceSize, alignmentMask) else {
             throw RuntimeError.unableToBuildType(type: type)
