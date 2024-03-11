@@ -1,6 +1,8 @@
 #ifndef cruntime_h
 #define cruntime_h
 
+#include <stdlib.h>
+
 const void * _Nullable swift_getTypeByMangledNameInContext(
                         const char * _Nullable typeNameStart,
                         int typeNameLength,
@@ -9,7 +11,7 @@ const void * _Nullable swift_getTypeByMangledNameInContext(
 
 const void * _Nullable swift_allocObject(
                     const void * _Nullable type,
-                    int requiredSize,
-                    int requiredAlignmentMask);
+                    size_t requiredSize,
+                    size_t requiredAlignmentMask);
 
 #endif
