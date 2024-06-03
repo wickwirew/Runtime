@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
     s.name         = "Runtime"
-    s.version      = "2.2.5"
+    s.version      = "2.2.6"
     s.summary      = "Runtime"
     s.description  = <<-DESC
     Runtime abilities for native swift objects.
