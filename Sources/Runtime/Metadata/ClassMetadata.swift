@@ -28,6 +28,11 @@ struct AnyClassMetadata {
         pointer = unsafeBitCast(type, to: UnsafeMutablePointer<AnyClassMetadataLayout>.self)
     }
     
+    @_disfavoredOverload
+    init<T: ~Copyable>(type: T.Type) {
+        pointer = unsafeBitCast(type, to: UnsafeMutablePointer<AnyClassMetadataLayout>.self)
+    }
+    
     func asClassMetadata() -> ClassMetadata? {
         guard pointer.pointee.isSwiftClass else {
             return nil

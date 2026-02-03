@@ -242,6 +242,33 @@ class MetadataTests: XCTestCase {
         XCTAssert(info.cases[0].name == "some")
         XCTAssert(info.cases[1].name == "none")
     }
+    
+    func testNonCopyableStruct() throws {
+        let info = try typeInfo(of: NoncopyableCountry.self)
+        let name = try info.property(named: "name")
+        XCTAssert(name.name == "name")
+        XCTAssert(name.type == String.self)
+        let population = try info.property(named: "population")
+        XCTAssert(population.name == "population")
+        XCTAssert(population.type == Int.self)
+        XCTAssert(info.properties.count == 2)
+    }
+    
+    func testNonCopyableEnum() throws {
+        let info = try typeInfo(of: NoncopyableColor.self)
+        XCTAssert(info.cases[0].name == "red")
+        XCTAssert(info.cases[1].name == "blue")
+        XCTAssert(info.cases.count == 2)
+    }
+    
+    func testNonCopyableOptionals() throws {
+        let info1 = try typeInfo(of: NoncopyableCountry?.self)
+        XCTAssert(info1.cases[0].name == "some")
+        XCTAssert(info1.cases[1].name == "none")
+        let info2 = try typeInfo(of: NoncopyableColor?.self)
+        XCTAssert(info2.cases[0].name == "some")
+        XCTAssert(info2.cases[1].name == "none")
+    }
 }
 
 fileprivate enum MyEnum<T>: Int {
@@ -277,4 +304,14 @@ fileprivate struct MyStruct<T> {
     var a, b: Int
     var c: String
     var d: T
+}
+
+fileprivate enum NoncopyableColor: ~Copyable {
+    case red
+    case blue
+}
+
+fileprivate struct NoncopyableCountry: ~Copyable {
+    var name: String
+    var population: Int
 }

@@ -75,6 +75,12 @@ public enum Kind {
         self.init(flag: pointer.pointee)
     }
     
+    @_disfavoredOverload
+    init<T: ~Copyable>(type: T.Type) {
+        let pointer = metadataPointer(type: type)
+        self.init(flag: pointer.pointee)
+    }
+    
     struct Flags {
         static let kindIsNonHeap = 0x200
         static let kindIsRuntimePrivate = 0x100

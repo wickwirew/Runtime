@@ -26,4 +26,5 @@ enum RuntimeError: Error {
     case noPropertyNamed(name: String)
     case unableToBuildType(type: Any.Type)
     case errorGettingValue(name: String, type: Any.Type)
+    case unsupportedNoncopyableType
 }

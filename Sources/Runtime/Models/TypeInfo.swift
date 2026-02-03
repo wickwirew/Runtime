@@ -58,6 +58,21 @@ public struct TypeInfo {
     }
 }
 
+@_disfavoredOverload
+public func typeInfo<T: ~Copyable>(of type: T.Type) throws -> TypeInfo {
+    let kind = Kind(type: type)
+    var typeInfoConvertible: TypeInfoConvertible
+    switch kind {
+    case .struct:
+        typeInfoConvertible = StructMetadata(type: type)
+    case .enum, .optional:
+        typeInfoConvertible = EnumMetadata(type: type)
+    default:
+        throw RuntimeError.unsupportedNoncopyableType
+    }
+    return typeInfoConvertible.toTypeInfo()
+}
+
 public func typeInfo(of type: Any.Type) throws -> TypeInfo {
     let kind = Kind(type: type)
     

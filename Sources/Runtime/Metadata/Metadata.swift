@@ -20,6 +20,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+@_disfavoredOverload
+func metadataPointer<T: ~Copyable>(type: T.Type) -> UnsafeMutablePointer<Int> {
+    return unsafeBitCast(type, to: UnsafeMutablePointer<Int>.self)
+}
+
 func metadataPointer(type: Any.Type) -> UnsafeMutablePointer<Int> {
     return unsafeBitCast(type, to: UnsafeMutablePointer<Int>.self)
 }

@@ -28,6 +28,9 @@ protocol MetadataInfo {
     var stride: Int { get }
     
     init(type: Any.Type)
+    
+    @_disfavoredOverload
+    init<T: ~Copyable>(type: T.Type)
 }
 
 protocol MetadataType: MetadataInfo, TypeInfoConvertible {
@@ -42,6 +45,11 @@ protocol MetadataType: MetadataInfo, TypeInfoConvertible {
 extension MetadataType {
     
     init(type: Any.Type) {
+        self = Self(pointer: unsafeBitCast(type, to: UnsafeMutablePointer<Layout>.self))
+    }
+    
+    @_disfavoredOverload
+    init<T: ~Copyable>(type: T.Type) {
         self = Self(pointer: unsafeBitCast(type, to: UnsafeMutablePointer<Layout>.self))
     }
     
